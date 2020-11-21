@@ -31,33 +31,38 @@ color: #2C3E50;
  
 `
 
+const LastRowText = styled.div`
+  font-family: Roboto,sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 15px;
+    color: #FFFFFF;
 
 
-export const Footer = () =>{
-    return(
+`
+
+
+export const Footer = () => {
+    return (
         <FooterContainer>
             <div className={'container'}>
-                <Row justify="space-between">
+                <Row justify="space-between" align={'middle'} gutter={[0, 24]}>
                     <Col>
                         <Logo>Logo</Logo>
                     </Col>
 
                     <Col>
-                       <FooterNavbar/>
+                        <FooterNavbar/>
                     </Col>
                 </Row>
-
-
-
-
-
-                <div>Задизайнено и разработано Даниилом Силином</div>
-
+                <Row justify={'start'} align={'bottom'}>
+                    <LastRowText>Задизайнено и разработано Даниилом Силиным</LastRowText>
+                </Row>
 
             </div>
         </FooterContainer>
     )
-
 
 
 }
