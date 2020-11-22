@@ -4,6 +4,7 @@ import {Switch, Redirect, Route, BrowserRouter} from "react-router-dom";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {MainPage} from "./components/MainPage/mainpage";
 import {Footer} from "./components/Footer/Footer";
+import {NewsPage} from "./components/NewsPage/NewsPage";
 
 function App() {
     return (
@@ -18,6 +19,8 @@ function App() {
 
 
                         <Route exact path="/" render={() => <MainPage/>}/>
+                        <Route exact path="/news" render={() => <NewsPage/>}/>
+
 
                         <Route render={() => <div>404 NOT Found</div>}/>
                     </Switch>
