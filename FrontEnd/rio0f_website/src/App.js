@@ -5,6 +5,12 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 import {MainPage} from "./components/MainPage/mainpage";
 import {Footer} from "./components/Footer/Footer";
 import {NewsPage} from "./components/NewsPage/NewsPage";
+import {DonatePage} from "./components/DonatePage/DonatePage";
+import {ContactsPage} from "./components/ContactsPage/ContactsPage";
+import {PhotosPage} from "./components/PhotosPage/PhotosPage";
+import {QSLPage} from "./components/QSLPage/QSLPage";
+import {PlanPage} from "./components/PlanPage/PlanPage";
+import {HardwarePage} from "./components/HardwarePage/HardwarePage";
 
 function App() {
     return (
@@ -20,6 +26,12 @@ function App() {
 
                         <Route exact path="/" render={() => <MainPage/>}/>
                         <Route exact path="/news" render={() => <NewsPage/>}/>
+                        <Route exact path="/donate" render={() => <DonatePage/>}/>
+                        <Route exact path="/contacts" render={() => <ContactsPage/>}/>
+                        <Route exact path="/gallery" render={() => <PhotosPage/>}/>
+                        <Route exact path="/qsl" render={() => <QSLPage/>}/>
+                        <Route exact path="/plan" render={() => <PlanPage/>}/>
+                        <Route exact path="/hardware" render={() => <HardwarePage/>}/>
 
 
                         <Route render={() => <div>404 NOT Found</div>}/>

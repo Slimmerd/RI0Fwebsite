@@ -4,9 +4,6 @@ import {MainCard} from "./NewsCards/MainCard";
 import {SecondaryCard} from "./NewsCards/SecondaryCard";
 
 
-//Todo: the news page structure
-//Todo: Main news card
-//Todo: Secondary (small) news card
 //Fix: Header
 
 const NewsPageBlock = styled.div`
@@ -98,8 +95,8 @@ export const NewsPage = () => {
             <PageContainer>
                 <NamingBlock>
                     <div className={'textblock'}>
-                    <div className={'header'}>RIØF Новости</div>
-                    <div className={'paragraph'}>Последние новости от нашей команды</div>
+                        <div className={'header'}>RIØF Новости</div>
+                        <div className={'paragraph'}>Последние новости от нашей команды</div>
                     </div>
                 </NamingBlock>
                 <MainCard/>
@@ -113,10 +110,9 @@ export const NewsPage = () => {
                     <Col><SecondaryCard/></Col>
                     <Col><SecondaryCard/></Col>
                 </Row>
-                    <ExtraNews>
-                        <Button className={'button'} type="primary">Еще</Button>
-                    </ExtraNews>
-
+                <ExtraNews>
+                    <Button className={'button'} type="primary">Еще</Button>
+                </ExtraNews>
 
 
             </PageContainer>
