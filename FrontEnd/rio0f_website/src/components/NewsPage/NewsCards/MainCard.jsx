@@ -35,7 +35,7 @@ const CardShape = styled.div`
     border-radius: 0px 10px 10px 0px;
     color: #34495E;
     
-    font-family: Roboto;
+    font-family: Roboto, sans-serif;
     font-style: normal;
     font-weight: 500;
 

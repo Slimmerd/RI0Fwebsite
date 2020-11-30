@@ -11,6 +11,8 @@ import {PhotosPage} from "./components/PhotosPage/PhotosPage";
 import {QSLPage} from "./components/QSLPage/QSLPage";
 import {PlanPage} from "./components/PlanPage/PlanPage";
 import {HardwarePage} from "./components/HardwarePage/HardwarePage";
+import {TeamPage} from "./components/TeamPage/TeamPage";
+import {ActualNewsPage} from "./components/NewsPage/ActualNewsPage/ActualNewsPage";
 
 function App() {
     return (
@@ -32,6 +34,8 @@ function App() {
                         <Route exact path="/qsl" render={() => <QSLPage/>}/>
                         <Route exact path="/plan" render={() => <PlanPage/>}/>
                         <Route exact path="/hardware" render={() => <HardwarePage/>}/>
+                        <Route exact path="/team" render={() => <TeamPage/>}/>
+                        <Route exact path="/news/act" render={() => <ActualNewsPage/>}/>
 
 
                         <Route render={() => <div>404 NOT Found</div>}/>

@@ -88,7 +88,6 @@ const ExtraNews = styled.div`
   }
 `
 
-
 export const NewsPage = () => {
     return (
         <NewsPageBlock>
