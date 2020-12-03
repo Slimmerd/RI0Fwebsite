@@ -6,7 +6,7 @@ const FadeInDirection = ({isVisible, children}) => {
     const props = useSpring({
 
         opacity: isVisible ? 1 : 0,
-        transition: 'opacity 0.5s linear'
+        transition: 'opacity 0.4s ease-out'
     });
     return <animated.div style={props}>{children}</animated.div>;
 };

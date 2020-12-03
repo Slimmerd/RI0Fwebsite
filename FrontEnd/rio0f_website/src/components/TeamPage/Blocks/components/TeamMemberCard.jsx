@@ -11,27 +11,29 @@ const CardShape = styled.div`
     box-shadow: 31.2195px 25.0069px 80px rgba(0, 0, 0, 0.07), 20.2349px 16.2081px 46.8519px rgba(0, 0, 0, 0.0531481), 12.0253px 9.63227px 25.4815px rgba(0, 0, 0, 0.0425185), 6.2439px 5.00137px 13px rgba(0, 0, 0, 0.035), 2.54381px 2.0376px 6.51852px rgba(0, 0, 0, 0.0274815), 0.578139px 0.46309px 3.14815px rgba(0, 0, 0, 0.0168519);
     border-radius: 15px;
     
+     transition: transform .4s ease-out 0s;
+       &:hover{
+        transform: scale(1.01);
+         }
+    
     .left,.right{
     height: 550px;
     }
-    
-    
+        
     .left{
     background: #2C3E50;
-      border-radius: 15px 0px 0px 15px;
+      border-radius: 15px 0 0 15px;
     
      display: flex;
       align-items: center;
       svg{
       margin: 0 auto;
       }
-      
     }
     
     .right{
     background: #FFFFFF;
-    border-radius: 0px 15px 15px 0px;
-    
+    border-radius: 0 15px 15px 0;
     }
     
  `
@@ -42,7 +44,6 @@ const CardShape = styled.div`
     }
     
     .header{
-    
     padding: 19px 0 10px 0;
     font-family: Roboto,sans-serif;
     font-style: normal;
@@ -52,10 +53,8 @@ const CardShape = styled.div`
     margin-left: 90px;
     
     color: #2C3E50;
-
     }
-    
-    
+        
     .information{
       background: #2C3E50;
       border-radius: 15px;
@@ -66,8 +65,7 @@ const CardShape = styled.div`
     }
       
     .text{
-    
-     font-family: Roboto,sans-serif;
+         font-family: Roboto,sans-serif;
         font-style: normal;
         font-weight: 500;
         font-size: 60px;
@@ -81,13 +79,8 @@ const CardShape = styled.div`
       
        display: flex;
       align-items: flex-end;
-      
-      }
-      
-      
-    
-`
-
+     }
+ `
 
 export const TeamMemberCard = () => {
     return (

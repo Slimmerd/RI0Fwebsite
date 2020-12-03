@@ -2,6 +2,7 @@ import React from 'react'
 import {Col, Row, Button} from "antd";
 import styled from "styled-components";
 import {TeamMemberCard} from "./components/TeamMemberCard";
+import {FadeInContainer} from "../../../utils/FadeInAnimation";
 
 
 const Header = styled.div`
@@ -23,15 +24,23 @@ const Cards = styled.div`
 export const TeamPageMembers = () => {
     return (
         <div className={'container'}>
+            <FadeInContainer>
             <Header>Участники</Header>
+            </FadeInContainer>
            <Cards>
+               <FadeInContainer>
                <TeamMemberCard/>
+               </FadeInContainer>
            </Cards>
             <Cards>
+                <FadeInContainer>
                <TeamMemberCard/>
+                </FadeInContainer>
            </Cards>
             <Cards>
+                <FadeInContainer>
                <TeamMemberCard/>
+                </FadeInContainer>
            </Cards>
         </div>
     )

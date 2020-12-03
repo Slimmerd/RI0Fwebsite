@@ -2,6 +2,7 @@ import React from 'react'
 import styled from "styled-components";
 import {Icon} from "@iconify/react";
 import cameraIcon from '@iconify/icons-si-glyph/camera';
+import {FadeInContainer} from "../../../../utils/FadeInAnimation";
 
 const HeaderBlock = styled.div`
     height: 600px;
@@ -19,14 +20,12 @@ const HeaderBlock = styled.div`
 
 export const ActualNewsPagePicture = () => {
     return (
-
+        <FadeInContainer>
         <HeaderBlock>
             <div className={'container'}>
                 <Icon icon={cameraIcon} style={{color: '#ecf0f1', fontSize: '256px'}}/>
             </div>
         </HeaderBlock>
-
+        </FadeInContainer>
     )
-
-
 }

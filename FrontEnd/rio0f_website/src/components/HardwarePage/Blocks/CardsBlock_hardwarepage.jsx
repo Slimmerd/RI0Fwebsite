@@ -1,5 +1,7 @@
+import React from 'react'
 import {Col, Row, Button} from "antd";
 import styled from "styled-components";
+import {FadeInContainer} from "../../../utils/FadeInAnimation";
 
 const CardsBlockContainer = styled.div`
     height: 1386px;
@@ -19,6 +21,11 @@ const Card = styled.div`
     
     position: relative;
      z-index: 2;
+     
+    transition: transform .4s ease-out 0s;
+       &:hover{
+        transform: scale(1.02);
+         }
 `
 
 const BackNumber = styled.div`
@@ -53,50 +60,55 @@ export const HardwarePageCardsBlock = () => {
         <CardsBlockContainer>
             <div className={'container'}>
                 <div className={'start'}>
-                <Row gutter={[30, 110]} justify={'center'}>
-                    <Col>
-                        <Card>
-                            <div>Hello</div>
-
-                            <BackNumber>1</BackNumber>
-                        </Card>
-                    </Col>
-                    <Col>
-                        <Card>
-                            <div>Hello</div>
-                            <BackNumber>2</BackNumber>
-                        </Card>
-                    </Col>
-                </Row>
-                <Row gutter={[30, 110]} justify={'center'}>
-                    <Col>
-                        <Card>
-                            <div>Hello</div>
-                            <BackNumber>3</BackNumber>
-                        </Card>
-                    </Col>
-                    <Col>
-                        <Card>
-                            <div>Hello</div>
-                            <BackNumber>4</BackNumber>
-                        </Card>
-                    </Col>
-                </Row>
-                <Row gutter={[30, 110]} justify={'center'}>
-                    <Col>
-                        <Card>
-                            <div>Hello</div>
-                            <BackNumber>5</BackNumber>
-                        </Card>
-                    </Col>
-                    <Col>
-                        <Card>
-                            <div>Hello</div>
-                            <BackNumber>6</BackNumber>
-                        </Card>
-                    </Col>
-                </Row>
-            </div>
+                    <FadeInContainer>
+                        <Row gutter={[30, 110]} justify={'center'}>
+                            <Col>
+                                <Card>
+                                    <div>Hello</div>
+                                    <BackNumber>1</BackNumber>
+                                </Card>
+                            </Col>
+                            <Col>
+                                <Card>
+                                    <div>Hello</div>
+                                    <BackNumber>2</BackNumber>
+                                </Card>
+                            </Col>
+                        </Row>
+                    </FadeInContainer>
+                    <FadeInContainer>
+                        <Row gutter={[30, 110]} justify={'center'}>
+                            <Col>
+                                <Card>
+                                    <div>Hello</div>
+                                    <BackNumber>3</BackNumber>
+                                </Card>
+                            </Col>
+                            <Col>
+                                <Card>
+                                    <div>Hello</div>
+                                    <BackNumber>4</BackNumber>
+                                </Card>
+                            </Col>
+                        </Row>
+                    </FadeInContainer>
+                    <FadeInContainer>
+                        <Row gutter={[30, 110]} justify={'center'}>
+                            <Col>
+                                <Card>
+                                    <div>Hello</div>
+                                    <BackNumber>5</BackNumber>
+                                </Card>
+                            </Col>
+                            <Col>
+                                <Card>
+                                    <div>Hello</div>
+                                    <BackNumber>6</BackNumber>
+                                </Card>
+                            </Col>
+                        </Row>
+                    </FadeInContainer>
+                </div>
             </div>
         </CardsBlockContainer>
     )

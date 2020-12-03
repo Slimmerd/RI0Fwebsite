@@ -1,12 +1,12 @@
 import {Col, Row, Button} from "antd";
 import styled from "styled-components";
-
+import React from 'react'
 import {Icon, InlineIcon} from '@iconify/react';
 import book from '@iconify/icons-si-glyph/book-';
+import {FadeInContainer} from "../../../utils/FadeInAnimation";
 
 const BlockHeader = styled.div`
   background: #ECF0F1;
-
 
   height: 431px;
   font-family: Roboto, sans-serif;
@@ -23,8 +23,6 @@ const BlockHeader = styled.div`
   line-height: 42px;
   
   padding-bottom: 66px;
-  
-  
   }
   
   .name{
@@ -38,17 +36,13 @@ const BlockHeader = styled.div`
   font-size: 20px;
   line-height: 28px;
   }
-  
-  
 `
-
 
 export const ContactPageSiteQ = () => {
     return (
-
         <BlockHeader>
             <div className={'container'}>
-
+            <FadeInContainer>
                 <div className={'picture'}>
                     <Icon icon={book} style={{color: '#2c3e50', fontSize: '64px'}} />
                 </div>
@@ -63,11 +57,8 @@ export const ContactPageSiteQ = () => {
                         <div style={{paddingLeft: '18px'}}>vasya.pupkin@gmail.com</div>
                     </Col>
                 </Row>
-
+            </FadeInContainer>
             </div>
         </BlockHeader>
-
     )
-
-
 }

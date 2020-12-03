@@ -1,6 +1,7 @@
 import {Col, Row, Button} from "antd";
 import styled from "styled-components";
-
+import {FadeInContainer} from "../../../utils/FadeInAnimation";
+import React from 'react'
 
 const MainSponsorBlockContainer = styled.div`
     height: 710px;
@@ -13,21 +14,19 @@ const BlockHeader = styled.div`
     font-size: 96px;
     line-height: 142px;
 
-
     color: #2C3E50;
     
     padding-top: 25px;
-
 `
-
 
 export const DonatePageMainSponsors = () => {
     return (
         <MainSponsorBlockContainer>
             <div className={'container'}>
+                <FadeInContainer>
                 <BlockHeader>Главные спонсоры</BlockHeader>
+                </FadeInContainer>
             </div>
         </MainSponsorBlockContainer>
-
     )
 }

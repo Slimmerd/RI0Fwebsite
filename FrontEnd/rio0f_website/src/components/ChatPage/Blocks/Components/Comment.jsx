@@ -1,15 +1,20 @@
 import React from 'react'
 import styled from "styled-components";
 import {Col, Row} from "antd";
+import {FadeInContainer} from "../../../../utils/FadeInAnimation";
 
 const Card = styled.div`
       width: 1110px;
       height: 200px;
       border-radius: 10px;
-      
-      
+            
       box-shadow: 31.2195px 25.0069px 80px rgba(0, 0, 0, 0.07), 20.2349px 16.2081px 46.8519px rgba(0, 0, 0, 0.0531481), 12.0253px 9.63227px 25.4815px rgba(0, 0, 0, 0.0425185), 6.2439px 5.00137px 13px rgba(0, 0, 0, 0.035), 2.54381px 2.0376px 6.51852px rgba(0, 0, 0, 0.0274815), 0.578139px 0.46309px 3.14815px rgba(0, 0, 0, 0.0168519);
       
+      transition: transform .4s ease-out 0s;
+       &:hover{
+        transform: scale(1.02);
+         }
+ 
       .author,.comment{
       border-radius: 10px 0 0 10px;
       height: 200px;
@@ -17,7 +22,6 @@ const Card = styled.div`
       font-family: Roboto,sans-serif;
         font-style: normal;
         font-weight: 500;
-      
       }
       
       .author{
@@ -46,8 +50,7 @@ const Card = styled.div`
         background: #FFFFFF;
         display: flex;
         align-items: center;
-       
-        
+               
         .text{
         margin: 0 auto;
         width: 635px;
@@ -63,10 +66,9 @@ const Card = styled.div`
       }
 `
 
-
 export const CommentCard = () => {
-
     return (
+        <FadeInContainer>
         <Card>
             <Row>
                 <Col span={6} className={'author'}>
@@ -85,5 +87,6 @@ export const CommentCard = () => {
                 </Col>
             </Row>
         </Card>
+        </FadeInContainer>
     )
 }

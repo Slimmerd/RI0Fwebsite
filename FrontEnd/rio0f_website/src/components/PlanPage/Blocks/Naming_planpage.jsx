@@ -1,11 +1,12 @@
 import {Col, Row, Button} from "antd";
 import styled from "styled-components";
+import React from 'react'
+import {FadeInContainer} from "../../../utils/FadeInAnimation";
 
 const HeaderBlock = styled.div`
     height: 350px;
     background: #ECF0F1;
-    
-    
+        
     display: flex;
     align-items: center;
     
@@ -27,25 +28,19 @@ const HeaderBlock = styled.div`
     font-weight: 500;
     font-size: 24px;
     line-height: 28px;
-    }
-    
-    
+    }  
 `
 
-
-export const PlanPageNaming = () =>{
-    return(
-
+export const PlanPageNaming = () => {
+    return (
         <HeaderBlock>
-            <div  className={'container'}>
-
-                <div className={'header'}>План</div>
-                <div className={'sub'}>Действий команды во время экспедиции</div>
-
+            <div className={'container'}>
+                <FadeInContainer>
+                    <div className={'header'}>План</div>
+                    <div className={'sub'}>Действий команды во время экспедиции</div>
+                </FadeInContainer>
             </div>
         </HeaderBlock>
 
     )
-
-
 }

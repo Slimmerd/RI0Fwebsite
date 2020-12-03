@@ -1,6 +1,6 @@
 import {Col, Row, Button} from "antd";
 import styled from "styled-components";
-
+import {FadeInContainer} from "../../../utils/FadeInAnimation";
 
 const ManagerBlock = styled.div`
     height: 729px;
@@ -37,8 +37,12 @@ const Card = styled.div`
     border-radius: 15px;
     
     display: flex;
-      align-items: flex-end;
-      
+    align-items: flex-end;
+         
+    transition: transform .4s ease-out 0s;
+       &:hover{
+        transform: scale(1.02);
+         }
     
     .text{
     color: #ECF0F1;
@@ -51,20 +55,18 @@ const Card = styled.div`
     
     text-align: left;
     padding-left: 20px;
-    
-    
-    
-    
     }
 `
-
 
 export const QSLPageManager = () =>{
     return(
         <ManagerBlock>
         <div className={'container'}>
+            <FadeInContainer>
             <div className={'header'}>Менеджер</div>
             <div className={'sub'}>С ним можно связаться по поводу отправки QSL карточки</div>
+            </FadeInContainer>
+            <FadeInContainer>
             <Row gutter={[30,0]}>
                 <Col>
                     <Card>
@@ -77,8 +79,7 @@ export const QSLPageManager = () =>{
                     </Card>
                 </Col>
             </Row>
-
-
+            </FadeInContainer>
         </div>
         </ManagerBlock>
     )

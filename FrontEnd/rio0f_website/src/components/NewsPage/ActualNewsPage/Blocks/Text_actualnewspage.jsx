@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
+import {FadeInContainer} from "../../../../utils/FadeInAnimation";
 
 const HeaderBlock = styled.div`
     min-height: 460px;
@@ -20,12 +21,11 @@ const HeaderBlock = styled.div`
     text-align: left;
     margin: 0 auto;
     }
-    
 `
 
 export const ActualNewsPageText = () => {
     return (
-
+        <FadeInContainer>
         <HeaderBlock>
             <div className={'container'}>
                 <div className={'text'}>
@@ -52,8 +52,6 @@ export const ActualNewsPageText = () => {
                 </div>
             </div>
         </HeaderBlock>
-
+        </FadeInContainer>
     )
-
-
 }

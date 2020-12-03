@@ -1,11 +1,11 @@
 import {Col, Row, Button} from "antd";
 import styled from "styled-components";
-
+import React from 'react'
 import {Icon, InlineIcon} from '@iconify/react';
 import bubbleMessageTalk from '@iconify/icons-si-glyph/bubble-message-talk';
+import {FadeInContainer} from "../../../utils/FadeInAnimation";
 
 const BlockHeader = styled.div`
-
   height: 431px;
   font-family: Roboto, sans-serif;
   font-style: normal;
@@ -21,9 +21,7 @@ const BlockHeader = styled.div`
   line-height: 42px;
   
   padding-bottom: 66px;
-  
-  
-  }
+}
   
   .name{
   font-size: 24px;
@@ -36,17 +34,13 @@ const BlockHeader = styled.div`
   font-size: 20px;
   line-height: 28px;
   }
-  
-  
 `
-
 
 export const ContactPageExpQ = () => {
     return (
-
         <BlockHeader>
             <div className={'container'}>
-
+                <FadeInContainer>
                 <div className={'picture'}>
                     <Icon icon={bubbleMessageTalk} style={{color: '#2c3e50', fontSize: '64px'}}/>
                 </div>
@@ -61,11 +55,8 @@ export const ContactPageExpQ = () => {
                         <div style={{paddingLeft: '18px'}}>vasya.pupkin@gmail.com</div>
                     </Col>
                 </Row>
-
+                </FadeInContainer>
             </div>
         </BlockHeader>
-
     )
-
-
 }

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {TeamCard} from "./Card/TeamCard";
 import {FadeInContainer} from "../../../../utils/FadeInAnimation";
 import React from 'react'
+import {Spring} from "react-spring/renderprops";
 
 const Block = styled.div`
   height: 1283px;
@@ -56,6 +57,7 @@ export const MainPageBlock4 = () => {
                         </Col>
                     </Row>
                     </FadeInContainer>
+
                     <FadeInContainer>
                     <Row gutter={[20.18, 25.57]} justify="center">
                         <Col>

@@ -35,9 +35,6 @@ const CommentBlock = styled.div`
     }
 `
 
-
-
-
 export const ChatPageComments = () => {
 
     return (

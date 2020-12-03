@@ -1,3 +1,4 @@
+import React from 'react'
 import {Col, Row} from "antd";
 import styled from "styled-components";
 import {Icon, InlineIcon} from '@iconify/react';
@@ -8,11 +9,14 @@ const CardShape = styled.div`
       width: 350px;
       background: #FFFFFF;
       
-     
-      
       box-shadow: 31.2195px 25.0069px 80px rgba(0, 0, 0, 0.07), 20.2349px 16.2081px 46.8519px rgba(0, 0, 0, 0.0531481), 12.0253px 9.63227px 25.4815px rgba(0, 0, 0, 0.0425185), 6.2439px 5.00137px 13px rgba(0, 0, 0, 0.035), 2.54381px 2.0376px 6.51852px rgba(0, 0, 0, 0.0274815), 0.578139px 0.46309px 3.14815px rgba(0, 0, 0, 0.0168519);
       border-radius: 10px;
       
+      transition: transform .4s ease-out 0s;
+       &:hover{
+        transform: scale(1.02);
+         }
+    
       .picture{
       height: 157px;
       background: #2C3E50;
@@ -27,25 +31,20 @@ const CardShape = styled.div`
       }
       
       .text{
-    
-    
     color: #34495E;
     
-    font-family: Roboto;
+    font-family: Roboto, sans-serif;
     font-style: normal;
     font-weight: 500;
 
     display: flex;
     align-items: start;
 
-    
     .date{
-    
-font-size: 14px;
-line-height: 16px;
-text-align: left;
-padding: 21px 0 10px 0;
- 
+    font-size: 14px;
+    line-height: 16px;
+    text-align: left;
+    padding: 21px 0 10px 0;
     }
     
     .header{
@@ -56,7 +55,6 @@ padding: 21px 0 10px 0;
     text-align: left;
     
     padding-bottom: 20px;
-    
     }
     
     .paragraph{
@@ -69,11 +67,8 @@ padding: 21px 0 10px 0;
     
     text-align: left;
     }
-    
-    }
-      
+}    
 `
-
 
 export const SecondaryCard = () => {
     return (
@@ -90,7 +85,6 @@ export const SecondaryCard = () => {
                         turpis sagittis ipsum, a aliquam justo magna ac urna.
                     </div>
                 </div>
-
             </Row>
         </CardShape>
     )

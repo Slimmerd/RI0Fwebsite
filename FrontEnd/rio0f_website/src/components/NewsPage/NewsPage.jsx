@@ -3,30 +3,26 @@ import {Col, Row, Button} from "antd";
 import styled from "styled-components";
 import {MainCard} from "./NewsCards/MainCard";
 import {SecondaryCard} from "./NewsCards/SecondaryCard";
-
+import {FadeInContainer} from "../../utils/FadeInAnimation";
+import {NewsAnimContainer} from "../../utils/NewsCardAnimation";
 
 //Fix: Header
 
 const NewsPageBlock = styled.div`
       background: #ECF0F1;
-
 `
-
 
 const PageContainer = styled.div`
        width: 100%;
        max-width: 1110px;
        margin: 0 auto;
        text-align: center;
-
 `
 
 const NamingBlock = styled.div`
       height: 319px;
-      
       display: flex;
       align-items: center;
-    
      
      .header{
      font-family: Oswald,sans-serif;
@@ -53,7 +49,6 @@ const NamingBlock = styled.div`
       max-width: 600px;
       margin: 0 auto;
       padding-top: 31px;
-     
      }
 
 `
@@ -62,8 +57,6 @@ const ExtraNews = styled.div`
     height: 181px;
     display: flex;
     align-items: center;
-    
-    
     
     .button{
     width: 300px;
@@ -94,28 +87,37 @@ export const NewsPage = () => {
     return (
         <NewsPageBlock>
             <PageContainer>
-                <NamingBlock>
-                    <div className={'textblock'}>
-                        <div className={'header'}>RIØF Новости</div>
-                        <div className={'paragraph'}>Последние новости от нашей команды</div>
-                    </div>
-                </NamingBlock>
-                <MainCard/>
+                {/*Naming block*/}
+                <FadeInContainer>
+                    <NamingBlock>
+                        <div className={'textblock'}>
+                            <div className={'header'}>RIØF Новости</div>
+                            <div className={'paragraph'}>Последние новости от нашей команды</div>
+                        </div>
+                    </NamingBlock>
+                </FadeInContainer>
+                {/*Main card*/}
+                <FadeInContainer>
+                    <MainCard/>
+                </FadeInContainer>
+                {/*Other News card*/}
                 <Row gutter={[30, 48]}>
-                    <Col><SecondaryCard/></Col>
-                    <Col><SecondaryCard/></Col>
-                    <Col><SecondaryCard/></Col>
+                    <NewsAnimContainer
+                        items={[<Col><SecondaryCard/></Col>,
+                            <Col><SecondaryCard/></Col>,
+                            <Col><SecondaryCard/></Col>]
+                        }/>
+
                 </Row>
                 <Row gutter={[30, 48]}>
-                    <Col><SecondaryCard/></Col>
-                    <Col><SecondaryCard/></Col>
-                    <Col><SecondaryCard/></Col>
+                    <NewsAnimContainer items={[
+                        <Col><SecondaryCard/></Col>,
+                        <Col><SecondaryCard/></Col>,
+                        <Col><SecondaryCard/></Col>]}/>
                 </Row>
                 <ExtraNews>
                     <Button className={'button'} type="primary">Еще</Button>
                 </ExtraNews>
-
-
             </PageContainer>
         </NewsPageBlock>
     )
