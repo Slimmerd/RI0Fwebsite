@@ -1,3 +1,0 @@
-// Test
-
-const a = 'b';

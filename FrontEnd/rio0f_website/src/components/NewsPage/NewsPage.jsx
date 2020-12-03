@@ -1,3 +1,4 @@
+import React from 'react'
 import {Col, Row, Button} from "antd";
 import styled from "styled-components";
 import {MainCard} from "./NewsCards/MainCard";
@@ -28,7 +29,7 @@ const NamingBlock = styled.div`
     
      
      .header{
-     font-family: Oswald;
+     font-family: Oswald,sans-serif;
       font-style: normal;
       font-weight: 500;
       font-size: 96px;
@@ -39,7 +40,7 @@ const NamingBlock = styled.div`
      }
      
      .paragraph{
-     font-family: Roboto;
+     font-family: Roboto, sans-serif;
      font-style: normal;
       font-weight: 500;
       font-size: 24px;
@@ -69,7 +70,7 @@ const ExtraNews = styled.div`
     height: 75px;
    
     border-radius: 15px;
-    font-family: Roboto;
+    font-family: Roboto,sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 36px;
@@ -85,6 +86,7 @@ const ExtraNews = styled.div`
     &:hover {
     background-color: #37617e !important;
     border-color: #37617e !important;
+  }
   }
 `
 

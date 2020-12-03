@@ -13,6 +13,8 @@ import {PlanPage} from "./components/PlanPage/PlanPage";
 import {HardwarePage} from "./components/HardwarePage/HardwarePage";
 import {TeamPage} from "./components/TeamPage/TeamPage";
 import {ActualNewsPage} from "./components/NewsPage/ActualNewsPage/ActualNewsPage";
+import {OnlineLogPage} from "./components/OnlineLogPage/OnlineLogPage";
+import {ChatPage} from "./components/ChatPage/ChatPage";
 
 function App() {
     return (
@@ -36,6 +38,8 @@ function App() {
                         <Route exact path="/hardware" render={() => <HardwarePage/>}/>
                         <Route exact path="/team" render={() => <TeamPage/>}/>
                         <Route exact path="/news/act" render={() => <ActualNewsPage/>}/>
+                        <Route exact path="/onlinelog" render={() => <OnlineLogPage/>}/>
+                        <Route exact path="/chat" render={() => <ChatPage/>}/>
 
 
                         <Route render={() => <div>404 NOT Found</div>}/>

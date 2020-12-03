@@ -1,6 +1,8 @@
 import {Col, Row} from "antd";
 import styled from "styled-components";
 import {TeamCard} from "./Card/TeamCard";
+import {FadeInContainer} from "../../../../utils/FadeInAnimation";
+import React from 'react'
 
 const Block = styled.div`
   height: 1283px;
@@ -37,9 +39,11 @@ export const MainPageBlock4 = () => {
             <div className={'container'}>
                 <CardBlock>
                 <Row style={{padding: '124px 0 39px 0'}} justify="center">
+                    <FadeInContainer>
                     <BlockHeader>Команда</BlockHeader>
+                    </FadeInContainer>
                 </Row>
-
+                    <FadeInContainer>
                     <Row gutter={[20.18, 25.57]} justify="center">
                         <Col>
                         <TeamCard/>
@@ -51,6 +55,8 @@ export const MainPageBlock4 = () => {
                         <TeamCard/>
                         </Col>
                     </Row>
+                    </FadeInContainer>
+                    <FadeInContainer>
                     <Row gutter={[20.18, 25.57]} justify="center">
                         <Col>
                         <TeamCard/>
@@ -59,6 +65,7 @@ export const MainPageBlock4 = () => {
                         <TeamCard/>
                         </Col>
                     </Row>
+                    </FadeInContainer>
                 </CardBlock>
             </div>
         </Block>

@@ -1,10 +1,14 @@
 import {Col, Row} from "antd";
 import island_map from "../../../../assets/island_map.png"
+import {FadeInContainer} from "../../../../utils/FadeInAnimation";
+
+
 
 
 export const MainPageBlock2 = () => {
     return (
         <div className={'block2'}>
+            <FadeInContainer>
             <div className={'container'}>
             <Row>
                 <Col className={'infoblock'} span={12}>
@@ -23,6 +27,7 @@ export const MainPageBlock2 = () => {
                 </Col>
             </Row>
             </div>
+            </FadeInContainer>
         </div>
 
     )

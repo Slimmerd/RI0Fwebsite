@@ -1,4 +1,6 @@
 import {Col, Row} from "antd";
+import {FadeInContainer} from "../../../../utils/FadeInAnimation";
+import React from "react";
 
 
 export const MainPageBlock1 = () => {
@@ -8,7 +10,7 @@ export const MainPageBlock1 = () => {
         <div className={'firstblock'}>
 
             <div className={'container'}>
-
+                <FadeInContainer>
                 <Row className={'riof_inner'}>
                     <Col span={24}>
                         <div className={'riofh1'}>RIØF</div>
@@ -24,6 +26,7 @@ export const MainPageBlock1 = () => {
                         <div className={'coord'}>AS-000</div>
                     </Col>
                 </Row>
+                </FadeInContainer>
             </div>
         </div>
 

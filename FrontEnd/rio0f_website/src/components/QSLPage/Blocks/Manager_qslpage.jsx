@@ -53,6 +53,8 @@ const Card = styled.div`
     padding-left: 20px;
     
     
+    
+    
     }
 `
 
