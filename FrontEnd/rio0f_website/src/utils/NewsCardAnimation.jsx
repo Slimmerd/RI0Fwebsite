@@ -1,7 +1,7 @@
-import {useSpring, animated} from "react-spring";
+import {animated} from "react-spring";
 import VisibilitySensor from "react-visibility-sensor";
 import React, {useState} from "react";
-import {Spring, Trail} from "react-spring/renderprops";
+import {Trail} from "react-spring/renderprops";
 
 export const NewsAnimContainer = ({items}) => {
     const [isVisible, setVisibility] = useState(false);
@@ -12,10 +12,11 @@ export const NewsAnimContainer = ({items}) => {
     };
 
     return (
-        <VisibilitySensor partialVisibility minTopValue={200} onChange={onChange}>
+        <VisibilitySensor once partialVisibility minTopValue={200} isVisible={isVisible} onChange={onChange}>
             {({isVisible}) => (
                 <Trail
                     items={items}
+                    keys={items.map((_, i) => i)}
                     from={{opacity: 0}}
                     to={isVisible ? {opacity: 1} : ''}
                     config={{tension: 50, friction: 15}}>

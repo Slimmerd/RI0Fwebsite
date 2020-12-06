@@ -5,7 +5,7 @@ import {MenuOutlined} from '@ant-design/icons'
 import RightMenu from "./menus/RightMenu";
 import LeftMenu from "./menus/LeftMenu";
 
-
+import { useLocation, useRouteMatch } from 'react-router-dom';
 const Header = (props) => {
 
     let [mobileNavbar, setMobileNavbar] = useState(false)
@@ -17,13 +17,12 @@ const Header = (props) => {
         setMobileNavbar(false)
     };
 
-
     return (
         <div className={'menuBar'}>
             <Row className={'menuCon'}>
                 <Col xs={3} sm={3} md={3} lg={3} xl={4}>
                     <div className={'logo'}>
-                        <a href="">RIØF</a>
+                        <NavLink exact to="/">RIØF</NavLink>
                     </div>
                 </Col>
 
@@ -53,30 +52,8 @@ const Header = (props) => {
                         <LeftMenu/>
                     </Drawer>
                 </Col>
-
-
             </Row>
         </div>
-
-
-
-        //         <li className={st.nvbar}>
-        //             <NavLink to="/profile" activeClassName={st.active}>RU</NavLink>
-        //         </li>
-        //         <li className={st.nvbar}>
-        //             <NavLink to="/msg" activeClassName={st.active}>EN</NavLink>
-        //         </li>
-
-
-        //     <li className={st.nvbar}>
-        //         <NavLink to="/profile" activeClassName={st.active}>Главная</NavLink>
-        //     </li>
-        //     <li className={st.nvbar}>
-        //         <NavLink to="/msg" activeClassName={st.active}>Новости</NavLink>
-        //     </li>
-        //     <li className={st.nvbar}>
-        //         <NavLink to="/msg" activeClassName={st.active}>Пожертвования</NavLink>
-        //     </li>
 
     );
 };

@@ -1,7 +1,6 @@
 .block2{
   height: 650px;
   background: #2C3E50;
-
   box-shadow: 0px 2.32131px 11.6066px 4.64262px rgba(0, 0, 0, 0.1);
 }
 
@@ -19,7 +18,6 @@
 
 
 .islandinfoh1{
-  //styleName: Header;
   font-family: 'Oswald', sans-serif;
   font-size: 72px;
   font-style: normal;
@@ -44,4 +42,143 @@
 
   color: #ECF0F1;
 
+}
+
+//1200+
+@media (max-width: 1200px){
+  .block2{
+    height: 800px
+  }
+  .islandmap{
+    padding-top: 104px;
+    display: flex;
+    align-items: center;
+    img{
+
+      width: 45vw !important;
+      max-height: 50vw;
+
+    }
+  }
+
+}
+
+
+//768-992
+@media (max-width: 992px){
+  .block2{
+    height: 1050px
+  }
+  .infoblock{
+    margin: 0 10px 0 10px;
+    padding: 25px 0;
+  }
+  .islandinfoh1{
+    text-align: center;
+  }
+
+  .islandmap{
+    padding-top: 0px;
+    display: flex;
+    align-items: center;
+
+    img{
+      margin: 0 auto;
+      width: 650px !important;
+      max-height: 650px !important;
+
+    }
+  }
+}
+
+//576-768
+@media (max-width: 768px){
+  .block2{
+    height: 950px
+  }
+  .infoblock{
+    padding: 25px 0;
+    margin: 0;
+  }
+
+
+  .islandmap{
+    padding-top: 0px;
+    display: flex;
+    align-items: center;
+
+    img{
+      margin: 0 auto;
+      width: 650px !important;
+      max-height: 450px !important;
+
+    }
+  }
+}
+//Up to 576
+@media (max-width: 576px) {
+  .block2 {
+    height: 777px;
+
+  }
+
+  .infoblock {
+    padding: 25px 0;
+    margin: 0;
+  }
+  .islaninfop{
+    font-size: 14px;
+  }
+
+
+  .islandmap {
+    padding-top: 0px;
+    display: flex;
+    align-items: center;
+
+    img {
+      margin: 0 auto;
+      max-width: 540px !important;
+      min-width: 340px;
+
+      max-height: 350px !important;
+      min-height: 100px;
+
+    }
+
+
+  }
+}
+//Up to 360
+@media (max-width: 360px) {
+  .block2 {
+    height: 850px;
+
+  }
+
+  .infoblock {
+    padding: 25px 0;
+    margin: 0 10px 0 10px;
+  }
+  .islaninfop{
+    font-size: 14px;
+  }
+
+
+  .islandmap {
+    padding-top: 0px;
+
+
+    img {
+
+      max-width: 300px !important;
+      min-width: 200px !important;
+
+      max-height: 300px !important;
+      min-height: 150px;
+
+    }
+
+
+  }
 }

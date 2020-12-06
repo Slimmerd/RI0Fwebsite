@@ -1,7 +1,8 @@
-import React from 'react'
-import {Col, Row} from "antd";
+import React, {useState} from 'react'
+import {Button, Col, Divider, Drawer, Row} from "antd";
 import styled from "styled-components";
 import {FooterNavbar} from "./menu/FooterNavbar";
+import {MenuOutlined} from "@ant-design/icons";
 
 const FooterContainer = styled.div`
       //height: 100%;
@@ -10,6 +11,50 @@ const FooterContainer = styled.div`
       
       display: flex;
       align-items: center;
+      @media (max-width: 870px){
+      height: 200px;
+      }
+      
+//Mobile menu
+.barsMenu {
+  height: 64px;
+  width: 64px;
+  border-color: white;
+  background: none;
+  
+  &:hover{
+  background: hsl(210, 29%, 30%);
+  }
+  }
+
+.ant-drawer-body {
+  padding: 0;
+}
+
+.ant-drawer-body .ant-menu-horizontal > .ant-menu-item,
+.ant-drawer-body .ant-menu-horizontal > .ant-menu-submenu {
+  display: inline-block;
+  width: 100%;
+}
+
+.ant-drawer-body .ant-menu-horizontal {
+  border-bottom: none;
+}
+
+.ant-drawer-body .ant-menu-horizontal > .ant-menu-item:hover {
+  border-bottom-color: transparent;
+}
+
+@media (max-width: 870px) {
+
+  .barsMenu {
+    display: inline-block;
+  }
+
+  .superMenu {
+    display: none;
+  }
+}
 `
 
 const Logo = styled.div`
@@ -42,8 +87,16 @@ const LastRowText = styled.div`
 
 `
 
-
 export const Footer = () => {
+    let [mobileNavbar, setMobileNavbar] = useState(false)
+
+    const showDrawer = () => {
+        setMobileNavbar(true)
+    };
+    const onClose = () => {
+        setMobileNavbar(false)
+    };
+
     return (
         <FooterContainer>
             <div className={'container'}>
@@ -53,7 +106,20 @@ export const Footer = () => {
                     </Col>
 
                     <Col>
+                        <div className={'superMenu'}>
                         <FooterNavbar/>
+                        </div>
+                        <Button className={'barsMenu'}  icon={<MenuOutlined style={{color: '#FFF'}}/>} type="primary" onClick={showDrawer}>
+                        </Button>
+                        <Drawer
+                            title="Basic Drawer"
+                            placement="right"
+                            closable={false}
+                            onClose={onClose}
+                            visible={mobileNavbar}
+                        >
+                            <FooterNavbar/>
+                        </Drawer>
                     </Col>
                 </Row>
                 <Row justify={'start'} align={'bottom'}>

@@ -4,8 +4,14 @@ import React, {useState} from "react";
 import {Spring} from "react-spring/renderprops";
 
 export const LineSContainer = ({svg,path}) => {
+    const [isVisible, setVisibility] = useState(false);
+
+    const onChange =() => {
+        setVisibility(isVisible);
+    };
+
     return(
-        <VisibilitySensor partialVisibility={'bottom'} offset={{bottom:180}}>
+        <VisibilitySensor isVisible={isVisible} partialVisibility={'bottom'} offset={{bottom:180}} onChange={onChange}>
             {({ isVisible }) => (
                 <svg {...svg}>
                     <Spring

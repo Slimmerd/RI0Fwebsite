@@ -15,18 +15,31 @@ import {TeamPage} from "./components/TeamPage/TeamPage";
 import {ActualNewsPage} from "./components/NewsPage/ActualNewsPage/ActualNewsPage";
 import {OnlineLogPage} from "./components/OnlineLogPage/OnlineLogPage";
 import {ChatPage} from "./components/ChatPage/ChatPage";
+import {AppAssa} from "./components/test";
+import React,{ useEffect } from "react";
 
+import { useLocation, useRouteMatch } from 'react-router-dom';
 function App() {
+
+   const ScrollToTop = () => {
+        const { pathname } = useLocation();
+
+        useEffect(() => {
+            window.scrollTo(0, 0);
+        }, [pathname]);
+
+        return null
+    }
+
     return (
         <BrowserRouter>
             <div className="app-wrapper">
+                <ScrollToTop/>
                 <HeaderContainer/>
                 <div className="app-wrapper-content">
                     <Switch>
                         {/*<Route exact path="/" render={() => <Redirect to={'/profile'}/>}/>*/}
-
                         {/*<Route path="/profile/:userID?" render={withSuspense(ProfileContainer)}/>*/}
-
 
                         <Route exact path="/" render={() => <MainPage/>}/>
                         <Route exact path="/news" render={() => <NewsPage/>}/>
@@ -40,7 +53,7 @@ function App() {
                         <Route exact path="/news/act" render={() => <ActualNewsPage/>}/>
                         <Route exact path="/onlinelog" render={() => <OnlineLogPage/>}/>
                         <Route exact path="/chat" render={() => <ChatPage/>}/>
-
+                        <Route exact path="/test" render={() => <AppAssa/>}/>
 
                         <Route render={() => <div>404 NOT Found</div>}/>
                     </Switch>

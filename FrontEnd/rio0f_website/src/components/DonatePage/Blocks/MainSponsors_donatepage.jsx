@@ -6,6 +6,7 @@ import React from 'react'
 const MainSponsorBlockContainer = styled.div`
     height: 710px;
     background: #ECF0F1;
+     box-shadow: 0px 2.32131px 11.6066px 4.64262px rgba(0, 0, 0, 0.1);
 `
 const BlockHeader = styled.div`
     font-family: Oswald, sans-serif;

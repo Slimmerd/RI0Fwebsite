@@ -2,16 +2,13 @@ import {Col, Row} from "antd";
 import island_map from "../../../../assets/island_map.png"
 import {FadeInContainer} from "../../../../utils/FadeInAnimation";
 
-
-
-
 export const MainPageBlock2 = () => {
     return (
         <div className={'block2'}>
             <FadeInContainer>
             <div className={'container'}>
             <Row>
-                <Col className={'infoblock'} span={12}>
+                <Col className={'infoblock'}  md={24} lg={12} xl={12} xxl={12}>
                     <div className={'islandinfoh1'}>Итуруп</div>
 
                     <div className={'islaninfop'}>Итуру́п (от айнского Этороп; яп. 択捉島 Эторофу. На российской карте 1745-го года — Цытронной) —
@@ -22,7 +19,7 @@ export const MainPageBlock2 = () => {
                     </div>
 
                 </Col>
-                <Col className={'islandmap'} span={12}>
+                <Col className={'islandmap'}  md={24} lg={12} xl={12} xxl={12}>
                     <img src={island_map} alt="Iturup Island map"/>
                 </Col>
             </Row>

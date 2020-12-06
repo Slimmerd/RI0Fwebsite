@@ -5,6 +5,7 @@ import {FadeInContainer} from "../../../utils/FadeInAnimation";
 
 const MethodsPageContainer = styled.div`
       height: 1009px;
+    
 `
 
 const BlockHeader = styled.div`

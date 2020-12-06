@@ -1,5 +1,5 @@
-import React from 'react'
-import {Col, Row} from "antd";
+import React, {useState} from 'react'
+import {Col, Row, Skeleton} from "antd";
 import styled from "styled-components";
 import {Icon, InlineIcon} from '@iconify/react';
 import cameraIcon from '@iconify/icons-si-glyph/camera';
@@ -67,10 +67,31 @@ const CardShape = styled.div`
     
     text-align: left;
     }
+    
+     .skeletonStyle{
+    width: 300px;
+    height: 20px;
+     border-radius: 5px;
+      margin-bottom: 5px;
+    }
 }    
 `
 
 export const SecondaryCard = () => {
+    const [loading, setLoading] = useState(false);
+    const onChange = () => {
+        setLoading(!loading)
+    };
+
+    const ParagraphSkeleton = [
+        <Skeleton.Input className={'skeletonStyle'} active={'active'}/>,
+        <Skeleton.Input className={'skeletonStyle'} active={'active'}/>,
+        <Skeleton.Input className={'skeletonStyle'} active={'active'}/>,
+        <Skeleton.Input className={'skeletonStyle'} active={'active'}/>,
+        <Skeleton.Input className={'skeletonStyle'} active={'active'}/>,
+        <Skeleton.Input className={'skeletonStyle'} active={'active'}/>,
+        <Skeleton.Input className={'skeletonStyle'} active={'active'}/>]
+
     return (
         <CardShape>
             <Row className={'picture'}>
@@ -78,11 +99,13 @@ export const SecondaryCard = () => {
             </Row>
             <Row className={'text'}>
                 <div style={{margin: '0 auto'}}>
-                    <div className={'date'}>01.01.2000</div>
-                    <div className={'header'}>Заголовок Новости</div>
-                    <div className={'paragraph'}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non
-                        ultricies ipsum. Sed eget congue velit. Phasellus suscipit, turpis eu molestie vulputate, tellus
-                        turpis sagittis ipsum, a aliquam justo magna ac urna.
+                    <div className={'date'}>{!loading ? '01.01.2000' :
+                        <Skeleton.Input style={{width: 100, height: '20px', borderRadius: '5px'}}
+                                        active={'active'}/>}</div>
+                    <div className={'header'}>{!loading ? 'Заголовок новости' :
+                        <Skeleton.Input style={{width: 250, height: '30px', borderRadius: '5px'}}
+                                        active={'active'}/>}</div>
+                    <div className={'paragraph'}>{ !loading ? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non ultricies ipsum. Sed eget congue velit. Phasellus suscipit, turpis eu molestie vulputate, tellus turpis sagittis ipsum, a aliquam justo magna ac urna.' : ParagraphSkeleton}
                     </div>
                 </div>
             </Row>

@@ -13,7 +13,18 @@ const CardShape = styled.div`
     border-radius: 12px;
     background: #FFFFFF;
     color: #1A1E22;
-
+     @media (max-width: 576px) {
+     min-height: 260px;
+      max-width: 420px;
+     }
+      @media (max-width: 375px) {
+      min-height: 260px;
+      max-width: 300px;
+     }
+      @media (max-width: 310px) {
+      min-height: 320px;
+      max-width: 250px !important;
+      }
     
     box-shadow: 31.2195px 25.0069px 80px rgba(0, 0, 0, 0.07), 12.0253px 9.63227px 25.4815px rgba(0, 0, 0, 0.0425185), 6.2439px 5.00137px 13px rgba(0, 0, 0, 0.035), 2.54381px 2.0376px 6.51852px rgba(0, 0, 0, 0.0274815), 0.578139px 0.46309px 3.14815px rgba(0, 0, 0, 0.0168519);
    

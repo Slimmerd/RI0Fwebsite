@@ -2,6 +2,8 @@ import {Col, Row} from "antd";
 import styled from "styled-components";
 import {Icon, InlineIcon} from '@iconify/react';
 import cameraIcon from '@iconify/icons-si-glyph/camera';
+import {Skeleton, Switch, List, Avatar} from 'antd';
+import React, {useState} from "react";
 
 const CardShape = styled.div`
     height: 370px;
@@ -68,11 +70,31 @@ const CardShape = styled.div`
     text-align: left;
     }
     
+    .skeletonStyle{
+    width: 400px;
+    height: 25px;
+     border-radius: 5px;
+      margin-bottom: 5px;
+    }
+    
     }
 `
 
 
 export const MainCard = () => {
+    const [loading, setLoading] = useState(false);
+    const onChange = () => {
+        setLoading(!loading)
+    };
+    const ParagraphSkeleton = [
+        <Skeleton.Input className={'skeletonStyle'} active={'active'}/>,
+        <Skeleton.Input className={'skeletonStyle'} active={'active'}/>,
+        <Skeleton.Input className={'skeletonStyle'} active={'active'}/>,
+        <Skeleton.Input className={'skeletonStyle'} active={'active'}/>,
+        <Skeleton.Input className={'skeletonStyle'} active={'active'}/>,
+        <Skeleton.Input className={'skeletonStyle'} active={'active'}/>,
+        <Skeleton.Input className={'skeletonStyle'} active={'active'}/>]
+
     return (
         <CardShape>
             <div className={'container'}>
@@ -82,21 +104,20 @@ export const MainCard = () => {
                     </Col>
                     <Col span={10} className={'text'}>
                         <div style={{margin: '0 auto'}}>
-                            <div className={'date'}>01.01.2000</div>
-                            <div className={'header'}>Заголовок новости</div>
-                            <div className={'paragraph'}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-                                non ultricies ipsum. Sed
-                                eget congue velit. Phasellus suscipit, turpis eu molestie vulputate, tellus turpis
-                                sagittis
-                                ipsum, a aliquam justo magna ac urna. Nulla dapibus tincidunt eleifend.
+
+                            <div className={'date'}>{!loading ? '01.01.2000' :
+                                <Skeleton.Input style={{width: 100, height: '25px', borderRadius: '5px'}}
+                                                active={'active'}/>}</div>
+                            <div className={'header'}>{!loading ? 'Заголовок новости' :
+                                <Skeleton.Input style={{width: 400, height: '45px', borderRadius: '5px'}}
+                                                active={'active'}/>}</div>
+                            <div
+                                className={'paragraph'}> {!loading ? "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non ultricies ipsum. Sed eget congue velit. Phasellus suscipit, turpis eu molestie vulputate, tellus turpis sagittis ipsum, a aliquam justo magna ac urna. Nulla dapibus tincidunt eleifend." : ParagraphSkeleton}
                             </div>
                         </div>
                     </Col>
                 </Row>
             </div>
         </CardShape>
-
-
     )
-
 }

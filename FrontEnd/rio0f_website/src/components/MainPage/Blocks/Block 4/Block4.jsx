@@ -3,11 +3,16 @@ import styled from "styled-components";
 import {TeamCard} from "./Card/TeamCard";
 import {FadeInContainer} from "../../../../utils/FadeInAnimation";
 import React from 'react'
-import {Spring} from "react-spring/renderprops";
 
 const Block = styled.div`
   height: 1283px;
-
+   @media (max-width: 1200px) {
+   height: 1809px;
+  }
+  @media (max-width: 768px) {
+   height: 2559px;
+  }
+  
 `
 
 const BlockHeader = styled.div`
@@ -28,10 +33,15 @@ const BlockHeader = styled.div`
 `
 
 const CardBlock = styled.div`
- 
+ //margin: 0 auto;
+  .test{
+  @media (max-width:425px) {
   width: 100%;
-  max-width: 1009px;
-  margin: 0 auto;
+    }
+  }
+  //max-width: 1009px;
+  
+ 
 `
 
 export const MainPageBlock4 = () => {
@@ -39,41 +49,36 @@ export const MainPageBlock4 = () => {
         <Block>
             <div className={'container'}>
                 <CardBlock>
-                <Row style={{padding: '124px 0 39px 0'}} justify="center">
-                    <FadeInContainer>
-                    <BlockHeader>Команда</BlockHeader>
-                    </FadeInContainer>
-                </Row>
-                    <FadeInContainer>
-                    <Row gutter={[20.18, 25.57]} justify="center">
-                        <Col>
-                        <TeamCard/>
-                        </Col>
-                        <Col>
-                        <TeamCard/>
-                        </Col>
-                        <Col>
-                        <TeamCard/>
-                        </Col>
+                    <Row style={{padding: '124px 0 39px 0'}} justify="center">
+                        <FadeInContainer>
+                            <BlockHeader>Команда</BlockHeader>
+                        </FadeInContainer>
                     </Row>
-                    </FadeInContainer>
-
                     <FadeInContainer>
-                    <Row gutter={[20.18, 25.57]} justify="center">
-                        <Col>
-                        <TeamCard/>
-                        </Col>
-                        <Col>
-                        <TeamCard/>
-                        </Col>
-                    </Row>
-                    </FadeInContainer>
-                </CardBlock>
-            </div>
-        </Block>
+                        <Row align={'center'} gutter={{ xs: 0, sm: 16, md: 24}} >
+                            <Col   xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
+                                <TeamCard/>
+                            </Col>
+                            <Col   xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
+                                <TeamCard/>
+                            </Col>
+                            <Col  xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
+                                <TeamCard/>
+                            </Col>
+                            <Col   xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
+                                <TeamCard/>
+                            </Col>
+                            <Col  xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
+                                <TeamCard/>
+                            </Col>
+                        </Row>
+        </FadeInContainer>
+</CardBlock>
+</div>
+</Block>
 
 
-    )
+)
 
 
 }

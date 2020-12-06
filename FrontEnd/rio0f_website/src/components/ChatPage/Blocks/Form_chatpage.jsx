@@ -42,9 +42,18 @@ const CardShape = styled.div`
       input{
       width: 280px;
       height: 45px;
-
+      
       background: #FFFFFF;
       border-radius: 10px;
+      
+      &:hover{
+      border-color: #2C3E50 !important;
+      }
+      
+      &:focus{
+      border-color: #2C3E50 !important;
+       box-shadow: none !important;
+      }
       }
       
       .button{
@@ -95,20 +104,27 @@ const CardShape = styled.div`
     width: 600px;
     height: 356px !important;
     border-radius: 10px;
-    border-width: 2px;
+    border-width: 2px !important;
 
     font-weight: 500;
     font-size: 24px;
     line-height: 28px;
 
     color: #2C3E50;
+    
+    &:hover{
+    border-color:rgba(44, 62, 80, 0.8);
     }
     
+     &:focus{
+      border-color: rgba(44, 62, 80, 0.8) !important;
+      box-shadow: none !important;
+      }
+    }
     }
 `
 
 export const ChatPageForm = () => {
-
     return (
         <CardShape>
             <div className={'container'}>
@@ -135,7 +151,7 @@ export const ChatPageForm = () => {
                         <div style={{margin: '0 auto'}}>
                             <div className={'header'}>Комментарий</div>
                             <Input.TextArea
-                                placeholder="Controlled autosize"
+                                placeholder="Комментарий"
                             />
                         </div>
                     </Col>

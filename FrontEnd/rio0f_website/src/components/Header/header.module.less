@@ -2,8 +2,8 @@
   //border-bottom: solid 1px #e8e8e8;
   overflow: hidden;
   //box-shadow: 0 0 30px #f3f1f1;
+  background-color: #2C3E50;
 }
-
 
 // Logo
 .logo {
@@ -28,35 +28,68 @@
   height: 100px;
   align-items: center;
   background: transparent;
-
 }
-
 
 .menuCon .ant-menu-item,
 .menuCon .ant-menu-submenu {
-  padding: 10px 0px !important;
-  margin: 0 15px !important;
+
+  margin: 0 5px !important;
+  padding: 0 10px !important;
   font-size: 18px;
 }
 
 .menuCon .ant-menu-submenu-title {
   padding: 10px 0px;
   background: transparent;
+}
+
+//Submenu
+.ant-menu-submenu > .ant-menu {
+  border-radius: 10px !important;
+  background-color: #2C3E50 !important;
+}
+
+.ant-menu-submenu-title{
+  color: #FFFFFF;
+}
+.ant-menu li a{
+  color: #FFFFFF;
+}
+
+.ant-menu-item-active, .ant-menu-item{
+  border-radius: 10px;
+  border-bottom: 2px solid transparent !important;
 
 }
 
+.ant-menu-item-active, .ant-menu-item:hover{
+  color: #FFFFFF !important;
+  border-bottom: 2px solid white !important;
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
+  background: transparent !important;
+  border-bottom: 2px solid white !important;
+}
+
+.ant-menu-item-active, .ant-menu-item a:hover {
+  color: #FFFFFF;
+}
+
+.ant-menu-item:active{
+  background-color: transparent;
+  border-bottom: 2px solid white !important;
+}
 
 .menuCon .ant-menu-horizontal {
   padding: 10px 0px;
   border-bottom: none;
-  background: transparent;
-
+  background: transparent !important;
 }
 
 //Header text color white
 .menuCon .ant-menu-item a,
 .menuCon .ant-menu-horizontal {
-
   color: #FFFFFF;
 }
 

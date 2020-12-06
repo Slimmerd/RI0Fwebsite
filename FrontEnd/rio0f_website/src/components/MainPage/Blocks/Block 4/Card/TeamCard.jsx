@@ -6,12 +6,15 @@ const CardShape = styled.div`
     font-family: Roboto, sans-serif;
     font-style: normal;
     text-align: center;
-
     height: 430.43px;
-    width: 322.82px;
+    min-width: 338px;
     border-radius: 12px;
     background: transparent;
     color: #1A1E22;
+    @media (max-width:335px) {
+   min-width: 250px;
+
+  }
 `
 
 const PcitureDiv = styled.div`
@@ -21,7 +24,7 @@ const PcitureDiv = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  width: 322.82px;
+  //width: 322.82px;
   height: 322.82px;
   background-image: url(${img});
   border-radius: 7.5px;
@@ -31,7 +34,10 @@ const PcitureDiv = styled.div`
    transition: transform .4s ease-out 0s;
    display: flex;
   align-items: flex-end;
-  
+  //  @media (max-width:375px) {
+  //width: 260px;
+  //height: 260px;
+  }
    
    
    

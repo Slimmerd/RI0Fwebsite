@@ -7,7 +7,7 @@ const HeaderBlock = styled.div`
         
     display: flex;
     align-items: center;
-    
+     box-shadow: 0px 2.32131px 11.6066px 4.64262px rgba(0, 0, 0, 0.1);
     color: #2C3E50;
     
     .header{

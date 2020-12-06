@@ -6,7 +6,7 @@ const ManagerBlock = styled.div`
     height: 729px;
     background: #ECF0F1;
     color: #2C3E50;
-    
+     box-shadow: 0px 2.32131px 11.6066px 4.64262px rgba(0, 0, 0, 0.1);
     .header{
     font-family: Oswald, sans-serif;
     font-style: normal;
