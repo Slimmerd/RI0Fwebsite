@@ -42,7 +42,35 @@ const HeaderBlock = styled.div`
       transform: scale(1.1);
      }
    }
+ @media (max-width: 768px){
+ .header{
+    font-size: 76px;
+    line-height: 76px;
+  }
+  .row{
+  justify-content: center;
+  }
+  .NamingLine{
+     padding-top: 0px;
+     }
+  a{
+  display: none;
+  svg{display: none}
+  }
+}
+
+@media (max-width: 576px){
+ .text{
     
+  }
+}
+
+@media (max-width: 360px){
+ .header{
+    font-size: 56px;
+    line-height: 56px;
+  }
+}
     
 `
 
@@ -51,18 +79,18 @@ export const ActualNewsPageNaming = () => {
         <HeaderBlock>
             <div className={'container'}>
                 <FadeInContainer>
-                    <Row gutter={[49, 0]}>
+                    <Row gutter={[{ xs: 0, sm: 49, md: 49, lg: 49 }, 0]} >
                         <Col className={'NamingLine'}>
                             <a> <Icon icon={arrowThinUp} style={{color: '#2c3e50', fontSize: '32px'}} vFlip={true}
                                       rotate="90deg"/></a>
                         </Col>
                         <Col>
                             <div className={'header'}>Заголовок новости</div>
-                            <Row gutter={[30, 0]}>
-                                <Col>
+                            <Row gutter={[{ xs: 0, sm: 30, md: 30, lg: 30 }, 0]} className={'row'}>
+                                <Col xs={24} sm={24} md={12}>
                                     <div className={'sub'}>Автор Автор</div>
                                 </Col>
-                                <Col>
+                                <Col xs={24} sm={24} md={12}>
                                     <div className={'sub'}>1 Мая 2020</div>
                                 </Col>
                             </Row>

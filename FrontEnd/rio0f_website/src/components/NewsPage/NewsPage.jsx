@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {Col, Row, Button} from "antd";
 import styled from "styled-components";
 import {MainCard} from "./NewsCards/MainCard";
@@ -17,6 +17,31 @@ const PageContainer = styled.div`
        max-width: 1110px;
        margin: 0 auto;
        text-align: center;
+   
+   .test{
+   margin-bottom:50px !important;
+   }
+       
+       @media (max-width: 1200px){
+      max-width: 900px
+  }
+  
+@media (max-width: 992px){
+    max-width: 745px
+}
+
+
+@media (max-width: 768px){
+    max-width: 550px
+}
+
+@media (max-width: 576px){
+    max-width: 400px
+}
+
+@media (max-width:360px){
+    max-width: 270px
+}
 `
 
 const NamingBlock = styled.div`
@@ -50,7 +75,11 @@ const NamingBlock = styled.div`
       margin: 0 auto;
       padding-top: 31px;
      }
-
+     @media (max-width:425px){
+    .header{
+      font-size: 76px;
+      line-height: 86px;}
+}
 `
 
 const ExtraNews = styled.div`
@@ -84,6 +113,15 @@ const ExtraNews = styled.div`
 `
 
 export const NewsPage = () => {
+    const [isSize, setSize] = useState(window.innerWidth);
+    const breakpoint = 768
+
+    useEffect(() => {
+        window.addEventListener("resize", () => setSize(window.innerWidth));
+    }, []);
+
+
+
     return (
         <NewsPageBlock>
             <PageContainer>
@@ -98,22 +136,19 @@ export const NewsPage = () => {
                 </FadeInContainer>
                 {/*Main card*/}
                 <FadeInContainer>
-                    <MainCard/>
+                    { isSize > breakpoint ? <MainCard/> : <div className={'test'}><SecondaryCard/></div>}
                 </FadeInContainer>
                 {/*Other News card*/}
-                <Row gutter={[30, 48]}>
+                <Row gutter={[{ xs: 0, sm: 24, md: 24, lg: 24 },48]} align={'center'}>
                     <NewsAnimContainer
-                        items={[<Col><SecondaryCard/></Col>,
-                            <Col><SecondaryCard/></Col>,
-                            <Col><SecondaryCard/></Col>]
+                        items={
+                            [<Col xs={24} sm={24} md={24} lg={12} xl={8} xxl={8}><SecondaryCard/></Col>,
+                            <Col  xs={24} sm={24} md={24} lg={12} xl={8} xxl={8}><SecondaryCard/></Col>,
+                            <Col  xs={24} sm={24} md={24} lg={12} xl={8} xxl={8}><SecondaryCard/></Col>,
+                            <Col  xs={24} sm={24} md={24} lg={12} xl={8} xxl={8}><SecondaryCard/></Col>,
+                            <Col  xs={24} sm={24} md={24} lg={12} xl={8} xxl={8}><SecondaryCard/></Col>,
+                            <Col  xs={24} sm={24} md={24} lg={12} xl={8} xxl={8}><SecondaryCard/></Col>]
                         }/>
-
-                </Row>
-                <Row gutter={[30, 48]}>
-                    <NewsAnimContainer items={[
-                        <Col><SecondaryCard/></Col>,
-                        <Col><SecondaryCard/></Col>,
-                        <Col><SecondaryCard/></Col>]}/>
                 </Row>
                 <ExtraNews>
                     <Button className={'button'} type="primary">Еще</Button>

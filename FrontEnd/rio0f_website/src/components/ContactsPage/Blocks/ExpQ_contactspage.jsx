@@ -6,7 +6,7 @@ import bubbleMessageTalk from '@iconify/icons-si-glyph/bubble-message-talk';
 import {FadeInContainer} from "../../../utils/FadeInAnimation";
 
 const BlockHeader = styled.div`
-  height: 431px;
+  min-height: 431px;
   font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -33,6 +33,7 @@ const BlockHeader = styled.div`
   .email{
   font-size: 20px;
   line-height: 28px;
+   padding-bottom: 45px;
   }
 `
 

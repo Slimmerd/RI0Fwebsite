@@ -8,7 +8,7 @@ import {FadeInContainer} from "../../../utils/FadeInAnimation";
 const BlockHeader = styled.div`
   background: #ECF0F1;
    box-shadow: 0px 2.32131px 11.6066px 4.64262px rgba(0, 0, 0, 0.1);
-  height: 431px;
+  min-height: 431px;
   font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -35,6 +35,7 @@ const BlockHeader = styled.div`
   .email{
   font-size: 20px;
   line-height: 28px;
+  padding-bottom: 45px;
   }
 `
 

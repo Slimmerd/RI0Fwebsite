@@ -8,7 +8,7 @@ const CardShape = styled.div`
       height: 450px;
       width: 350px;
       background: #FFFFFF;
-      
+      margin: 0 auto;
       box-shadow: 31.2195px 25.0069px 80px rgba(0, 0, 0, 0.07), 20.2349px 16.2081px 46.8519px rgba(0, 0, 0, 0.0531481), 12.0253px 9.63227px 25.4815px rgba(0, 0, 0, 0.0425185), 6.2439px 5.00137px 13px rgba(0, 0, 0, 0.035), 2.54381px 2.0376px 6.51852px rgba(0, 0, 0, 0.0274815), 0.578139px 0.46309px 3.14815px rgba(0, 0, 0, 0.0168519);
       border-radius: 10px;
       
@@ -23,20 +23,18 @@ const CardShape = styled.div`
       
       display: flex;
       align-items: center;
-      border-radius: 10px 10px 0px 0px;
+      border-radius: 10px 10px 0 0;
       
       svg{
        margin: 0 auto;
       }
       }
       
-      .text{
+    .text{
     color: #34495E;
-    
     font-family: Roboto, sans-serif;
     font-style: normal;
     font-weight: 500;
-
     display: flex;
     align-items: start;
 
@@ -49,11 +47,9 @@ const CardShape = styled.div`
     
     .header{
     color: #2C3E50;
-   
     font-size: 30px;
     line-height: 35px;
     text-align: left;
-    
     padding-bottom: 20px;
     }
     
@@ -61,7 +57,6 @@ const CardShape = styled.div`
     font-weight: 400;
     font-size: 20px;
     line-height: 23px;
-    
     width: 310px;
     height: 150px;
     
@@ -74,7 +69,22 @@ const CardShape = styled.div`
      border-radius: 5px;
       margin-bottom: 5px;
     }
+    
 }    
+ @media (max-width:374px){
+    height: 500px;
+    width: 270px;
+    .text {
+    .paragraph{
+    width: 240px;
+    }
+    .header{
+    font-size: 25px;
+    line-height: 25px;
+    }
+    }
+    
+    }
 `
 
 export const SecondaryCard = () => {

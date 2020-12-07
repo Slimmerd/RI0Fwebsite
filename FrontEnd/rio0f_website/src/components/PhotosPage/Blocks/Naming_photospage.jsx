@@ -1,4 +1,3 @@
-import {Col, Row, Button} from "antd";
 import styled from "styled-components";
 import React from 'react'
 import {FadeInContainer} from "../../../utils/FadeInAnimation";
@@ -29,6 +28,24 @@ const HeaderBlock = styled.div`
     font-size: 24px;
     line-height: 28px;
     }
+    
+    
+@media (max-width: 576px){
+  .header{
+      font-size: 76px;
+      line-height: 86px;}
+}
+
+  @media (max-width:425px){
+    .header{
+      font-size: 54px;
+      line-height: 56px;
+      }
+      .sub{
+      font-size: 18px;
+    line-height: 20px;
+      }
+}
 `
 
 export const PhotosPageNaming = () =>{

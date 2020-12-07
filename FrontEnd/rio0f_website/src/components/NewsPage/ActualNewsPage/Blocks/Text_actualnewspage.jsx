@@ -21,6 +21,31 @@ const HeaderBlock = styled.div`
     text-align: left;
     margin: 0 auto;
     }
+    
+@media (max-width: 992px){
+ .text{
+    width: 745px
+  }
+}
+
+@media (max-width: 768px){
+ .text{
+    width: 550px
+  }
+}
+
+@media (max-width: 576px){
+ .text{
+    width: 400px
+  }
+}
+
+@media (max-width: 375px){
+ .text{
+    width: 270px
+  }
+}
+
 `
 
 export const ActualNewsPageText = () => {

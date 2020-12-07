@@ -1,9 +1,7 @@
 import React from 'react'
-import {Col, Row, Button} from "antd";
 import styled from "styled-components";
 import {TeamMemberCard} from "./components/TeamMemberCard";
 import {FadeInContainer} from "../../../utils/FadeInAnimation";
-
 
 const Header = styled.div`
     font-family: Oswald, sans-serif;
@@ -15,6 +13,11 @@ const Header = styled.div`
     color: #2C3E50;
     
     padding: 14px 0 52px 0;
+    
+    @media (max-width:376px){
+    font-size: 66px;
+    line-height: 86px;
+    }
 `
 
 const Cards = styled.div`

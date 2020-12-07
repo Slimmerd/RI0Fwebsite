@@ -27,6 +27,11 @@ const HeaderBlock = styled.div`
     font-size: 24px;
     line-height: 28px;
     }   
+      @media (max-width:425px){
+    .header{
+      font-size: 76px;
+      line-height: 86px;}
+}
 `
 
 export const TeamPageNaming = () =>{

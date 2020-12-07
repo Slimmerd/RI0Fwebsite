@@ -1,4 +1,3 @@
-import {Col, Row, Button} from "antd";
 import styled from "styled-components";
 import React from 'react'
 import {FadeInContainer} from "../../../utils/FadeInAnimation";
@@ -29,13 +28,24 @@ const HeaderBlock = styled.div`
     font-size: 24px;
     line-height: 28px;
     }
+    
+    @media (max-width:425px){
+    .header{
+      font-size: 66px;
+      line-height: 76px;
+      }
+      .sub{
+      font-size: 18px;
+    line-height: 20px;
+      }
+}
  
 `
 
 export const ContactPageNaming = () =>{
     return(
         <HeaderBlock>
-            <div  className={'container'}>
+            <div className={'container'}>
                 <FadeInContainer>
                 <div className={'header'}>Контакты</div>
                 <div className={'sub'}>Вы можете связаться с нами по вопросам экспедиции и работы сайта</div>

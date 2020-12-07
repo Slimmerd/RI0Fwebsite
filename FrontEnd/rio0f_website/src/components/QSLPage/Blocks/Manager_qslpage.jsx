@@ -1,9 +1,9 @@
-import {Col, Row, Button} from "antd";
+import {Col, Row} from "antd";
 import styled from "styled-components";
 import {FadeInContainer} from "../../../utils/FadeInAnimation";
 
 const ManagerBlock = styled.div`
-    height: 729px;
+    min-height: 729px;
     background: #ECF0F1;
     color: #2C3E50;
      box-shadow: 0px 2.32131px 11.6066px 4.64262px rgba(0, 0, 0, 0.1);
@@ -26,6 +26,34 @@ const ManagerBlock = styled.div`
     
     padding-bottom: 73px;
     }
+    
+    .cardings{
+    padding-bottom: 50px;
+    }
+    
+    
+        @media (max-width: 768px){
+  .header{
+      font-size: 76px;
+      line-height: 86px;}
+}
+    
+    @media (max-width: 576px){
+  .header{
+      font-size: 76px;
+      line-height: 86px;}
+}
+
+  @media (max-width:425px){
+    .header{
+      font-size: 54px;
+      line-height: 56px;
+      }
+      .sub{
+      font-size: 18px;
+    line-height: 20px;
+      }
+}
 `
 
 const Card = styled.div`
@@ -56,6 +84,30 @@ const Card = styled.div`
     text-align: left;
     padding-left: 20px;
     }
+    
+        @media (max-width: 768px){
+       
+   
+  .text{
+      font-size: 76px;
+      line-height: 86px;}
+}
+    
+    @media (max-width: 576px){
+    width: 425px;
+  .text{
+      font-size: 76px;
+      line-height: 86px;}
+}
+
+  @media (max-width:425px){
+   width: 280px;
+    .text{
+      font-size: 54px;
+      line-height: 56px;
+      }
+     
+}
 `
 
 export const QSLPageManager = () =>{
@@ -67,7 +119,8 @@ export const QSLPageManager = () =>{
             <div className={'sub'}>С ним можно связаться по поводу отправки QSL карточки</div>
             </FadeInContainer>
             <FadeInContainer>
-            <Row gutter={[30,0]}>
+                <div className={'cardings'}>
+            <Row gutter={[{xs: 0, sm: 30, md: 30, lg: 30},30]} justify={'center'} >
                 <Col>
                     <Card>
                         <div className={'text'}>Данные</div>
@@ -79,6 +132,7 @@ export const QSLPageManager = () =>{
                     </Card>
                 </Col>
             </Row>
+                </div>
             </FadeInContainer>
         </div>
         </ManagerBlock>

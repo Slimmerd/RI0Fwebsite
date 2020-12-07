@@ -1,13 +1,11 @@
 import React from 'react'
-import {Button, Col, Form, Input, Row} from "antd";
+import {Button, Col, Row} from "antd";
 import {CommentCard} from "./Components/Comment";
 import styled from "styled-components";
 
 const CommentBlock = styled.div`
-    
-    .button{
+   .button{
     height: 280px;
-    
     display: flex;
     align-items: center;
     }
@@ -39,20 +37,12 @@ export const ChatPageComments = () => {
 
     return (
        <CommentBlock>
-           <Row gutter={[0,20]}>
+           <Row gutter={[0,20]} justify={'center'} >
                <Col><CommentCard/></Col>
-           </Row>
-           <Row gutter={[0,20]}>
-               <Col><CommentCard/></Col>
-           </Row>
-           <Row gutter={[0,20]}>
-               <Col><CommentCard/></Col>
-           </Row >
-           <Row gutter={[0,20]}>
-               <Col><CommentCard/></Col>
-           </Row>
-           <Row>
-               <Col><CommentCard/></Col>
+               <Col ><CommentCard/></Col>
+               <Col ><CommentCard/></Col>
+               <Col ><CommentCard/></Col>
+               <Col ><CommentCard/></Col>
            </Row>
            <div className={'button'}>
            <Button type="primary">Еще</Button>

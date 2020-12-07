@@ -1,10 +1,10 @@
 import React from 'react'
-import {Col, Row, Button} from "antd";
+import {Col, Row} from "antd";
 import styled from "styled-components";
 import {FadeInContainer} from "../../../utils/FadeInAnimation";
 
 const CardsBlockContainer = styled.div`
-    height: 1386px;
+    min-height: 1386px;
     
     .start{
     padding-top: 140px;
@@ -26,6 +26,13 @@ const Card = styled.div`
        &:hover{
         transform: scale(1.02);
          }
+    
+     @media (max-width: 576px){
+    width: 375px
+  }
+  @media (max-width:376px){
+    width: 270px
+}
 `
 
 const BackNumber = styled.div`
@@ -61,7 +68,7 @@ export const HardwarePageCardsBlock = () => {
             <div className={'container'}>
                 <div className={'start'}>
                     <FadeInContainer>
-                        <Row gutter={[30, 110]} justify={'center'}>
+                        <Row  gutter={[{ xs: 0, sm: 30, md: 30, lg: 30 }, 50]} justify={'center'}>
                             <Col>
                                 <Card>
                                     <div>Hello</div>
@@ -77,7 +84,7 @@ export const HardwarePageCardsBlock = () => {
                         </Row>
                     </FadeInContainer>
                     <FadeInContainer>
-                        <Row gutter={[30, 110]} justify={'center'}>
+                        <Row  gutter={[{ xs: 0, sm: 30, md: 30, lg: 30 }, 50]} justify={'center'}>
                             <Col>
                                 <Card>
                                     <div>Hello</div>
@@ -93,7 +100,7 @@ export const HardwarePageCardsBlock = () => {
                         </Row>
                     </FadeInContainer>
                     <FadeInContainer>
-                        <Row gutter={[30, 110]} justify={'center'}>
+                        <Row  gutter={[{ xs: 0, sm: 30, md: 30, lg: 30 }, 50]} justify={'center'}>
                             <Col>
                                 <Card>
                                     <div>Hello</div>

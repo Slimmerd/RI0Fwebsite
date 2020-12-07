@@ -8,7 +8,6 @@ const GlobalDiv = styled.div`
       background: #ECF0F1;
 `
 
-
 export const ChatPage = () => {
     return (
         <GlobalDiv>
@@ -17,8 +16,6 @@ export const ChatPage = () => {
                 <ChatPageForm/>
                 <ChatPageComments/>
             </div>
-
-
         </GlobalDiv>
     )
 }

@@ -16,7 +16,6 @@ const Block = styled.div`
 `
 
 const BlockHeader = styled.div`
-
   width: 266px;
   height: 107px;
 
@@ -25,22 +24,12 @@ const BlockHeader = styled.div`
   font-weight: 500;
   font-size: 72px;
   line-height: 107px;
-
- 
   letter-spacing: 0.03em;
 
   color: #2C3E50;
 `
 
 const CardBlock = styled.div`
- //margin: 0 auto;
-  .test{
-  @media (max-width:425px) {
-  width: 100%;
-    }
-  }
-  //max-width: 1009px;
-  
  
 `
 

@@ -29,7 +29,16 @@ const HeaderBlock = styled.div`
     font-size: 24px;
     line-height: 28px;
     }
-       
+        @media (max-width:425px){
+    .header{
+      font-size: 48px;
+      line-height: 50px;
+      }
+       .sub{
+       font-size: 18px;
+    line-height: 20px;
+       }
+}
 `
 
 
