@@ -3,8 +3,8 @@ import {Col, Row, Button} from "antd";
 import styled from "styled-components";
 import {MainCard} from "./NewsCards/MainCard";
 import {SecondaryCard} from "./NewsCards/SecondaryCard";
-import {FadeInContainer} from "../../utils/FadeInAnimation";
-import {NewsAnimContainer} from "../../utils/NewsCardAnimation";
+import {FadeInContainer} from "../common/FadeInAnimation";
+import {NewsAnimContainer} from "../common/NewsCardAnimation";
 import {useTranslation} from "react-i18next";
 
 const NewsPageBlock = styled.div`

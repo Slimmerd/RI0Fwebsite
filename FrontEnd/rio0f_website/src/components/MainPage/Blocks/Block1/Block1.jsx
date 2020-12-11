@@ -1,5 +1,5 @@
 import {Col, Row} from "antd";
-import {FadeInContainer} from "../../../../utils/FadeInAnimation";
+import {FadeInContainer} from "../../../common/FadeInAnimation";
 import React from "react";
 
 

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {FadeInContainer} from "../../../utils/FadeInAnimation";
+import {FadeInContainer} from "../../common/FadeInAnimation";
 import React from 'react'
 import {useTranslation} from "react-i18next";
 

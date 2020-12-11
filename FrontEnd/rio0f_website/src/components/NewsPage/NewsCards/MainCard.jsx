@@ -78,7 +78,8 @@ const CardShape = styled.div`
     font-size: 36px;
     line-height: 36px;
     text-align: left;
-    
+      word-break: break-word;
+        white-space: normal;
     padding-bottom: 20px;
     }
     
@@ -86,7 +87,8 @@ const CardShape = styled.div`
     font-weight: 400;
     font-size: 24px;
     line-height: 28px;
-    
+    word-break: break-word;
+        white-space: normal;
     width: 400px;
     height: 215px;
     
@@ -113,14 +115,13 @@ export const MainCard = () => {
         <Skeleton.Input className={'skeletonStyle'} active={'active'}/>,
         <Skeleton.Input className={'skeletonStyle'} active={'active'}/>,
         <Skeleton.Input className={'skeletonStyle'} active={'active'}/>,
-        <Skeleton.Input className={'skeletonStyle'} active={'active'}/>,
-        <Skeleton.Input className={'skeletonStyle'} active={'active'}/>,
         <Skeleton.Input className={'skeletonStyle'} active={'active'}/>]
 
     //TODO: Import data from database
 
     const real_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non ultricies ipsum. Sed eget congue velit. Phasellus suscipit, turpis eu molestie vulputate, tellus turpis sagittis ipsum, a aliquam justo magna ac urna. Nulla dapibus tincidunt eleifend. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non ultricies ipsum. Sed eget congue velit. Phasellus suscipit, turpis eu molestie vulputate, tellus turpis sagittis ipsum, a aliquam justo magna ac urna. Nulla dapibus tincidunt eleifend."
-    const real_heading = 'Заголовок новости Заголовок новости Заголовок новости Заголовок новости Заголовок новости'
+    const real_heading = 'Прибытие команды на Сахалин'
+
     return (
         <CardShape>
             <div className={'container'}>
@@ -135,11 +136,14 @@ export const MainCard = () => {
                             <div className={'date'}>{!loading ? '01.01.2000' :
                                 <Skeleton.Input style={{width: 100, height: '25px', borderRadius: '5px'}}
                                                 active={'active'}/>}</div>
-                            <div className={'header'}>{!loading ? `${real_heading.substring(0,35)}...` :
+
+                            <div
+                                className={'header'}>{!loading ? (real_heading.length > 30 ? `${real_heading.substring(0, 30)}...` : real_heading) :
+
                                 <Skeleton.Input style={{width: 400, height: '45px', borderRadius: '5px'}}
                                                 active={'active'}/>}</div>
                             <div
-                                className={'paragraph'}> {!loading ? `${real_text.substring(0, 216)}...` : ParagraphSkeleton}
+                                className={'paragraph'}> {!loading ? (real_text.length > 180 ? `${real_text.substring(0, 180)}...` : real_text) : ParagraphSkeleton}
                             </div>
                         </div>
                     </Col>

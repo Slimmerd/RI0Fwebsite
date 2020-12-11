@@ -1,7 +1,7 @@
 import {Col, Row} from "antd";
 import styled from "styled-components";
 import {TeamCard} from "./Card/TeamCard";
-import {FadeInContainer} from "../../../../utils/FadeInAnimation";
+import {FadeInContainer} from "../../../common/FadeInAnimation";
 import React from 'react'
 import {useTranslation} from "react-i18next";
 

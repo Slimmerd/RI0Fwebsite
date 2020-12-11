@@ -1,6 +1,6 @@
 import {Col, Row} from "antd";
 import styled from "styled-components";
-import {FadeInContainer} from "../../../utils/FadeInAnimation";
+import {FadeInContainer} from "../../common/FadeInAnimation";
 import {useTranslation} from "react-i18next";
 
 const ManagerBlock = styled.div`
@@ -32,14 +32,13 @@ const ManagerBlock = styled.div`
     padding-bottom: 50px;
     }
     
-    
-    
-        @media (max-width: 786px){
+   @media (max-width: 786px){
   .header{
   font-size: 76px;
-  line-height: 86px;}}
-    
-
+  line-height: 86px;
+  }
+}
+  
   @media (max-width:576px){
     .header{
       font-size: 54px;
@@ -61,7 +60,6 @@ const ManagerBlock = styled.div`
     line-height: 18px;
       }
 }
-
 `
 
 const Card = styled.div`

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
-import {FadeInContainer} from "../../../../utils/FadeInAnimation";
+import {FadeInContainer} from "../../../common/FadeInAnimation";
 
 const HeaderBlock = styled.div`
     min-height: 460px;
@@ -36,11 +36,11 @@ const HeaderBlock = styled.div`
 
 @media (max-width: 576px){
  .text{
-    width: 400px
+    width: 375px
   }
 }
 
-@media (max-width: 375px){
+@media (max-width: 376px){
  .text{
     width: 270px
   }

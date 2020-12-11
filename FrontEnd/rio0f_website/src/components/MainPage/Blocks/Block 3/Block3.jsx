@@ -1,10 +1,10 @@
 import React from 'react'
 import {Col, Row} from "antd";
 import {PlanCard} from "./Components/PlanCard";
-import {FadeInContainer} from "../../../../utils/FadeInAnimation";
-import {CardFadeInContainer} from "../../../../utils/CardSideAnimation";
+import {FadeInContainer} from "../../../common/FadeInAnimation";
+import {CardFadeInContainer} from "../../../common/CardSideAnimation";
 import styled from "styled-components";
-import { LineSContainer} from "../../../../utils/LineAnimation";
+import {LineSContainer} from "../../../common/LineAnimation";
 import {useEffect, useState} from "react";
 import {SponsorsBlock} from "./Components/Sponsors";
 import {useTranslation} from "react-i18next";

@@ -2,7 +2,7 @@ import React from 'react'
 import {Col, Row} from "antd";
 import styled from "styled-components";
 import {FooterNavbar} from "./menu/FooterNavbar";
-import SideBar from "../../utils/SideBar";
+import SideBar from "../common/SideBar";
 import {useTranslation} from "react-i18next";
 
 const FooterContainer = styled.div`

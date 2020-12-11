@@ -1,7 +1,7 @@
 import React from 'react'
 import {Col, Row} from "antd";
 import island_map from "../../../../assets/island_map.png"
-import {FadeInContainer} from "../../../../utils/FadeInAnimation";
+import {FadeInContainer} from "../../../common/FadeInAnimation";
 import {useTranslation} from "react-i18next";
 
 export const MainPageBlock2 = () => {

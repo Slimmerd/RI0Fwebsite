@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components";
 import {Col, Row} from "antd";
-import {FadeInContainer} from "../../../../utils/FadeInAnimation";
+import {FadeInContainer} from "../../../common/FadeInAnimation";
 
 const Card = styled.div`
       width: 1110px;

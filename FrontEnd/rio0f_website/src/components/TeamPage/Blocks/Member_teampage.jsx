@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components";
 import {TeamMemberCard} from "./components/TeamMemberCard";
-import {FadeInContainer} from "../../../utils/FadeInAnimation";
+import {FadeInContainer} from "../../common/FadeInAnimation";
 import {useTranslation} from "react-i18next";
 
 const Header = styled.div`

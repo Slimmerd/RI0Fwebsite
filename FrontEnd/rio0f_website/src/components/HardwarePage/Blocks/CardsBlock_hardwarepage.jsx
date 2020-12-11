@@ -1,7 +1,7 @@
 import React from 'react'
 import {Col, Row} from "antd";
 import styled from "styled-components";
-import {FadeInContainer} from "../../../utils/FadeInAnimation";
+import {FadeInContainer} from "../../common/FadeInAnimation";
 import {HardwarePageCard} from "./Card_hardwarepage";
 
 // language=SCSS prefix=*{ suffix=}

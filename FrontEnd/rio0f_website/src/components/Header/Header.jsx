@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 import {Row, Col} from 'antd';
 import RightMenu from "./menus/RightMenu";
 import LeftMenu from "./menus/LeftMenu";
-import SideBar from "../../utils/SideBar";
+import SideBar from "../common/SideBar";
 
 const Header = (props) => {
     return (

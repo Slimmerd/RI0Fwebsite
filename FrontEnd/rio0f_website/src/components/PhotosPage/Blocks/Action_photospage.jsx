@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React, {useState} from 'react'
-import {FadeInContainer} from "../../../utils/FadeInAnimation";
+import {FadeInContainer} from "../../common/FadeInAnimation";
 import {PhotosPageCarousel} from "./Carousel_photospage";
 import {PhotosPageCarouselStub} from "./CarouselStab_photospage";
 

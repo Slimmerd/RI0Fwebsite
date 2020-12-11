@@ -3,7 +3,7 @@ import styled from "styled-components";
 import React from 'react'
 import {Icon} from '@iconify/react';
 import book from '@iconify/icons-si-glyph/book-';
-import {FadeInContainer} from "../../../utils/FadeInAnimation";
+import {FadeInContainer} from "../../common/FadeInAnimation";
 import {useTranslation} from "react-i18next";
 
 // language=SCSS prefix=*{ suffix=}
@@ -68,11 +68,10 @@ export const ContactPageSiteQ = () => {
                     <div className={'header'}>{t('contacts:site_questions.heading')}</div>
 
                     <div className={'name'}>{t('contacts:site_questions.name')}</div>
-                    <Row className={'email'} justify={'center'}>
+                    <Row className={'email'} justify={'center'} gutter={[10, 0]}>
                         <Col>Email:</Col>
                         <Col>
-                            <div>vasya.pupkin@ri0f.com</div>
-                            <div style={{paddingLeft: '18px'}}>vasya.pupkin@gmail.com</div>
+                            <a href="mailto:someone@example.com"> vasya.pupkin@ri0f.com</a>
                         </Col>
                     </Row>
                 </FadeInContainer>

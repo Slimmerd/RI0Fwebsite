@@ -53,6 +53,8 @@ const CardShape = styled.div`
     line-height: 30px;
     text-align: left;
     padding-bottom: 20px;
+      word-break: break-word;
+        white-space: normal;
     }
     
     .paragraph{
@@ -61,7 +63,8 @@ const CardShape = styled.div`
     line-height: 23px;
     width: 310px;
     height: 140px;
-    
+      word-break: break-word;
+        white-space: normal;
     text-align: left;
     }
     
@@ -105,8 +108,8 @@ export const SecondaryCard = () => {
         <Skeleton.Input className={'skeletonStyle'} active={'active'}/>]
 
     //TODO: Import data from database
-    const real_text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non ultricies ipsum. Sed eget congue velit. Phasellus suscipit, turpis eu molestie vulputate, tellus turpis sagittis ipsum, a aliquam justo magna ac urna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non ultricies ipsum. Sed eget congue velit. Phasellus suscipit, turpis eu molestie vulputate, tellus turpis sagittis ipsum, a aliquam justo magna ac urna.'
-    const real_heading = 'Заголовок новости Заголовок новости Заголовок новости Заголовок новости Заголовок новости'
+    const real_text = '10 декабря Владимир Путин провел встречу с Советом по правам человека (СПЧ). На ней президента спросили, почему в России не возбуждено уголовное дело об отравлении Алексея Навального. 11 декабря на сайте Кремля появилась расшифровка встречи с СПЧ. Из нее можно узнать, как звучали формулировка вопроса про Навального ('
+    const real_heading = '10 декабря Владимир Путин провел встречу с Советом по правам человека (СПЧ). На ней президента спросили, почему в России не возбуждено уголовное дело об отравлении Алексея Навального. 11 декабря на сайте Кремля появилась расшифровка встречи с СПЧ. Из нее можно узнать, как звучали формулировка вопроса про Навального (и'
 
     return (
         <CardShape>
@@ -118,10 +121,14 @@ export const SecondaryCard = () => {
                     <div className={'date'}>{!loading ? '01.01.2000' :
                         <Skeleton.Input style={{width: 100, height: '20px', borderRadius: '5px'}}
                                         active={'active'}/>}</div>
-                    <div className={'header'}>{!loading ? `${real_heading.substring(0,35)}...`:
+
+                    <div
+                        className={'header'}>{!loading ? (real_heading.length > 30 ? `${real_heading.substring(0, 25)}...` : real_heading) :
                         <Skeleton.Input style={{width: 250, height: '30px', borderRadius: '5px'}}
                                         active={'active'}/>}</div>
-                    <div className={'paragraph'}>{ !loading ? `${real_text.substring(0,185)}...` : ParagraphSkeleton}
+
+                    <div
+                        className={'paragraph'}>{!loading ? (real_text.length > 180 ? `${real_text.substring(0, 160)}...` : real_text) : ParagraphSkeleton}
                     </div>
                 </div>
             </Row>

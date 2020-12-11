@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components";
-import {FadeInContainer} from "../../../utils/FadeInAnimation";
-import { useSpring, animated } from 'react-spring'
+import {FadeInContainer} from "../../common/FadeInAnimation";
+import {useSpring, animated} from 'react-spring'
 import {useTranslation} from "react-i18next";
 
 const MainDiv = styled.div`

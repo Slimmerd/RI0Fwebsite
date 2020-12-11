@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import {Button, Col, Divider, Drawer} from "antd";
 import {MenuOutlined} from "@ant-design/icons";
-import RightMenu from "../components/Header/menus/RightMenu";
-import LeftMenu from "../components/Header/menus/LeftMenu";
+import RightMenu from "../Header/menus/RightMenu";
+import LeftMenu from "../Header/menus/LeftMenu";
 import {useLocation} from "react-router-dom";
 
 const SideBar = () => {

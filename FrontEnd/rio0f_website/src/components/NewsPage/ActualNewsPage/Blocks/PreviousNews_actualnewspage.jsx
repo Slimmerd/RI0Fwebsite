@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import styled from "styled-components";
 import  {Carousel, Col, Row} from "antd";
 import {SecondaryCard} from "../../NewsCards/SecondaryCard";
-import {NewsAnimContainer} from "../../../../utils/NewsCardAnimation";
+import {NewsAnimContainer} from "../../../common/NewsCardAnimation";
 
 const HeaderBlock = styled.div`
     min-height: 550px;

@@ -1,7 +1,7 @@
 import {Col, Row} from "antd";
 import styled from "styled-components";
 import React from 'react'
-import {FadeInContainer} from "../../../utils/FadeInAnimation";
+import {FadeInContainer} from "../../common/FadeInAnimation";
 import {useTranslation} from "react-i18next";
 
 const MethodsPageContainer = styled.div`

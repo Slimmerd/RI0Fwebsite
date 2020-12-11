@@ -2,7 +2,7 @@ import React from 'react'
 import styled from "styled-components";
 import {Icon} from "@iconify/react";
 import cameraIcon from '@iconify/icons-si-glyph/camera';
-import {FadeInContainer} from "../../../../utils/FadeInAnimation";
+import {FadeInContainer} from "../../../common/FadeInAnimation";
 
 const HeaderBlock = styled.div`
     height: 600px;

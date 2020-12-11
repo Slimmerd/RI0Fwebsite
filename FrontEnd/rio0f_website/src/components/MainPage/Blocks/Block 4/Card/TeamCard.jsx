@@ -16,7 +16,7 @@ const CardShape = styled.div`
     align-items: center;
     justify-content: center;
 
-    @media (max-width:357px) {
+    @media (max-width:376px) {
    min-width: 250px;
 
   }

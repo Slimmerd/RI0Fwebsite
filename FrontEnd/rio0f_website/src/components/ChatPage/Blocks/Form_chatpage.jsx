@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import styled from "styled-components";
 import {Col, Row} from "antd";
 import {Form, Input, Button} from 'antd';
-import {FadeInContainer} from "../../../utils/FadeInAnimation";
+import {FadeInContainer} from "../../common/FadeInAnimation";
 import {useTranslation} from "react-i18next";
 
 const CardShape = styled.div`
