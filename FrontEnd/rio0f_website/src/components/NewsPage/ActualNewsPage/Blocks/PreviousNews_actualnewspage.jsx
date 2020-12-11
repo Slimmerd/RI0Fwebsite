@@ -48,8 +48,6 @@ const items = [
             )
         }
 
-
-
 export const ActualNewsPagePreviousNews = () => {
     const [isSize, setSize] = useState(window.innerWidth);
     const breakpoint = 1200

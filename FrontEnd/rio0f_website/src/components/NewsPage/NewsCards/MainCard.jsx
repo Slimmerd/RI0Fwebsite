@@ -62,7 +62,7 @@ const CardShape = styled.div`
     font-family: Roboto, sans-serif;
     font-style: normal;
     font-weight: 500;
-
+    padding: 25px;
     display: flex;
     align-items: start;
     
@@ -70,16 +70,16 @@ const CardShape = styled.div`
     font-size: 14px;
     line-height: 16px;
     text-align: left;
-    padding: 19px 0 10px 0;
+    padding-bottom: 10px;
     }
     
     .header{
     color: #2C3E50;
     font-size: 36px;
-    line-height: 42px;
+    line-height: 36px;
     text-align: left;
     
-    padding-bottom: 30px;
+    padding-bottom: 20px;
     }
     
     .paragraph{
@@ -100,7 +100,7 @@ const CardShape = styled.div`
       margin-bottom: 5px;
     }
     
-    }
+    } 
 `
 
 export const MainCard = () => {
@@ -117,6 +117,10 @@ export const MainCard = () => {
         <Skeleton.Input className={'skeletonStyle'} active={'active'}/>,
         <Skeleton.Input className={'skeletonStyle'} active={'active'}/>]
 
+    //TODO: Import data from database
+
+    const real_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non ultricies ipsum. Sed eget congue velit. Phasellus suscipit, turpis eu molestie vulputate, tellus turpis sagittis ipsum, a aliquam justo magna ac urna. Nulla dapibus tincidunt eleifend. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non ultricies ipsum. Sed eget congue velit. Phasellus suscipit, turpis eu molestie vulputate, tellus turpis sagittis ipsum, a aliquam justo magna ac urna. Nulla dapibus tincidunt eleifend."
+    const real_heading = 'Заголовок новости Заголовок новости Заголовок новости Заголовок новости Заголовок новости'
     return (
         <CardShape>
             <div className={'container'}>
@@ -131,11 +135,11 @@ export const MainCard = () => {
                             <div className={'date'}>{!loading ? '01.01.2000' :
                                 <Skeleton.Input style={{width: 100, height: '25px', borderRadius: '5px'}}
                                                 active={'active'}/>}</div>
-                            <div className={'header'}>{!loading ? 'Заголовок новости' :
+                            <div className={'header'}>{!loading ? `${real_heading.substring(0,35)}...` :
                                 <Skeleton.Input style={{width: 400, height: '45px', borderRadius: '5px'}}
                                                 active={'active'}/>}</div>
                             <div
-                                className={'paragraph'}> {!loading ? "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non ultricies ipsum. Sed eget congue velit. Phasellus suscipit, turpis eu molestie vulputate, tellus turpis sagittis ipsum, a aliquam justo magna ac urna. Nulla dapibus tincidunt eleifend." : ParagraphSkeleton}
+                                className={'paragraph'}> {!loading ? `${real_text.substring(0, 216)}...` : ParagraphSkeleton}
                             </div>
                         </div>
                     </Col>

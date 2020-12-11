@@ -38,18 +38,19 @@ const CardShape = styled.div`
     font-weight: 500;
     display: flex;
     align-items: start;
+    padding: 20px;
 
     .date{
     font-size: 14px;
     line-height: 16px;
     text-align: left;
-    padding: 21px 0 10px 0;
+    padding-bottom: 10px;
     }
     
     .header{
     color: #2C3E50;
     font-size: 30px;
-    line-height: 35px;
+    line-height: 30px;
     text-align: left;
     padding-bottom: 20px;
     }
@@ -59,7 +60,7 @@ const CardShape = styled.div`
     font-size: 20px;
     line-height: 23px;
     width: 310px;
-    height: 150px;
+    height: 140px;
     
     text-align: left;
     }
@@ -103,6 +104,10 @@ export const SecondaryCard = () => {
         <Skeleton.Input className={'skeletonStyle'} active={'active'}/>,
         <Skeleton.Input className={'skeletonStyle'} active={'active'}/>]
 
+    //TODO: Import data from database
+    const real_text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non ultricies ipsum. Sed eget congue velit. Phasellus suscipit, turpis eu molestie vulputate, tellus turpis sagittis ipsum, a aliquam justo magna ac urna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non ultricies ipsum. Sed eget congue velit. Phasellus suscipit, turpis eu molestie vulputate, tellus turpis sagittis ipsum, a aliquam justo magna ac urna.'
+    const real_heading = 'Заголовок новости Заголовок новости Заголовок новости Заголовок новости Заголовок новости'
+
     return (
         <CardShape>
             <Row className={'picture'}>
@@ -113,10 +118,10 @@ export const SecondaryCard = () => {
                     <div className={'date'}>{!loading ? '01.01.2000' :
                         <Skeleton.Input style={{width: 100, height: '20px', borderRadius: '5px'}}
                                         active={'active'}/>}</div>
-                    <div className={'header'}>{!loading ? 'Заголовок новости' :
+                    <div className={'header'}>{!loading ? `${real_heading.substring(0,35)}...`:
                         <Skeleton.Input style={{width: 250, height: '30px', borderRadius: '5px'}}
                                         active={'active'}/>}</div>
-                    <div className={'paragraph'}>{ !loading ? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non ultricies ipsum. Sed eget congue velit. Phasellus suscipit, turpis eu molestie vulputate, tellus turpis sagittis ipsum, a aliquam justo magna ac urna.' : ParagraphSkeleton}
+                    <div className={'paragraph'}>{ !loading ? `${real_text.substring(0,185)}...` : ParagraphSkeleton}
                     </div>
                 </div>
             </Row>

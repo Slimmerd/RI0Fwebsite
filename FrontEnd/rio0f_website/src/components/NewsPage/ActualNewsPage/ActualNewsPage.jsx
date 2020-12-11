@@ -4,7 +4,6 @@ import {ActualNewsPagePicture} from "./Blocks/Picture_actualnewspage";
 import {ActualNewsPageText} from "./Blocks/Text_actualnewspage";
 import {ActualNewsPagePreviousNews} from "./Blocks/PreviousNews_actualnewspage";
 
-
 export const ActualNewsPage = () => {
     return (
         <div>

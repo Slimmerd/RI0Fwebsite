@@ -145,6 +145,9 @@ const ExtraNews = styled.div`
   }
 `
 
+//TODO: Import data from database
+//TODO: Put latest news on main card and others to secondary cards
+
 export const NewsPage = () => {
     const [isSize, setSize] = useState(window.innerWidth);
     const breakpoint = 768
@@ -153,7 +156,6 @@ export const NewsPage = () => {
     useEffect(() => {
         window.addEventListener("resize", () => setSize(window.innerWidth));
     }, []);
-
 
     const [loading, setLoading] = useState(false)
 
