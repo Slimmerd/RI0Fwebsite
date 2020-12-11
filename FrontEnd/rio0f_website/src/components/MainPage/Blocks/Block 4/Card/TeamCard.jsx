@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from "styled-components";
 import img from '../../../../../assets/r6mg.jpg'
+import {useTranslation} from "react-i18next";
 
 const CardShape = styled.div`
     font-family: Roboto, sans-serif;
@@ -11,20 +12,23 @@ const CardShape = styled.div`
     border-radius: 12px;
     background: transparent;
     color: #1A1E22;
-    @media (max-width:335px) {
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width:357px) {
    min-width: 250px;
 
   }
 `
 
 const PcitureDiv = styled.div`
-  
-  margin-top: 21.34px;
-  
+ 
+  margin: 21.34px auto;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  //width: 322.82px;
+  max-width: 322.82px;
   height: 322.82px;
   background-image: url(${img});
   border-radius: 7.5px;
@@ -72,7 +76,7 @@ const PcitureDiv = styled.div`
 `
 
 const TextDiv = styled.div`
-    padding-top: 25.98px;
+    padding-top: 10px;
     font-weight: 500;
     font-size: 55.0949px;
     line-height: 65px;
@@ -80,13 +84,14 @@ const TextDiv = styled.div`
     color: #2C3E50;
 `
 
-export const TeamCard = () => {
+export const TeamCard = ({cardNumber}) => {
+    const { t, i18n } = useTranslation()
     return (
         <CardShape>
             <PcitureDiv>
-                <div className={'hoverino'}>Имя Фамилия</div>
+                <div className={'hoverino'}>{t('main:Block4.Card'+cardNumber+'.name')}</div>
             </PcitureDiv>
-            <TextDiv>R6MG</TextDiv>
+            <TextDiv>{t('main:Block4.Card'+cardNumber+'.call')}</TextDiv>
         </CardShape>
 
 

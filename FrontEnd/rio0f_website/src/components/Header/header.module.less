@@ -32,7 +32,7 @@
 
 .menuCon .ant-menu-item,
 .menuCon .ant-menu-submenu {
-
+  border: 1px solid transparent;
   margin: 0 5px !important;
   padding: 0 10px !important;
   font-size: 18px;
@@ -45,6 +45,7 @@
 
 //Submenu
 .ant-menu-submenu > .ant-menu {
+  //border: 1px solid transparent;
   border-radius: 10px !important;
   background-color: #2C3E50 !important;
 }
@@ -57,20 +58,27 @@
 }
 
 .ant-menu-item-active, .ant-menu-item{
+  border: 1px solid transparent;
   border-radius: 10px;
   border-bottom: 2px solid transparent !important;
-
 }
 
 .ant-menu-item-active, .ant-menu-item:hover{
+  border: 1px solid transparent;
   color: #FFFFFF !important;
   border-bottom: 2px solid white !important;
 }
 
 .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
+  border: 1px solid transparent;
   background: transparent !important;
   border-bottom: 2px solid white !important;
 }
+
+.ant-menu-vertical.ant-menu-sub .ant-menu-item, .ant-menu-vertical-left.ant-menu-sub .ant-menu-item, .ant-menu-vertical-right.ant-menu-sub .ant-menu-item {
+  border-right: 1px solid transparent;
+}
+
 
 .ant-menu-item-active, .ant-menu-item a:hover {
   color: #FFFFFF;
@@ -109,38 +117,23 @@
   float: right;
 }
 
+
+
+
 //Mobile menu
 .barsMenu {
   float: right;
-  height: 32px;
+  height: 48px;
+  width: 48px;
   padding: 6px;
   margin-top: 8px;
   display: none;
-  background: none;
-}
+  border-color: white !important;
+  background: none !important;
 
-.barsBtn {
-  display: block;
-  width: 20px;
-  height: 2px;
-  background: #1890ff;
-  position: relative;
-}
-
-.barsBtn:after,
-.barsBtn:before {
-  content: attr(x);
-  width: 20px;
-  position: absolute;
-  top: -6px;
-  left: 0;
-  height: 2px;
-  background: #1890ff;
-}
-
-.barsBtn:after {
-  top: auto;
-  bottom: -6px;
+  &:hover{
+    background: hsl(210, 29%, 30%) !important;
+  }
 }
 
 .ant-drawer-body {
@@ -155,24 +148,33 @@
 .ant-drawer-body .ant-menu-horizontal > .ant-menu-submenu {
   display: inline-block;
   width: 100%;
+  background: transparent !important;
+}
+
+.ant-drawer-body .ant-menu{
+  background: transparent !important;
 }
 
 .ant-drawer-body .ant-menu-horizontal {
   border-bottom: none;
 }
 
+.ant-menu-inline .ant-menu-item::after {
+  border-right: none !important;
+}
+
 .ant-drawer-body .ant-menu-horizontal > .ant-menu-item:hover {
   border-bottom-color: transparent;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 992px) {
   .menuBar {
     padding: 0 2VW
   }
 }
 
 
-@media (max-width: 870px) {
+@media (max-width: 992px) {
 
   .barsMenu {
     display: inline-block;

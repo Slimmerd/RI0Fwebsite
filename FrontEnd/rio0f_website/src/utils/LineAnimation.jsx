@@ -1,4 +1,3 @@
-import {useSpring, animated} from "react-spring";
 import VisibilitySensor from "react-visibility-sensor";
 import React, {useState} from "react";
 import {Spring} from "react-spring/renderprops";

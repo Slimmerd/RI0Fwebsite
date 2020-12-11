@@ -19,15 +19,22 @@ const BlockHeader = styled.div`
     
     padding: 37px 0 21px 0;
     
-    @media (max-width: 576px){
-    font-size: 76px;
-    line-height: 82px;
-}
+      
+ @media (max-width: 786px){
+  font-size: 76px;
+  line-height: 86px;}
+    
 
-@media (max-width:376px){
-    font-size: 50px;
-    line-height: 64px;
-}
+  @media (max-width:576px){
+      font-size: 54px;
+      line-height: 56px;
+      }
+
+ @media (max-width:375px){
+       font-size: 42px;
+      line-height: 48px;
+      }
+
 `
 
 const GalleryCard = styled.div`
@@ -46,6 +53,7 @@ const GalleryCard = styled.div`
       
   svg{
      margin: 0 auto;
+     padding-right: 16px;
      }
      
      @media (max-width: 1200px){
@@ -68,6 +76,7 @@ const GalleryCard = styled.div`
 @media (max-width:376px){
     width: 270px;
     height: 280px;
+    
 }
 `
 
@@ -81,7 +90,7 @@ export const PhotosPageAction = () => {
 
                 <FadeInContainer>
                 <GalleryCard>
-                    <Icon icon={cameraIcon} style={{color: '#ffffff', fontSize: '256px'}}/>
+                    <Icon icon={cameraIcon} style={{color: '#ffffff', fontSize: '256px', alignItems:  'top'}}/>
                 </GalleryCard>
                 </FadeInContainer>
             </div>

@@ -1,0 +1,14 @@
+{
+  "naming_block":{
+    "heading": "Contacts",
+    "sub": "You can contact us regarding expedition information or website work"
+  },
+  "expedition_question": {
+    "heading": "Questions about expedition",
+    "name": "Ivan Ivanov"
+  },
+  "site_questions": {
+    "heading": "Questions about website",
+    "name": "Daniil Silin"
+  }
+}

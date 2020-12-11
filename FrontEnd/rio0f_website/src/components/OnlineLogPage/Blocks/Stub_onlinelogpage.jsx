@@ -2,6 +2,7 @@ import React from 'react'
 import styled from "styled-components";
 import {FadeInContainer} from "../../../utils/FadeInAnimation";
 import { useSpring, animated } from 'react-spring'
+import {useTranslation} from "react-i18next";
 
 const MainDiv = styled.div`
     height: 650px;
@@ -24,11 +25,40 @@ const MainDiv = styled.div`
 
   color: #FFFFFF;
     }
+    
+    @media (max-width: 1200px){
+  
+}
+
+@media (max-width: 992px){
+  
+}
+
+@media (max-width: 768px){
+  
+}
+
+@media (max-width: 576px){
+  .text{
+  padding: 15px 0 15px 0;
+  font-size: 64px;
+  line-height: 68px;
+  }
+}
+
+@media (max-width:375px){
+  .text{
+  padding: 15px 0 15px 0;
+  font-size: 48px;
+  line-height: 52px;
+  }
+}
 `
 const calc = (x, y) => [-(y - window.innerHeight / 2) / 20, (x - window.innerWidth / 2) / 20, 1.05]
 const trans = (x, y, s) => `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`
 
 export const OnlineLogPageStub = () => {
+    const { t, i18n } = useTranslation()
     const [props, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 10, tension: 350, friction: 40 } }))
     return (
         <MainDiv>
@@ -40,7 +70,7 @@ export const OnlineLogPageStub = () => {
                         onMouseLeave={() => set({xys: [0, 0, 1]})}
                         style={{transform: props.xys.interpolate(trans)}}
                     >   <div className={'block'}>
-                        <div className={'text'}>Будет опубликован позже</div></div></animated.div>
+                        <div className={'text'}>{t('onlinelog:stub_block.heading')}</div></div></animated.div>
                 </FadeInContainer>
             </div>
         </MainDiv>

@@ -1,5 +1,3 @@
-import {Col, Row, Button} from "antd";
-import styled from "styled-components";
 import {DonatePageNaming} from "./Blocks/Naming_donatepage";
 import {DonatePageMethods} from "./Blocks/Methods_donatepage";
 import {DonatePageMainSponsors} from "./Blocks/MainSponsors_donatepage";

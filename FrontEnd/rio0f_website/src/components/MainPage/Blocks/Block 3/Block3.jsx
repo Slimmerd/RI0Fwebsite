@@ -1,11 +1,13 @@
+import React from 'react'
 import {Col, Row} from "antd";
-import rrc_logo from "../../../../assets/rrc_logo.png"
-import {PlanCard} from "./Card/PlanCard";
+import {PlanCard} from "./Components/PlanCard";
 import {FadeInContainer} from "../../../../utils/FadeInAnimation";
 import {CardFadeInContainer} from "../../../../utils/CardSideAnimation";
 import styled from "styled-components";
 import { LineSContainer} from "../../../../utils/LineAnimation";
 import {useEffect, useState} from "react";
+import {SponsorsBlock} from "./Components/Sponsors";
+import {useTranslation} from "react-i18next";
 
 //TODO: Inserting sponsor logo system, inserting card system, card pathway animation
 
@@ -54,6 +56,7 @@ position: relative;
 export const MainPageBlock3 = () => {
     const [isSize, setSize] = useState(window.innerWidth);
     const breakpoint = 768
+    const { t, i18n } = useTranslation()
 
         useEffect(() => {
             window.addEventListener("resize", () => setSize(window.innerWidth));
@@ -63,40 +66,14 @@ export const MainPageBlock3 = () => {
         <div className={'block3'}>
             <div className={'container'}>
                 <FadeInContainer>
-                <Row align={'center'} >
-                    <Col className={'sponsorsblock'}  md={4} lg={3}>
-                        <img src={rrc_logo} alt=""/>
-                    </Col>
-                    <Col className={'sponsorsblock'}  md={4} lg={3}>
-                        <img src={rrc_logo} alt=""/>
-                    </Col>
-                    <Col className={'sponsorsblock'}  md={4} lg={3}>
-                        <img src={rrc_logo} alt=""/>
-                    </Col>
-                    <Col className={'sponsorsblock'}  md={4} lg={3}>
-                        <img src={rrc_logo} alt=""/>
-                    </Col>
-                    <Col className={'sponsorsblock'}  md={4} lg={3}>
-                        <img src={rrc_logo} alt=""/>
-                    </Col>
-                    <Col className={'sponsorsblock'}  md={4} lg={3}>
-                        <img src={rrc_logo} alt=""/>
-                    </Col>
-                    <Col className={'sponsorsblock'}  md={4} lg={3}>
-                        <img src={rrc_logo} alt=""/>
-                    </Col>
-                    <Col className={'sponsorsblock'} md={4} lg={3}>
-                        <img src={rrc_logo} alt=""/>
-                    </Col>
-                </Row>
+                <SponsorsBlock/>
                 </FadeInContainer>
-
 
                 <div className={'expplan'}>
                     <Row>
                         <Col span={24}>
                             <FadeInContainer>
-                            <div className={'expplanh1'}>План Экспедиции</div>
+                            <div className={'expplanh1'}>{t('main:Block3.plan_title')}</div>
                             </FadeInContainer>
                         </Col>
                     </Row>
@@ -104,7 +81,7 @@ export const MainPageBlock3 = () => {
 
                     <Row className={'cardblock'} justify={isSize <= breakpoint ? 'center' : "start"}>
                         <CardFadeInContainer side={false}>
-                        <PlanCard/>
+                        <PlanCard cardNumber={'1'}/>
                         </CardFadeInContainer>
                     </Row>
 
@@ -117,7 +94,7 @@ export const MainPageBlock3 = () => {
 
                     <Row className={'cardblock'} justify={isSize <= breakpoint ? 'center' : "end"} >
                         <CardFadeInContainer side={true}>
-                        <PlanCard />
+                        <PlanCard cardNumber={'2'}/>
                         </CardFadeInContainer>
                     </Row>
 
@@ -125,17 +102,17 @@ export const MainPageBlock3 = () => {
                     <ThirdPath>
                     <Row className={'cardblock'} justify={isSize <= breakpoint ? 'center' : "start"}>
                         <CardFadeInContainer side={false}>
-                        <PlanCard/>
+                        <PlanCard cardNumber={'3'}/>
                         </CardFadeInContainer>
                     </Row>
                         <LineSContainer svg={{width:"219", height:"137", viewBox:"0 0 219 137", fill:"none", xmlns:"http://www.w3.org/2000/svg"}} path={{d:"M0.917523 30.6895C18.1131 19.866 30.3883 1.40007 69.7652 1.39988C145.888 3.45375 159.388 16.9166 178.388 39.9541C218.388 88.4541 217.888 103.954 217.888 136.454", stroke:"#9C9E9F", strokeLinecap:"round", strokeLinejoin:"round"}}/>
                     </ThirdPath>
                     <Row className={'cardblock'} justify={isSize <= breakpoint? 'center' : "end"}>
                         <CardFadeInContainer side={true}>
-                        <PlanCard/>
+                        <PlanCard cardNumber={'4'}/>
                         </CardFadeInContainer>
                     </Row>
-
+                    <div style={{paddingBottom: '80px'}}></div>
                 </div>
             </div>
         </div>

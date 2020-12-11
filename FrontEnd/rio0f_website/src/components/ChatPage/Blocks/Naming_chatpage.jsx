@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React from 'react'
 import {FadeInContainer} from "../../../utils/FadeInAnimation";
+import {useTranslation} from "react-i18next";
 
 const HeaderBlock = styled.div`
     height: 300px;
@@ -29,25 +30,44 @@ const HeaderBlock = styled.div`
     line-height: 28px;
     }
     
-      @media (max-width:425px){
+       
+        @media (max-width: 786px){
+  .header{
+  font-size: 76px;
+  line-height: 86px;}}
+    
+
+  @media (max-width:576px){
     .header{
-      font-size: 66px;
-      line-height: 76px;
+      font-size: 54px;
+      line-height: 56px;
       }
       .sub{
       font-size: 18px;
     line-height: 20px;
       }
 }
+
+// @media (max-width:375px){
+//    .header{
+//      font-size: 42px;
+//      line-height: 48px;
+//      }
+//      .sub{
+//      font-size: 16px;
+//    line-height: 18px;
+//      }
+//}
 `
 
 export const ChatPageNaming = () =>{
+    const { t, i18n } = useTranslation()
     return(
         <HeaderBlock>
             <div  className={'container'}>
                 <FadeInContainer>
-                <div className={'header'}>Общение</div>
-                <div className={'sub'}>Здесь вы можете оставить комментарии</div>
+                <div className={'header'}>{t('chat:naming_block.heading')}</div>
+                <div className={'sub'}>{t('chat:naming_block.sub')}</div>
                 </FadeInContainer>
             </div>
         </HeaderBlock>

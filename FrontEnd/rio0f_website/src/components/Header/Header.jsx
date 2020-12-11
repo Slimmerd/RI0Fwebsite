@@ -1,24 +1,14 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {NavLink} from "react-router-dom";
-import {Drawer, Button, Menu, Row, Col, Divider} from 'antd';
-import {MenuOutlined} from '@ant-design/icons'
+import {Row, Col} from 'antd';
 import RightMenu from "./menus/RightMenu";
 import LeftMenu from "./menus/LeftMenu";
+import SideBar from "../../utils/SideBar";
 
-import { useLocation, useRouteMatch } from 'react-router-dom';
 const Header = (props) => {
-
-    let [mobileNavbar, setMobileNavbar] = useState(false)
-
-    const showDrawer = () => {
-        setMobileNavbar(true)
-    };
-    const onClose = () => {
-        setMobileNavbar(false)
-    };
-
     return (
         <div className={'menuBar'}>
+
             <Row className={'menuCon'}>
                 <Col xs={3} sm={3} md={3} lg={3} xl={4}>
                     <div className={'logo'}>
@@ -36,21 +26,9 @@ const Header = (props) => {
                     <div className={'rightMenu'}>
                         <RightMenu/>
                     </div>
-                    <Button className={'barsMenu'} icon={<MenuOutlined style={{color: '#1DA57A'}}/>} type="primary" onClick={showDrawer}>
-                        {/*<span className={'barsBtn'}></span>*/}
-                    </Button>
 
-                    <Drawer
-                        title="Basic Drawer"
-                        placement="right"
-                        closable={false}
-                        onClose={onClose}
-                        visible={mobileNavbar}
-                    >
-                        <RightMenu/>
-                        <Divider/>
-                        <LeftMenu/>
-                    </Drawer>
+                    <SideBar/>
+
                 </Col>
             </Row>
         </div>

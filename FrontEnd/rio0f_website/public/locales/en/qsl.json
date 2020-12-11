@@ -1,0 +1,21 @@
+{
+  "naming_block": {
+    "sub": "All information related to QSL cards"
+  },
+  "requirements_block": {
+    "heading": "Shipping conditions",
+    "Card1": {
+    },
+    "Card2": {
+    },
+    "Card3": {
+    },
+    "Card4": {
+    }
+  },
+  "manager_block": {
+    "heading": "Manager",
+    "sub": "You can contact him about sending a QSL card process",
+    "information": ""
+  }
+}

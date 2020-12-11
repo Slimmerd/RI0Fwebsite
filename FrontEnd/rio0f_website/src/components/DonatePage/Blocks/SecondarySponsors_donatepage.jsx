@@ -1,10 +1,10 @@
-import {Col, Row, Button} from "antd";
 import styled from "styled-components";
 import React from 'react'
 import {FadeInContainer} from "../../../utils/FadeInAnimation";
+import {useTranslation} from "react-i18next";
 
 const MainSponsorBlockContainer = styled.div`
-    height: 710px;
+    min-height: 710px;
     background: #ECF0F1;
 `
 const BlockHeader = styled.div`
@@ -17,14 +17,31 @@ const BlockHeader = styled.div`
     color: #2C3E50;
     
     padding-top: 25px;
+  
+  @media (max-width: 786px){
+  font-size: 76px;
+  line-height: 86px;
+  }
+    
+  @media (max-width:576px){
+      font-size: 54px;
+      line-height: 56px;  
+}
+
+ @media (max-width:375px){
+      font-size: 42px;
+      line-height: 48px;
+} 
 `
 
 export const DonatePageSecondarySponsors = () => {
+    const { t, i18n } = useTranslation()
+
     return (
         <MainSponsorBlockContainer>
             <div className={'container'}>
                 <FadeInContainer>
-                <BlockHeader>Cпонсоры</BlockHeader>
+                <BlockHeader>{t('donate:sponsor_block.heading')}</BlockHeader>
                 </FadeInContainer>
             </div>
         </MainSponsorBlockContainer>

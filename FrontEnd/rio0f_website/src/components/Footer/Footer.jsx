@@ -1,8 +1,9 @@
-import React, {useState} from 'react'
-import {Button, Col, Divider, Drawer, Row} from "antd";
+import React from 'react'
+import {Col, Row} from "antd";
 import styled from "styled-components";
 import {FooterNavbar} from "./menu/FooterNavbar";
-import {MenuOutlined} from "@ant-design/icons";
+import SideBar from "../../utils/SideBar";
+import {useTranslation} from "react-i18next";
 
 const FooterContainer = styled.div`
       //height: 100%;
@@ -14,6 +15,7 @@ const FooterContainer = styled.div`
       @media (max-width: 870px){
       height: 200px;
       }
+      
       
 //Mobile menu
 .barsMenu {
@@ -45,7 +47,7 @@ const FooterContainer = styled.div`
   border-bottom-color: transparent;
 }
 
-@media (max-width: 870px) {
+@media (max-width: 992px) {
 
   .barsMenu {
     display: inline-block;
@@ -72,6 +74,8 @@ font-weight: 500;
 font-size: 32px;
 line-height: 37px;
 color: #2C3E50;
+
+border-radius: 5px;
   
  
 `
@@ -88,14 +92,7 @@ const LastRowText = styled.div`
 `
 
 export const Footer = () => {
-    let [mobileNavbar, setMobileNavbar] = useState(false)
-
-    const showDrawer = () => {
-        setMobileNavbar(true)
-    };
-    const onClose = () => {
-        setMobileNavbar(false)
-    };
+    const { t, i18n } = useTranslation()
 
     return (
         <FooterContainer>
@@ -109,26 +106,14 @@ export const Footer = () => {
                         <div className={'superMenu'}>
                         <FooterNavbar/>
                         </div>
-                        <Button className={'barsMenu'}  icon={<MenuOutlined style={{color: '#FFF'}}/>} type="primary" onClick={showDrawer}>
-                        </Button>
-                        <Drawer
-                            title="Basic Drawer"
-                            placement="right"
-                            closable={false}
-                            onClose={onClose}
-                            visible={mobileNavbar}
-                        >
-                            <FooterNavbar/>
-                        </Drawer>
+                        <SideBar/>
                     </Col>
                 </Row>
                 <Row justify={'start'} align={'bottom'}>
-                    <LastRowText>Задизайнено и разработано Даниилом Силиным</LastRowText>
+                    <LastRowText>{t('dev')}</LastRowText>
                 </Row>
 
             </div>
         </FooterContainer>
     )
-
-
 }

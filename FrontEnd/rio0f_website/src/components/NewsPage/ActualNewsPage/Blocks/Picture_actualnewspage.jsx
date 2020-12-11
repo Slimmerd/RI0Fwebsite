@@ -13,9 +13,10 @@ const HeaderBlock = styled.div`
     
     color: #2C3E50;
     
-    svg{
-      margin: 0 auto;
-      }
+      svg{
+     margin: 0 auto;
+     padding-right: 16px;
+     }
 `
 
 export const ActualNewsPagePicture = () => {

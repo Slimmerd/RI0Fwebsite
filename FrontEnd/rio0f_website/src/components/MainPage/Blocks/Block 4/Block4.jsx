@@ -3,14 +3,15 @@ import styled from "styled-components";
 import {TeamCard} from "./Card/TeamCard";
 import {FadeInContainer} from "../../../../utils/FadeInAnimation";
 import React from 'react'
+import {useTranslation} from "react-i18next";
 
 const Block = styled.div`
-  height: 1283px;
+  min-height: 1283px;
    @media (max-width: 1200px) {
-   height: 1809px;
+   min-height: 1809px;
   }
   @media (max-width: 768px) {
-   height: 2559px;
+   min-height: 2559px;
   }
   
 `
@@ -34,34 +35,36 @@ const CardBlock = styled.div`
 `
 
 export const MainPageBlock4 = () => {
+    const { t, i18n } = useTranslation()
     return (
         <Block>
             <div className={'container'}>
                 <CardBlock>
                     <Row style={{padding: '124px 0 39px 0'}} justify="center">
                         <FadeInContainer>
-                            <BlockHeader>Команда</BlockHeader>
+                            <BlockHeader>{t('main:Block4.team_title')}</BlockHeader>
                         </FadeInContainer>
                     </Row>
                     <FadeInContainer>
-                        <Row align={'center'} gutter={{ xs: 0, sm: 16, md: 24}} >
+                        <Row align={'center'} gutter={[{ xs: 0, sm: 0, md: 24},{ xs: 42, sm: 42, md: 54}]} >
                             <Col   xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
-                                <TeamCard/>
+                                <TeamCard cardNumber={'1'}/>
                             </Col>
                             <Col   xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
-                                <TeamCard/>
+                                <TeamCard cardNumber={'2'}/>
                             </Col>
                             <Col  xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
-                                <TeamCard/>
+                                <TeamCard cardNumber={'3'}/>
                             </Col>
                             <Col   xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
-                                <TeamCard/>
+                                <TeamCard cardNumber={'4'}/>
                             </Col>
                             <Col  xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
-                                <TeamCard/>
+                                <TeamCard cardNumber={'5'}/>
                             </Col>
                         </Row>
         </FadeInContainer>
+                    <div style={{paddingBottom: '80px'}}></div>
 </CardBlock>
 </div>
 </Block>

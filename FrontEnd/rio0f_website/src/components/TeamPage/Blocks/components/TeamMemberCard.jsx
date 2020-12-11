@@ -26,9 +26,10 @@ const CardShape = styled.div`
     
      display: flex;
       align-items: center;
-      svg{
-      margin: 0 auto;
-      }
+        svg{
+     margin: 0 auto;
+     padding-right: 16px;
+     }
     }
     
     .right{
@@ -115,6 +116,11 @@ const CardShape = styled.div`
         }
       }
        @media (max-width: 576px){
+       .header{
+        font-size: 64px;
+        line-height: 72px;
+    }
+       
         .information {width: 400px;}
         .text {width: 350px;
         font-size: 40px;
@@ -122,7 +128,7 @@ const CardShape = styled.div`
     }
     
     @media (max-width:376px){
-   
+    
     .information { width: 270px;;}
         .text {width: 250px;
         font-size: 30px;

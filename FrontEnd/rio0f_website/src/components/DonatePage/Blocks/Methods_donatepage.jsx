@@ -1,11 +1,11 @@
-import {Col, Row, Button} from "antd";
+import {Col, Row} from "antd";
 import styled from "styled-components";
 import React from 'react'
 import {FadeInContainer} from "../../../utils/FadeInAnimation";
+import {useTranslation} from "react-i18next";
 
 const MethodsPageContainer = styled.div`
-      height: 1009px;
-    
+      min-height: 1009px;
 `
 
 const BlockHeader = styled.div`
@@ -16,12 +16,27 @@ const BlockHeader = styled.div`
     line-height: 142px;
     color: #2C3E50;
     
-    padding: 22px 0 94px 0;
+    padding: 42px 0 94px 0;
+    
+  @media (max-width: 786px){
+  font-size: 76px;
+  line-height: 86px;
+  }
+    
+  @media (max-width:576px){
+      font-size: 54px;
+      line-height: 56px;  
+}
+
+ @media (max-width:375px){
+      font-size: 42px;
+      line-height: 48px;
+} 
 `
 
 const Card = styled.div`
     width: 540px;
-    height: 250px;
+    min-height: 250px;
     
     background: #2C3E50;
     border: 0.5px solid #BDC3C7;
@@ -45,42 +60,66 @@ const Card = styled.div`
     text-align: left;
     padding: 12px 0 0 27px;
     }
+    
+     @media (max-width: 786px){
+     
+     }
+    
+    @media (max-width: 576px){
+    width: 360px;
+    .Headers{
+    font-size: 32px;
+    line-height: 36px;
+    }
+}
+
+@media (max-width:375px){
+    width: 270px;
+    .Headers{
+    font-size: 28px;
+    line-height: 32px;
+    text-align: center;
+    padding: 12px 0 0 0;
+    }
+}
 `
 
 export const DonatePageMethods = () => {
+    const { t, i18n } = useTranslation()
+
     return (
         <MethodsPageContainer>
         <div className={'container'}>
 
             <FadeInContainer>
-            <BlockHeader>Способы Пожертвовать</BlockHeader>
+            <BlockHeader>{t('donate:methods_block.heading')}</BlockHeader>
             </FadeInContainer>
 
             <FadeInContainer>
-            <Row justify={'center'} gutter={[30, 90]}>
+            <Row justify={'center'} gutter={[{xs: 0, sm: 30, md: 30, lg: 30}, 90]}>
                 <Col>
                     <Card>
-                        <div className={'Headers'}>Paypal:</div>
+                        <div className={'Headers'}>{t('donate:methods_block.paypal.heading')}:</div>
                     </Card>
                 </Col>
                 <Col>
                     <Card>
-                        <div className={'Headers'}>Банковская карта:</div>
+                        <div className={'Headers'}>{t('donate:methods_block.card_transfer.heading')}:</div>
                     </Card>
                 </Col>
             </Row>
             </FadeInContainer>
 
             <FadeInContainer>
-            <Row justify={'center'} gutter={[30, 90]}>
+            <Row justify={'center'} gutter={[{xs: 0, sm: 30, md: 30, lg: 30}, 90]}>
                 <Col>
                     <Card>
-                        <div className={'Headers'}>Банковский счет:</div>
+                        <div className={'Headers'}>{t('donate:methods_block.bank_transfer.heading')}:</div>
                     </Card>
                 </Col>
                 <Col>
                     <Card>
-                        <div className={'Headers'}>Что-то еще?</div>
+                        <div className={'Headers'}>{t('donate:methods_block.something_else.heading')}</div>
                     </Card>
                 </Col>
             </Row>

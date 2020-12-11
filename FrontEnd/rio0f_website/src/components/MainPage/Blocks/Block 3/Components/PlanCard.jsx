@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
+import {useTranslation} from "react-i18next";
 
 const CardShape = styled.div`
     font-family: Roboto, sans-serif;
@@ -15,13 +16,13 @@ const CardShape = styled.div`
     color: #1A1E22;
      @media (max-width: 576px) {
      min-height: 260px;
-      max-width: 420px;
+      max-width: 375px;
      }
       @media (max-width: 375px) {
       min-height: 260px;
       max-width: 300px;
      }
-      @media (max-width: 310px) {
+      @media (max-width: 320px) {
       min-height: 320px;
       max-width: 250px !important;
       }
@@ -60,7 +61,7 @@ const BackNumber = styled.div`
     bottom: -2.75%;
     display: flex;
     justify-content: center;
-
+    user-select: none;
     color: #2C3E50;
 
     opacity: 0.07;
@@ -69,15 +70,17 @@ const BackNumber = styled.div`
 //TODO: Custom Date, Header, Text
 
 
-export const PlanCard = () => {
+export const PlanCard = ({cardNumber}) => {
+    const { t, i18n } = useTranslation()
+
     return (
         <CardShape style={{position: 'relative', zIndex: '2'}}>
             <div style={{padding: '46px 0 0 30px'}}>
-                <DateDiv>12 Декабря 2020</DateDiv>
-                <HeaderDiv>Прибытие на Сахалин</HeaderDiv>
-                <ContentDiv>Кооррдинаты там и еще чо всякая нужная инфа</ContentDiv>
+                <DateDiv>{t('main:Block3.Card'+cardNumber+'.date')}</DateDiv>
+                <HeaderDiv>{t('main:Block3.Card'+cardNumber+'.heading')}</HeaderDiv>
+                <ContentDiv>{t('main:Block3.Card'+cardNumber+'.description')}</ContentDiv>
             </div>
-            <BackNumber>1</BackNumber>
+            <BackNumber>{cardNumber}</BackNumber>
         </CardShape>
 
 

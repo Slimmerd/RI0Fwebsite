@@ -16,7 +16,7 @@ import {ActualNewsPage} from "./components/NewsPage/ActualNewsPage/ActualNewsPag
 import {OnlineLogPage} from "./components/OnlineLogPage/OnlineLogPage";
 import {ChatPage} from "./components/ChatPage/ChatPage";
 import {AppAssa} from "./components/test";
-import React,{ useEffect } from "react";
+import React, {Suspense, useEffect} from "react";
 
 import { useLocation, useRouteMatch } from 'react-router-dom';
 function App() {
@@ -32,6 +32,7 @@ function App() {
     }
 
     return (
+        <Suspense fallback={<div>Loading...</div>}>
         <BrowserRouter>
             <div className="app-wrapper">
                 <ScrollToTop/>
@@ -45,7 +46,7 @@ function App() {
                         <Route exact path="/news" render={() => <NewsPage/>}/>
                         <Route exact path="/donate" render={() => <DonatePage/>}/>
                         <Route exact path="/contacts" render={() => <ContactsPage/>}/>
-                        <Route exact path="/gallery" render={() => <PhotosPage/>}/>
+                        <Route exact path="/photos" render={() => <PhotosPage/>}/>
                         <Route exact path="/qsl" render={() => <QSLPage/>}/>
                         <Route exact path="/plan" render={() => <PlanPage/>}/>
                         <Route exact path="/hardware" render={() => <HardwarePage/>}/>
@@ -61,6 +62,7 @@ function App() {
                 <Footer/>
             </div>
         </BrowserRouter>
+        </Suspense>
     );
 }
 

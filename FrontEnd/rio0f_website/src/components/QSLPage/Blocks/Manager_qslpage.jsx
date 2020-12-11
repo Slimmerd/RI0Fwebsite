@@ -1,6 +1,7 @@
 import {Col, Row} from "antd";
 import styled from "styled-components";
 import {FadeInContainer} from "../../../utils/FadeInAnimation";
+import {useTranslation} from "react-i18next";
 
 const ManagerBlock = styled.div`
     min-height: 729px;
@@ -14,7 +15,7 @@ const ManagerBlock = styled.div`
     font-size: 96px;
     line-height: 142px;
     
-    padding: 29px 0 9px 0;
+    padding: 29px 0 19px 0;
     }
     
     .sub{
@@ -32,19 +33,14 @@ const ManagerBlock = styled.div`
     }
     
     
-        @media (max-width: 768px){
-  .header{
-      font-size: 76px;
-      line-height: 86px;}
-}
     
-    @media (max-width: 576px){
+        @media (max-width: 786px){
   .header{
-      font-size: 76px;
-      line-height: 86px;}
-}
+  font-size: 76px;
+  line-height: 86px;}}
+    
 
-  @media (max-width:425px){
+  @media (max-width:576px){
     .header{
       font-size: 54px;
       line-height: 56px;
@@ -54,6 +50,18 @@ const ManagerBlock = styled.div`
     line-height: 20px;
       }
 }
+
+ @media (max-width:375px){
+    .header{
+      font-size: 42px;
+      line-height: 48px;
+      }
+      .sub{
+      font-size: 16px;
+    line-height: 18px;
+      }
+}
+
 `
 
 const Card = styled.div`
@@ -111,12 +119,14 @@ const Card = styled.div`
 `
 
 export const QSLPageManager = () =>{
+    const { t, i18n } = useTranslation()
+
     return(
         <ManagerBlock>
         <div className={'container'}>
             <FadeInContainer>
-            <div className={'header'}>Менеджер</div>
-            <div className={'sub'}>С ним можно связаться по поводу отправки QSL карточки</div>
+            <div className={'header'}>{t('qsl:manager_block.heading')}</div>
+            <div className={'sub'}>{t('qsl:manager_block.sub')}</div>
             </FadeInContainer>
             <FadeInContainer>
                 <div className={'cardings'}>

@@ -49,9 +49,10 @@ const CardShape = styled.div`
      display: flex;
       align-items: center;
       border-radius: 10px 0 0 10px;
-      svg{
-      margin: 0 auto;
-      }
+        svg{
+     margin: 0 auto;
+     padding-right: 16px;
+     }
     }
     
     .text{

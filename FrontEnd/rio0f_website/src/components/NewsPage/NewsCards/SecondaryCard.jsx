@@ -25,9 +25,10 @@ const CardShape = styled.div`
       align-items: center;
       border-radius: 10px 10px 0 0;
       
-      svg{
-       margin: 0 auto;
-      }
+       svg{
+     margin: 0 auto;
+     padding-right: 0px;
+     }
       }
       
     .text{

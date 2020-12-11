@@ -2,6 +2,7 @@ import React from 'react'
 import {Col, Row, Button} from "antd";
 import styled from "styled-components";
 import {FadeInContainer} from "../../../utils/FadeInAnimation";
+import {useTranslation} from "react-i18next";
 
 const HeaderBlock = styled.div`
     height: 350px;
@@ -29,13 +30,14 @@ const HeaderBlock = styled.div`
     font-size: 24px;
     line-height: 28px;
     }
-    @media (max-width: 576px){
+     
+        @media (max-width: 786px){
   .header{
-      font-size: 76px;
-      line-height: 86px;}
-}
+  font-size: 76px;
+  line-height: 86px;}}
+    
 
-  @media (max-width:425px){
+  @media (max-width:576px){
     .header{
       font-size: 54px;
       line-height: 56px;
@@ -45,15 +47,29 @@ const HeaderBlock = styled.div`
     line-height: 20px;
       }
 }
+
+// @media (max-width:375px){
+//    .header{
+//      font-size: 42px;
+//      line-height: 48px;
+//      }
+//      .sub{
+//      font-size: 16px;
+//    line-height: 18px;
+//      }
+//}
+
 `
 
 export const QSLPageNaming = () => {
+    const { t, i18n } = useTranslation()
+
     return (
         <HeaderBlock>
             <div className={'container'}>
                 <FadeInContainer>
                     <div className={'header'}>QSL</div>
-                    <div className={'sub'}>Вся информация связанная с QSL карточками</div>
+                    <div className={'sub'}>{t('qsl:naming_block.sub')}</div>
                 </FadeInContainer>
             </div>
         </HeaderBlock>

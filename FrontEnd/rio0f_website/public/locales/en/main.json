@@ -1,0 +1,56 @@
+{
+  "Block2": {
+    "island_name": "Iturup",
+    "island_description": "Iturup (from the Ainu Etorop; jap. 択 捉 島 Etorofu. On the Russian map of 1745 - Tsitronnaya) is an island in the southern group of the Great ridge of the Kuril Islands, the largest island in the archipelago. The area is 3174.71 km². The length of the coastline reaching 581.9 km. It consists of volcanic massifs and mountain ranges. The island has 20 volcanoes, of which nine are active. The population of the island is 6485 people."
+  },
+  "Block3": {
+    "plan_title": "Expedition plan",
+    "Card1": {
+      "date": "12 December 2020",
+      "heading": "Arrival to Sakhalin",
+      "description": "The coordinates and any other necessary info"
+    },
+    "Card2": {
+      "date": "12 December 2020",
+      "heading": "Arrival to Sakhalin",
+      "description": "The coordinates and any other necessary info"
+    },
+    "Card3": {
+      "date": "12 December 2020",
+      "heading": "Arrival to Sakhalin",
+      "description": "The coordinates and any other necessary info"
+    },
+    "Card4": {
+      "date": "12 December 2020",
+      "heading": "Arrival to Sakhalin",
+      "description": "The coordinates and any other necessary info"
+    }
+  },
+  "Block4": {
+    "team_title": "Team",
+    "Card1": {
+      "name": "Eugene Shelkanovtcev",
+      "call": "RZ3EC"
+    },
+    "Card2": {
+      "name": "Andrey Silin",
+      "call": "R6MG"
+    },
+    "Card3": {
+      "name": "Sergey Pavlov",
+      "call": "RX3F"
+    },
+    "Card4": {
+      "name": "Sergey Morozov",
+      "call": "RA3NAN"
+    },
+    "Card5": {
+      "name": "Daniil Silin",
+      "call": "????"
+    },
+    "Card6": {
+      "name": "Ivan Ivanov",
+      "call": "VANYA"
+    }
+  }
+}

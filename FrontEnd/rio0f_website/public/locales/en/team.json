@@ -1,0 +1,13 @@
+{
+  "naming_block": {
+    "heading": "Team",
+    "sub": "Information about the expedition participants"
+  },
+  "card_block": {
+    "heading": "Team members",
+    "Card1": {
+      "call": "Boy",
+      "information": "Hello"
+    }
+  }
+}

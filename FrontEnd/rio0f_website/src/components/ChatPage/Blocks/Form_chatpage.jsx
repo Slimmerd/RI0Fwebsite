@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from "styled-components";
 import {Col, Row} from "antd";
 import {Form, Input, Button} from 'antd';
 import {FadeInContainer} from "../../../utils/FadeInAnimation";
+import {useTranslation} from "react-i18next";
 
 const CardShape = styled.div`
     min-height: 500px;
@@ -58,18 +59,26 @@ const CardShape = styled.div`
       padding-top: 20px;
       }
       
+       .ant-btn > .ant-btn-loading-icon .anticon {
+  padding-right: 0 !important;
+  }
+  
+  .ant-btn-loading-icon{
+  padding-right: 25px !important;
+  }
+      
       button{
+      -webkit-mask-image: -webkit-radial-gradient(white, black);
       width: 220px;
       height: 64px;
-
+      overflow: hidden;
       background: #FFFFFF;
       border-radius: 10px;
-      
       color: #2C3E50;
-       border-color: #37617e;
+      border-color: #2C3E50;
       &:hover {
-          background-color: #37617e !important;
-          border-color: #37617e !important;
+          background: hsl(210, 29%, 40%) !important;
+          border-color: hsl(210, 29%, 40%) !important;
            color: #FFFFFF;
            }
         }
@@ -160,6 +169,10 @@ const CardShape = styled.div`
 
 @media (max-width: 768px){
     max-width: 550px;
+      .text .header{
+      font-size: 42px;
+      line-height: 48px;
+      }
     }
 
 @media (max-width: 576px){
@@ -169,9 +182,7 @@ const CardShape = styled.div`
     width: 350px;
     }
      .header{
-    color: #2C3E50;
-    font-size: 48px;
-    line-height: 48px;}
+    
     }
 }
 
@@ -185,7 +196,6 @@ const CardShape = styled.div`
     height: 150px !important;
     }
      .header{
-    color: #2C3E50;
     font-size: 38px;
     line-height: 38px;
     }
@@ -213,6 +223,13 @@ const CardShape = styled.div`
 `
 
 export const ChatPageForm = () => {
+    const { t, i18n } = useTranslation()
+    const [loading, setLoading] = useState(false)
+
+    const OnClick = () => {
+        setLoading(!loading)
+    }
+
     return (
         <CardShape>
             <div className={'container'}>
@@ -220,25 +237,26 @@ export const ChatPageForm = () => {
                     <Row>
                         <Col span={16} xs={24} sm={24} md={24} lg={16} className={'text'}>
                             <div style={{margin: '0 auto'}}>
-                                <div className={'header'}>Комментарий</div>
+                                <div className={'header'}>{t('chat:form_block.heading')}</div>
                                 <Input.TextArea
-                                    placeholder="Комментарий"
+                                    placeholder={t('chat:form_block.textarea')}
                                 />
                             </div>
                         </Col>
                         <Col className={'form'} span={8} xs={24} sm={24} md={34} lg={8}>
                             <Form layout={'vertical'} size={'large'}>
-                                <Form.Item label="Имя:">
-                                    <Input placeholder="Ваше имя"/>
+                                <Form.Item label={`${t('chat:form_block.name_heading')}:`}>
+                                    <Input placeholder={`${t('chat:form_block.name_input')}`}/>
                                 </Form.Item>
-                                <Form.Item label="Позывной:">
-                                    <Input placeholder="Ваш позывной"/>
+                                <Form.Item label={`${t('chat:form_block.call')}:`}>
+                                    <Input placeholder={`${t('chat:form_block.call_input')}`}/>
                                 </Form.Item>
-                                <Form.Item label="Email:">
-                                    <Input placeholder="Ваш Email"/>
+                                <Form.Item label={`${t('chat:form_block.email')}:`}>
+                                    <Input placeholder={`${t('chat:form_block.email_input')}`}/>
                                 </Form.Item>
                                 <Form.Item className={'button'}>
-                                    <Button type="primary">Отправить</Button>
+                                    <Button type="primary" loading={loading}
+                                            onClick={OnClick}>{t('chat:form_block.button')}</Button>
                                 </Form.Item>
                             </Form>
                         </Col>

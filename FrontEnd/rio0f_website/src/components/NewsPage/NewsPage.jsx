@@ -5,8 +5,7 @@ import {MainCard} from "./NewsCards/MainCard";
 import {SecondaryCard} from "./NewsCards/SecondaryCard";
 import {FadeInContainer} from "../../utils/FadeInAnimation";
 import {NewsAnimContainer} from "../../utils/NewsCardAnimation";
-
-//Fix: Header
+import {useTranslation} from "react-i18next";
 
 const NewsPageBlock = styled.div`
       background: #ECF0F1;
@@ -75,11 +74,35 @@ const NamingBlock = styled.div`
       margin: 0 auto;
       padding-top: 31px;
      }
-     @media (max-width:425px){
+         
+        @media (max-width: 786px){
+  .header{
+  font-size: 76px;
+  line-height: 86px;}}
+    
+
+  @media (max-width:576px){
     .header{
-      font-size: 76px;
-      line-height: 86px;}
+      font-size: 54px;
+      line-height: 56px;
+      }
+      .sub{
+      font-size: 18px;
+    line-height: 20px;
+      }
 }
+
+// @media (max-width:375px){
+//    .header{
+//      font-size: 42px;
+//      line-height: 48px;
+//      }
+//      .sub{
+//      font-size: 16px;
+//    line-height: 18px;
+//      }
+//}
+
 `
 
 const ExtraNews = styled.div`
@@ -88,10 +111,11 @@ const ExtraNews = styled.div`
     align-items: center;
     
     .button{
+     -webkit-mask-image: -webkit-radial-gradient(white, black);
     width: 300px;
     height: 75px;
-   
-    border-radius: 15px;
+    overflow: hidden;
+    border-radius: 15px 15px 15px 15px !important;
     font-family: Roboto,sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -100,27 +124,42 @@ const ExtraNews = styled.div`
     margin: 0 auto;
     color: #ECF0F1;
     }
-
-    .ant-btn.ant-btn-primary,
+   
+   .ant-btn.ant-btn-primary,
     .ant-btn-primary {
     background-color: #2C3E50;
     border-color: #2c3e50;
+  
     &:hover {
-    background-color: #37617e !important;
-    border-color: #37617e !important;
+    background: hsl(210, 29%, 40%) !important;
+    border-color: hsl(210, 29%, 40%) !important;
   }
+  }
+  
+  .ant-btn > .ant-btn-loading-icon .anticon {
+  padding-right: 0 !important;
+  }
+  
+  .ant-btn-loading-icon{
+  padding-right: 25px !important;
   }
 `
 
 export const NewsPage = () => {
     const [isSize, setSize] = useState(window.innerWidth);
     const breakpoint = 768
+    const { t, i18n } = useTranslation()
 
     useEffect(() => {
         window.addEventListener("resize", () => setSize(window.innerWidth));
     }, []);
 
 
+    const [loading, setLoading] = useState(false)
+
+    const OnClick = () => {
+        setLoading(!loading)
+    }
 
     return (
         <NewsPageBlock>
@@ -129,32 +168,32 @@ export const NewsPage = () => {
                 <FadeInContainer>
                     <NamingBlock>
                         <div className={'textblock'}>
-                            <div className={'header'}>RIØF Новости</div>
-                            <div className={'paragraph'}>Последние новости от нашей команды</div>
+                            <div className={'header'}>{t('news:title')}</div>
+                            <div className={'paragraph'}>{t('news:sub')}</div>
                         </div>
                     </NamingBlock>
                 </FadeInContainer>
                 {/*Main card*/}
                 <FadeInContainer>
-                    { isSize > breakpoint ? <MainCard/> : <div className={'test'}><SecondaryCard/></div>}
+                    {isSize > breakpoint ? <MainCard/> : <div className={'test'}><SecondaryCard/></div>}
                 </FadeInContainer>
                 {/*Other News card*/}
-                <Row gutter={[{ xs: 0, sm: 24, md: 24, lg: 24 },48]} align={'center'}>
+                <Row gutter={[{xs: 0, sm: 24, md: 24, lg: 24}, 48]} align={'center'}>
                     <NewsAnimContainer
                         items={
                             [<Col xs={24} sm={24} md={24} lg={12} xl={8} xxl={8}><SecondaryCard/></Col>,
-                            <Col  xs={24} sm={24} md={24} lg={12} xl={8} xxl={8}><SecondaryCard/></Col>,
-                            <Col  xs={24} sm={24} md={24} lg={12} xl={8} xxl={8}><SecondaryCard/></Col>,
-                            <Col  xs={24} sm={24} md={24} lg={12} xl={8} xxl={8}><SecondaryCard/></Col>,
-                            <Col  xs={24} sm={24} md={24} lg={12} xl={8} xxl={8}><SecondaryCard/></Col>,
-                            <Col  xs={24} sm={24} md={24} lg={12} xl={8} xxl={8}><SecondaryCard/></Col>]
+                                <Col xs={24} sm={24} md={24} lg={12} xl={8} xxl={8}><SecondaryCard/></Col>,
+                                <Col xs={24} sm={24} md={24} lg={12} xl={8} xxl={8}><SecondaryCard/></Col>,
+                                <Col xs={24} sm={24} md={24} lg={12} xl={8} xxl={8}><SecondaryCard/></Col>,
+                                <Col xs={24} sm={24} md={24} lg={12} xl={8} xxl={8}><SecondaryCard/></Col>,
+                                <Col xs={24} sm={24} md={24} lg={12} xl={8} xxl={8}><SecondaryCard/></Col>]
                         }/>
                 </Row>
                 <ExtraNews>
-                    <Button className={'button'} type="primary">Еще</Button>
+                    <Button className={'button'} type="primary" loading={loading}
+                            onClick={OnClick}>{t('news:button')}</Button>
                 </ExtraNews>
             </PageContainer>
         </NewsPageBlock>
     )
-
 }

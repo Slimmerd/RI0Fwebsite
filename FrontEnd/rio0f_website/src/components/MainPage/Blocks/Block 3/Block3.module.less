@@ -1,8 +1,9 @@
 .block3{
-  height: 1854px;
+  min-height: 1854px;
   background: #E5E5E5;
   position: relative;
   box-shadow: 0px 2.32131px 11.6066px 4.64262px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 
   &::before{
     content: "";
@@ -47,6 +48,7 @@
   text-align: center;
 
   color: #2C3E50;
+  padding-bottom: 50px;
 }
 
 
@@ -56,12 +58,12 @@
 
 @media (max-width: 768px) {
   .block3{
-    height: 2054px;
+    min-height: 2054px;
   }
 }
 @media (max-width: 375px) {
   .block3{
-    height: 2254px;
+    min-height: 2254px;
   }
   .expplanh1{
     font-size: 54px;
@@ -75,6 +77,6 @@
     line-height: 45px;
   }
   .block3{
-    height: 2454px;
+    min-height: 2454px;
   }
 }

@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom';
 import './index.less';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import './i18n';
 
 ReactDOM.render(
 
     <App />
+
   ,
   document.getElementById('root')
 );

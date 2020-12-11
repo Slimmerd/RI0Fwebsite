@@ -1,6 +1,7 @@
 import {Col, Row} from "antd";
 import styled from "styled-components";
 import {FadeInContainer} from "../../../utils/FadeInAnimation";
+import {useTranslation} from "react-i18next";
 
 const SendingReqBlock = styled.div`
     min-height: 756px;
@@ -77,11 +78,13 @@ const Card = styled.div`
 `
 
 export const QSLPageSendingReq = () => {
+    const { t, i18n } = useTranslation()
+
     return (
         <SendingReqBlock>
             <div className={'container'}>
                 <FadeInContainer>
-                <div className={'header'}>Условия отправки</div>
+                <div className={'header'}>{t('qsl:requirements_block.heading')}</div>
                 </FadeInContainer>
 
                 <FadeInContainer>

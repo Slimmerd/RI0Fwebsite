@@ -1,0 +1,21 @@
+{
+  "naming_block": {
+    "sub": "Вся информация связанная с QSL карточками"
+  },
+  "requirements_block": {
+    "heading": "Условия отправки",
+    "Card1": {
+    },
+    "Card2": {
+    },
+    "Card3": {
+    },
+    "Card4": {
+    }
+  },
+  "manager_block": {
+    "heading": "Менеджер",
+    "sub": "С ним можно связаться по поводу отправки QSL карточки",
+    "information": ""
+  }
+}

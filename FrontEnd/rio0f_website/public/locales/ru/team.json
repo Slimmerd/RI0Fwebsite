@@ -1,0 +1,14 @@
+{
+  "naming_block": {
+    "heading": "Команда",
+    "sub": "Информация о участниках экспедиции"
+  },
+  "card_block": {
+    "heading": "Участники",
+    "Card1": {
+      "call": "RZ3EC",
+      "name": "",
+      "information": "Hello"
+    }
+  }
+}

@@ -1,7 +1,7 @@
-import {Col, Row, Button} from "antd";
 import styled from "styled-components";
 import React from 'react'
 import {FadeInContainer} from "../../../utils/FadeInAnimation";
+import {useTranslation} from "react-i18next";
 
 const HeaderBlock = styled.div`
     height: 350px;
@@ -30,15 +30,45 @@ const HeaderBlock = styled.div`
     font-size: 24px;
     line-height: 28px;
     }
+ 
+     @media (max-width: 786px){
+  .header{
+  font-size: 76px;
+  line-height: 86px;}}
+    
+
+  @media (max-width:576px){
+    .header{
+      font-size: 54px;
+      line-height: 56px;
+      }
+      .sub{
+      font-size: 18px;
+    line-height: 20px;
+      }
+}
+
+ @media (max-width:375px){
+    .header{
+      font-size: 42px;
+      line-height: 48px;
+      }
+      .sub{
+      font-size: 16px;
+    line-height: 18px;
+      }
+}
 `
 
 export const DonatePageNaming = () =>{
+    const { t, i18n } = useTranslation()
+
     return(
         <HeaderBlock>
             <div  className={'container'}>
                 <FadeInContainer>
-                <div className={'header'}>Пожертвования</div>
-                <div className={'sub'}>Вы можете помочь команде материально</div>
+                <div className={'header'}>{t('donate:naming_block.heading')}</div>
+                <div className={'sub'}>{t('photos:naming_block.sub')}</div>
                 </FadeInContainer>
             </div>
         </HeaderBlock>
