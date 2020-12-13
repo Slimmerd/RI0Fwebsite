@@ -4,13 +4,19 @@ import './index.less';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './i18n';
+import {Provider} from "react-redux";
+import store from "./redux/redux-store";
+
+const Application = (
+    <Provider store={store}>
+        <App/>
+    </Provider>
+)
 
 ReactDOM.render(
-
-    <App />
-
-  ,
-  document.getElementById('root')
+    Application
+    ,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

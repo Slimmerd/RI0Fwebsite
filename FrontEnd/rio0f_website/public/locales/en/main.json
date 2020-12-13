@@ -5,6 +5,7 @@
   },
   "Block3": {
     "plan_title": "Expedition plan",
+    "more_button": "Detailed plan →",
     "Card1": {
       "date": "12 December 2020",
       "heading": "Arrival to Sakhalin",
@@ -28,25 +29,25 @@
   },
   "Block4": {
     "team_title": "Team",
-    "Card1": {
+    "RZ3EC": {
       "name": "Eugene Shelkanovtcev",
       "call": "RZ3EC"
     },
-    "Card2": {
+    "R6MG": {
       "name": "Andrey Silin",
       "call": "R6MG"
     },
-    "Card3": {
+    "RX3F": {
       "name": "Sergey Pavlov",
       "call": "RX3F"
     },
-    "Card4": {
+    "M0MSV": {
       "name": "Sergey Morozov",
-      "call": "RA3NAN"
+      "call": "M0MSV"
     },
-    "Card5": {
+    "R6LGT": {
       "name": "Daniil Silin",
-      "call": "????"
+      "call": "R6LGT"
     },
     "Card6": {
       "name": "Ivan Ivanov",

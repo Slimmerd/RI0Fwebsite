@@ -69,7 +69,7 @@ export const ContactPageExpQ = () => {
                         <Col>Email: </Col>
                         <Col>
                             <div>
-                                <a href="mailto:someone@example.com"> vasya.pupkin@ri0f.com</a>
+                                <a href="mailto:rz3ec@yandex.ru">rz3ec@yandex.ru</a>
                             </div>
                         </Col>
                     </Row>

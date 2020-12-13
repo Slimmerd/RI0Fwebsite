@@ -71,7 +71,7 @@ export const ContactPageSiteQ = () => {
                     <Row className={'email'} justify={'center'} gutter={[10, 0]}>
                         <Col>Email:</Col>
                         <Col>
-                            <a href="mailto:someone@example.com"> vasya.pupkin@ri0f.com</a>
+                            <a href="mailto:daniil.silin@gmail.com">daniil.silin@gmail.com</a>
                         </Col>
                     </Row>
                 </FadeInContainer>

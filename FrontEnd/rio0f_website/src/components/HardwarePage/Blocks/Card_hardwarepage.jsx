@@ -1,5 +1,4 @@
 import React from 'react';
-import {Col} from "antd";
 import styled from "styled-components";
 import {useTranslation} from "react-i18next";
 
@@ -79,16 +78,16 @@ const BackNumber = styled.div`
     opacity: 0.07;
 `
 
-export const HardwarePageCard = () => {
+export const HardwarePageCard = ({cardNumber}) => {
     const {t, i18n} = useTranslation()
     return (
         <Card>
             <div style={{padding: '46px 0 0 30px'}}>
-                <HardwareType>Трансивер</HardwareType>
-                <HeaderDiv>ICOM 9999</HeaderDiv>
-                <ContentDiv>Небольшое описание</ContentDiv>
+                <HardwareType>{t('hardware:card_block.Card' + cardNumber + '.type')}</HardwareType>
+                <HeaderDiv>{t('hardware:card_block.Card' + cardNumber + '.heading')}</HeaderDiv>
+                <ContentDiv>{t('hardware:card_block.Card' + cardNumber + '.description')}</ContentDiv>
             </div>
-            <BackNumber>1</BackNumber>
+            <BackNumber>{cardNumber}</BackNumber>
         </Card>
     );
 };

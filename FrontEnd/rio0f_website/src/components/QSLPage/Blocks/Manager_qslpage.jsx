@@ -2,6 +2,7 @@ import {Col, Row} from "antd";
 import styled from "styled-components";
 import {FadeInContainer} from "../../common/FadeInAnimation";
 import {useTranslation} from "react-i18next";
+import RZ3EC from "../../../assets/RZ3EC.jpg";
 
 const ManagerBlock = styled.div`
     min-height: 729px;
@@ -15,7 +16,7 @@ const ManagerBlock = styled.div`
     font-size: 96px;
     line-height: 142px;
     
-    padding: 29px 0 19px 0;
+    padding: 29px 0 20px 0;
     }
     
     .sub{
@@ -50,7 +51,7 @@ const ManagerBlock = styled.div`
       }
 }
 
- @media (max-width:375px){
+ @media (max-width:376px){
     .header{
       font-size: 42px;
       line-height: 48px;
@@ -71,12 +72,23 @@ const Card = styled.div`
     border-radius: 15px;
     
     display: flex;
-    align-items: flex-end;
-         
+    align-items: center;
+
     transition: transform .4s ease-out 0s;
        &:hover{
         transform: scale(1.02);
          }
+         
+         
+     &.picture{
+
+    background-image: url(${RZ3EC});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    }
+      
+      
     
     .text{
     color: #ECF0F1;
@@ -88,12 +100,16 @@ const Card = styled.div`
     line-height: 112px;
     
     text-align: left;
-    padding-left: 20px;
+   
+    //padding-left: 20px;
+    //margin: 25px;
+    padding: 25px;
+    a{
+    color: #ECF0F1;
+    }
     }
     
-        @media (max-width: 768px){
-       
-   
+  @media (max-width: 768px){
   .text{
       font-size: 76px;
       line-height: 86px;}
@@ -115,30 +131,64 @@ const Card = styled.div`
      
 }
 `
+const HeaderDiv = styled.div`
+    padding: 20px 103px 18px 0;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    
+     @media (max-width: 576px) {
+      padding: 20px 40px 18px 0;
+      font-size: 24px;
+      line-height: 28px;
+    }
 
-export const QSLPageManager = () =>{
-    const { t, i18n } = useTranslation()
+`
+const ContentDiv = styled.div`
+    padding: 0 71px 69px 0;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+    white-space: pre-line;
+    
+     @media (max-width: 576px) {
+      padding: 20px 40px 18px 0;
+      font-size: 18px;
+      line-height: 18px;
+    }
+`
+const DateDiv = styled.div`
+    
+`
 
-    return(
+export const QSLPageManager = () => {
+    const {t, i18n} = useTranslation()
+
+    return (
         <ManagerBlock>
-        <div className={'container'}>
-            <FadeInContainer>
-            <div className={'header'}>{t('qsl:manager_block.heading')}</div>
-            <div className={'sub'}>{t('qsl:manager_block.sub')}</div>
-            </FadeInContainer>
-            <FadeInContainer>
-                <div className={'cardings'}>
-            <Row gutter={[{xs: 0, sm: 30, md: 30, lg: 30},30]} justify={'center'} >
-                <Col>
-                    <Card>
-                        <div className={'text'}>Данные</div>
-                    </Card>
-                </Col>
-                <Col>
-                    <Card>
-                        <div className={'text'}>Фото</div>
-                    </Card>
-                </Col>
+            <div className={'container'}>
+                <FadeInContainer>
+                    <div className={'header'}>{t('qsl:manager_block.heading')}</div>
+                    <div className={'sub'}>{t('qsl:manager_block.sub')}</div>
+                </FadeInContainer>
+                <FadeInContainer>
+                    <div className={'cardings'}>
+                        <Row gutter={[{xs: 0, sm: 30, md: 30, lg: 30}, 30]} justify={'center'}>
+                            <Col>
+                                <Card>
+                                    <div className={'text'}>
+                                        <DateDiv>{t('qsl:manager_block.call')}</DateDiv>
+                                        <HeaderDiv>{t('qsl:manager_block.name')}</HeaderDiv>
+                                        <ContentDiv>Email: <a
+                                            href="mailto:rz3ec@yandex.ru">rz3ec@yandex.ru</a></ContentDiv>
+                                    </div>
+                                </Card>
+                            </Col>
+                            <Col>
+                                <Card className={'picture'}>
+
+                                </Card>
+                            </Col>
             </Row>
                 </div>
             </FadeInContainer>

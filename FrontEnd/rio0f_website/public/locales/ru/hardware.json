@@ -2,5 +2,17 @@
   "naming_block": {
     "heading": "Оборудование",
     "sub": "Список оборудования, которое использует команда"
+  },
+  "card_block": {
+    "Card1": {
+      "type": "Трансивер",
+      "heading": "Elecraft К3",
+      "description": "Небольшое описание"
+    },
+    "Card2": {
+      "type": "Антенна",
+      "heading": "SteppIR BigIR",
+      "description": "Небольшое описание"
+    }
   }
 }

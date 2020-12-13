@@ -2,5 +2,17 @@
   "naming_block": {
     "heading": "Hardware",
     "sub": "List of hardware which team uses"
+  },
+  "card_block": {
+    "Card1": {
+      "type": "Transceiver",
+      "heading": "Elecraft К3",
+      "description": "Small description"
+    },
+    "Card2": {
+      "type": "Antenna",
+      "heading": "SteppIR BigIR",
+      "description": "Small description"
+    }
   }
 }

@@ -1,8 +1,10 @@
 import React from 'react'
 import {Col, Row} from "antd";
 import styled from "styled-components";
-import {Icon} from "@iconify/react";
-import cameraIcon from "@iconify/icons-si-glyph/camera";
+import {useTranslation} from "react-i18next";
+import R6MG from "../../../../assets/r6mg.jpg";
+import RZ3EC from "../../../../assets/RZ3EC.jpg";
+import M0MSV from "../../../../assets/M0MSV.jpg";
 
 const CardShape = styled.div`
     width: 1110px;
@@ -21,7 +23,10 @@ const CardShape = styled.div`
     }
         
     .left{
-    background: #2C3E50;
+    background-image: ${props => `url(${props.picture})`};
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: ${props => props.picture === M0MSV ? 'left center' : "center center "};
       border-radius: 0 15px 15px 0;
     
      display: flex;
@@ -66,7 +71,7 @@ const CardShape = styled.div`
     width: 270px;
     }
  `
- const SmallerCard= styled.div` 
+const SmallerCard = styled.div` 
      
      .header,.information{
     text-align: left;
@@ -105,8 +110,7 @@ const CardShape = styled.div`
         white-space: normal;
       margin: 0 auto;
       
-       display: flex;
-      align-items: flex-end;
+      
      }
      
       @media (max-width: 1200px){
@@ -135,26 +139,67 @@ const CardShape = styled.div`
         line-height: 44px;}
     }
  `
+const HeaderDiv = styled.div`
+    padding: 20px 103px 18px 0;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    
+     @media (max-width: 576px) {
+      padding: 20px 40px 18px 0;
+      font-size: 24px;
+      line-height: 28px;
+    }
 
-export const TeamMemberCard = () => {
+`
+const ContentDiv = styled.div`
+    padding: 0 71px 69px 0;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+    white-space: pre-line;
+    
+     @media (max-width: 576px) {
+      padding: 20px 40px 18px 0;
+      font-size: 18px;
+      line-height: 18px;
+    }
+`
+
+const theme = {
+    R6MG: R6MG,
+    RZ3EC: RZ3EC,
+    M0MSV: M0MSV,
+    R6LGT: R6MG,
+    RX3F: R6MG
+};
+
+
+export const TeamMemberCard = ({teamMember}) => {
+    const {t, i18n} = useTranslation()
+
     return (
         <div>
-            <CardShape>
+            <CardShape picture={theme[teamMember]}>
                 <Row>
                     <Col className={'right'} span={15} xs={24} sm={24} md={24} lg={15} xl={15}>
-                        <SmallerCard >
+                        <SmallerCard>
                             <div style={{margin: '0 auto'}}>
-                        <div className={'header'}>R6RR</div>
-                        <div className={'information'}>
-                            <div style={{margin: '0 auto'}}>
-                            <div className={'text'}>Биография и Отвественность</div>
-                            </div>
-                        </div>
+                                <div className={'header'}>{t('team:card_block.' + teamMember + '.call')}</div>
+                                <div className={'information'}>
+                                    <div style={{margin: '0 auto'}}>
+                                        <div className={'text'}>
+                                            <HeaderDiv>{t('team:card_block.' + teamMember + '.name')}</HeaderDiv>
+                                            <ContentDiv>{t('team:card_block.' + teamMember + '.information')}</ContentDiv>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </SmallerCard>
                     </Col>
                     <Col className={'left'} span={9} xs={24} sm={24} md={24} lg={9} xl={9}>
-                        <Icon icon={cameraIcon} style={{color: '#ecf0f1', fontSize: '165px'}}/>
+                        {/*<Icon icon={cameraIcon} style={{color: '#ecf0f1', fontSize: '165px'}}/>*/}
+
                     </Col>
                 </Row>
             </CardShape>

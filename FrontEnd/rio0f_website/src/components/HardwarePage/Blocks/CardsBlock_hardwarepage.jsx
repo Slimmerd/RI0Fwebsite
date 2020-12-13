@@ -24,30 +24,30 @@ export const HardwarePageCardsBlock = () => {
                     <FadeInContainer>
                         <Row gutter={[{xs: 0, sm: 30, md: 30, lg: 30}, 50]} justify={'center'}>
                             <Col>
-                                <HardwarePageCard/>
+                                <HardwarePageCard cardNumber={1}/>
                             </Col>
                             <Col>
-                                <HardwarePageCard/>
-                            </Col>
-                        </Row>
-                    </FadeInContainer>
-                    <FadeInContainer>
-                        <Row gutter={[{xs: 0, sm: 30, md: 30, lg: 30}, 50]} justify={'center'}>
-                            <Col>
-                                <HardwarePageCard/>
-                            </Col>
-                            <Col>
-                                <HardwarePageCard/>
+                                <HardwarePageCard cardNumber={2}/>
                             </Col>
                         </Row>
                     </FadeInContainer>
                     <FadeInContainer>
                         <Row gutter={[{xs: 0, sm: 30, md: 30, lg: 30}, 50]} justify={'center'}>
                             <Col>
-                                <HardwarePageCard/>
+                                <HardwarePageCard cardNumber={1}/>
                             </Col>
                             <Col>
-                                <HardwarePageCard/>
+                                <HardwarePageCard cardNumber={1}/>
+                            </Col>
+                        </Row>
+                    </FadeInContainer>
+                    <FadeInContainer>
+                        <Row gutter={[{xs: 0, sm: 30, md: 30, lg: 30}, 50]} justify={'center'}>
+                            <Col>
+                                <HardwarePageCard cardNumber={1}/>
+                            </Col>
+                            <Col>
+                                <HardwarePageCard cardNumber={1}/>
                             </Col>
                         </Row>
                     </FadeInContainer>

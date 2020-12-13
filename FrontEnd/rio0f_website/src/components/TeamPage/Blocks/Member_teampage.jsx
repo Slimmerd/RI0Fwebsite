@@ -46,33 +46,33 @@ export const TeamPageMembers = () => {
             <Header>{t('team:card_block.heading')}</Header>
             </FadeInContainer>
 
-           <Cards>
+           <Cards id={'RZ3EC'}>
                <FadeInContainer>
-               <TeamMemberCard/>
+                   <TeamMemberCard teamMember={'RZ3EC'}/>
                </FadeInContainer>
            </Cards>
 
-            <Cards>
+            <Cards id={'R6MG'}>
                 <FadeInContainer>
-               <TeamMemberCard/>
-                </FadeInContainer>
-           </Cards>
-
-            <Cards>
-                <FadeInContainer>
-               <TeamMemberCard/>
-                </FadeInContainer>
-           </Cards>
-
-            <Cards>
-                <FadeInContainer>
-                    <TeamMemberCard/>
+                    <TeamMemberCard teamMember={'R6MG'}/>
                 </FadeInContainer>
             </Cards>
 
-            <Cards>
+            <Cards id={'RX3F'}>
                 <FadeInContainer>
-                    <TeamMemberCard/>
+                    <TeamMemberCard teamMember={'RX3F'}/>
+                </FadeInContainer>
+            </Cards>
+
+            <Cards id={'M0MSV'}>
+                <FadeInContainer>
+                    <TeamMemberCard teamMember={'M0MSV'}/>
+                </FadeInContainer>
+            </Cards>
+
+            <Cards id={'R6LGT'}>
+                <FadeInContainer>
+                    <TeamMemberCard teamMember={'R6LGT'}/>
                 </FadeInContainer>
             </Cards>
         </div>

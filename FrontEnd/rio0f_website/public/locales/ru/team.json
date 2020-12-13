@@ -5,10 +5,30 @@
   },
   "card_block": {
     "heading": "Участники",
-    "Card1": {
+    "RZ3EC": {
       "call": "RZ3EC",
-      "name": "",
+      "name": "Евгений Щелкановцев",
+      "information": "Организатор экспедиции, ответственный за QSL.\n\nУчастник экспедиций: 9A/RZ3EC, RI0CM, R3RRC/P"
+    },
+    "R6MG": {
+      "call": "R6MG",
+      "name": "Андрей Силин",
+      "information": "Организатор экспедиции, ответственный за QSL.\n\nУчастник экспедиций: RI0F, RI0FS, XU7AEZ"
+    },
+    "RX3F": {
+      "call": "RX3F",
+      "name": "Сергей Павлов",
       "information": "Hello"
+    },
+    "M0MSV": {
+      "call": "M0MSV",
+      "name": "Сергей Морозов",
+      "information": "Также известен как: RA3NAN\n\nОрганизатор экспедиции, ответственный за QSL.\n\nУчастник экспедиций: UA3NAN/1, 9A/UA3NAN, RI0CM"
+    },
+    "R6LGT": {
+      "call": "R6LGT",
+      "name": "Даниил Силин",
+      "information": "Разработчик сайта и видеограф. \n\nУчастник экспедиции RI0FS\n"
     }
   }
 }

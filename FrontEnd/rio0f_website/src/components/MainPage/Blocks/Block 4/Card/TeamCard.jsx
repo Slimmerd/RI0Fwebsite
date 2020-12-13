@@ -1,7 +1,10 @@
 import React from 'react'
 import styled from "styled-components";
-import img from '../../../../../assets/r6mg.jpg'
+import R6MG from '../../../../../assets/r6mg.jpg'
+import RZ3EC from '../../../../../assets/RZ3EC.jpg'
+import M0MSV from '../../../../../assets/M0MSV.jpg'
 import {useTranslation} from "react-i18next";
+import {HashLink as Link} from 'react-router-hash-link';
 
 const CardShape = styled.div`
     font-family: Roboto, sans-serif;
@@ -30,21 +33,17 @@ const PcitureDiv = styled.div`
   background-position: center center;
   max-width: 322.82px;
   height: 322.82px;
-  background-image: url(${img});
+  background-image: ${props => `url(${props.picture})`};
   border-radius: 7.5px;
    box-shadow: 26.8756px 21.5274px 68.8687px rgba(0, 0, 0, 0.07), 17.4194px 13.9529px 40.3328px rgba(0, 0, 0, 0.0531481), 10.3521px 8.29202px 21.936px rgba(0, 0, 0, 0.0425185), 5.37511px 4.30547px 11.1912px rgba(0, 0, 0, 0.035), 2.18986px 1.75408px 5.61152px rgba(0, 0, 0, 0.0274815), 0.497696px 0.398655px 2.71011px rgba(0, 0, 0, 0.0168519);
-   
-   
    transition: transform .4s ease-out 0s;
    display: flex;
   align-items: flex-end;
   //  @media (max-width:375px) {
   //width: 260px;
   //height: 260px;
-  }
-   
-   
-   
+  //}
+      
   .hoverino{ 
   font-family: Roboto, sans-serif;
     font-style: normal;
@@ -61,9 +60,7 @@ const PcitureDiv = styled.div`
    border-radius: 0 0 7.5px 7.5px;
    transition: opacity 0.2s ease-out 0s;
   }
-   
-   
-   
+      
   &:hover {
     transform: scale(1.05);
     .hoverino{ 
@@ -71,9 +68,7 @@ const PcitureDiv = styled.div`
     opacity: 1;
     }
   }
-  
-
-`
+ `
 
 const TextDiv = styled.div`
     padding-top: 10px;
@@ -84,17 +79,24 @@ const TextDiv = styled.div`
     color: #2C3E50;
 `
 
-export const TeamCard = ({cardNumber}) => {
-    const { t, i18n } = useTranslation()
+const theme = {
+    R6MG: R6MG,
+    RZ3EC: RZ3EC,
+    M0MSV: M0MSV,
+    R6LGT: R6MG,
+    RX3F: R6MG
+};
+
+export const TeamCard = ({callName}) => {
+    const {t, i18n} = useTranslation()
     return (
         <CardShape>
-            <PcitureDiv>
-                <div className={'hoverino'}>{t('main:Block4.Card'+cardNumber+'.name')}</div>
-            </PcitureDiv>
-            <TextDiv>{t('main:Block4.Card'+cardNumber+'.call')}</TextDiv>
+            <Link to={`/team/#` + callName}>
+                <PcitureDiv picture={theme[callName]}>
+                    <div className={'hoverino'}>{t('main:Block4.' + callName + '.name')}</div>
+                </PcitureDiv>
+            </Link>
+            <TextDiv>{t('main:Block4.' + callName + '.call')}</TextDiv>
         </CardShape>
-
-
     )
-
 }

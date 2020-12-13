@@ -4,6 +4,7 @@ import {TeamCard} from "./Card/TeamCard";
 import {FadeInContainer} from "../../../common/FadeInAnimation";
 import React from 'react'
 import {useTranslation} from "react-i18next";
+import {NavLink} from "react-router-dom";
 
 const Block = styled.div`
   min-height: 1283px;
@@ -48,19 +49,19 @@ export const MainPageBlock4 = () => {
                     <FadeInContainer>
                         <Row align={'center'} gutter={[{ xs: 0, sm: 0, md: 24},{ xs: 42, sm: 42, md: 54}]} >
                             <Col   xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
-                                <TeamCard cardNumber={'1'}/>
+                                <TeamCard callName={'RZ3EC'}/>
                             </Col>
                             <Col   xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
-                                <TeamCard cardNumber={'2'}/>
+                                <TeamCard callName={'R6MG'}/>
                             </Col>
                             <Col  xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
-                                <TeamCard cardNumber={'3'}/>
+                                <TeamCard callName={'RX3F'}/>
                             </Col>
                             <Col   xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
-                                <TeamCard cardNumber={'4'}/>
+                                <TeamCard callName={'M0MSV'}/>
                             </Col>
                             <Col  xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
-                                <TeamCard cardNumber={'5'}/>
+                                <TeamCard callName={'R6LGT'}/>
                             </Col>
                         </Row>
         </FadeInContainer>
