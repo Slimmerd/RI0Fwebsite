@@ -1,10 +1,8 @@
-import {UserAPI} from "../api/api";
-import {updateObjectInArray} from "../Utils/object-helpers";
+// import {UserAPI} from "../api/api";
+// import {updateObjectInArray} from "../Utils/object-helpers";
 
-const FOLLOW = 'FOLLOW';
-const UNFOLLOW = 'UNFOLLOW';
 const SET_NEWS = 'SET_NEWS';
-const SET_CURNT_PAGE = 'SET_CURNT_PAGE';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 const TGL_IS_FETCHING = 'TGL_IS_FETCHING';
 const FOLLOW_IS_FETCHING = 'FOLLOW_IS_FETCHING';
@@ -20,27 +18,14 @@ let initialState =
 
 const NewsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case FOLLOW: {
-            return {
-                ...state,
-                users: updateObjectInArray(state.users, action.userID, "id", {followed: true})
-            };
-        }
-        case UNFOLLOW: {
-            return {
-                ...state,
-                users: updateObjectInArray(state.users, action.userID, "id", {followed: false})
-            };
-        }
-
         case SET_NEWS: {
             return {
-                ...state, users: [...action.users]
+                ...state, news: [...action.news]
             };
         }
 
         case SET_TOTAL_USERS_COUNT: {
-            return {...state, totalUsersCount: action.count}
+            return {...state, totalNewsCount: action.count}
         }
         case TGL_IS_FETCHING: {
             return {...state, isFetching: action.isFetching}
@@ -59,24 +44,13 @@ const NewsReducer = (state = initialState, action) => {
     }
 };
 
-
-export const followSuccess = (userID) => (
-    {
-        type: FOLLOW, userID
-    });
-
-export const unfollowSuccess = (userID) =>
-    ({
-        type: UNFOLLOW, userID
-    });
-
 export const setNews = (users) =>
     ({
         type: SET_NEWS, users
     });
 
 export const setCurrentPage = (currentPage) => ({
-    type: SET_CURNT_PAGE, currentPage
+    type: SET_CURRENT_PAGE, currentPage
 });
 
 export const setTotalNewsCount = (totalUsersCount) => ({
@@ -92,16 +66,16 @@ export const setFollowFetching = (isFetching, userID) => ({
 });
 
 
-export const getUsers = (currentPage, pageSize) => {
+export const getNews = (currentPage, pageSize) => {
 
     return async (dispatch) => {
         dispatch(setIsFetching(true));
         dispatch(setCurrentPage(currentPage));
 
-        let data = await UserAPI.getUsers(currentPage, pageSize);
-        dispatch(setIsFetching(false));
-        dispatch(setNews(data.items));
-        dispatch(setTotalNewsCount(data.totalCount));
+        // let data = await NewsAPI.getNews(currentPage, pageSize);
+        // dispatch(setIsFetching(false));
+        // dispatch(setNews(data.items));
+        // dispatch(setTotalNewsCount(data.totalCount));
     };
 };
 
@@ -116,23 +90,12 @@ const followUnfollowFlow = async (dispatch, userID, apiMethod, actionCreator) =>
     dispatch(setFollowFetching(false, userID));
 }
 
-
 export const follow = (userID) => {
 
     return async (dispatch) => {
 
-        followUnfollowFlow(dispatch, userID, UserAPI.follow.bind(UserAPI), followSuccess)
+        // followUnfollowFlow(dispatch, userID, UserAPI.follow.bind(UserAPI), followSuccess)
     };
 };
-
-export const unfollow = (userID) => {
-
-    return async (dispatch) => {
-
-        followUnfollowFlow(dispatch, userID, UserAPI.unfollow.bind(UserAPI), unfollowSuccess)
-
-    };
-};
-
 
 export default NewsReducer;

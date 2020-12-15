@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.less';
-import {Switch, Redirect, Route, BrowserRouter} from "react-router-dom";
+import {Switch, Redirect, Route, BrowserRouter, withRouter} from "react-router-dom";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {MainPage} from "./components/MainPage/mainpage";
 import {Footer} from "./components/Footer/Footer";
@@ -15,14 +15,18 @@ import {TeamPage} from "./components/TeamPage/TeamPage";
 import {ActualNewsPage} from "./components/NewsPage/ActualNewsPage/ActualNewsPage";
 import {OnlineLogPage} from "./components/OnlineLogPage/OnlineLogPage";
 import {ChatPage} from "./components/ChatPage/ChatPage";
-import {AppAssa} from "./components/test";
 import React, {Suspense, useEffect} from "react";
+import {useLocation} from 'react-router-dom';
+import LoginPage from "./components/AdminPanel/LoginPage/LoginPage";
+import {compose} from "redux";
+import AdminPanel from "./components/AdminPanel/AdminPanel/AdminPanel";
 
-import { useLocation, useRouteMatch } from 'react-router-dom';
+
 function App() {
+    let location = useLocation();
 
-   const ScrollToTop = () => {
-        const { pathname } = useLocation();
+    const ScrollToTop = () => {
+        const {pathname} = useLocation();
 
         useEffect(() => {
             window.scrollTo(0, 0);
@@ -31,12 +35,12 @@ function App() {
         return null
     }
 
+
     return (
         <Suspense fallback={<div>Loading...</div>}>
-        <BrowserRouter>
             <div className="app-wrapper">
                 <ScrollToTop/>
-                <HeaderContainer/>
+                {location.pathname === '/admin' ? null : <HeaderContainer/>}
                 <div className="app-wrapper-content">
                     <Switch>
                         {/*<Route exact path="/" render={() => <Redirect to={'/profile'}/>}/>*/}
@@ -54,16 +58,17 @@ function App() {
                         <Route exact path="/news/act" render={() => <ActualNewsPage/>}/>
                         <Route exact path="/onlinelog" render={() => <OnlineLogPage/>}/>
                         <Route exact path="/chat" render={() => <ChatPage/>}/>
-                        <Route exact path="/test" render={() => <AppAssa/>}/>
+                        <Route exact path="/admin" render={() => <AdminPanel/>}/>
 
                         <Route render={() => <div>404 NOT Found</div>}/>
                     </Switch>
                 </div>
-                <Footer/>
+                {location.pathname === '/admin' ? null : <Footer/>}
             </div>
-        </BrowserRouter>
         </Suspense>
     );
 }
 
-export default App;
+const AppContainer = compose(withRouter)(App)
+
+export default AppContainer;

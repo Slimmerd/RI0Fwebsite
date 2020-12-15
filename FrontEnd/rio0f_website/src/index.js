@@ -6,11 +6,15 @@ import reportWebVitals from './reportWebVitals';
 import './i18n';
 import {Provider} from "react-redux";
 import store from "./redux/redux-store";
+import AppContainer from "./App";
+import {BrowserRouter} from "react-router-dom";
 
 const Application = (
-    <Provider store={store}>
-        <App/>
-    </Provider>
+    <BrowserRouter>
+        <Provider store={store}>
+            <AppContainer/>
+        </Provider>
+    </BrowserRouter>
 )
 
 ReactDOM.render(

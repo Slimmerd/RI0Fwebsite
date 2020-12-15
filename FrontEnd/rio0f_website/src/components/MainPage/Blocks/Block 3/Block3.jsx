@@ -10,7 +10,7 @@ import {SponsorsBlock} from "./Components/Sponsors";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
 
-//TODO: Inserting sponsor logo system, inserting card system, card pathway animation
+//TODO: Inserting sponsor logo system, inserting card system
 
 const FirstPath = styled.div`
 position: relative;
@@ -39,7 +39,6 @@ position: relative;
     }
     }
 `
-
 const ThirdPath = styled.div`
 position: relative;
     svg{
@@ -159,6 +158,4 @@ export const MainPageBlock3 = () => {
         </div>
 
     )
-
-
 }
