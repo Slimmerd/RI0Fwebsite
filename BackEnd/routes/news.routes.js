@@ -2,20 +2,15 @@
 const {Router} = require('express')
 const router = Router()
 const News = require('../models/News')
-const bcrypt = require('bcryptjs')
 const {check, validationResult} = require('express-validator')
-const jwt = require('jsonwebtoken')
 const auth = require('../middleware/auth.middleware')
-const config = require('config')
 const multer = require("multer");
-const storage = multer.memoryStorage()
-const upload = multer({storage: storage})
 
 // Create new post
-// api/news/post
+// api/news/create
 router.post('/create', [
-    check('name_ru,text_ru,name_en,text_en', 'Нельзя оставлять пустые поля').notEmpty(),
-], auth, upload.array('photos', 6), async (req, res) => {
+    check(['name_ru', 'name_en', 'text_ru', 'text_en'], 'Нельзя оставлять пустые поля').exists(),
+], auth, async (req, res) => {
     try {
         const errors = validationResult(req)
 
@@ -26,14 +21,11 @@ router.post('/create', [
             })
         }
 
-        const baseURL = config.get('baseURL')
-
-        const {name_ru, name_en, text_ru, text_en} = req.body
-        const real_img = req.file.news.buffer
-        const extURL = baseURL + name_en.toLowerCase().split(' ').join('-');
+        const {name_ru, name_en, text_ru, text_en, img} = req.body
+        const extURL = name_en.toLowerCase().split(' ').join('-');
 
         const news = new News({
-            name_ru, name_en, text_ru, text_en, img: real_img, author: req.user.userId, url: extURL
+            name_ru, name_en, text_ru, text_en, img, author: req.user.userId, url: extURL
         })
 
         await news.save()
@@ -41,20 +33,28 @@ router.post('/create', [
 
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
+        console.error('Error ', e)
     }
 })
 
 // Delete post
 // api/news/delete
-// router.delete('/delete', async (req, res) =>{
-//
-// })
+router.delete('/delete', async (req, res) => {
+    try {
+        const news = await News.findOne({})
+
+
+        //TODO: DELETE NEWS
+    } catch (e) {
+        res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
+    }
+})
 
 // Get all posts
 // api/news/posts
 router.get('/', async (req, res) => {
     try {
-        const news = await News.find().sort('-dateAdded')
+        const news = await News.find().sort('-date')
         res.json(news)
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
@@ -62,15 +62,15 @@ router.get('/', async (req, res) => {
 })
 
 // Get certain post
-// api/news/post
-router.get('/:id', async (req, res) => {
+// api/news/:url
+router.get('/:url', async (req, res) => {
     try {
-        const certain_news = await News.findById(req.params.id)
+        const url = req.params.url
+        const certain_news = await News.findOne({url})
         res.json(certain_news)
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
     }
 })
-
 
 module.exports = router

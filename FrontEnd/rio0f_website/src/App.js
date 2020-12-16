@@ -20,6 +20,7 @@ import {useLocation} from 'react-router-dom';
 import LoginPage from "./components/AdminPanel/LoginPage/LoginPage";
 import {compose} from "redux";
 import AdminPanel from "./components/AdminPanel/AdminPanel/AdminPanel";
+import NewsPageContainer from "./components/NewsPage/NewsPageContainer";
 
 
 function App() {
@@ -47,7 +48,7 @@ function App() {
                         {/*<Route path="/profile/:userID?" render={withSuspense(ProfileContainer)}/>*/}
 
                         <Route exact path="/" render={() => <MainPage/>}/>
-                        <Route exact path="/news" render={() => <NewsPage/>}/>
+                        <Route exact path="/news" render={() => <NewsPageContainer/>}/>
                         <Route exact path="/donate" render={() => <DonatePage/>}/>
                         <Route exact path="/contacts" render={() => <ContactsPage/>}/>
                         <Route exact path="/photos" render={() => <PhotosPage/>}/>
@@ -59,6 +60,7 @@ function App() {
                         <Route exact path="/onlinelog" render={() => <OnlineLogPage/>}/>
                         <Route exact path="/chat" render={() => <ChatPage/>}/>
                         <Route exact path="/admin" render={() => <AdminPanel/>}/>
+                        <Route exact path="/login" render={() => <LoginPage/>}/>
 
                         <Route render={() => <div>404 NOT Found</div>}/>
                     </Switch>

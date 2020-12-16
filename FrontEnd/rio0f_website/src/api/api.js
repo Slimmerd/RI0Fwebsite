@@ -9,7 +9,7 @@ const instance = axios.create({
     headers: {
         'Content-Type': 'application/json',
         'api-key': 'boynextdoor3000',
-        // 'Authorization': 'Bearer ' + (user ? user.token : '')
+        'Authorization': 'Bearer ' + (user ? user.token : '')
 
     }
 });
@@ -34,25 +34,29 @@ export const AuthAPI = {
 }
 
 
-// export const UserAPI = {
-//     getUsers(currentPage = 1, pageSize = 5) {
-//         return instance.get(`users?page=${currentPage}&count=${pageSize}`)
-//             .then(response => {
-//                 return response.data
-//             });
-//     },
-//
-//     follow(userID) {
-//         return instance.post(`follow/${userID}`, {},
-//         )
-//     },
-//
-//     unfollow(userID) {
-//         return instance.delete(`follow/${userID}`)
-//     },
-//
-//     getProfile(userID) {
-//         console.warn('Obsolete method. Please use ProfileAPI object')
-//         return ProfileAPI.getProfile(userID)
-//     }
-// };
+export const NewsAPI = {
+    getNews() {
+        return instance.get(`news/`)
+            .then(response => {
+                return response
+            });
+    },
+
+    postNews(name_ru, name_en, text_ru, text_en, img) {
+        return instance.post(`news/create`, {name_ru, name_en, text_ru, text_en, img})
+            .catch((error) => {
+                console.log('respo', error.response.status)
+                return error.response
+            })
+
+    },
+
+    deleteNews(userID) {
+        return instance.delete(`follow/${userID}`)
+    },
+
+    // getProfile(userID) {
+    //     console.warn('Obsolete method. Please use ProfileAPI object')
+    //     return ProfileAPI.getProfile(userID)
+    // }
+};

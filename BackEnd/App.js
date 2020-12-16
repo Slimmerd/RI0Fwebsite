@@ -18,9 +18,9 @@ app.use(express.json({extended: true}))
 
 
 app.use(cors(corsOptions))
-app.use(apiCheck)
-app.use('/api/auth', require('./routes/auth.routes'))
-app.use('/api/news', require('./routes/news.routes'))
+app.use('/api/auth', apiCheck, require('./routes/auth.routes'))
+app.use('/api/news', apiCheck, require('./routes/news.routes'))
+app.use('/api/photos', require('./routes/photos.routes'))
 // app.use('/api/chat', require('./routes/links.routes'))
 // app.use('/api/photos', require('./routes/links.routes'))
 

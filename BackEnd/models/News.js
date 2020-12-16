@@ -5,7 +5,7 @@ const schema = new Schema({
     name_en: {type: String, required: true},
     text_ru: {type: String, required: true},
     text_en: {type: String, required: true},
-    img: [{data: Buffer, contentType: String}],
+    img: {type: String, contentType: String},
     date: {type: Date, default: Date.now},
     url: {type: String, required: true, unique: true},
     author: {type: Types.ObjectId, ref: 'User'}

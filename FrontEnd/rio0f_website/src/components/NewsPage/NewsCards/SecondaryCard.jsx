@@ -1,37 +1,54 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Col, Row, Skeleton} from "antd";
 import styled from "styled-components";
-import {Icon, InlineIcon} from '@iconify/react';
+import {Icon} from '@iconify/react';
 import cameraIcon from '@iconify/icons-si-glyph/camera';
+import i18n from "i18next";
+import moment from 'moment';
 
 const CardShape = styled.div`
-      height: 450px;
-      width: 350px;
-      background: #FFFFFF;
+  height: 450px;
+  width: 350px;
+  background: #FFFFFF;
+  margin: 0 auto;
+  box-shadow: 31.2195px 25.0069px 80px rgba(0, 0, 0, 0.07), 20.2349px 16.2081px 46.8519px rgba(0, 0, 0, 0.0531481), 12.0253px 9.63227px 25.4815px rgba(0, 0, 0, 0.0425185), 6.2439px 5.00137px 13px rgba(0, 0, 0, 0.035), 2.54381px 2.0376px 6.51852px rgba(0, 0, 0, 0.0274815), 0.578139px 0.46309px 3.14815px rgba(0, 0, 0, 0.0168519);
+  border-radius: 10px;
+
+  transition: transform .4s ease-out 0s;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+
+  .pictureStab {
+    height: 157px;
+    background: #2C3E50;
+
+    display: flex;
+    align-items: center;
+    border-radius: 10px 10px 0 0;
+
+    svg {
       margin: 0 auto;
-      box-shadow: 31.2195px 25.0069px 80px rgba(0, 0, 0, 0.07), 20.2349px 16.2081px 46.8519px rgba(0, 0, 0, 0.0531481), 12.0253px 9.63227px 25.4815px rgba(0, 0, 0, 0.0425185), 6.2439px 5.00137px 13px rgba(0, 0, 0, 0.035), 2.54381px 2.0376px 6.51852px rgba(0, 0, 0, 0.0274815), 0.578139px 0.46309px 3.14815px rgba(0, 0, 0, 0.0168519);
-      border-radius: 10px;
-      
-      transition: transform .4s ease-out 0s;
-       &:hover{
-        transform: scale(1.02);
-         }
-    
-      .picture{
-      height: 157px;
-      background: #2C3E50;
-      
-      display: flex;
-      align-items: center;
-      border-radius: 10px 10px 0 0;
-      
-       svg{
-     margin: 0 auto;
-     padding-right: 0px;
-     }
-      }
-      
-    .text{
+      padding-right: 0px;
+    }
+  }
+
+
+  .picture {
+    height: 157px;
+
+    display: flex;
+    align-items: center;
+    border-radius: 10px 10px 0 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: ${props => `url(${props.picture})`};
+
+  }
+
+  .text {
     color: #34495E;
     font-family: Roboto, sans-serif;
     font-style: normal;
@@ -40,60 +57,64 @@ const CardShape = styled.div`
     align-items: start;
     padding: 20px;
 
-    .date{
-    font-size: 14px;
-    line-height: 16px;
-    text-align: left;
-    padding-bottom: 10px;
+    .date {
+      font-size: 14px;
+      line-height: 16px;
+      text-align: left;
+      padding-bottom: 10px;
     }
-    
-    .header{
-    color: #2C3E50;
-    font-size: 30px;
-    line-height: 30px;
-    text-align: left;
-    padding-bottom: 20px;
+
+    .header {
+      color: #2C3E50;
+      font-size: 30px;
+      line-height: 30px;
+      text-align: left;
+      padding-bottom: 20px;
       word-break: break-word;
-        white-space: normal;
+      white-space: normal;
     }
-    
-    .paragraph{
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 23px;
-    width: 310px;
-    height: 140px;
+
+    .paragraph {
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 23px;
+      width: 310px;
+      height: 140px;
       word-break: break-word;
-        white-space: normal;
-    text-align: left;
+      white-space: normal;
+      text-align: left;
     }
-    
-     .skeletonStyle{
-    width: 300px;
-    height: 20px;
-     border-radius: 5px;
+
+    .skeletonStyle {
+      width: 300px;
+      height: 20px;
+      border-radius: 5px;
       margin-bottom: 5px;
     }
-    
-}    
- @media (max-width:374px){
+
+  }
+
+  @media (max-width: 374px) {
     height: 500px;
     width: 270px;
     .text {
-    .paragraph{
-    width: 240px;
+      .paragraph {
+        width: 240px;
+      }
+
+      .header {
+        font-size: 25px;
+        line-height: 25px;
+      }
     }
-    .header{
-    font-size: 25px;
-    line-height: 25px;
-    }
-    }
-    
-    }
+
+  }
 `
 
-export const SecondaryCard = () => {
+export const SecondaryCard = ({news}) => {
     const [loading, setLoading] = useState(false);
+    const [text, setText] = useState('');
+    const [name, setName] = useState('');
     const onChange = () => {
         setLoading(!loading)
     };
@@ -108,27 +129,38 @@ export const SecondaryCard = () => {
         <Skeleton.Input className={'skeletonStyle'} active={'active'}/>]
 
     //TODO: Import data from database
-    const real_text = '10 декабря Владимир Путин провел встречу с Советом по правам человека (СПЧ). На ней президента спросили, почему в России не возбуждено уголовное дело об отравлении Алексея Навального. 11 декабря на сайте Кремля появилась расшифровка встречи с СПЧ. Из нее можно узнать, как звучали формулировка вопроса про Навального ('
-    const real_heading = '10 декабря Владимир Путин провел встречу с Советом по правам человека (СПЧ). На ней президента спросили, почему в России не возбуждено уголовное дело об отравлении Алексея Навального. 11 декабря на сайте Кремля появилась расшифровка встречи с СПЧ. Из нее можно узнать, как звучали формулировка вопроса про Навального (и'
+
+    useEffect(() => {
+        if (i18n.language === 'ru') {
+            setText(news.text_ru)
+            setName(news.name_ru)
+        } else {
+            setText(news.text_en)
+            setName(news.name_en)
+        }
+    }, [i18n.language])
+
 
     return (
-        <CardShape>
-            <Row className={'picture'}>
-                <Icon icon={cameraIcon} style={{color: '#ecf0f1', fontSize: '84.09599304199219px'}}/>
-            </Row>
+        <CardShape picture={news.img}>
+            {news.img ? <Row className={'picture'}>
+                </Row> :
+                <Row className={'pictureStab'}>
+                    <Icon icon={cameraIcon} style={{color: '#ecf0f1', fontSize: '118.39999389648438px'}}/> </Row>}
+
             <Row className={'text'}>
                 <div style={{margin: '0 auto'}}>
-                    <div className={'date'}>{!loading ? '01.01.2000' :
+                    <div className={'date'}>{!loading ? moment(news.date).format('DD.MM.YYYY') :
                         <Skeleton.Input style={{width: 100, height: '20px', borderRadius: '5px'}}
                                         active={'active'}/>}</div>
 
                     <div
-                        className={'header'}>{!loading ? (real_heading.length > 30 ? `${real_heading.substring(0, 25)}...` : real_heading) :
+                        className={'header'}>{!loading ? (name.length > 30 ? `${name.substring(0, 25)}...` : name) :
                         <Skeleton.Input style={{width: 250, height: '30px', borderRadius: '5px'}}
                                         active={'active'}/>}</div>
 
                     <div
-                        className={'paragraph'}>{!loading ? (real_text.length > 180 ? `${real_text.substring(0, 160)}...` : real_text) : ParagraphSkeleton}
+                        className={'paragraph'}>{!loading ? (text.length > 180 ? `${text.substring(0, 160)}...` : text) : ParagraphSkeleton}
                     </div>
                 </div>
             </Row>

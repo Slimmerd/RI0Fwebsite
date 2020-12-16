@@ -41,8 +41,9 @@ export const UserLogin = (email, password) => async (dispatch) => {
         let {token, userId, fullname} = response.data;
         dispatch(setUserData(userId, fullname, (!!token)))
     } else {
-        let ERRmessage = response.data.message.length > 0 ? response.data.message[0] : "Sas error"
-        dispatch(stopSubmit("login", {_error: ERRmessage}))
+        let ErrorMessage = response.data.message.length > 0 ? response.data.message : "Undefined error"
+        dispatch(stopSubmit("LoginForm", {_error: ErrorMessage}))
+        return Promise.reject(ErrorMessage)
     }
 }
 

@@ -5,7 +5,9 @@ import styled from "styled-components";
 import {Field, reduxForm} from "redux-form";
 import {Redirect} from "react-router-dom";
 import {connect} from "react-redux";
-import {UserLogin} from "../../../redux/auth-reducer";
+import {CreateNews} from "../../../redux/news-reducer";
+import {compose} from "redux";
+import {withAuthRedirect} from "../../../HOC/authRedirect";
 
 const {Dragger} = Upload
 
@@ -43,7 +45,7 @@ const AdminPanel = (props) => {
         <div>
             <>
                 <Button type="primary" onClick={showDrawer}>
-                    <PlusOutlined/> New account
+                    <PlusOutlined/> Добавить Новость
                 </Button>
 
 
@@ -78,7 +80,7 @@ const AdminPanel = (props) => {
                             </Col>
 
                             <Col span={12}>
-                                <Field label="Название на Английском" name="news_en" component={AInput}
+                                <Field label="Название на Английском" name="name_en" component={AInput}
                                        placeholder="Название на Английском" rules={[{required: true}]}/>
                             </Col>
                         </Row>
@@ -99,14 +101,21 @@ const AdminPanel = (props) => {
 
                         <Row gutter={16}>
                             <Col span={24}>
-                                <Field label="Фото" name="img" component={ADragger}>
-                                    <p className="ant-upload-drag-icon">
-                                        <InboxOutlined/>
-                                    </p>
-                                    <p className="ant-upload-text">Нажмите или перетяните файл сюда</p>
-                                    <p className="ant-upload-hint">
-                                        Разрешено для загрузки более одного фото
-                                    </p></Field>
+                                <Field
+                                    name="img"
+                                    label="Ссылка на Главное фото" component={AInput} placeholder="Please enter url"
+
+                                />
+
+
+                                {/*<Field label="Фото" name="img" component={ADragger} type="file" beforeUpload={() => false}>*/}
+                                {/*    <p className="ant-upload-drag-icon">*/}
+                                {/*        <InboxOutlined/>*/}
+                                {/*    </p>*/}
+                                {/*    <p className="ant-upload-text">Нажмите или перетяните файл сюда</p>*/}
+                                {/*    <p className="ant-upload-hint">*/}
+                                {/*        Разрешено для загрузки более одного фото*/}
+                                {/*    </p></Field>*/}
                             </Col>
                         </Row>
 
@@ -123,7 +132,7 @@ const NewsForm = reduxForm({
 
 const NewsPublish = (props) => {
     const onSubmit = (formData) => {
-        // props.UserLogin(formData.email, formData.password)
+        props.CreateNews(formData.name_ru, formData.name_en, formData.text_ru, formData.text_en, formData.img)
         console.log(formData)
     }
 
@@ -138,7 +147,7 @@ const NewsPublish = (props) => {
 
 
 const mapStateToProps = (state) => ({
-    isAuth: state.auth.isAuth
+
 })
 
-export default connect(mapStateToProps, {UserLogin})(NewsPublish)
+export default compose(withAuthRedirect, connect(mapStateToProps, {CreateNews}))(NewsPublish)
