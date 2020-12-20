@@ -12,7 +12,7 @@ export const NewsAnimContainer = ({items}) => {
     };
 
     return (
-        <VisibilitySensor once partialVisibility minTopValue={200} isVisible={isVisible} onChange={onChange}>
+        <VisibilitySensor once partialVisibility minTopValue={150} isVisible={isVisible} onChange={onChange}>
             {({isVisible}) => (
                 <Trail
                     items={items}

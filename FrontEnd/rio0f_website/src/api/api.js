@@ -15,9 +15,14 @@ const instance = axios.create({
 });
 
 export const AuthAPI = {
-    me() {
-        return instance.get(`auth/me`)
+    getNames(id) {
+        return instance.post(`auth/name`, {id})
+            .then((response) => {
+                return response.data
+            })
     },
+
+
     login(email, password) {
         return instance.post(`auth/login`, {email, password})
             .then((response) => {
@@ -39,6 +44,13 @@ export const NewsAPI = {
         return instance.get(`news/`)
             .then(response => {
                 return response
+            });
+    },
+
+    getParticularNews(url) {
+        return instance.get(`news/` + url)
+            .then(response => {
+                return response.data
             });
     },
 

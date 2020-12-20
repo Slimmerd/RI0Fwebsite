@@ -10,8 +10,9 @@ const storage = multer.memoryStorage()
 const upload = multer({storage: storage})
 
 // Create new post
-// api/photos/
-router.post('/upload', auth, apiCheck, upload.array('img', 6), async (req, res) => {
+// api/photos/upload
+//Only admins
+router.post('/upload', [check(['img'], 'Выберите фотографию').exists()], auth, apiCheck, upload.array('img', 6), async (req, res) => {
     try {
         const errors = validationResult(req)
 
@@ -37,6 +38,10 @@ router.post('/upload', auth, apiCheck, upload.array('img', 6), async (req, res) 
     }
 })
 
+
+// Get particular picture by id
+// api/photos/:id
+//Everyone
 router.get('/:id', async (req, res) => {
     try {
         const photo = await Photos.findById(req.params.id)
@@ -52,6 +57,9 @@ router.get('/:id', async (req, res) => {
 
 })
 
+//Get picture list
+// api/photos/
+//Only admins
 router.get('/', auth, apiCheck, async (req, res) => {
     try {
         const photos = await Photos.find().sort('-date').distinct('_id')
@@ -61,6 +69,23 @@ router.get('/', auth, apiCheck, async (req, res) => {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
         console.error('Error', e)
     }
+})
+
+// Delete news by ID
+// api/photos/delete/:id
+// Only admins
+router.delete('/delete/:id', auth, apiCheck, async (res, req) => {
+    try {
+        const photo = await Photos.findByIdAndDelete(req.params.id)
+
+        res.status(201).json({message: "Фото было удално", id: photo.id})
+        //TODO: Test photo deleting feature
+
+    } catch (e) {
+        res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
+        console.error('Error', e)
+    }
+
 })
 
 

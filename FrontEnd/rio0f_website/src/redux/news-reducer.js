@@ -10,10 +10,7 @@ const FOLLOW_IS_FETCHING = 'FOLLOW_IS_FETCHING';
 
 let initialState =
     {
-        news: [],
-        totalNewsCount: 9,
-        isFetching: false,
-        moreFetching: []
+        news: []
     };
 
 const NewsReducer = (state = initialState, action) => {
@@ -64,9 +61,15 @@ export const createNewsData = (name_ru, name_en, text_ru, text_en, img) => (
 //Thunks
 export const getNews = () => async (dispatch) => {
     let data = await NewsAPI.getNews();
-    console.warn(data.status)
     dispatch(setNews(data.data));
 };
+
+
+// export const getParticularNews = (url) => async (dispatch) =>{
+//     let data = await NewsAPI.getParticularNews(url)
+//     console.warn('response data', data)
+//     dispatch(setNews(data.data))
+// }
 
 export const CreateNews = (name_ru, name_en, text_ru, text_en, img) => async (dispatch) => {
     let response = await NewsAPI.postNews(name_ru, name_en, text_ru, text_en, img)

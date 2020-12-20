@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {Field, reduxForm} from "redux-form";
 import {Redirect} from "react-router-dom";
 import {UserLogin} from "../../../redux/auth-reducer";
-import {connect} from "react-redux";
+import {connect, useDispatch, useSelector} from "react-redux";
 
 const Background = styled.div`
   width: 100vw;
@@ -98,6 +98,7 @@ const Sub = styled.div`
 const LoginPage = (props) => {
     const {handleSubmit, error} = props
 
+
     return (
         <Background>
             <div className={'container'}>
@@ -142,12 +143,15 @@ const LoginForm = reduxForm({
     form: 'LoginForm' // a unique identifier for this form
 })(LoginPage)
 
-const Login = (props) => {
+export const Login = () => {
+    const isAuth = useSelector(state => state.auth.isAuth)
+    const dispatch = useDispatch()
+
     const onSubmit = (formData) => {
-        props.UserLogin(formData.email, formData.password)
+        dispatch(UserLogin(formData.email, formData.password))
     }
 
-    if (props.isAuth) {
+    if (isAuth) {
         return <Redirect to={"/admin"}/>
     }
 
@@ -157,9 +161,4 @@ const Login = (props) => {
 }
 
 
-const mapStateToProps = (state) => ({
-    isAuth: state.auth.isAuth
-})
-
-export default connect(mapStateToProps, {UserLogin})(Login)
 

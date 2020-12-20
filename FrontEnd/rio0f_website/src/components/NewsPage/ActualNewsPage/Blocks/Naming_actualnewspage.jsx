@@ -1,99 +1,127 @@
-import React from 'react'
-import {Col, Row, Button} from "antd";
+import React, {useEffect, useState} from 'react'
+import {Col, Row} from "antd";
 import styled from "styled-components";
-import {Icon, InlineIcon} from '@iconify/react';
-import arrowThinUp from '@iconify/icons-si-glyph/arrow-thin-up';
 import {FadeInContainer} from "../../../common/FadeInAnimation";
+import moment from "moment";
+import {useTranslation} from "react-i18next";
 
 const HeaderBlock = styled.div`
-    height: 350px;
-    background: #ECF0F1;
-    display: flex;
-    align-items: center;
-    
-    color: #2C3E50;
-    
-    .rowSize{
+  height: 350px;
+  background: #ECF0F1;
+  display: flex;
+  align-items: center;
+
+  color: #2C3E50;
+
+  .rowSize {
     width: 920px;
     margin: 0 auto;
     }
-    
-    .header{
+
+  .header {
     font-family: Oswald, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 48px;
     line-height: 48px;
     text-align: start;
-     word-break: break-word;
-     white-space: normal;
+    word-break: break-word;
+    white-space: normal;
     padding-bottom: 54px;
-    }
-    
-    .sub{
+    width: 920px;
+  }
+
+  .sub {
     font-family: Roboto, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 24px;
     line-height: 28px;
     text-align: start;
+    //width: 300px;
+  }
+
+  @media (max-width: 1200px) {
+    .rowSize {
+      width: 745px
     }
 
-   @media (max-width: 1200px){
-      .rowSize{
-       width: 745px
-      }
-   }  
-   
-@media (max-width: 768px){
-  .header{
-    font-size: 36px;
-    line-height: 36px;
+    .header {
+      width: 745px
     }
-     .sub{
+  }
+
+  @media (max-width: 768px) {
+    .header {
+      font-size: 36px;
+      line-height: 36px;
+      width: 550px
+    }
+
+    .sub {
       font-size: 18px;
-    line-height: 18px;
-     }
-      .rowSize{
-       width: 550px
-      }
-}
-
-@media (max-width: 576px){
-.header{
-    font-size: 28px;
-    line-height: 28px;
+      line-height: 18px;
     }
-     .sub{
-      font-size: 18px;
-    line-height: 18px;
-     }
-     .rowSize{
-       width: 375px
-      }
-}
 
-@media (max-width: 376px){
-.rowSize{
-       width: 270px
-      }
+    .rowSize {
+      width: 550px
+    }
+  }
+
+  @media (max-width: 576px) {
+    .header {
+      //font-size: 28px;
+      //line-height: 28px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .sub {
+      //  font-size: 18px;
+      //line-height: 18px;
+      text-align: center;
+    }
+
+    .rowSize {
+      width: 375px
+    }
+  }
+
+  @media (max-width: 376px) {
+    .rowSize {
+      width: 270px
+    }
 } 
 `
 
-export const ActualNewsPageNaming = () => {
+export const ActualNewsPageNaming = ({news}) => {
+    const [name, setName] = useState(null);
+    const [author, setAuthor] = useState(null)
+    const {t, i18n} = useTranslation();
+
+    useEffect(() => {
+        if (i18n.language === 'ru') {
+            setName(news.name_ru)
+            setAuthor(news.author_ru)
+        } else {
+            setName(news.name_en)
+            setAuthor(news.author_en)
+        }
+    }, [i18n.language, news.name_ru, news.name_en, news.author_ru, news.author_en])
+
     return (
         <HeaderBlock>
             <div className={'container'}>
                 <FadeInContainer>
                     <Row justify={'center'} className={'rowSize'}>
                         <Col>
-                            <div className={'header'}>Команда высадилась в порту города Корсаков</div>
-                            <Row gutter={[{xs: 0, sm: 30, md: 30, lg: 30}, 0]} className={'row'} justify={'center'}>
-                                <Col xs={24} sm={24} md={12}>
-                                    <div className={'sub'}>Абдулахман Барбитуратов</div>
+                            <div className={'header'}>{name}</div>
+                            <Row gutter={[{xs: 0, sm: 10, md: 10, lg: 10}, 0]} className={'row'} justify={'center'}>
+                                <Col xs={24} sm={12} md={12}>
+                                    <div className={'sub'}>{author}</div>
                                 </Col>
-                                <Col xs={24} sm={24} md={12}>
-                                    <div className={'sub'}>1 Мая 2020</div>
+                                <Col xs={24} sm={12} md={12}>
+                                    <div className={'sub'}>{moment(news.date).format('DD.MM.YYYY')}</div>
                                 </Col>
                             </Row>
                         </Col>

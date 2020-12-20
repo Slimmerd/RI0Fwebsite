@@ -8,6 +8,7 @@ const multer = require("multer");
 
 // Create new post
 // api/news/create
+// Only admins
 router.post('/create', [
     check(['name_ru', 'name_en', 'text_ru', 'text_en'], 'Нельзя оставлять пустые поля').exists(),
 ], auth, async (req, res) => {
@@ -38,20 +39,23 @@ router.post('/create', [
 })
 
 // Delete post
-// api/news/delete
-router.delete('/delete', async (req, res) => {
+// api/news/delete/:id
+// Only admins
+router.delete('/delete/:id', auth, async (req, res) => {
     try {
-        const news = await News.findOne({})
+        const news = await News.findByIdAndDelete(req.params.id)
 
-
-        //TODO: DELETE NEWS
+        res.status(201).json({message: "Фото было удално", id: news.id})
+        //TODO: Test news deleting feature
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
+        console.error('Error', e)
     }
 })
 
-// Get all posts
-// api/news/posts
+// Get list of posts
+// api/news/posts/
+// Only with API key
 router.get('/', async (req, res) => {
     try {
         const news = await News.find().sort('-date')
@@ -63,10 +67,16 @@ router.get('/', async (req, res) => {
 
 // Get certain post
 // api/news/:url
+// Only with API key
 router.get('/:url', async (req, res) => {
     try {
         const url = req.params.url
         const certain_news = await News.findOne({url})
+
+        if (!certain_news) {
+            return res.status(400).json({message: 'Новость не найдена'})
+        }
+
         res.json(certain_news)
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})

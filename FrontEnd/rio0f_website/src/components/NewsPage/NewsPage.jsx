@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react'
-import {Col, Row, Button} from "antd";
+import React, {useEffect} from 'react'
 import styled from "styled-components";
-import {MainCard} from "./NewsCards/MainCard";
-import {SecondaryCard} from "./NewsCards/SecondaryCard";
 import {FadeInContainer} from "../common/FadeInAnimation";
-import {NewsAnimContainer} from "../common/NewsCardAnimation";
 import {useTranslation} from "react-i18next";
+import {useDispatch, useSelector} from "react-redux";
+import {getNews} from "../../redux/news-reducer";
+import NewsPageStab from "./NewsCards/NewsPageStab";
+import NewsPageCards from "./NewsCards/NewsPageCards";
 
 const NewsPageBlock = styled.div`
   background: #ECF0F1;
@@ -147,29 +147,16 @@ const ExtraNews = styled.div`
 
 //TODO: Put latest news on main card and others to secondary cards
 
-export const NewsPage = ({news, ...props}) => {
-    const [isSize, setSize] = useState(window.innerWidth);
-    const breakpoint = 768
+export const NewsPage = (props) => {
+
     const {t, i18n} = useTranslation()
+    const news = useSelector((state) => state.newsPage.news)
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        window.addEventListener("resize", () => setSize(window.innerWidth));
-    }, []);
-
-    const [loading, setLoading] = useState(false)
-
-    const OnClick = () => {
-        setLoading(!loading)
-    }
-
-    const LastNews = () => {
-
-        const Last = isSize > breakpoint ? <MainCard news={news[0]}/> :
-            <div className={'test'}><SecondaryCard news={news[0]}/></div>
-
-        return Last
-
-    }
+        dispatch(getNews())
+        console.warn('dispatch')
+    }, [dispatch]);
 
     return (
         <NewsPageBlock>
@@ -184,21 +171,9 @@ export const NewsPage = ({news, ...props}) => {
                     </NamingBlock>
                 </FadeInContainer>
                 {/*Main card*/}
-                <FadeInContainer>
-                    <LastNews/>
-                </FadeInContainer>
-                {/*Other News card*/}
-                <Row gutter={[{xs: 0, sm: 24, md: 24, lg: 24}, 48]} align={'center'}>
-                    <NewsAnimContainer
-                        items={
-                            news.slice(1).map((n, i) => <Col key={i} xs={24} sm={24} md={24} lg={12} xl={8}
-                                                             xxl={8}><SecondaryCard news={n}/></Col>)
-                        }/>
-                </Row>
-                <ExtraNews>
-                    {/*    <Button className={'button'} type="primary" loading={loading}*/}
-                    {/*            onClick={OnClick}>{t('news:button')}</Button>*/}
-                </ExtraNews>
+                {news.length === 0 ? <NewsPageStab/> : <NewsPageCards news={news}/>}
+                {/*<NewsPageStab/>*/}
+                <ExtraNews/>
             </PageContainer>
         </NewsPageBlock>
     )

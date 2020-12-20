@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from 'react'
-import {Col, Row, Skeleton} from "antd";
+import React, {useEffect, useState} from 'react'
+import {Row, Skeleton} from "antd";
 import styled from "styled-components";
 import {Icon} from '@iconify/react';
 import cameraIcon from '@iconify/icons-si-glyph/camera';
-import i18n from "i18next";
 import moment from 'moment';
+import {NavLink} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 const CardShape = styled.div`
   height: 450px;
@@ -92,6 +93,12 @@ const CardShape = styled.div`
       margin-bottom: 5px;
     }
 
+    .skeletonHeader {
+      width: 250px;
+      height: 30px;
+      border-radius: 5px;
+    }
+
   }
 
   @media (max-width: 374px) {
@@ -106,29 +113,33 @@ const CardShape = styled.div`
         font-size: 25px;
         line-height: 25px;
       }
+
+      .skeletonStyle {
+        width: 230px;
+      }
+
+      .skeletonHeader {
+        width: 230px;
+      }
     }
 
   }
 `
 
 export const SecondaryCard = ({news}) => {
-    const [loading, setLoading] = useState(false);
-    const [text, setText] = useState('');
-    const [name, setName] = useState('');
-    const onChange = () => {
-        setLoading(!loading)
-    };
+    const [loading, setLoading] = useState(true);
+    const [text, setText] = useState(null);
+    const [name, setName] = useState(null);
+    const {t, i18n} = useTranslation();
 
     const ParagraphSkeleton = [
-        <Skeleton.Input className={'skeletonStyle'} active={'active'}/>,
-        <Skeleton.Input className={'skeletonStyle'} active={'active'}/>,
-        <Skeleton.Input className={'skeletonStyle'} active={'active'}/>,
-        <Skeleton.Input className={'skeletonStyle'} active={'active'}/>,
-        <Skeleton.Input className={'skeletonStyle'} active={'active'}/>,
-        <Skeleton.Input className={'skeletonStyle'} active={'active'}/>,
-        <Skeleton.Input className={'skeletonStyle'} active={'active'}/>]
-
-    //TODO: Import data from database
+        <Skeleton.Input key={1} className={'skeletonStyle'} active={'active'}/>,
+        <Skeleton.Input key={2} className={'skeletonStyle'} active={'active'}/>,
+        <Skeleton.Input key={3} className={'skeletonStyle'} active={'active'}/>,
+        <Skeleton.Input key={4} className={'skeletonStyle'} active={'active'}/>,
+        <Skeleton.Input key={5} className={'skeletonStyle'} active={'active'}/>,
+        <Skeleton.Input key={6} className={'skeletonStyle'} active={'active'}/>,
+        <Skeleton.Input key={7} className={'skeletonStyle'} active={'active'}/>]
 
     useEffect(() => {
         if (i18n.language === 'ru') {
@@ -138,32 +149,36 @@ export const SecondaryCard = ({news}) => {
             setText(news.text_en)
             setName(news.name_en)
         }
-    }, [i18n.language])
-
+        if (news === undefined || news.length === 0) {
+            setLoading(true)
+        } else setLoading(false)
+    }, [i18n.language, news])
 
     return (
-        <CardShape picture={news.img}>
-            {news.img ? <Row className={'picture'}>
-                </Row> :
-                <Row className={'pictureStab'}>
-                    <Icon icon={cameraIcon} style={{color: '#ecf0f1', fontSize: '118.39999389648438px'}}/> </Row>}
+        <NavLink to={'/news/' + news.url}>
+            <CardShape picture={!loading ? news.img : null}>
+                {news.img && !loading ? <Row className={'picture'}>
+                    </Row> :
+                    <Row className={'pictureStab'}>
+                        <Icon icon={cameraIcon} style={{color: '#ecf0f1', fontSize: '118.39999389648438px'}}/> </Row>}
 
-            <Row className={'text'}>
-                <div style={{margin: '0 auto'}}>
-                    <div className={'date'}>{!loading ? moment(news.date).format('DD.MM.YYYY') :
-                        <Skeleton.Input style={{width: 100, height: '20px', borderRadius: '5px'}}
-                                        active={'active'}/>}</div>
+                <Row className={'text'}>
+                    <div style={{margin: '0 auto'}}>
+                        <div className={'date'}>{!loading ? moment(news.date).format('DD.MM.YYYY') :
+                            <Skeleton.Input style={{width: 100, height: '20px', borderRadius: '5px'}}
+                                            active={'active'}/>}</div>
 
-                    <div
-                        className={'header'}>{!loading ? (name.length > 30 ? `${name.substring(0, 25)}...` : name) :
-                        <Skeleton.Input style={{width: 250, height: '30px', borderRadius: '5px'}}
-                                        active={'active'}/>}</div>
+                        <div
+                            className={'header'}>{!loading ? (name.length > 30 ? `${name.substring(0, 25)}...` : name) :
+                            <Skeleton.Input className={'skeletonHeader'}
+                                            active={'active'}/>}</div>
 
-                    <div
-                        className={'paragraph'}>{!loading ? (text.length > 180 ? `${text.substring(0, 160)}...` : text) : ParagraphSkeleton}
+                        <div
+                            className={'paragraph'}>{!loading ? (text.length > 180 ? `${text.substring(0, 160)}...` : text) : ParagraphSkeleton}
+                        </div>
                     </div>
-                </div>
-            </Row>
-        </CardShape>
+                </Row>
+            </CardShape>
+        </NavLink>
     )
 }

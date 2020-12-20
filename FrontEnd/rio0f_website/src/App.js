@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import './App.less';
-import {Switch, Redirect, Route, BrowserRouter, withRouter} from "react-router-dom";
+import {Route, Switch, useLocation, withRouter} from "react-router-dom";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {MainPage} from "./components/MainPage/mainpage";
 import {Footer} from "./components/Footer/Footer";
@@ -16,11 +15,9 @@ import {ActualNewsPage} from "./components/NewsPage/ActualNewsPage/ActualNewsPag
 import {OnlineLogPage} from "./components/OnlineLogPage/OnlineLogPage";
 import {ChatPage} from "./components/ChatPage/ChatPage";
 import React, {Suspense, useEffect} from "react";
-import {useLocation} from 'react-router-dom';
-import LoginPage from "./components/AdminPanel/LoginPage/LoginPage";
+import {Login as LoginPage} from "./components/AdminPanel/LoginPage/LoginPage";
 import {compose} from "redux";
 import AdminPanel from "./components/AdminPanel/AdminPanel/AdminPanel";
-import NewsPageContainer from "./components/NewsPage/NewsPageContainer";
 
 
 function App() {
@@ -48,7 +45,7 @@ function App() {
                         {/*<Route path="/profile/:userID?" render={withSuspense(ProfileContainer)}/>*/}
 
                         <Route exact path="/" render={() => <MainPage/>}/>
-                        <Route exact path="/news" render={() => <NewsPageContainer/>}/>
+                        <Route exact path="/news" render={() => <NewsPage/>}/>
                         <Route exact path="/donate" render={() => <DonatePage/>}/>
                         <Route exact path="/contacts" render={() => <ContactsPage/>}/>
                         <Route exact path="/photos" render={() => <PhotosPage/>}/>
@@ -56,7 +53,7 @@ function App() {
                         <Route exact path="/plan" render={() => <PlanPage/>}/>
                         <Route exact path="/hardware" render={() => <HardwarePage/>}/>
                         <Route exact path="/team" render={() => <TeamPage/>}/>
-                        <Route exact path="/news/act" render={() => <ActualNewsPage/>}/>
+                        <Route exact path="/news/:url?" render={() => <ActualNewsPage/>}/>
                         <Route exact path="/onlinelog" render={() => <OnlineLogPage/>}/>
                         <Route exact path="/chat" render={() => <ChatPage/>}/>
                         <Route exact path="/admin" render={() => <AdminPanel/>}/>
