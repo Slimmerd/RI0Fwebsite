@@ -1,6 +1,6 @@
 import React from 'react'
 import {ChatPageNaming} from "./Blocks/Naming_chatpage";
-import {ChatPageForm} from "./Blocks/Form_chatpage";
+import {ChatFormPage} from "./Blocks/Form_chatpage";
 import styled from "styled-components";
 import {ChatPageComments} from "./Blocks/Comments_chatpage";
 
@@ -13,7 +13,7 @@ export const ChatPage = () => {
         <GlobalDiv>
             <ChatPageNaming/>
             <div className={'container'}>
-                <ChatPageForm/>
+                <ChatFormPage/>
                 <ChatPageComments/>
             </div>
         </GlobalDiv>

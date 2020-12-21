@@ -12,7 +12,7 @@ const HeaderBlock = styled.div`
   align-items: center;
 
   .carousel {
-    height: 450px;
+    height: 540px;
     width: 800px;
 
   }
@@ -35,12 +35,10 @@ const HeaderBlock = styled.div`
   }
 `
 
-
 export const ActualNewsPagePreviousNews = ({news}) => {
     const [isSize, setSize] = useState(window.innerWidth);
     const breakpoint = 1200
     const sbreakpoint = 576
-
 
     const items = [
         <Col><SecondaryCard news={news[0]}/></Col>,
@@ -81,10 +79,9 @@ export const ActualNewsPagePreviousNews = ({news}) => {
     return (
         <HeaderBlock>
             <div className={'container'}>
-                <Row gutter={[{xs: 0, sm: 30, md: 30, lg: 30}, {xs: 24, sm: 90, md: 90, lg: 90}]} justify={'center'}
-                     align={'middle'} style={{paddingTop: '25px'}}>
+                <Row gutter={[{xs: 0, sm: 30, md: 30, lg: 30}, {xs: 50, sm: 90, md: 90, lg: 90}]} justify={'center'}
+                     align={'middle'} style={{paddingTop: '50px', marginTop: 0}}>
                     {isSize <= breakpoint && isSize >= sbreakpoint ? <Test/> : <NewsAnimContainer items={items}/>}
-
                 </Row>
             </div>
         </HeaderBlock>

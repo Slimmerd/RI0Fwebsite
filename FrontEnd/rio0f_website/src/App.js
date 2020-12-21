@@ -18,6 +18,7 @@ import React, {Suspense, useEffect} from "react";
 import {Login as LoginPage} from "./components/AdminPanel/LoginPage/LoginPage";
 import {compose} from "redux";
 import AdminPanel from "./components/AdminPanel/AdminPanel/AdminPanel";
+import Error404 from "./components/common/404";
 
 
 function App() {
@@ -59,7 +60,7 @@ function App() {
                         <Route exact path="/admin" render={() => <AdminPanel/>}/>
                         <Route exact path="/login" render={() => <LoginPage/>}/>
 
-                        <Route render={() => <div>404 NOT Found</div>}/>
+                        <Route render={() => <Error404/>}/>
                     </Switch>
                 </div>
                 {location.pathname === '/admin' ? null : <Footer/>}

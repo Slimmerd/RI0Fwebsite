@@ -1,29 +1,14 @@
 import React, {useState} from 'react';
-import {Drawer, Form, Button, Col, Row, Input, Upload} from 'antd';
-import {InboxOutlined, PlusOutlined} from '@ant-design/icons';
-import styled from "styled-components";
+import {Button, Col, Drawer, Form, Input, Row, Upload} from 'antd';
+import {PlusOutlined} from '@ant-design/icons';
 import {Field, reduxForm} from "redux-form";
-import {Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import {CreateNews} from "../../../redux/news-reducer";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../../HOC/authRedirect";
+import {makeField} from "../../../utils/formHandler";
 
 const {Dragger} = Upload
-
-const makeField = Component => ({input, meta, children, hasFeedback, label, ...rest}) => {
-    const hasError = meta.touched && meta.invalid;
-    return (
-        <Form.Item
-            label={label}
-            validateStatus={hasError ? "error" : "success"}
-            hasFeedback={hasFeedback && hasError}
-            help={hasError && meta.error}
-        >
-            <Component {...input} {...rest} children={children}/>
-        </Form.Item>
-    );
-};
 
 const AInput = makeField(Input);
 const ATextarea = makeField(Input.TextArea);
@@ -135,10 +120,6 @@ const NewsPublish = (props) => {
         props.CreateNews(formData.name_ru, formData.name_en, formData.text_ru, formData.text_en, formData.img)
         console.log(formData)
     }
-
-    // if (props.isAuth) {
-    //     return <Redirect to={"/profile"}/>
-    // }
 
     return <div>
         <NewsForm onSubmit={onSubmit}/>

@@ -7,18 +7,24 @@ import {useParams} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {getParticularNews} from "../../../redux/actNews-reducer";
 import {getNews} from "../../../redux/news-reducer";
+import {useHistory} from "react-router-dom";
 
 export const ActualNewsPage = () => {
     let params = useParams()
     const ActNews = useSelector((state) => state.actNewsPage)
     const news = useSelector((state) => state.newsPage.news)
     const dispatch = useDispatch()
+    const history = useHistory()
 
     useEffect(() => {
         dispatch(getParticularNews(params.url))
-        console.warn('actnewspage', news)
         dispatch(getNews())
-    }, [dispatch, params.url])
+
+        if (news.length === 0) {
+            history.push('/404')
+        }
+
+    }, [dispatch, params.url, history, news.length])
 
     return (
         <div>

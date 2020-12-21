@@ -155,7 +155,7 @@ export const NewsPage = (props) => {
 
     useEffect(() => {
         dispatch(getNews())
-        console.warn('dispatch')
+
     }, [dispatch]);
 
     return (

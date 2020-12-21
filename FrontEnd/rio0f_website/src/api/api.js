@@ -19,6 +19,8 @@ export const AuthAPI = {
         return instance.post(`auth/name`, {id})
             .then((response) => {
                 return response.data
+            }).catch((error) => {
+                return error.response
             })
     },
 
@@ -29,7 +31,6 @@ export const AuthAPI = {
                 if (response.data.token) {
                     localStorage.setItem("user", JSON.stringify(response.data));
                 }
-
                 return response;
             });
     },
@@ -51,13 +52,14 @@ export const NewsAPI = {
         return instance.get(`news/` + url)
             .then(response => {
                 return response.data
-            });
+            }).catch((error) => {
+                return error.response
+            })
     },
 
     postNews(name_ru, name_en, text_ru, text_en, img) {
         return instance.post(`news/create`, {name_ru, name_en, text_ru, text_en, img})
             .catch((error) => {
-                console.log('respo', error.response.status)
                 return error.response
             })
 
@@ -66,9 +68,21 @@ export const NewsAPI = {
     deleteNews(userID) {
         return instance.delete(`follow/${userID}`)
     },
-
-    // getProfile(userID) {
-    //     console.warn('Obsolete method. Please use ProfileAPI object')
-    //     return ProfileAPI.getProfile(userID)
-    // }
 };
+
+
+export const ChatAPI = {
+    getComments() {
+        return instance.get('chat/')
+            .then(response => {
+                return response
+            })
+    },
+
+    postComment(name, call, email, text) {
+        return instance.post('chat/post', {name, call, email, text})
+            .then(response => {
+                return response
+            })
+    }
+}

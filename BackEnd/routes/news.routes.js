@@ -74,7 +74,7 @@ router.get('/:url', async (req, res) => {
         const certain_news = await News.findOne({url})
 
         if (!certain_news) {
-            return res.status(400).json({message: 'Новость не найдена'})
+            return res.status(404).json({message: 'Новость не найдена'})
         }
 
         res.json(certain_news)

@@ -104,7 +104,7 @@ router.post('/name', [check('id', 'Author ID не найден').exists()], asyn
         const user = await User.findById(id)
 
         if (!user) {
-            return res.status(400).json({message: 'Пользователь не найден'})
+            return res.status(404).json({message: 'Пользователь не найден'})
         }
 
         res.json({author_ru: user.name_ru, author_en: user.name_en})

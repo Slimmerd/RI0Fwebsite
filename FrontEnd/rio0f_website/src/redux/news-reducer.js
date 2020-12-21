@@ -64,13 +64,6 @@ export const getNews = () => async (dispatch) => {
     dispatch(setNews(data.data));
 };
 
-
-// export const getParticularNews = (url) => async (dispatch) =>{
-//     let data = await NewsAPI.getParticularNews(url)
-//     console.warn('response data', data)
-//     dispatch(setNews(data.data))
-// }
-
 export const CreateNews = (name_ru, name_en, text_ru, text_en, img) => async (dispatch) => {
     let response = await NewsAPI.postNews(name_ru, name_en, text_ru, text_en, img)
 

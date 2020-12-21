@@ -55,8 +55,12 @@ export const setNames = (author_ru, author_en) =>
 export const getParticularNews = (url) => async (dispatch) => {
     let data = await NewsAPI.getParticularNews(url)
     let name_data = await AuthAPI.getNames(data.author)
-    dispatch(setNews(data.name_ru, data.name_en, data.text_ru, data.text_en, data.img, data.date, data.url, data.author))
-    dispatch(setNames(name_data.author_ru, name_data.author_en))
+
+
+    if (data.status !== 404 || name_data.status !== 404) {
+        dispatch(setNews(data.name_ru, data.name_en, data.text_ru, data.text_en, data.img, data.date, data.url, data.author))
+        dispatch(setNames(name_data.author_ru, name_data.author_en))
+    }
 }
 
 
