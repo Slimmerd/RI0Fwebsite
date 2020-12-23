@@ -5,8 +5,10 @@ const mongoose = require('mongoose')
 const path = require('path')
 const apiCheck = require('./middleware/access.middleware')
 const cors = require('cors')
+const hpp = require('hpp');
 
 const app = express()
+app.disable('x-powered-by')
 
 const corsOptions = {
     origin: 'http://localhost:3000',
@@ -16,12 +18,12 @@ const corsOptions = {
 
 app.use(express.json({extended: true}))
 
-
+app.use(hpp());
 app.use(cors(corsOptions))
 app.use('/api/auth', apiCheck, require('./routes/auth.routes'))
 app.use('/api/news', apiCheck, require('./routes/news.routes'))
 app.use('/api/photos', require('./routes/photos.routes'))
-// app.use('/api/chat', require('./routes/links.routes'))
+app.use('/api/chat', apiCheck, require('./routes/chat.routes'))
 // app.use('/api/photos', require('./routes/links.routes'))
 
 

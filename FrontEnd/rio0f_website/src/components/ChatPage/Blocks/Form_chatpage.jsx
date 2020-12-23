@@ -1,12 +1,13 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import styled from "styled-components";
 import {Button, Col, Form, Input, Row} from "antd";
 import {FadeInContainer} from "../../common/FadeInAnimation";
 import {useTranslation} from "react-i18next";
 import {Field, reduxForm} from "redux-form";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {makeField} from "../../../utils/formHandler";
 import {postComment} from "../../../redux/chat-reducer";
+import {emailField, requiredField} from "../../../utils/formValidations";
 
 const CardShape = styled.div`
   min-height: 500px;
@@ -241,12 +242,27 @@ const ATextarea = makeField(Input.TextArea);
 
 const ChatPageForm = (props) => {
     const {t, i18n} = useTranslation()
-    const {handleSubmit, error} = props
+    const {handleSubmit, submitSucceeded, pristine, submitting, reset} = props
     const [loading, setLoading] = useState(false)
+    const fetching = useSelector((state) => state.chat.fetching)
+
+    useEffect(() => {
+        if (fetching) {
+            setLoading(true)
+        } else {
+            setLoading(false)
+        }
+
+        if (!fetching && submitSucceeded) {
+            reset()
+        }
+
+    }, [fetching, submitSucceeded, reset])
 
     const OnClick = () => {
-        setLoading(!loading)
         handleSubmit()
+
+
     }
 
     return (
@@ -259,7 +275,7 @@ const ChatPageForm = (props) => {
                                 <div className={'header'}>{t('chat:form_block.heading')}</div>
                                 <Field
                                     name={'text'} placeholder={t('chat:form_block.textarea')} component={ATextarea}
-                                    rules={[{required: true}]}
+                                    rules={[{required: true}]} validate={[requiredField]}
                                 />
                             </div>
                         </Col>
@@ -267,18 +283,22 @@ const ChatPageForm = (props) => {
                             <Form layout={'vertical'} size={'large'}>
                                 <Field name={'name'} label={`${t('chat:form_block.name_heading')}:`}
                                        placeholder={`${t('chat:form_block.name_input')}`} component={AInput}
+                                       validate={[requiredField]}
                                        rules={[{required: true}]}/>
 
                                 <Field name={'call'} label={`${t('chat:form_block.call')}:`}
                                        placeholder={`${t('chat:form_block.call_input')}`} component={AInput}
+                                       validate={[requiredField]}
                                        rules={[{required: true}]}/>
 
                                 <Field name={'email'} type="email" label={`${t('chat:form_block.email')}:`}
                                        placeholder={`${t('chat:form_block.email_input')}`} component={AInput}
+                                       validate={[requiredField, emailField]}
                                        rules={[{required: true}]}/>
 
                                 <Form.Item className={'button'}>
                                     <Button type="primary" htmlType="submit" loading={loading}
+                                            disabled={pristine || submitting || fetching}
                                             onClick={OnClick}>{t('chat:form_block.button')}</Button>
                                 </Form.Item>
                             </Form>
@@ -290,7 +310,6 @@ const ChatPageForm = (props) => {
     )
 }
 
-
 const ChatForm = reduxForm({
     form: 'ChatForm' // a unique identifier for this form
 })(ChatPageForm)
@@ -300,8 +319,7 @@ export const ChatFormPage = () => {
     const dispatch = useDispatch()
 
     const onSubmit = (formData) => {
-        // dispatch(postComment(formData.name, formData.call, formData.email, formData.text))
-        console.warn(formData)
+        dispatch(postComment(formData.name, formData.call, formData.email, formData.text))
     }
 
 

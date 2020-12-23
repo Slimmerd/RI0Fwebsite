@@ -131,21 +131,19 @@ const Card = styled.div`
    
 `
 
-export const CommentCard = () => {
+export const CommentCard = ({comment}) => {
     return (
         <FadeInContainer>
-        <Card>
-            <Row justify={'center'}>
-                <Col span={6} xs={24} sm={6} md={6} lg={6} xl={6} className={'author'}>
-                    <div style={{margin: '0 auto'}}>
-                        <div className={'call'}>R6RR</div>
-                        <div className={'name'}>Иван</div>
-                    </div>
-                </Col>
+            <Card>
+                <Row justify={'center'}>
+                    <Col span={6} xs={24} sm={6} md={6} lg={6} xl={6} className={'author'}>
+                        <div style={{margin: '0 auto'}}>
+                            <div className={'call'}>{comment.call}</div>
+                            <div className={'name'}>{comment.name}</div>
+                        </div>
+                    </Col>
                 <Col span={18} xs={24} sm={18} md={18} lg={18} xl={18} className={'comment'}>
-                    <div className={'text'}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non ultricies
-                        ipsum. Sed eget congue velit. Phasellus suscipit, turpis eu molestie vulputate, tellus turpis
-                        sagittis ipsum, a aliquam justo magna ac urna. Nulla dapibus tincidunt eleifend.
+                    <div className={'text'}>{comment.text}
                     </div>
 
                 </Col>

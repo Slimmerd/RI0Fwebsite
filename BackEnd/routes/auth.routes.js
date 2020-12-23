@@ -98,6 +98,7 @@ router.post('/login',
         }
     })
 
+//FIX: Refactor this to make it with get statement
 router.post('/name', [check('id', 'Author ID не найден').exists()], async (req, res) => {
     try {
         const {id} = req.body

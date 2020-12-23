@@ -3,11 +3,13 @@ import {stopSubmit} from "redux-form";
 
 const SET_COMMENTS = 'SET_COMMENTS';
 const ADD_COMMENT = 'ADD_COMMENT';
-const TGL_IS_FETCHING = 'TGL_IS_FETCHING';
-const FOLLOW_IS_FETCHING = 'FOLLOW_IS_FETCHING';
+const COMMENT_IS_FETCHING = 'COMMENT_IS_FETCHING';
 
 let initialState =
-    {};
+    {
+        comments: [],
+        fetching: false
+    };
 
 const ChatReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -18,19 +20,11 @@ const ChatReducer = (state = initialState, action) => {
         }
         case ADD_COMMENT: {
             return {
-                ...state, comments: [...state.comments, ...action.payload]
+                ...state, comments: [action.comment, ...state.comments]
             };
         }
-        case TGL_IS_FETCHING: {
-            return {...state, isFetching: action.isFetching}
-        }
-        case FOLLOW_IS_FETCHING: {
-            return {
-                ...state,
-                followingFetching: action.isFetching ?
-                    [...state.followingFetching, action.userID] :
-                    state.followingFetching.filter(id => id !== action.userID)
-            }
+        case COMMENT_IS_FETCHING: {
+            return {...state, fetching: action.fetching}
         }
 
         default:
@@ -48,6 +42,11 @@ export const addComment = (comment) =>
         type: ADD_COMMENT, comment
     });
 
+export const setFetching = (fetching) =>
+    ({
+        type: COMMENT_IS_FETCHING, fetching
+    });
+
 
 //Thunks
 export const getComments = () => async (dispatch) => {
@@ -57,6 +56,8 @@ export const getComments = () => async (dispatch) => {
 }
 
 export const postComment = (name, call, email, text) => async (dispatch) => {
+    dispatch(setFetching(true)) // Set comment fetching
+
     let data = await ChatAPI.postComment(name, call, email, text)
 
     if (data.status === 201) {
@@ -66,6 +67,7 @@ export const postComment = (name, call, email, text) => async (dispatch) => {
         dispatch(stopSubmit("ChatForm", {_error: ErrorMessage}))
         return Promise.reject(ErrorMessage)
     }
+    dispatch(setFetching(false)) // Disable comment fetching
 }
 
 
