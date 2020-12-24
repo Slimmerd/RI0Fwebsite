@@ -24,7 +24,7 @@ app.use('/api/auth', apiCheck, require('./routes/auth.routes'))
 app.use('/api/news', apiCheck, require('./routes/news.routes'))
 app.use('/api/photos', require('./routes/photos.routes'))
 app.use('/api/chat', apiCheck, require('./routes/chat.routes'))
-// app.use('/api/photos', require('./routes/links.routes'))
+app.use('/api/photos', apiCheck, require('./routes/photos.routes'))
 
 
 if (process.env.NODE_ENV === 'production') {

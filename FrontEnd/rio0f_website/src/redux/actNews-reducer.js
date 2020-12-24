@@ -2,9 +2,6 @@ import {AuthAPI, NewsAPI} from "../api/api";
 
 const SET_ACT_NEWS = 'SET_ACT_NEWS';
 const SET_ACT_NAMES = 'SET_ACT_NAMES';
-const CREATE_NEWS = 'CREATE_NEWS';
-const TGL_IS_FETCHING = 'TGL_IS_FETCHING';
-const FOLLOW_IS_FETCHING = 'FOLLOW_IS_FETCHING';
 
 let initialState =
     {};
@@ -20,20 +17,6 @@ const ActNewsReducer = (state = initialState, action) => {
             return {
                 ...state, ...action.payload
             };
-        }
-        case CREATE_NEWS: {
-            return {...state, ...action.payload}
-        }
-        case TGL_IS_FETCHING: {
-            return {...state, isFetching: action.isFetching}
-        }
-        case FOLLOW_IS_FETCHING: {
-            return {
-                ...state,
-                followingFetching: action.isFetching ?
-                    [...state.followingFetching, action.userID] :
-                    state.followingFetching.filter(id => id !== action.userID)
-            }
         }
 
         default:

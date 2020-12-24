@@ -12,7 +12,7 @@ const upload = multer({storage: storage})
 // Create new post
 // api/photos/upload
 //Only admins
-router.post('/upload', [check(['img'], 'Выберите фотографию').exists()], auth, apiCheck, upload.array('img', 6), async (req, res) => {
+router.post('/upload', auth, apiCheck, upload.array('img', 6), async (req, res) => {
     try {
         const errors = validationResult(req)
 

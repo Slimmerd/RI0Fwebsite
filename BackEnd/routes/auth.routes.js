@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs')
 const {check, validationResult} = require('express-validator')
 const jwt = require('jsonwebtoken')
 const config = require('config')
+const auth = require('../middleware/auth.middleware')
 
 // /api/auth/register -- Register POST
 router.post('/register', [
@@ -109,6 +110,19 @@ router.post('/name', [check('id', 'Author ID не найден').exists()], asyn
         }
 
         res.json({author_ru: user.name_ru, author_en: user.name_en})
+
+    } catch (e) {
+        res.status(500).json({message: 'Что-то пошло не так'})
+        console.warn(e)
+    }
+})
+
+
+// /api/auth/me
+// Get auth status
+router.get('/me', auth, async (req, res) => {
+    try {
+        res.status(201).json({message: "Авторизован"})
 
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так'})

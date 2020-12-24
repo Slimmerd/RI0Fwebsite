@@ -7,7 +7,7 @@ import {Field, reduxForm} from "redux-form";
 import {useDispatch, useSelector} from "react-redux";
 import {makeField} from "../../../utils/formHandler";
 import {postComment} from "../../../redux/chat-reducer";
-import {emailField, requiredField} from "../../../utils/formValidations";
+import {emailField, maxLength, minLength, OnlyLetters, requiredField} from "../../../utils/formValidations";
 
 const CardShape = styled.div`
   min-height: 500px;
@@ -242,7 +242,7 @@ const ATextarea = makeField(Input.TextArea);
 
 const ChatPageForm = (props) => {
     const {t, i18n} = useTranslation()
-    const {handleSubmit, submitSucceeded, pristine, submitting, reset} = props
+    const {handleSubmit, submitSucceeded, pristine, submitting, reset, invalid} = props
     const [loading, setLoading] = useState(false)
     const fetching = useSelector((state) => state.chat.fetching)
 
@@ -260,9 +260,7 @@ const ChatPageForm = (props) => {
     }, [fetching, submitSucceeded, reset])
 
     const OnClick = () => {
-        handleSubmit()
-
-
+        if (!invalid) handleSubmit()
     }
 
     return (
@@ -275,7 +273,7 @@ const ChatPageForm = (props) => {
                                 <div className={'header'}>{t('chat:form_block.heading')}</div>
                                 <Field
                                     name={'text'} placeholder={t('chat:form_block.textarea')} component={ATextarea}
-                                    rules={[{required: true}]} validate={[requiredField]}
+                                    rules={[{required: true}]} validate={[requiredField, minLength(10), maxLength(600)]}
                                 />
                             </div>
                         </Col>
@@ -283,12 +281,12 @@ const ChatPageForm = (props) => {
                             <Form layout={'vertical'} size={'large'}>
                                 <Field name={'name'} label={`${t('chat:form_block.name_heading')}:`}
                                        placeholder={`${t('chat:form_block.name_input')}`} component={AInput}
-                                       validate={[requiredField]}
+                                       validate={[requiredField, OnlyLetters, minLength(2), maxLength(32)]}
                                        rules={[{required: true}]}/>
 
                                 <Field name={'call'} label={`${t('chat:form_block.call')}:`}
                                        placeholder={`${t('chat:form_block.call_input')}`} component={AInput}
-                                       validate={[requiredField]}
+                                       validate={[requiredField, minLength(3), maxLength(8)]}
                                        rules={[{required: true}]}/>
 
                                 <Field name={'email'} type="email" label={`${t('chat:form_block.email')}:`}
@@ -298,7 +296,7 @@ const ChatPageForm = (props) => {
 
                                 <Form.Item className={'button'}>
                                     <Button type="primary" htmlType="submit" loading={loading}
-                                            disabled={pristine || submitting || fetching}
+                                            disabled={pristine || submitting || fetching || invalid}
                                             onClick={OnClick}>{t('chat:form_block.button')}</Button>
                                 </Form.Item>
                             </Form>

@@ -5,10 +5,12 @@ import ActNewsReducer from "./actNews-reducer";
 import {reducer as formReducer} from 'redux-form'
 import AuthReducer from "./auth-reducer";
 import ChatReducer from "./chat-reducer";
+import PhotoReducer from "./photo-reducer";
 
 const reducers = combineReducers({
     newsPage: NewsReducer,
     actNewsPage: ActNewsReducer,
+    photos: PhotoReducer,
     auth: AuthReducer,
     chat: ChatReducer,
     form: formReducer

@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from "styled-components";
 import {Field, reduxForm} from "redux-form";
 import {Redirect} from "react-router-dom";
 import {UserLogin} from "../../../redux/auth-reducer";
-import {connect, useDispatch, useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {Button} from "antd";
+import {emailField, requiredField} from "../../../utils/formValidations";
 
 const Background = styled.div`
   width: 100vw;
@@ -54,6 +56,14 @@ const Form = styled.div`
     }
   }
 
+  .ant-btn > .ant-btn-loading-icon .anticon {
+    padding-right: 0 !important;
+  }
+
+  .ant-btn-loading-icon {
+    padding-right: 20px !important;
+  }
+
 
   .input {
     width: 350px;
@@ -96,8 +106,21 @@ const Sub = styled.div`
 
 
 const LoginPage = (props) => {
-    const {handleSubmit, error} = props
+    const {handleSubmit, submitSucceeded, pristine, submitting, reset, invalid} = props
+    const fetching = useSelector((state) => state.auth.fetching)
+    const [loading, setLoading] = useState(false)
 
+    useEffect(() => {
+        if (fetching) {
+            setLoading(true)
+        } else {
+            setLoading(false)
+        }
+
+        if (!fetching && submitSucceeded) {
+            reset()
+        }
+    }, [fetching, submitSucceeded, reset])
 
     return (
         <Background>
@@ -105,16 +128,16 @@ const LoginPage = (props) => {
                 <Form>
                     <Heading>Авторизация</Heading>
                     <Sub>Насладись всеми прелестями админки</Sub>
-                    <form onSubmit={handleSubmit}>
+                    <form>
                         <div className={'input'}>
-                            <div className={'label'}>Логин:</div>
+                            <div className={'label'}>Email:</div>
                             <div>
                                 <Field
                                     name="email"
                                     component="input"
                                     type="email"
                                     placeholder="Email"
-                                />
+                                    validate={[requiredField, emailField]}/>
                             </div>
                         </div>
                         <div className={'input'}>
@@ -125,13 +148,15 @@ const LoginPage = (props) => {
                                     component="input"
                                     type="password"
                                     placeholder="Password"
-                                />
+                                    validate={[requiredField]}/>
                             </div>
                         </div>
                         <div>
-                            <button type="submit">
+                            <Button type="submit" loading={loading}
+                                    onClick={!invalid ? handleSubmit : null}
+                                    disabled={pristine || submitting || fetching || invalid}>
                                 Войти
-                            </button>
+                            </Button>
                         </div>
                     </form>
                 </Form>
@@ -160,5 +185,7 @@ export const Login = () => {
     </div>
 }
 
+
+// TODO:  Multi language form
 
 

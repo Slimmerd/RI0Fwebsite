@@ -11,6 +11,9 @@ const multer = require("multer");
 // api/chat/post
 // Only with API key
 router.post('/post', [check(['name', 'call', 'text'], 'Нельзя оставлять пустые поля').exists(),
+    check('call', 'Некорректное количество символов').isLength({min: 3, max: 8}),
+    check('name', 'Некорректное количество символов').isLength({min: 2, max: 32}),
+    check('text', 'Некорректное количество символов').isLength({min: 10, max: 600}),
     check('email', 'Некорректный email').isEmail(),], async (req, res) => {
     try {
         //Error handler

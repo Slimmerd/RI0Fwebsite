@@ -1,16 +1,17 @@
 import {NewsAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 import {UserLogOut} from "./auth-reducer";
+import {notificationWindow} from "../utils/notificationWindow";
 
 const SET_NEWS = 'SET_NEWS';
 const CREATE_NEWS = 'CREATE_NEWS';
 const DELETE_NEWS = 'DELETE_NEWS';
-const TGL_IS_FETCHING = 'TGL_IS_FETCHING';
-const FOLLOW_IS_FETCHING = 'FOLLOW_IS_FETCHING';
+const NEWS_IS_FETCHING = 'NEWS_IS_FETCHING';
 
 let initialState =
     {
-        news: []
+        news: [],
+        fetching: false
     };
 
 const NewsReducer = (state = initialState, action) => {
@@ -26,16 +27,8 @@ const NewsReducer = (state = initialState, action) => {
         case DELETE_NEWS: {
             return {...state, totalNewsCount: action.count}
         }
-        case TGL_IS_FETCHING: {
-            return {...state, isFetching: action.isFetching}
-        }
-        case FOLLOW_IS_FETCHING: {
-            return {
-                ...state,
-                followingFetching: action.isFetching ?
-                    [...state.followingFetching, action.userID] :
-                    state.followingFetching.filter(id => id !== action.userID)
-            }
+        case NEWS_IS_FETCHING: {
+            return {...state, fetching: action.fetching}
         }
 
         default:
@@ -52,6 +45,11 @@ export const deleteNews = (newsID) => ({
     type: DELETE_NEWS,
 });
 
+export const setFetching = (fetching) =>
+    ({
+        type: NEWS_IS_FETCHING, fetching
+    });
+
 export const createNewsData = (name_ru, name_en, text_ru, text_en, img) => (
     {
         type: CREATE_NEWS, payload: {name_ru, name_en, text_ru, text_en, img}
@@ -65,36 +63,30 @@ export const getNews = () => async (dispatch) => {
 };
 
 export const CreateNews = (name_ru, name_en, text_ru, text_en, img) => async (dispatch) => {
+    dispatch(setFetching(true)) // Set news fetching
+
     let response = await NewsAPI.postNews(name_ru, name_en, text_ru, text_en, img)
 
     if (response.status === 201) {
         dispatch(createNewsData(name_ru, name_en, text_ru, text_en, img))
-    } else if (response.status === 401) {
-        dispatch(UserLogOut())
+        notificationWindow('success',
+            'Новость успешно опубликована',
+            `Новость ${name_ru}, успешно опубликована на сайте`,
+            'bottomLeft',
+            10)
     } else {
         let ErrorMessage = response.data.message.length > 0 ? response.data.message : "Undefined error"
         dispatch(stopSubmit("NewsForm", {_error: ErrorMessage}))
+        notificationWindow('error',
+            'Произошла ошибка во время публикации новости',
+            ErrorMessage,
+            'bottomLeft',
+            10)
+        dispatch(setFetching(false)) // Disable news fetching
         return Promise.reject(ErrorMessage)
     }
-
+    dispatch(setFetching(false)) // Disable news fetching
 }
 
-// const followUnfollowFlow = async (dispatch, userID, apiMethod, actionCreator) => {
-//     dispatch(setFollowFetching(true, userID));
-//
-//     let response = await apiMethod(userID);
-//     if (response.data.resultCode === 0) {
-//         dispatch(actionCreator(userID))
-//     }
-//     dispatch(setFollowFetching(false, userID));
-// }
-
-export const follow = (userID) => {
-
-    return async (dispatch) => {
-
-        // followUnfollowFlow(dispatch, userID, UserAPI.follow.bind(UserAPI), followSuccess)
-    };
-};
 
 export default NewsReducer;
