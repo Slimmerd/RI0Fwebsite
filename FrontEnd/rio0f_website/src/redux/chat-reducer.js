@@ -1,5 +1,6 @@
 import {ChatAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
+import {notificationWindow} from "../utils/notificationWindow";
 
 const SET_COMMENTS = 'SET_COMMENTS';
 const ADD_COMMENT = 'ADD_COMMENT';
@@ -65,6 +66,12 @@ export const postComment = (name, call, email, text) => async (dispatch) => {
     } else {
         let ErrorMessage = data.data.message.length > 0 ? data.data.message : "Undefined error"
         dispatch(stopSubmit("ChatForm", {_error: ErrorMessage}))
+        notificationWindow('error',
+            'Произошла ошибка',
+            ErrorMessage,
+            'bottomLeft',
+            10)
+        dispatch(setFetching(false))
         return Promise.reject(ErrorMessage)
     }
     dispatch(setFetching(false)) // Disable comment fetching

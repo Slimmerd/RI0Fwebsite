@@ -22,10 +22,10 @@ const NewsReducer = (state = initialState, action) => {
             };
         }
         case CREATE_NEWS: {
-            return {...state, ...action.payload}
+            return {...state, news: [action.news, ...state.news]}
         }
         case DELETE_NEWS: {
-            return {...state, totalNewsCount: action.count}
+            return {news: state.news.filter(news => news.id !== action.news.id)}
         }
         case NEWS_IS_FETCHING: {
             return {...state, fetching: action.fetching}
@@ -41,8 +41,8 @@ export const setNews = (news) =>
         type: SET_NEWS, news
     });
 
-export const deleteNews = (newsID) => ({
-    type: DELETE_NEWS,
+export const setDeletedNews = (news) => ({
+    type: DELETE_NEWS, news
 });
 
 export const setFetching = (fetching) =>
@@ -50,9 +50,9 @@ export const setFetching = (fetching) =>
         type: NEWS_IS_FETCHING, fetching
     });
 
-export const createNewsData = (name_ru, name_en, text_ru, text_en, img) => (
+export const createNewsData = (news) => (
     {
-        type: CREATE_NEWS, payload: {name_ru, name_en, text_ru, text_en, img}
+        type: CREATE_NEWS, news
     });
 
 
@@ -68,7 +68,7 @@ export const CreateNews = (name_ru, name_en, text_ru, text_en, img) => async (di
     let response = await NewsAPI.postNews(name_ru, name_en, text_ru, text_en, img)
 
     if (response.status === 201) {
-        dispatch(createNewsData(name_ru, name_en, text_ru, text_en, img))
+        dispatch(createNewsData({name_ru, name_en, text_ru, text_en, img}))
         notificationWindow('success',
             'Новость успешно опубликована',
             `Новость ${name_ru}, успешно опубликована на сайте`,
@@ -86,6 +86,30 @@ export const CreateNews = (name_ru, name_en, text_ru, text_en, img) => async (di
         return Promise.reject(ErrorMessage)
     }
     dispatch(setFetching(false)) // Disable news fetching
+}
+
+export const DeleteNews = (url) => async (dispatch) => {
+    let response = await NewsAPI.deleteNews(url)
+
+
+    if (response.status === 201) {
+        dispatch(setDeletedNews(response.data.id))
+        notificationWindow('success',
+            'Новость успешно удалена',
+            `Новость была успешно удалена`,
+            'bottomLeft',
+            10)
+    } else {
+        let ErrorMessage = response.data.message.length > 0 ? response.data.message : "Undefined error"
+        notificationWindow('error',
+            'Произошла ошибка во время публикации новости',
+            ErrorMessage,
+            'bottomLeft',
+            10)
+
+        return Promise.reject(ErrorMessage)
+    }
+
 }
 
 

@@ -17,14 +17,10 @@ export const ActualNewsPage = () => {
     const history = useHistory()
 
     useEffect(() => {
-        dispatch(getParticularNews(params.url))
+        dispatch(getParticularNews(params.url)).catch(() => history.push('/404'))
         dispatch(getNews())
 
-        if (news.length === 0) {
-            history.push('/404')
-        }
-
-    }, [dispatch, params.url, history, news.length])
+    }, [dispatch, params.url, history])
 
     return (
         <div>

@@ -170,9 +170,8 @@ export const NewsPage = (props) => {
                         </div>
                     </NamingBlock>
                 </FadeInContainer>
-                {/*Main card*/}
+                {/*Cards*/}
                 {news.length === 0 ? <NewsPageStab/> : <NewsPageCards news={news}/>}
-                {/*<NewsPageStab/>*/}
                 <ExtraNews/>
             </PageContainer>
         </NewsPageBlock>

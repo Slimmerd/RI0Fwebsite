@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {compose} from "redux";
 import {withAuthRedirect} from "../../../HOC/authRedirect";
-import NewsPublish from "./CreatePost/CreatePost";
+import NewsPublish from "./News/CreatePost/CreatePost";
 import styled from "styled-components";
 import {Layout, Menu} from 'antd';
 import {
@@ -14,6 +14,7 @@ import {
 import {AuthStatus} from "../../../redux/auth-reducer";
 import {useDispatch} from "react-redux";
 import PhotoPublish from "./UploadPhoto/UploadPhoto";
+import NewsPosts from "./News/NewsPosts";
 
 const {Header, Sider, Content} = Layout;
 
@@ -103,8 +104,9 @@ const AdminPanel = () => {
                             padding: 24
                         }}
                     >
-                        <NewsPublish/>
-                        <PhotoPublish/>
+                        {/*<NewsPublish/>*/}
+                        {/*<PhotoPublish/>*/}
+                        <NewsPosts/>
                     </Content>
                 </Layout>
             </Layout>

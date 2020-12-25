@@ -73,7 +73,7 @@ export const NewsAPI = {
     getParticularNews(url) {
         return instance.get(`news/` + url)
             .then(response => {
-                return response.data
+                return response
             }).catch((error) => {
                 return error.response
             })
@@ -90,9 +90,15 @@ export const NewsAPI = {
 
     // Delete news by url
     //TODO: Delete news API
-    deleteNews(userID) {
-        return instance.delete(`follow/${userID}`)
-    },
+    deleteNews(id) {
+        return instance.delete(`news/delete/${id}`).then(response => {
+            return response
+        }).catch((error) => {
+            return error.response
+        })
+    }
+
+
 };
 
 

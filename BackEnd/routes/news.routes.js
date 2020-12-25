@@ -41,12 +41,13 @@ router.post('/create', [
 // Delete post
 // api/news/delete/:id
 // Only admins
-router.delete('/delete/:id', auth, async (req, res) => {
+router.delete('/delete/:url', auth, async (req, res) => {
     try {
-        const news = await News.findByIdAndDelete(req.params.id)
+        const url = req.params.url
+        const news = await News.findOneAndDelete({url})
 
-        res.status(201).json({message: "Фото было удално", id: news.id})
-        //TODO: Test news deleting feature
+        res.status(201).json({message: "Новость была удалена", id: news.id})
+
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
         console.error('Error', e)
@@ -71,15 +72,19 @@ router.get('/', async (req, res) => {
 router.get('/:url', async (req, res) => {
     try {
         const url = req.params.url
+        console.warn({url})
         const certain_news = await News.findOne({url})
+        console.warn(!!certain_news)
 
         if (!certain_news) {
             return res.status(404).json({message: 'Новость не найдена'})
         }
 
         res.json(certain_news)
+
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
+        console.warn(e)
     }
 })
 
