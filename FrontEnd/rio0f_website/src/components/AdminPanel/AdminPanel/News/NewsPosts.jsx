@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import {Table, Tag, Space, Button} from 'antd';
 import {useDispatch, useSelector} from "react-redux";
 import {DeleteNews, getNews} from "../../../../redux/news-reducer";
@@ -29,7 +29,6 @@ const Styled = styled.div`
   }
 `
 
-
 const NewsPosts = () => {
     const [selectedRowKeys, SetSelectedRowKeys] = useState('')
     const [loading, SetLoading] = useState(false)
@@ -40,36 +39,30 @@ const NewsPosts = () => {
     const actNews = useSelector(state => state.actNewsPage.author_ru)
     const dispatch = useDispatch()
 
+    useEffect(() => dispatch(getNews()), [])
 
     useEffect(() => {
-        console.warn('useEffect NEWS POST')
         if (news && news.length === 0) {
             SetTableLoading(true)
         } else SetTableLoading(false)
-
 
         if (selectedRowKeys.length > 0) {
             SetHasSelected(true)
         } else SetHasSelected(false)
 
-
-        dispatch(getNews())
-
-
-    }, [news.length, dispatch, selectedRowKeys.length])
+    }, [selectedRowKeys.length, news.length])
 
 
     const deleteButton = async () => {
         SetLoading(true)
         await dispatch(DeleteNews(selectedRowKeys))
+        await dispatch(getNews())
         SetSelectedRowKeys('')
         SetLoading(false)
     }
 
     const onSelectChange = (selectedRowKeys) => {
-        console.log('selectedRowKeys changed: ', selectedRowKeys);
         SetSelectedRowKeys(selectedRowKeys);
-
     };
 
     const rowSelection = {

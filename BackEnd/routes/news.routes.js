@@ -4,7 +4,6 @@ const router = Router()
 const News = require('../models/News')
 const {check, validationResult} = require('express-validator')
 const auth = require('../middleware/auth.middleware')
-const multer = require("multer");
 
 // Create new post
 // api/news/create
@@ -46,6 +45,10 @@ router.delete('/delete/:url', auth, async (req, res) => {
         const url = req.params.url
         const news = await News.findOneAndDelete({url})
 
+        if (!news) {
+            return res.status(404).json({message: 'Новость не найдена'})
+        }
+
         res.status(201).json({message: "Новость была удалена", id: news.id})
 
     } catch (e) {
@@ -54,12 +57,38 @@ router.delete('/delete/:url', auth, async (req, res) => {
     }
 })
 
+// Edit post
+// api/news/edit/:url
+// Only admins
+router.post('/edit/:url', auth, async (req, res) => {
+    try {
+        const url = req.params.url
+        const edited = req.body
+        const news = await News.findOneAndUpdate({url}, edited, {returnOriginal: false, useFindAndModify: false})
+
+        if (!news) {
+            return res.status(404).json({message: 'Новость не найдена'})
+        }
+
+        res.status(201).json({message: "Новость была обновлена", news: news})
+    } catch (e) {
+        res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
+        console.error('Error', e)
+    }
+})
+
+
 // Get list of posts
 // api/news/posts/
 // Only with API key
 router.get('/', async (req, res) => {
     try {
         const news = await News.find().sort('-date')
+
+        if (!news) {
+            return res.status(404).json({message: 'Новости не найдены'})
+        }
+
         res.json(news)
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
@@ -72,9 +101,7 @@ router.get('/', async (req, res) => {
 router.get('/:url', async (req, res) => {
     try {
         const url = req.params.url
-        console.warn({url})
         const certain_news = await News.findOne({url})
-        console.warn(!!certain_news)
 
         if (!certain_news) {
             return res.status(404).json({message: 'Новость не найдена'})

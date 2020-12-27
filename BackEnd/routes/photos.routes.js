@@ -24,11 +24,11 @@ router.post('/upload', auth, apiCheck, upload.array('img', 6), async (req, res) 
         }
 
         const promises = req.files.map(file => {
-            const photos = new Photos({img: file.buffer}) // create the new Image
-            return photos.save() // return the promise without calling it yet
+            const photos = new Photos({img: file.buffer})
+            return photos.save()
         })
 
-        const photos = await Promise.all(promises) // calls all the porimises returned in `promises`
+        const photos = await Promise.all(promises)
 
         res.status(201).json({photos})
 
@@ -46,9 +46,12 @@ router.get('/:id', async (req, res) => {
     try {
         const photo = await Photos.findById(req.params.id)
 
+        if (!photo) {
+            return res.status(404).json({message: 'Фото не найдено'})
+        }
+
         res.set('Content-Type', 'image')
         res.send(photo.img)
-
 
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
@@ -57,12 +60,18 @@ router.get('/:id', async (req, res) => {
 
 })
 
+
 //Get picture list
 // api/photos/
 //Only admins
 router.get('/', auth, apiCheck, async (req, res) => {
     try {
-        const photos = await Photos.find().sort('-date').distinct('_id')
+        const photos = await Photos.find().sort('-date')
+
+        if (!photos) {
+            return res.status(404).json({message: 'Фотографии не найдены'})
+        }
+
         res.json(photos)
 
     } catch (e) {
@@ -71,15 +80,19 @@ router.get('/', auth, apiCheck, async (req, res) => {
     }
 })
 
+
 // Delete news by ID
 // api/photos/delete/:id
 // Only admins
-router.delete('/delete/:id', auth, apiCheck, async (res, req) => {
+router.delete('/delete/:id', auth, apiCheck, async (req, res) => {
     try {
         const photo = await Photos.findByIdAndDelete(req.params.id)
 
-        res.status(201).json({message: "Фото было удално", id: photo.id})
-        //TODO: Test photo deleting feature
+        if (!photo) {
+            return res.status(404).json({message: 'Фотографии не найдены'})
+        }
+
+        res.status(201).json({message: "Фото было удалено", id: photo.id})
 
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})

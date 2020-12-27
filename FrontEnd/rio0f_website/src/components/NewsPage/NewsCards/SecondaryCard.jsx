@@ -45,6 +45,7 @@ const CardShape = styled.div`
     border-radius: 10px 10px 0 0;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center center;
     background-image: ${props => `url(${props.picture})`};
 
   }

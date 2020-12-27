@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import {Button, Col, Drawer, Form, Input, Row, Spin} from "antd";
 import {PlusOutlined} from "@ant-design/icons";
 import {Field, reduxForm, stopSubmit} from "redux-form";
@@ -8,6 +8,7 @@ import {AuthStatus} from "../../../../redux/auth-reducer";
 import styled from "styled-components";
 import {requiredField} from "../../../../utils/formValidations";
 import {getParticularNews} from "../../../../redux/actNews-reducer";
+import {EditNews} from "../../../../redux/news-reducer";
 
 
 const StyledDrawer = styled.div`
@@ -24,14 +25,15 @@ const AInput = makeField(Input);
 const ATextarea = makeField(Input.TextArea);
 
 const EditPost = (props) => {
-    const {handleSubmit, submitSucceeded, pristine, submitting, reset, invalid} = props
+    let {handleSubmit, submitSucceeded, pristine, submitting, reset, invalid, initialize} = props
     const fetching = useSelector((state) => state.newsPage.fetching)
     const news = useSelector((state) => state.actNewsPage)
-    const [visible, isVisible] = useState(false)
-    const [loading, setLoading] = useState(true)
+    const [visible, isVisible] = useState(false)    //For drawer
+    const [loading, setLoading] = useState(true)    // For drawer
     const dispatch = useDispatch();
 
     const showDrawer = () => {
+        dispatch(getParticularNews(props.selectedID))
         isVisible(true)
     };
 
@@ -40,14 +42,13 @@ const EditPost = (props) => {
         reset()
     };
 
-    // const selcted = selectedID ? selectedID.length > 0 : false
+
+    useMemo(() => {
+        initialize(news)
+    }, [news])
 
     useEffect(() => {
-        console.warn('useEffect EDIT POST')
-//         if (props.selectedID.length !== 0) {
-//             dispatch(getParticularNews(props.selectedID))
-//         }
-// ds
+
         if (fetching) {
             setLoading(true)
         } else {
@@ -55,10 +56,9 @@ const EditPost = (props) => {
         }
 
         if (!fetching && submitSucceeded) {
-            isVisible(false)
-            reset()
+            onClose()
         }
-    }, [dispatch, fetching, submitSucceeded, reset, props.selectedID])
+    }, [fetching, submitSucceeded])
 
     return (
         <div>
@@ -96,20 +96,12 @@ const EditPost = (props) => {
                             <Row gutter={16}>
                                 <Col span={12}>
                                     <Field label="Название на Русском" name="name_ru" component={AInput}
-                                           defaultValue={'news.name_ru'} value={'sadsafas'}
                                            placeholder="Название на Русском" hasFeedback rules={[{required: true}]}
                                            validate={[requiredField]}/>
                                 </Col>
-                                <Field name="firstName"
-                                       component="input"
-                                       type="text"
-                                       placeholder="First Name"
-                                       defaultValue={'fdsfs'}/>
-
 
                                 <Col span={12}>
                                     <Field label="Название на Английском" name="name_en" component={AInput}
-                                           defaultValue={'news.name_en'}
                                            placeholder="Название на Английском" hasFeedback rules={[{required: true}]}
                                            validate={[requiredField]}/>
                                 </Col>
@@ -118,7 +110,6 @@ const EditPost = (props) => {
                             <Row gutter={16}>
                                 <Col span={24}>
                                     <Field label="Текст на Русском" name="text_ru" component={ATextarea}
-                                           value={news.text_ru}
                                            placeholder="Текст новости на Русском" hasFeedback rules={[{required: true}]}
                                            validate={[requiredField]}/>
                                 </Col>
@@ -127,7 +118,6 @@ const EditPost = (props) => {
                             <Row gutter={16}>
                                 <Col span={24}>
                                     <Field label="Текст на Английском" name="text_en" component={ATextarea}
-                                           value={news.text_en}
                                            placeholder="Текст новости на Английском" hasFeedback
                                            rules={[{required: true}]}
                                            validate={[requiredField]}/>
@@ -143,6 +133,18 @@ const EditPost = (props) => {
                                 </Col>
                             </Row>
 
+                            <Row gutter={16}>
+                                <Col span={12}>
+                                    <Field label="Автор" name="author_ru" component={AInput} disabled={true}/>
+                                </Col>
+
+                                <Col span={12}>
+                                    <Field label="Ссылка" name="url" component={AInput} disabled={true}
+                                           addonBefore="https://ri0f.com/"/>
+                                </Col>
+                            </Row>
+
+
                         </Form>
                     </Spin>
                 </Drawer>
@@ -152,25 +154,21 @@ const EditPost = (props) => {
 };
 
 const EditedNewsForm = reduxForm({
-    form: 'EditNewsForm' // a unique identifier for this form
+    form: 'EditNewsForm', // a unique identifier for this form
 })(EditPost)
 
 const NewsEdit = ({selectedID, hasSelected}) => {
     const isAuth = useSelector(state => state.auth.isAuth)
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        // console.warn('selectedID',selectedID)
-        // console.warn('hasSelected',hasSelected)
-    }, [selectedID, hasSelected])
-
     const onSubmit = async (formData) => {
         await dispatch(AuthStatus())
 
         if (isAuth) {
-            // dispatch(EditNews(formData.name_ru, formData.name_en, formData.text_ru, formData.text_en, formData.img))
+            dispatch(EditNews(formData.name_ru, formData.name_en, formData.text_ru, formData.text_en, formData.img, formData.url))
+
         } else {
-            // dispatch(stopSubmit('NewsForm'))
+            dispatch(stopSubmit('NewsForm'))
         }
     }
 

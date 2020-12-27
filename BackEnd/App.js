@@ -4,6 +4,7 @@ const config = require('config')
 const mongoose = require('mongoose')
 const path = require('path')
 const apiCheck = require('./middleware/access.middleware')
+const morgan = require('morgan')
 const cors = require('cors')
 const hpp = require('hpp');
 
@@ -18,6 +19,7 @@ const corsOptions = {
 
 app.use(express.json({extended: true}))
 
+app.use(morgan('dev'))
 app.use(hpp());
 app.use(cors(corsOptions))
 app.use('/api/auth', apiCheck, require('./routes/auth.routes'))

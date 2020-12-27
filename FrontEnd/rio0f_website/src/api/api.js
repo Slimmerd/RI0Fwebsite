@@ -66,6 +66,8 @@ export const NewsAPI = {
         return instance.get(`news/`)
             .then(response => {
                 return response
+            }).catch((error) => {
+                return error.response
             });
     },
 
@@ -82,22 +84,31 @@ export const NewsAPI = {
     // Post news
     postNews(name_ru, name_en, text_ru, text_en, img) {
         return instance.post(`news/create`, {name_ru, name_en, text_ru, text_en, img})
-            .catch((error) => {
+            .then(response => {
+                return response
+            }).catch((error) => {
                 return error.response
             })
 
     },
 
     // Delete news by url
-    //TODO: Delete news API
-    deleteNews(id) {
-        return instance.delete(`news/delete/${id}`).then(response => {
+    deleteNews(url) {
+        return instance.delete(`news/delete/${url}`).then(response => {
+            return response
+        }).catch((error) => {
+            return error.response
+        })
+    },
+
+    // Edit news by url
+    editNews(name_ru, name_en, text_ru, text_en, img, url) {
+        return instance.post(`news/edit/${url}`, {name_ru, name_en, text_ru, text_en, img}).then(response => {
             return response
         }).catch((error) => {
             return error.response
         })
     }
-
 
 };
 
@@ -108,6 +119,8 @@ export const ChatAPI = {
         return instance.get('chat/')
             .then(response => {
                 return response
+            }).catch((error) => {
+                return error.response
             })
     },
 
@@ -116,10 +129,19 @@ export const ChatAPI = {
         return instance.post('chat/post', {name, call, email, text})
             .then(response => {
                 return response
+            }).catch((error) => {
+                return error.response
             })
-    }
+    },
 
-//    TODO: Delete comment
+    // Delete news by url
+    deleteComment(id) {
+        return instance.delete(`chat/delete/${id}`).then(response => {
+            return response
+        }).catch((error) => {
+            return error.response
+        })
+    },
 }
 
 
@@ -134,7 +156,29 @@ export const PhotoAPI = {
         return instance.post('/photos/upload', formData, {
             headers: {'Content-Type': 'multipart/form-data'}
         })
+    },
+
+    // Get list of photos
+    getPhotos() {
+        return instance.get('photos/')
+            .then(response => {
+                return response
+            }).catch((error) => {
+                return error.response
+            })
+    },
+
+    // Delete photo by ID
+    deletePhoto(id) {
+        return instance.delete(`photos/delete/${id}`).then(response => {
+            return response
+        }).catch((error) => {
+            return error.response
+        })
     }
+
+
+
 //    TODO: Delete photo
 //    TODO: Make a photo post?
 }

@@ -38,10 +38,8 @@ export const setNames = (author_ru, author_en) =>
 //Thunks
 
 export const getParticularNews = (url) => async (dispatch) => {
-    // console.warn('url', url)
     let news_response = await NewsAPI.getParticularNews(url)
     let name_data = await AuthAPI.getNames(news_response.data.author)
-
 
     if (news_response.status !== 404 || name_data.status !== 404) {
         dispatch(setNews(news_response.data.name_ru, news_response.data.name_en, news_response.data.text_ru, news_response.data.text_en, news_response.data.img, news_response.data.date, news_response.data.url, news_response.data.author))
@@ -50,7 +48,6 @@ export const getParticularNews = (url) => async (dispatch) => {
         return Promise.reject(news_response.data.message)
     }
 }
-
 
 // RETURN NAMES FOR ADMIN PAGE
 export const getNames = id => async (dispatch) => {

@@ -49,6 +49,10 @@ router.post('/post', [check(['name', 'call', 'text'], 'Нельзя оставл
 router.get('/', async (req, res) => {
     try {
         const chat = await Chat.find().sort('-date')
+
+        if (!chat) {
+            return res.status(404).json({message: 'Комментарии не найдены'})
+        }
         res.json(chat)
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
@@ -62,8 +66,13 @@ router.get('/', async (req, res) => {
 router.get('/:id', auth, async (req, res) => {
     try {
         const id = req.params.id
-        const certain_news = await Chat.findById(id)
-        res.json(certain_news)
+        const certain_comment = await Chat.findById(id)
+
+        if (!certain_comment) {
+            return res.status(404).json({message: 'Комментарий не найден'})
+        }
+
+        res.status(201).json(certain_comment)
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
     }
@@ -75,10 +84,14 @@ router.get('/:id', auth, async (req, res) => {
 // Only with API key
 router.delete('/delete/:id', auth, async (req, res) => {
     try {
-        const chat = Chat.findByIdAndDelete(req.params.id)
+        const chat = await Chat.findByIdAndDelete(req.params.id)
 
-        res.status(201).json({message: "Фото было удално", id: chat.id})
-        //TODO: Test news deleting feature
+        if (!chat) {
+            return res.status(404).json({message: 'Комментарий не найден'})
+        }
+
+        res.status(201).json({message: "Комментарий был удален", id: chat.id})
+
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
         console.error('Error', e)

@@ -46,10 +46,9 @@ const CreatePost = (props) => {
         }
 
         if (!fetching && submitSucceeded) {
-            isVisible(false)
-            reset()
+            onClose()
         }
-    }, [fetching, submitSucceeded, reset])
+    }, [fetching, submitSucceeded])
 
     return (
         <div>

@@ -11,7 +11,7 @@ const {Dragger} = Upload
 const ADragger = makeField(Dragger);
 
 const UploadPhoto = (props) => {
-    const {handleSubmit, submitSucceeded, pristine, submitting, reset, invalid} = props
+    const {handleSubmit, submitSucceeded, pristine, reset} = props
     const fetching = useSelector((state) => state.photos.fetching)
     const [visible, isVisible] = useState(false)
     const [loading, setLoading] = useState(true)
@@ -36,9 +36,9 @@ const UploadPhoto = (props) => {
 
         if (!fetching && submitSucceeded) {
             isVisible(false)
-            reset()
+            onClose()
         }
-    }, [fetching, submitSucceeded, reset])
+    }, [fetching, submitSucceeded])
 
 
     return (

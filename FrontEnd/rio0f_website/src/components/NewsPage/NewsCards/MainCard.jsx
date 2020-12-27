@@ -66,6 +66,7 @@ const CardShape = styled.div`
     align-items: center;
     border-radius: 10px 0 0 10px;
     background-image: ${props => `url(${props.picture})`};
+    background-position: center center;
 
   }
 

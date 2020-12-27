@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {compose} from "redux";
 import {withAuthRedirect} from "../../../HOC/authRedirect";
-import NewsPublish from "./News/CreatePost/CreatePost";
 import styled from "styled-components";
 import {Layout, Menu} from 'antd';
 import {
@@ -13,8 +12,9 @@ import {
 } from '@ant-design/icons';
 import {AuthStatus} from "../../../redux/auth-reducer";
 import {useDispatch} from "react-redux";
-import PhotoPublish from "./UploadPhoto/UploadPhoto";
 import NewsPosts from "./News/NewsPosts";
+import CommentsList from "./Comments/Comments";
+import PhotosList from "./UploadPhoto/PhotoList";
 
 const {Header, Sider, Content} = Layout;
 
@@ -106,7 +106,9 @@ const AdminPanel = () => {
                     >
                         {/*<NewsPublish/>*/}
                         {/*<PhotoPublish/>*/}
-                        <NewsPosts/>
+                        {/*<NewsPosts/>*/}
+                        {/*<CommentsList/>*/}
+                        <PhotosList/>
                     </Content>
                 </Layout>
             </Layout>
