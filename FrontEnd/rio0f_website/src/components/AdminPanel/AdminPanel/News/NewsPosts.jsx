@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useMemo} from 'react';
-import {Table, Tag, Space, Button} from 'antd';
+import {Table, Tag, Button} from 'antd';
 import {useDispatch, useSelector} from "react-redux";
 import {DeleteNews, getNews} from "../../../../redux/news-reducer";
 import moment from "moment";
@@ -7,6 +7,8 @@ import {getNames} from "../../../../redux/actNews-reducer";
 import styled from "styled-components";
 import NewsPublish from "./CreatePost/CreatePost";
 import NewsEdit from "./EditPost";
+import {compose} from "redux";
+import {withAuthRedirect} from "../../../../HOC/authRedirect";
 
 const {Column, ColumnGroup} = Table;
 const Styled = styled.div`
@@ -52,11 +54,11 @@ const NewsPosts = () => {
 
     }, [selectedRowKeys.length, news.length])
 
+    const GetNames = (author) => useMemo(() => dispatch(getNames(author)), [author])
 
     const deleteButton = async () => {
         SetLoading(true)
         await dispatch(DeleteNews(selectedRowKeys))
-        await dispatch(getNews())
         SetSelectedRowKeys('')
         SetLoading(false)
     }
@@ -100,7 +102,7 @@ const NewsPosts = () => {
 
                 {/*            Could take lots of resources....*/}
                 <Column title="Автор" dataIndex="author" key="author" ellipsis
-                        render={author => (dispatch(getNames(author)), actNews)}/>
+                        render={author => (GetNames(author), actNews)}/>
 
                 <Column title="Дата" dataIndex='date' key="date" ellipsis
                         render={(date) => (moment(date).format('DD.MM.YYYY'))}/>
@@ -111,4 +113,4 @@ const NewsPosts = () => {
     );
 };
 
-export default NewsPosts;
+export default compose(withAuthRedirect)(NewsPosts);

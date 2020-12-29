@@ -15,6 +15,7 @@ import {useDispatch} from "react-redux";
 import NewsPosts from "./News/NewsPosts";
 import CommentsList from "./Comments/Comments";
 import PhotosList from "./UploadPhoto/PhotoList";
+import GalleryList from "./Gallery/GalleryList";
 
 const {Header, Sider, Content} = Layout;
 
@@ -37,7 +38,6 @@ const LayoutStyle = styled.div`
 
   .AdminLogo {
     height: 32px;
-    //background: rgba(255, 255, 255, 0.3);
     margin: 16px;
     font-size: 28px;
     color: #ECF0F1;
@@ -104,11 +104,10 @@ const AdminPanel = () => {
                             padding: 24
                         }}
                     >
-                        {/*<NewsPublish/>*/}
-                        {/*<PhotoPublish/>*/}
+                        <GalleryList/>
                         {/*<NewsPosts/>*/}
                         {/*<CommentsList/>*/}
-                        <PhotosList/>
+                        {/*<PhotosList/>*/}
                     </Content>
                 </Layout>
             </Layout>

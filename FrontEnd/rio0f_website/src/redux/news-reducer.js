@@ -26,10 +26,10 @@ const NewsReducer = (state = initialState, action) => {
             return {...state, news: [action.news, ...state.news]}
         }
         case DELETE_NEWS: {
-            return {news: state.news.filter(news => news.id !== action.news.id)}
+            return {...state, news: [...state.news.filter(news => news._id !== action.news)]}
         }
         case EDIT_NEWS: {
-            return {news: state.news.filter(news => news.id !== action.news.id)}
+            return {...state, news: [...state.news.map(news => news._id === action.news._id ? action.news : news)]}
         }
         case NEWS_IS_FETCHING: {
             return {...state, fetching: action.fetching}

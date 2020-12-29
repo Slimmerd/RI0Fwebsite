@@ -31,9 +31,9 @@ export const AuthAPI = {
 
     // Get names (RU/EN) from DB
     getNames(id) {
-        return instance.post(`auth/name`, {id})
+        return instance.get(`auth/name/${id}`)
             .then((response) => {
-                return response.data
+                return response
             }).catch((error) => {
                 return error.response
             })
@@ -175,10 +175,30 @@ export const PhotoAPI = {
         }).catch((error) => {
             return error.response
         })
-    }
+    },
+}
 
 
+export const GalleryAPI = {
+//    Get gallery posts list
+    getPosts() {
+        return instance.get('gallery/')
+            .then(response => {
+                return response
+            }).catch((error) => {
+                return error.response
+            })
+    },
 
-//    TODO: Delete photo
-//    TODO: Make a photo post?
+//    Add gallery post
+    postPost(name_ru, name_en, images) {
+        return instance.post(`gallery/post`, {name_ru, name_en, images})
+            .then(response => {
+                return response
+            }).catch((error) => {
+                return error.response
+            })
+
+    },
+//    Delete gallery post
 }

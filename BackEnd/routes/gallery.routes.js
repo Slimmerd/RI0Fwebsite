@@ -9,8 +9,11 @@ const auth = require('../middleware/auth.middleware')
 //Post new gallery post
 // api/chat/post
 // Only with API key and Auth-key
-router.post('/post', auth, [check(['name', 'images'], 'Нельзя оставлять пустые поля').exists(),
-    check('name', 'Некорректное количество символов').isLength({min: 5, max: 64}),], async (req, res) => {
+router.post('/post', auth, [check(['name_ru', 'name_en', 'images'], 'Нельзя оставлять пустые поля').exists(),
+    check(['name_ru', 'name_en'], 'Некорректное количество символов').isLength({
+        min: 5,
+        max: 64
+    }),], async (req, res) => {
     try {
         //Error handler
         const errors = validationResult(req)
@@ -18,14 +21,14 @@ router.post('/post', auth, [check(['name', 'images'], 'Нельзя оставл
         if (!errors.isEmpty()) {
             return res.status(400).json({
                 errors: errors.array(),
-                message: 'Некорректные данные при входе в систему'
+                message: 'Некорректные данные'
             })
         }
 
-        const {name, images} = req.body
+        const {name_ru, name_en, images} = req.body
 
         const gallery = new Gallery({
-            name, images
+            name_ru, name_en, images
         })
 
         await gallery.save()
@@ -47,9 +50,9 @@ router.get('/', async (req, res) => {
         const gallery = await Gallery.find().sort('-date')
 
         if (!gallery) {
-            return res.status(404).json({message: 'Комментарии не найдены'})
+            return res.status(404).json({message: 'Публикации не найдены'})
         }
-        res.json(gallery)
+        res.status(201).json(gallery)
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
     }
@@ -62,6 +65,8 @@ router.get('/', async (req, res) => {
 router.get('/:id', auth, async (req, res) => {
     try {
         const id = req.params.id
+        if (id === undefined || id === 'undefined') return res.status(404).json({message: 'Публикация не найдена'})
+
         const certainGalleryPost = await Gallery.findById(id)
 
         if (!certainGalleryPost) {
@@ -81,6 +86,7 @@ router.get('/:id', auth, async (req, res) => {
 router.post('/edit/:id', auth, async (req, res) => {
     try {
         const id = req.params.id
+        if (id === undefined || id === 'undefined') return res.status(404).json({message: 'Публикация не найдена'})
         const edited = req.body
         const gallery = await Gallery.findByIdAndUpdate(id, edited, {returnOriginal: false, useFindAndModify: false})
 
@@ -101,7 +107,10 @@ router.post('/edit/:id', auth, async (req, res) => {
 // Only with API key and Auth-key
 router.delete('/delete/:id', auth, async (req, res) => {
     try {
-        const gallery = await Gallery.findByIdAndDelete(req.params.id)
+        const id = req.params.id
+        if (id === undefined || id === 'undefined') return res.status(404).json({message: 'Публикация не найдена'})
+
+        const gallery = await Gallery.findByIdAndDelete(id)
 
         if (!gallery) {
             return res.status(404).json({message: 'Комментарий не найден'})

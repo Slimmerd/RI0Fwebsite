@@ -1,14 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Table} from 'antd';
+import {Button, Table, Tag} from 'antd';
 import {useDispatch, useSelector} from "react-redux";
 import moment from "moment";
+import {DeleteOutlined} from "@ant-design/icons";
 import styled from "styled-components";
-import {deletePhoto, getPhotos} from "../../../../redux/photo-reducer";
-import PhotoPublish from "./UploadPhoto";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../../../HOC/authRedirect";
+import {deletePost, getPosts} from "../../../../redux/gallery-reducer";
+import GalleryPublish from "./methods/CreateGalleryPost";
 
-const {Column} = Table;
+const {Column, ColumnGroup} = Table;
 const Styled = styled.div`
 
   .buttons {
@@ -30,22 +31,22 @@ const Styled = styled.div`
 `
 
 
-const PhotosList = () => {
+const GalleryList = () => {
     const [selectedRowKeys, SetSelectedRowKeys] = useState('')
     const [loading, SetLoading] = useState(false)
     const [tableLoading, SetTableLoading] = useState(false)
     const [hasSelected, SetHasSelected] = useState(false)
 
-    const pictures = useSelector(state => state.photos.photos)
+    const posts = useSelector(state => state.gallery.posts)
     const dispatch = useDispatch()
 
 
-    useEffect(() => dispatch(getPhotos()), [])
+    useEffect(() => dispatch(getPosts()), [])
 
 
     useEffect(() => {
 
-        if (pictures && pictures.length === 0) {
+        if (posts && posts.length === 0) {
             SetTableLoading(true)
         } else SetTableLoading(false)
 
@@ -53,12 +54,12 @@ const PhotosList = () => {
             SetHasSelected(true)
         } else SetHasSelected(false)
 
-    }, [selectedRowKeys.length, pictures.length])
+    }, [selectedRowKeys.length, posts.length])
 
 
     const deleteButton = async () => {
         SetLoading(true)
-        await dispatch(deletePhoto(selectedRowKeys))
+        await dispatch(deletePost(selectedRowKeys))
         SetSelectedRowKeys('')
         SetLoading(false)
     }
@@ -77,19 +78,23 @@ const PhotosList = () => {
     return (
         <Styled>
             <div className={'buttons'}>
-                <PhotoPublish/>
+                <GalleryPublish/>
                 <Button type="primary" onClick={deleteButton} disabled={!hasSelected} loading={loading}>
-                    Удалить
+                    <DeleteOutlined/> Удалить
                 </Button>
             </div>
 
-            <Table rowKey="_id" dataSource={pictures} bordered rowSelection={rowSelection} loading={tableLoading}
+            <Table rowKey="_id" dataSource={posts} bordered rowSelection={rowSelection} loading={tableLoading}
                    pagination={false}>
 
-                <Column title="Сссылка" dataIndex="_id" key="_id" ellipsis/>
+                <ColumnGroup title="Назавание">
+                    <Column title="Русский" dataIndex="name_ru" key="name_ru" ellipsis/>
+                    <Column title="Английский" dataIndex="name_en" key="name_en" ellipsis/>
+                </ColumnGroup>
 
-                <Column title="Предпросмотр" dataIndex="_id" key="img" ellipsis
-                        render={(_id) => <img src={"http://localhost:5000/api/photos/" + _id} width={250} alt=""/>}/>
+                <Column title="Кол-во картинок" dataIndex="images" key="images" ellipsis
+                        render={picture => (picture ? <Tag color={'green'}>{picture.length}</Tag> :
+                            <Tag color={'red'}>Отсутствует</Tag>)}/>
 
                 <Column title="Дата" dataIndex='date' key="date" ellipsis
                         render={(date) => (moment(date).format('DD.MM.YYYY'))}/>
@@ -99,6 +104,6 @@ const PhotosList = () => {
     );
 };
 
-export default compose(withAuthRedirect)(PhotosList);
+export default compose(withAuthRedirect)(GalleryList);
 
 //TODO: CUSTOM ENV VARIABLES

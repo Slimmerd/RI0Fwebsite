@@ -4,6 +4,8 @@ import {useDispatch, useSelector} from "react-redux";
 import moment from "moment";
 import styled from "styled-components";
 import {deleteComment, getComments} from "../../../../redux/chat-reducer";
+import {compose} from "redux";
+import {withAuthRedirect} from "../../../../HOC/authRedirect";
 
 const {Column} = Table;
 const Styled = styled.div`
@@ -33,9 +35,11 @@ const CommentsList = () => {
     const [tableLoading, SetTableLoading] = useState(false)
     const [hasSelected, SetHasSelected] = useState(false)
 
-    const comments = useSelector(state => state.chat.comments)
+    const comments = useSelector((state) => state.chat.comments)
     const dispatch = useDispatch()
 
+
+    useEffect(() => dispatch(getComments()), [])
 
     useEffect(() => {
         if (comments && comments.length === 0) {
@@ -46,9 +50,7 @@ const CommentsList = () => {
             SetHasSelected(true)
         } else SetHasSelected(false)
 
-        dispatch(getComments())
-
-    }, [dispatch, selectedRowKeys.length, comments.length])
+    }, [selectedRowKeys.length, comments.length])
 
 
     const deleteButton = async () => {
@@ -97,4 +99,4 @@ const CommentsList = () => {
     );
 };
 
-export default CommentsList;
+export default compose(withAuthRedirect)(CommentsList);

@@ -257,7 +257,7 @@ const ChatPageForm = (props) => {
             reset()
         }
 
-    }, [fetching, submitSucceeded, reset])
+    }, [fetching, submitSucceeded])
 
     const OnClick = () => {
         if (!invalid) handleSubmit()

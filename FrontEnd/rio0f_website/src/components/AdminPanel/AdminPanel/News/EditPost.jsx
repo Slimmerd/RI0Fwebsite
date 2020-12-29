@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useMemo} from 'react';
 import {Button, Col, Drawer, Form, Input, Row, Spin} from "antd";
-import {PlusOutlined} from "@ant-design/icons";
+import {EditOutlined} from "@ant-design/icons";
 import {Field, reduxForm, stopSubmit} from "redux-form";
 import {useDispatch, useSelector} from "react-redux";
 import {makeField} from "../../../../utils/formHandler";
@@ -28,6 +28,7 @@ const EditPost = (props) => {
     let {handleSubmit, submitSucceeded, pristine, submitting, reset, invalid, initialize} = props
     const fetching = useSelector((state) => state.newsPage.fetching)
     const news = useSelector((state) => state.actNewsPage)
+
     const [visible, isVisible] = useState(false)    //For drawer
     const [loading, setLoading] = useState(true)    // For drawer
     const dispatch = useDispatch();
@@ -64,7 +65,7 @@ const EditPost = (props) => {
         <div>
             <>
                 <Button type="primary" onClick={showDrawer} disabled={!props.hasSelected}>
-                    <PlusOutlined/> Редактировать
+                    <EditOutlined/> Редактировать
                 </Button>
 
                 <Drawer
@@ -181,3 +182,4 @@ export default NewsEdit
 
 
 // TODO: Multi language form
+// TODO: Custom values ENV

@@ -22,7 +22,7 @@ router.post('/post', [check(['name', 'call', 'text'], 'Нельзя оставл
         if (!errors.isEmpty()) {
             return res.status(400).json({
                 errors: errors.array(),
-                message: 'Некорректные данные при входе в систему'
+                message: 'Некорректные данные'
             })
         }
 
@@ -66,6 +66,9 @@ router.get('/', async (req, res) => {
 router.get('/:id', auth, async (req, res) => {
     try {
         const id = req.params.id
+
+        if (id === undefined || id === 'undefined') return res.status(404).json({message: 'Комментарий не найден'})
+
         const certain_comment = await Chat.findById(id)
 
         if (!certain_comment) {
@@ -84,7 +87,10 @@ router.get('/:id', auth, async (req, res) => {
 // Only with API key
 router.delete('/delete/:id', auth, async (req, res) => {
     try {
-        const chat = await Chat.findByIdAndDelete(req.params.id)
+        const id = req.params.id
+        if (id === undefined || id === 'undefined') return res.status(404).json({message: 'Комментарий не найден'})
+
+        const chat = await Chat.findByIdAndDelete(id)
 
         if (!chat) {
             return res.status(404).json({message: 'Комментарий не найден'})

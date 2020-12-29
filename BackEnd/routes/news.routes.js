@@ -43,6 +43,7 @@ router.post('/create', [
 router.delete('/delete/:url', auth, async (req, res) => {
     try {
         const url = req.params.url
+
         const news = await News.findOneAndDelete({url})
 
         if (!news) {
@@ -63,6 +64,7 @@ router.delete('/delete/:url', auth, async (req, res) => {
 router.post('/edit/:url', auth, async (req, res) => {
     try {
         const url = req.params.url
+
         const edited = req.body
         const news = await News.findOneAndUpdate({url}, edited, {returnOriginal: false, useFindAndModify: false})
 
@@ -101,6 +103,7 @@ router.get('/', async (req, res) => {
 router.get('/:url', async (req, res) => {
     try {
         const url = req.params.url
+
         const certain_news = await News.findOne({url})
 
         if (!certain_news) {

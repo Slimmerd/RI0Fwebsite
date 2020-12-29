@@ -6,7 +6,6 @@ import styled from "styled-components";
 // language=SCSS prefix=*{ suffix=}
 const CommentBlock = styled.div`
   .button {
-    //height: 280px;
     padding-top: 80px;
     display: flex;
     align-items: center;

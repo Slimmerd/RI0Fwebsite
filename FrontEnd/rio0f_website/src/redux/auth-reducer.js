@@ -81,7 +81,6 @@ export const UserLogin = (email, password) => async (dispatch) => {
         dispatch(setUserData(userId, fullname, !!token))
     } else {
         let ErrorMessage = response.data.message.length > 0 ? response.data.message : "Undefined error"
-        console.warn(ErrorMessage)
         dispatch(stopSubmit("LoginForm", {_error: ErrorMessage}))
         notificationWindow('error',
             'Произошла ошибка',

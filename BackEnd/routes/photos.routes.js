@@ -2,7 +2,6 @@
 const {Router} = require('express')
 const router = Router()
 const Photos = require('../models/Photos')
-const {check, validationResult} = require('express-validator')
 const auth = require('../middleware/auth.middleware')
 const apiCheck = require('../middleware/access.middleware')
 const multer = require("multer");
@@ -14,14 +13,6 @@ const upload = multer({storage: storage})
 //Only admins
 router.post('/upload', auth, apiCheck, upload.array('img', 6), async (req, res) => {
     try {
-        const errors = validationResult(req)
-
-        if (!errors.isEmpty()) {
-            return res.status(400).json({
-                errors: errors.array(),
-                message: 'Некорректные данные'
-            })
-        }
 
         const promises = req.files.map(file => {
             const photos = new Photos({img: file.buffer})
@@ -44,7 +35,10 @@ router.post('/upload', auth, apiCheck, upload.array('img', 6), async (req, res) 
 //Everyone
 router.get('/:id', async (req, res) => {
     try {
-        const photo = await Photos.findById(req.params.id)
+        const id = req.params.id
+        if (id === undefined || id === 'undefined') return res.status(404).json({message: 'Фото не найдено'})
+
+        const photo = await Photos.findById(id)
 
         if (!photo) {
             return res.status(404).json({message: 'Фото не найдено'})
@@ -86,7 +80,10 @@ router.get('/', auth, apiCheck, async (req, res) => {
 // Only admins
 router.delete('/delete/:id', auth, apiCheck, async (req, res) => {
     try {
-        const photo = await Photos.findByIdAndDelete(req.params.id)
+        const id = req.params.id
+        if (id === undefined || id === 'undefined') return res.status(404).json({message: 'Фото не найдено'})
+
+        const photo = await Photos.findByIdAndDelete(id)
 
         if (!photo) {
             return res.status(404).json({message: 'Фотографии не найдены'})

@@ -21,7 +21,7 @@ const PhotoReducer = (state = initialState, action) => {
         }
         case DELETE_PHOTO: {
             return {
-                photos: state.photos.filter(photo => photo.id !== action.photo.id)
+                ...state, photos: [...state.photos.filter(photo => photo._id !== action.photo)]
             };
         }
         case PHOTO_IS_FETCHING: {

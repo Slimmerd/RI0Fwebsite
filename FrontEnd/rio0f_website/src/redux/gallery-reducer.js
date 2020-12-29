@@ -1,36 +1,37 @@
-import {ChatAPI} from "../api/api";
+import {ChatAPI, GalleryAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 import {notificationWindow} from "../utils/notificationWindow";
 
-const SET_COMMENTS = 'SET_COMMENTS';
-const ADD_COMMENT = 'ADD_COMMENT';
-const DELETE_COMMENT = 'DELETE_COMMENT';
-const COMMENT_IS_FETCHING = 'COMMENT_IS_FETCHING';
+const SET_POSTS = 'SET_POSTS';
+const ADD_POST = 'ADD_POST';
+const EDIT_POST = 'EDIT_POST';
+const DELETE_POST = 'DELETE_POST';
+const POST_IS_FETCHING = 'POST_IS_FETCHING';
 
 let initialState =
     {
-        comments: [],
+        posts: [],
         fetching: false
     };
 
-const ChatReducer = (state = initialState, action) => {
+const GalleryReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_COMMENTS: {
+        case SET_POSTS: {
             return {
-                ...state, comments: [...action.comments]
+                ...state, posts: [...action.posts]
             };
         }
-        case ADD_COMMENT: {
+        case ADD_POST: {
             return {
-                ...state, comments: [action.comment, ...state.comments]
+                ...state, posts: [action.post, ...state.posts]
             };
         }
-        case DELETE_COMMENT: {
+        case DELETE_POST: {
             return {
-                ...state, comments: [...state.comments.filter(comments => comments._id !== action.comment)]
+                ...state, posts: [...state.posts.filter(posts => posts._id !== action.post)]
             };
         }
-        case COMMENT_IS_FETCHING: {
+        case POST_IS_FETCHING: {
             return {...state, fetching: action.fetching}
         }
 
@@ -39,48 +40,58 @@ const ChatReducer = (state = initialState, action) => {
     }
 };
 
-export const setComments = (comments) =>
+export const setPosts = (posts) =>
     ({
-        type: SET_COMMENTS, comments
+        type: SET_POSTS, posts
     });
 
-export const addComment = (comment) =>
+export const addPost = (post) =>
     ({
-        type: ADD_COMMENT, comment
+        type: ADD_POST, post
     });
 
-export const setDeletedComment = (comment) => ({
-    type: DELETE_COMMENT, comment
+export const setDeletedPost = (post) => ({
+    type: DELETE_POST, post
 });
 
 export const setFetching = (fetching) =>
     ({
-        type: COMMENT_IS_FETCHING, fetching
+        type: POST_IS_FETCHING, fetching
     });
 
 
 //Thunks
-export const getComments = () => async (dispatch) => {
-    let response = await ChatAPI.getComments()
-    dispatch(setComments(response.data))
-}
-
-export const postComment = (name, call, email, text) => async (dispatch) => {
-    dispatch(setFetching(true)) // Set comment fetching
-
-    let response = await ChatAPI.postComment(name, call, email, text)
+export const getPosts = () => async (dispatch) => {
+    let response = await GalleryAPI.getPosts()
 
     if (response.status === 201) {
-        dispatch(addComment({name, call, email, text}))
+        dispatch(setPosts(response.data))
+    } else {
+        let ErrorMessage = response.data.message.length > 0 ? response.data.message : "Undefined error"
+        notificationWindow('error',
+            'Произошла ошибка',
+            ErrorMessage,
+            'bottomLeft',
+            10)
+    }
+}
+
+export const postPost = (name_ru, name_en, images) => async (dispatch) => {
+    dispatch(setFetching(true)) // Set comment fetching
+
+    let response = await GalleryAPI.postPost(name_ru, name_en, images)
+
+    if (response.status === 201) {
+        dispatch(addPost({name_ru, name_en, images}))
 
         notificationWindow('success',
-            'Комментарий опубликован',
-            `Комментарий был успешно опубликован на сайте`,
+            'Фотосет опубликован',
+            `Фотосет был успешно опубликован на сайте`,
             'bottomLeft',
             10)
     } else {
         let ErrorMessage = response.data.message.length > 0 ? response.data.message : "Undefined error"
-        dispatch(stopSubmit("ChatForm", {_error: ErrorMessage}))
+        dispatch(stopSubmit("GalleryForm", {_error: ErrorMessage}))
         notificationWindow('error',
             'Произошла ошибка',
             ErrorMessage,
@@ -93,14 +104,14 @@ export const postComment = (name, call, email, text) => async (dispatch) => {
 }
 
 
-export const deleteComment = (id) => async (dispatch) => {
+export const deletePost = (id) => async (dispatch) => {
     dispatch(setFetching(true))
 
     let response = await ChatAPI.deleteComment(id)
 
     if (response.status === 201) {
 
-        dispatch(setDeletedComment(response.data.id))
+        dispatch(setDeletedPost(response.data.id))
         notificationWindow('success',
             'Комментарий успешно удален',
             `Комментарий был успешно удален`,
@@ -121,4 +132,4 @@ export const deleteComment = (id) => async (dispatch) => {
 }
 
 
-export default ChatReducer;
+export default GalleryReducer;

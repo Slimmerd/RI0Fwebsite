@@ -27,6 +27,7 @@ app.use('/api/news', apiCheck, require('./routes/news.routes'))
 app.use('/api/photos', require('./routes/photos.routes'))
 app.use('/api/chat', apiCheck, require('./routes/chat.routes'))
 app.use('/api/photos', apiCheck, require('./routes/photos.routes'))
+app.use('/api/gallery', apiCheck, require('./routes/gallery.routes'))
 
 
 if (process.env.NODE_ENV === 'production') {

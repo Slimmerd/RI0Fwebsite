@@ -8,7 +8,9 @@ const jwt = require('jsonwebtoken')
 const config = require('config')
 const auth = require('../middleware/auth.middleware')
 
-// /api/auth/register -- Register POST
+// Register
+// /api/auth/register
+// With API-KEY
 router.post('/register', [
         //Check validators is email/password format correct
         check('email', 'Некорректный email').isEmail(),
@@ -50,8 +52,9 @@ router.post('/register', [
         }
     })
 
-
-// /api/auth/login -- Login POST
+// Login-in
+// /api/auth/login
+// With API-KEY
 router.post('/login',
     [
         check('email', 'Введите корректный email').normalizeEmail().isEmail(),
@@ -99,17 +102,23 @@ router.post('/login',
         }
     })
 
-//FIX: Refactor this to make it with get statement
-router.post('/name', [check('id', 'Author ID не найден').exists()], async (req, res) => {
+// Get user name
+// api/auth/name/:id
+// Everyone with Api-key
+router.get('/name/:id', async (req, res) => {
     try {
-        const {id} = req.body
+        const id = req.params.id
+
+        if (id === 'undefined' || id === undefined) return res.status(404).json({message: 'Пользователь не найден'})
+
+
         const user = await User.findById(id)
 
         if (!user) {
             return res.status(404).json({message: 'Пользователь не найден'})
         }
 
-        res.json({author_ru: user.name_ru, author_en: user.name_en})
+        res.status(202).json({author_ru: user.name_ru, author_en: user.name_en})
 
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так'})
@@ -118,8 +127,9 @@ router.post('/name', [check('id', 'Author ID не найден').exists()], asyn
 })
 
 
-// /api/auth/me
 // Get auth status
+// /api/auth/me
+// API-KEY + AUTH
 router.get('/me', auth, async (req, res) => {
     try {
         res.status(201).json({message: "Авторизован"})

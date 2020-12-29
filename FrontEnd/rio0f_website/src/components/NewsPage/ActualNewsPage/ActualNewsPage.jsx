@@ -27,7 +27,7 @@ export const ActualNewsPage = () => {
             <ActualNewsPageNaming news={ActNews}/>
             {ActNews.img ? <ActualNewsPagePicture Photo={ActNews.img}/> : null}
             <ActualNewsPageText news={ActNews}/>
-            {news.length === 0 ? null : <ActualNewsPagePreviousNews news={news}/>}
+            {news.length < 3 ? null : <ActualNewsPagePreviousNews news={news}/>}
         </div>
 
     )
