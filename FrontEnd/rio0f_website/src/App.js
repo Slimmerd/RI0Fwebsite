@@ -42,8 +42,6 @@ function App() {
                 {location.pathname === '/admin' ? null : <HeaderContainer/>}
                 <div className="app-wrapper-content">
                     <Switch>
-                        {/*<Route exact path="/" render={() => <Redirect to={'/profile'}/>}/>*/}
-                        {/*<Route path="/profile/:userID?" render={withSuspense(ProfileContainer)}/>*/}
 
                         <Route exact path="/" render={() => <MainPage/>}/>
                         <Route exact path="/news" render={() => <NewsPage/>}/>
@@ -57,6 +55,7 @@ function App() {
                         <Route exact path="/news/:url?" render={() => <ActualNewsPage/>}/>
                         <Route exact path="/onlinelog" render={() => <OnlineLogPage/>}/>
                         <Route exact path="/chat" render={() => <ChatPage/>}/>
+
                         <Route exact path="/admin" render={() => <AdminPanel/>}/>
                         <Route exact path="/login" render={() => <LoginPage/>}/>
 

@@ -1,10 +1,10 @@
-import {ChatAPI, GalleryAPI} from "../api/api";
+import {GalleryAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 import {notificationWindow} from "../utils/notificationWindow";
 
 const SET_POSTS = 'SET_POSTS';
 const ADD_POST = 'ADD_POST';
-const EDIT_POST = 'EDIT_POST';
+// const EDIT_POST = 'EDIT_POST';
 const DELETE_POST = 'DELETE_POST';
 const POST_IS_FETCHING = 'POST_IS_FETCHING';
 
@@ -107,7 +107,7 @@ export const postPost = (name_ru, name_en, images) => async (dispatch) => {
 export const deletePost = (id) => async (dispatch) => {
     dispatch(setFetching(true))
 
-    let response = await ChatAPI.deleteComment(id)
+    let response = await GalleryAPI.deleteGalleryPost(id)
 
     if (response.status === 201) {
 

@@ -7,6 +7,7 @@ import {deletePhoto, getPhotos} from "../../../../redux/photo-reducer";
 import PhotoPublish from "./UploadPhoto";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../../../HOC/authRedirect";
+import {DeleteOutlined} from "@ant-design/icons";
 
 const {Column} = Table;
 const Styled = styled.div`
@@ -79,7 +80,7 @@ const PhotosList = () => {
             <div className={'buttons'}>
                 <PhotoPublish/>
                 <Button type="primary" onClick={deleteButton} disabled={!hasSelected} loading={loading}>
-                    Удалить
+                    <DeleteOutlined/> Удалить
                 </Button>
             </div>
 

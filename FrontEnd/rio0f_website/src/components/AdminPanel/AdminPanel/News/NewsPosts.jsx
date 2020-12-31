@@ -9,6 +9,7 @@ import NewsPublish from "./CreatePost/CreatePost";
 import NewsEdit from "./EditPost";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../../../HOC/authRedirect";
+import {DeleteOutlined} from "@ant-design/icons";
 
 const {Column, ColumnGroup} = Table;
 const Styled = styled.div`
@@ -80,7 +81,7 @@ const NewsPosts = () => {
                 <NewsPublish/>
                 <NewsEdit hasSelected={hasSelected} selectedID={selectedRowKeys}/>
                 <Button type="primary" onClick={deleteButton} disabled={!hasSelected} loading={loading}>
-                    Удалить
+                    <DeleteOutlined/> Удалить
                 </Button>
             </div>
 

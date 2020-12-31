@@ -11,46 +11,46 @@ const auth = require('../middleware/auth.middleware')
 // Register
 // /api/auth/register
 // With API-KEY
-router.post('/register', [
-        //Check validators is email/password format correct
-        check('email', 'Некорректный email').isEmail(),
-        check('password', 'Мнимальная длина пароля 8 символов').isLength({min: 8}),
-        check('name_ru', 'Имя должно состоять из букв').isString(),
-        check('name_en', 'Имя должно состоять из букв').isString()
-    ],
-    async (req, res) => {
-        try {
-            const errors = validationResult(req)
-
-            if (!errors.isEmpty()) {
-                return res.status(400).json({
-                    errors: errors.array(),
-                    message: 'Некорректные данные при регистрации'
-                })
-            }
-
-            const {email, password, name_ru, name_en} = req.body
-
-            // Logic to find if there a user in database with same email
-            const candidate = await User.findOne({email})
-
-            if (candidate) {
-                return res.status(400).json({message: 'Пользователь с данным Email уже существует'})
-            }
-
-            //Register process logic
-            const hashedPassword = await bcrypt.hash(password, 12) //Encrypting password
-
-            const user = new User({email, password: hashedPassword, name_ru, name_en})  //Making new user
-
-            await user.save() // Waiting until user is saved
-
-            res.status(201).json({message: 'Пользователь создан'})
-
-        } catch (e) {
-            res.status(500).json({message: 'Что-то пошло не так'})
-        }
-    })
+// router.post('/register', [
+//         //Check validators is email/password format correct
+//         check('email', 'Некорректный email').isEmail(),
+//         check('password', 'Мнимальная длина пароля 8 символов').isLength({min: 8}),
+//         check('name_ru', 'Имя должно состоять из букв').isString(),
+//         check('name_en', 'Имя должно состоять из букв').isString()
+//     ],
+//     async (req, res) => {
+//         try {
+//             const errors = validationResult(req)
+//
+//             if (!errors.isEmpty()) {
+//                 return res.status(400).json({
+//                     errors: errors.array(),
+//                     message: 'Некорректные данные при регистрации'
+//                 })
+//             }
+//
+//             const {email, password, name_ru, name_en} = req.body
+//
+//             // Logic to find if there a user in database with same email
+//             const candidate = await User.findOne({email})
+//
+//             if (candidate) {
+//                 return res.status(400).json({message: 'Пользователь с данным Email уже существует'})
+//             }
+//
+//             //Register process logic
+//             const hashedPassword = await bcrypt.hash(password, 12) //Encrypting password
+//
+//             const user = new User({email, password: hashedPassword, name_ru, name_en})  //Making new user
+//
+//             await user.save() // Waiting until user is saved
+//
+//             res.status(201).json({message: 'Пользователь создан'})
+//
+//         } catch (e) {
+//             res.status(500).json({message: 'Что-то пошло не так'})
+//         }
+//     })
 
 // Login-in
 // /api/auth/login
@@ -73,7 +73,6 @@ router.post('/login',
             }
 
             const {email, password} = req.body //Requesting password and email
-            console.warn(req.body)
 
             const user = await User.findOne({email}) // Is there a user in database
 
@@ -88,7 +87,7 @@ router.post('/login',
             }
 
             const token = jwt.sign(
-                {userId: user.id},
+                {userId: user.id, name_ru: user.name_ru, name_en: user.name_en},
                 config.get('jwtSecret'),
                 {expiresIn: '1h'}
             )
@@ -98,7 +97,6 @@ router.post('/login',
 
         } catch (e) {
             res.status(500).json({message: 'Что-то пошло не так'})
-            console.warn(e)
         }
     })
 
@@ -122,7 +120,6 @@ router.get('/name/:id', async (req, res) => {
 
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так'})
-        console.warn(e)
     }
 })
 
@@ -136,7 +133,6 @@ router.get('/me', auth, async (req, res) => {
 
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так'})
-        console.warn(e)
     }
 })
 

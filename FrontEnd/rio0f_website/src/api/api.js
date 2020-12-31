@@ -200,5 +200,12 @@ export const GalleryAPI = {
             })
 
     },
-//    Delete gallery post
+    // Delete gallery post
+    deleteGalleryPost(id) {
+        return instance.delete(`gallery/delete/${id}`).then(response => {
+            return response
+        }).catch((error) => {
+            return error.response
+        })
+    },
 }

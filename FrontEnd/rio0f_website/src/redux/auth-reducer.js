@@ -9,9 +9,10 @@ const User = JSON.parse(localStorage.getItem("user"));
 
 let initialState =
     {
-        id: null,
-        fullname: null,
-        isAuth: !!User,
+        id: User ? User.userId : null,
+        name_ru: User ? User.name_ru : null,
+        name_en: User ? User.name_en : null,
+        isAuth: !!User || false,
         fetching: false
     };
 
@@ -44,9 +45,9 @@ const AuthReducer = (state = initialState, action) => {
     }
 };
 
-export const setUserData = (id, fullname, isAuth) => (
+export const setUserData = (id, name_ru, name_en, isAuth) => (
     {
-        type: SET_USER_DATA, payload: {id, fullname, isAuth}
+        type: SET_USER_DATA, payload: {id, name_ru, name_en, isAuth}
     });
 
 export const setUserAuth = (isAuth) => (
@@ -77,8 +78,8 @@ export const UserLogin = (email, password) => async (dispatch) => {
     let response = await AuthAPI.login(email, password)
 
     if (response.status === 200) {
-        let {token, userId, fullname} = response.data;
-        dispatch(setUserData(userId, fullname, !!token))
+        let {token, userId, name_ru, name_en} = response.data;
+        dispatch(setUserData(userId, name_ru, name_en, !!token))
     } else {
         let ErrorMessage = response.data.message.length > 0 ? response.data.message : "Undefined error"
         dispatch(stopSubmit("LoginForm", {_error: ErrorMessage}))
@@ -96,10 +97,8 @@ export const UserLogin = (email, password) => async (dispatch) => {
 }
 
 export const UserLogOut = () => async (dispatch) => {
-    let response = await AuthAPI.logout()
-    if (response) {
-        dispatch(setUserData(null, null, false))
-    }
+    await AuthAPI.logout()
+    dispatch(setUserData(null, null, null, false))
 }
 
 export default AuthReducer;

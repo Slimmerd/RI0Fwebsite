@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {compose} from "redux";
 import {withAuthRedirect} from "../../../HOC/authRedirect";
 import styled from "styled-components";
-import {Layout, Menu} from 'antd';
+import {Layout, Menu, Button, Row, Col} from 'antd';
 import {
     MenuUnfoldOutlined,
     MenuFoldOutlined,
@@ -10,12 +10,13 @@ import {
     VideoCameraOutlined,
     UploadOutlined,
 } from '@ant-design/icons';
-import {AuthStatus} from "../../../redux/auth-reducer";
+import {AuthStatus, UserLogOut} from "../../../redux/auth-reducer";
 import {useDispatch} from "react-redux";
 import NewsPosts from "./News/NewsPosts";
 import CommentsList from "./Comments/Comments";
 import PhotosList from "./UploadPhoto/PhotoList";
 import GalleryList from "./Gallery/GalleryList";
+import UsersList from "./Users/UsersList";
 
 const {Header, Sider, Content} = Layout;
 
@@ -60,6 +61,9 @@ const AdminPanel = () => {
         dispatch(AuthStatus())
     }, [dispatch])
 
+    const logout = () => {
+        dispatch(UserLogOut())
+    }
 
     const toggle = () => {
         setCollapsed(!collapsed)
@@ -87,14 +91,22 @@ const AdminPanel = () => {
                             Пользователи
                         </Menu.Item>
                     </Menu>
+
                 </Sider>
 
                 <Layout className="site-layout">
                     <Header className="site-layout-background" style={{padding: 0}}>
-                        {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-                            className: 'trigger',
-                            onClick: toggle,
-                        })}
+                        <Row>
+                            <Col xs={14} sm={16} md={18} lg={20} xl={22}>
+                                {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+                                    className: 'trigger',
+                                    onClick: toggle,
+                                })}
+                            </Col>
+                            <Col xs={10} sm={8} md={6} lg={4} xl={2}>
+                                <Button onClick={logout}>Выйти</Button>
+                            </Col>
+                        </Row>
                     </Header>
 
                     <Content
@@ -104,7 +116,8 @@ const AdminPanel = () => {
                             padding: 24
                         }}
                     >
-                        <GalleryList/>
+                        {/*<GalleryList/>*/}
+                        <UsersList/>
                         {/*<NewsPosts/>*/}
                         {/*<CommentsList/>*/}
                         {/*<PhotosList/>*/}

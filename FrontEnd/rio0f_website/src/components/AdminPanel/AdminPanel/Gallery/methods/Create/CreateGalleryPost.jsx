@@ -1,13 +1,14 @@
-import React, {useState, useEffect} from 'react';
-import {Button, Col, Drawer, Form, Input, Row, Spin, Space} from "antd";
-import {PlusOutlined, MinusCircleOutlined} from "@ant-design/icons";
-import {Field, reduxForm, stopSubmit} from "redux-form";
+import React, {useEffect, useState} from 'react';
+import {Button, Col, Drawer, Form, Input, Row, Spin} from "antd";
+import {PlusOutlined} from "@ant-design/icons";
+import {Field, FieldArray, reduxForm, stopSubmit} from "redux-form";
 import {useDispatch, useSelector} from "react-redux";
-import {CreateNews} from "../../../../../redux/news-reducer";
-import {makeField} from "../../../../../utils/formHandler";
-import {AuthStatus} from "../../../../../redux/auth-reducer";
+import {makeField} from "../../../../../../utils/formHandler";
+import {AuthStatus} from "../../../../../../redux/auth-reducer";
 import styled from "styled-components";
-import {requiredField} from "../../../../../utils/formValidations";
+import {requiredField} from "../../../../../../utils/formValidations";
+import {PicturesListField} from "./PicturesfieldArray";
+import {postPost} from "../../../../../../redux/gallery-reducer";
 
 
 const StyledDrawer = styled.div`
@@ -24,7 +25,7 @@ const AInput = makeField(Input);
 
 const CreateGalleryPost = (props) => {
     const {handleSubmit, submitSucceeded, pristine, submitting, reset, invalid} = props
-    const fetching = useSelector((state) => state.newsPage.fetching)
+    const fetching = useSelector((state) => state.gallery.fetching)
     const [visible, isVisible] = useState(false)
     const [loading, setLoading] = useState(true)
 
@@ -98,39 +99,7 @@ const CreateGalleryPost = (props) => {
 
                             <Row gutter={16}>
                                 <Col span={24}>
-                                    <Form.List name="users">
-                                        {(fields, {add, remove}) => (
-                                            <>
-                                                {fields.map((field) => (
-                                                    <Space
-                                                        key={field.key}
-                                                        style={{marginBottom: 8, width: '100%'}}
-                                                        align="baseline"
-                                                    >
-                                                        <Form.Item
-                                                            name={[field.name, "first"]}
-                                                            fieldKey={[field.fieldKey, "first"]}
-
-                                                        >
-                                                            <Input placeholder="First Name" style={{width: '320px'}}/>
-                                                        </Form.Item>
-
-                                                        <MinusCircleOutlined onClick={() => remove(field.name)}/>
-                                                    </Space>
-                                                ))}
-                                                <Form.Item>
-                                                    <Button
-                                                        type="dashed"
-                                                        onClick={() => add()}
-                                                        block
-                                                        icon={<PlusOutlined/>}
-                                                    >
-                                                        Добавить ссылку на фото
-                                                    </Button>
-                                                </Form.Item>
-                                            </>
-                                        )}
-                                    </Form.List>
+                                    <FieldArray name='images' component={PicturesListField}/>
                                 </Col>
                             </Row>
                         </Form>
@@ -154,7 +123,7 @@ const GalleryPublish = () => {
         await dispatch(AuthStatus())
 
         if (isAuth) {
-            await dispatch(CreateNews(formData.name_ru, formData.name_en, formData.images))
+            await dispatch(postPost(formData.name_ru, formData.name_en, formData.images))
         } else {
             dispatch(stopSubmit('GalleryForm'))
         }
@@ -166,6 +135,5 @@ const GalleryPublish = () => {
 }
 
 export default GalleryPublish
-
 
 // TODO: Multi language form

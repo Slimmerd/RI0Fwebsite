@@ -7,7 +7,7 @@ import styled from "styled-components";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../../../HOC/authRedirect";
 import {deletePost, getPosts} from "../../../../redux/gallery-reducer";
-import GalleryPublish from "./methods/CreateGalleryPost";
+import GalleryPublish from "./methods/Create/CreateGalleryPost";
 
 const {Column, ColumnGroup} = Table;
 const Styled = styled.div`
@@ -30,7 +30,6 @@ const Styled = styled.div`
   }
 `
 
-
 const GalleryList = () => {
     const [selectedRowKeys, SetSelectedRowKeys] = useState('')
     const [loading, SetLoading] = useState(false)
@@ -40,9 +39,7 @@ const GalleryList = () => {
     const posts = useSelector(state => state.gallery.posts)
     const dispatch = useDispatch()
 
-
     useEffect(() => dispatch(getPosts()), [])
-
 
     useEffect(() => {
 
@@ -55,7 +52,6 @@ const GalleryList = () => {
         } else SetHasSelected(false)
 
     }, [selectedRowKeys.length, posts.length])
-
 
     const deleteButton = async () => {
         SetLoading(true)
@@ -73,7 +69,6 @@ const GalleryList = () => {
         onChange: onSelectChange,
         type: 'radio',
     };
-
 
     return (
         <Styled>
@@ -105,5 +100,3 @@ const GalleryList = () => {
 };
 
 export default compose(withAuthRedirect)(GalleryList);
-
-//TODO: CUSTOM ENV VARIABLES
