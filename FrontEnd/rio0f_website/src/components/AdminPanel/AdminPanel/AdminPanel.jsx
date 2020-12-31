@@ -6,9 +6,11 @@ import {Layout, Menu, Button, Row, Col} from 'antd';
 import {
     MenuUnfoldOutlined,
     MenuFoldOutlined,
-    UserOutlined,
-    VideoCameraOutlined,
+    FormOutlined,
+    CameraOutlined,
     UploadOutlined,
+    CommentOutlined,
+    UserOutlined
 } from '@ant-design/icons';
 import {AuthStatus, UserLogOut} from "../../../redux/auth-reducer";
 import {useDispatch} from "react-redux";
@@ -17,6 +19,8 @@ import CommentsList from "./Comments/Comments";
 import PhotosList from "./UploadPhoto/PhotoList";
 import GalleryList from "./Gallery/GalleryList";
 import UsersList from "./Users/UsersList";
+import {NavLink, Redirect, Route, Switch, useLocation} from "react-router-dom";
+import Error404 from "../../common/404";
 
 const {Header, Sider, Content} = Layout;
 
@@ -56,6 +60,7 @@ const LayoutStyle = styled.div`
 const AdminPanel = () => {
     const [collapsed, setCollapsed] = useState(false)
     const dispatch = useDispatch()
+    const location = useLocation();
 
     useEffect(() => {
         dispatch(AuthStatus())
@@ -74,21 +79,22 @@ const AdminPanel = () => {
             <Layout className={'newLayout'}>
                 <Sider trigger={null} collapsible collapsed={collapsed}>
                     <div className="AdminLogo">RIØF</div>
-                    <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-                        <Menu.Item key="1" icon={<UserOutlined/>}>
-                            Главная
+                    <Menu theme="dark" mode="inline" selectedKeys={[location.pathname]}>
+
+                        <Menu.Item key="/admin/news" icon={<FormOutlined/>}>
+                            <NavLink to="/admin/news">Новости</NavLink>
                         </Menu.Item>
-                        <Menu.Item key="2" icon={<VideoCameraOutlined/>}>
-                            Новости
+                        <Menu.Item key="/admin/gallery-posts" icon={<CameraOutlined/>}>
+                            <NavLink to="/admin/gallery-posts">Галлерея</NavLink>
                         </Menu.Item>
-                        <Menu.Item key="3" icon={<UploadOutlined/>}>
-                            Фотографии
+                        <Menu.Item key="/admin/photos" icon={<UploadOutlined/>}>
+                            <NavLink to="/admin/photos">Фотографии</NavLink>
                         </Menu.Item>
-                        <Menu.Item key="4" icon={<UploadOutlined/>}>
-                            Комментарии
+                        <Menu.Item key="/admin/comments" icon={<CommentOutlined/>}>
+                            <NavLink to="/admin/comments">Комментарии</NavLink>
                         </Menu.Item>
-                        <Menu.Item key="5" icon={<UploadOutlined/>}>
-                            Пользователи
+                        <Menu.Item key="/admin/users" icon={<UserOutlined/>}>
+                            <NavLink to="/admin/users">Пользователи</NavLink>
                         </Menu.Item>
                     </Menu>
 
@@ -116,11 +122,19 @@ const AdminPanel = () => {
                             padding: 24
                         }}
                     >
-                        {/*<GalleryList/>*/}
-                        <UsersList/>
-                        {/*<NewsPosts/>*/}
-                        {/*<CommentsList/>*/}
-                        {/*<PhotosList/>*/}
+                        <Switch>
+
+                            <Route exact path="/admin/" render={() => <Redirect to={'/admin/news'}/>}/>
+
+                            <Route exact path="/admin/news" render={() => <NewsPosts/>}/>
+                            <Route exact path="/admin/comments" render={() => <CommentsList/>}/>
+                            <Route exact path="/admin/photos" render={() => <PhotosList/>}/>
+                            <Route exact path="/admin/gallery-posts" render={() => <GalleryList/>}/>
+                            <Route exact path="/admin/users" render={() => <UsersList/>}/>
+
+                            <Route render={() => <Error404/>}/>
+
+                        </Switch>
                     </Content>
                 </Layout>
             </Layout>

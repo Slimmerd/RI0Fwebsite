@@ -7,14 +7,11 @@ export const withAuthRedirect = (Component) => {
 
         const isAuth = useSelector(state => state.auth.isAuth)
 
-        if (isAuth === false) return <Redirect to={"/Login"}/>
+        if (isAuth === false) return <Redirect to={"/login"}/>
 
         return <Component {...props}/>
     }
 
-    let ConnectAuthRedirectComponent = (RedirectComponent);
-
-
-    return ConnectAuthRedirectComponent
+    return (RedirectComponent)
 
 }

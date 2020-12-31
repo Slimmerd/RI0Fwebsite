@@ -1,9 +1,6 @@
 import React from 'react';
 import {Image,Carousel} from 'antd';
 import styled from "styled-components";
-import pic1 from "../../../assets/photos/ras1.jpg"
-import pic2 from "../../../assets/photos/ras2.jpg"
-import pic3 from "../../../assets/photos/ras3.jpg"
 
 const PhotoCard = styled.div`
     height: 586px;
@@ -52,23 +49,16 @@ const PhotoCard = styled.div`
     }
 `
 
-//TODO: Complete carousel with import photos from database
-
-export const PhotosPageCarousel = () => {
+export const PhotosPageCarousel = ({pictures}) => {
     return (
         <Carousel autoplay effect={'fade'}>
-            <PhotoCard>
-                <Image src={pic1} alt=""/>
-            </PhotoCard>
-            <PhotoCard>
-                <Image src={pic2} alt=""/>
-            </PhotoCard>
-            <PhotoCard>
-                <Image src={pic3} alt=""/>
-            </PhotoCard>
-            <PhotoCard>
-                <Image src={pic2} alt=""/>
-            </PhotoCard>
+            {pictures ? pictures.map(
+                (picture, i) => (
+                    <PhotoCard key={i}>
+                        <Image src={picture} alt=""/>
+                    </PhotoCard>
+                )
+            ) : null}
         </Carousel>
     );
 };

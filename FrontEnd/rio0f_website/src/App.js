@@ -1,5 +1,5 @@
 import './App.less';
-import {Route, Switch, useLocation, withRouter} from "react-router-dom";
+import {Route, Switch, useLocation, withRouter, useRouteMatch} from "react-router-dom";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {MainPage} from "./components/MainPage/mainpage";
 import {Footer} from "./components/Footer/Footer";
@@ -22,7 +22,7 @@ import Error404 from "./components/common/404";
 
 
 function App() {
-    let location = useLocation();
+    let path = useRouteMatch("/admin/:path?");
 
     const ScrollToTop = () => {
         const {pathname} = useLocation();
@@ -34,12 +34,11 @@ function App() {
         return null
     }
 
-
     return (
         <Suspense fallback={<div>Loading...</div>}>
             <div className="app-wrapper">
                 <ScrollToTop/>
-                {location.pathname === '/admin' ? null : <HeaderContainer/>}
+                {path ? null : <HeaderContainer/>}
                 <div className="app-wrapper-content">
                     <Switch>
 
@@ -55,18 +54,20 @@ function App() {
                         <Route exact path="/news/:url?" render={() => <ActualNewsPage/>}/>
                         <Route exact path="/onlinelog" render={() => <OnlineLogPage/>}/>
                         <Route exact path="/chat" render={() => <ChatPage/>}/>
-
-                        <Route exact path="/admin" render={() => <AdminPanel/>}/>
+                        <Route exact path={'/admin/:path?'}>
+                            <AdminPanel/>
+                        </Route>
                         <Route exact path="/login" render={() => <LoginPage/>}/>
 
                         <Route render={() => <Error404/>}/>
                     </Switch>
                 </div>
-                {location.pathname === '/admin' ? null : <Footer/>}
+                {path ? null : <Footer/>}
             </div>
         </Suspense>
     );
 }
+
 
 const AppContainer = compose(withRouter)(App)
 
