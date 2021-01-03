@@ -5,7 +5,7 @@ import cameraIcon from '@iconify/icons-si-glyph/camera';
 import React, {useEffect, useState} from "react";
 import i18n from "i18next";
 import moment from 'moment';
-import {Link, NavLink} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 const CardShape = styled.div`
   height: 370px;
@@ -166,11 +166,11 @@ export const MainCard = ({news}) => {
                                     <Skeleton.Input style={{width: 100, height: '25px', borderRadius: '5px'}}
                                                     active={'active'}/>}</div>
 
-                            <div
-                                className={'header'}>{!loading ? (name.length > 30 ? `${name.substring(0, 30)}...` : name) :
+                                <div
+                                    className={'header'}>{!loading ? (name.length > 30 ? `${name.substring(0, 30)}...` : name) :
 
-                                <Skeleton.Input style={{width: 400, height: '45px', borderRadius: '5px'}}
-                                                active={'active'}/>}</div>
+                                    <Skeleton.Input style={{width: 400, height: '45px', borderRadius: '5px'}}
+                                                    active={'active'}/>}</div>
                                 <div
                                     className={'paragraph'}> {!loading ? (text.length > 180 ? `${text.substring(0, 180)}...` : text) : ParagraphSkeleton}
                                 </div>

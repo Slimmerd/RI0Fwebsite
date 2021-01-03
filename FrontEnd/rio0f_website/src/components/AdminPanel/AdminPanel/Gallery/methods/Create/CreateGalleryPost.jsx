@@ -135,5 +135,3 @@ const GalleryPublish = () => {
 }
 
 export default GalleryPublish
-
-// TODO: Multi language form

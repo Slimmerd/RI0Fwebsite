@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Button, Table} from 'antd';
-import {useDispatch, useSelector} from "react-redux";
-import {PlusOutlined, EditOutlined, DeleteOutlined} from "@ant-design/icons";
+import {DeleteOutlined, EditOutlined, PlusOutlined} from "@ant-design/icons";
 import styled from "styled-components";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../../../HOC/authRedirect";

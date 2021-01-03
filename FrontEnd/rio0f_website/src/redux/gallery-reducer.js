@@ -82,7 +82,8 @@ export const postPost = (name_ru, name_en, images) => async (dispatch) => {
     let response = await GalleryAPI.postPost(name_ru, name_en, images)
 
     if (response.status === 201) {
-        dispatch(addPost({name_ru, name_en, images}))
+        // dispatch(addPost({name_ru, name_en, images}))
+        dispatch(getPosts())
 
         notificationWindow('success',
             'Фотосет опубликован',

@@ -156,6 +156,3 @@ const NewsPublish = () => {
 }
 
 export default NewsPublish
-
-
-// TODO: Multi language form

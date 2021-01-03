@@ -34,7 +34,7 @@ export const HardwarePageCardsBlock = () => {
                     <FadeInContainer>
                         <Row gutter={[{xs: 0, sm: 30, md: 30, lg: 30}, 50]} justify={'center'}>
                             <Col>
-                                <HardwarePageCard cardNumber={1}/>
+                                <HardwarePageCard cardNumber={3}/>
                             </Col>
                             <Col>
                                 <HardwarePageCard cardNumber={1}/>

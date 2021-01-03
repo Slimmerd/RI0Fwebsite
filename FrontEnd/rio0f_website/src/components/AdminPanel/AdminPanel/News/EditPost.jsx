@@ -180,6 +180,4 @@ const NewsEdit = ({selectedID, hasSelected}) => {
 
 export default NewsEdit
 
-
-// TODO: Multi language form
 // TODO: Custom values ENV

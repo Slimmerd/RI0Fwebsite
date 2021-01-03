@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {NavLink} from "react-router-dom";
-import {Row, Col} from 'antd';
+import {Col, Row} from 'antd';
 import RightMenu from "./menus/RightMenu";
 import LeftMenu from "./menus/LeftMenu";
 import SideBar from "../common/SideBar";
 
-const Header = (props) => {
+const Header = () => {
     return (
         <div className={'menuBar'}>
 

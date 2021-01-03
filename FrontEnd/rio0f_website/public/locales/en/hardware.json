@@ -13,6 +13,11 @@
       "type": "Antenna",
       "heading": "SteppIR BigIR",
       "description": "Small description"
+    },
+    "Card3": {
+      "type": "Amplifier",
+      "heading": "SPE Expert 1.5K-FA V2.0",
+      "description": "Small description"
     }
   }
 }

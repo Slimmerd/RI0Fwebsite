@@ -176,7 +176,7 @@ const theme = {
 
 
 export const TeamMemberCard = ({teamMember}) => {
-    const {t, i18n} = useTranslation()
+    const {t} = useTranslation()
 
     return (
         <div>

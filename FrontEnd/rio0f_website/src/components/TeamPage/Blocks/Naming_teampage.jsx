@@ -3,25 +3,25 @@ import {FadeInContainer} from "../../common/FadeInAnimation";
 import {useTranslation} from "react-i18next";
 
 const HeaderBlock = styled.div`
-    height: 350px;
-    background: #ECF0F1;
-        
-    display: flex;
-    align-items: center;
-     box-shadow: 0px 2.32131px 11.6066px 4.64262px rgba(0, 0, 0, 0.1);
-    color: #2C3E50;
-    
-    .header{
+  height: 350px;
+  background: #ECF0F1;
+
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2.32131px 11.6066px 4.64262px rgba(0, 0, 0, 0.1);
+  color: #2C3E50;
+
+  .header {
     font-family: Oswald, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 96px;
     line-height: 142px;
-    
+
     padding-bottom: 20px;
-    }
-    
-    .sub{
+  }
+
+  .sub {
     font-family: Roboto, sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -45,22 +45,11 @@ const HeaderBlock = styled.div`
     line-height: 20px;
       }
 }
-//
-// @media (max-width:375px){
-//    .header{
-//      font-size: 42px;
-//      line-height: 48px;
-//      }
-//      .sub{
-//      font-size: 16px;
-//    line-height: 18px;
-//      }
-//}
 
 `
 
 export const TeamPageNaming = () =>{
-    const { t, i18n } = useTranslation()
+    const {t} = useTranslation()
     return(
         <HeaderBlock>
             <div  className={'container'}>

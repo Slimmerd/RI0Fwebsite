@@ -6,6 +6,7 @@ import styled from "styled-components";
 import {deleteComment, getComments} from "../../../../redux/chat-reducer";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../../../HOC/authRedirect";
+import {DeleteOutlined} from "@ant-design/icons";
 
 const {Column} = Table;
 const Styled = styled.div`
@@ -76,7 +77,7 @@ const CommentsList = () => {
         <Styled>
             <div className={'buttons'}>
                 <Button type="primary" onClick={deleteButton} disabled={!hasSelected} loading={loading}>
-                    Удалить
+                    <DeleteOutlined/> Удалить
                 </Button>
             </div>
 

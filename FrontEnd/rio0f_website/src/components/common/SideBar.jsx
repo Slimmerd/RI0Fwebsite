@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {Button, Col, Divider, Drawer} from "antd";
+import {Button, Divider, Drawer} from "antd";
 import {MenuOutlined} from "@ant-design/icons";
 import RightMenu from "../Header/menus/RightMenu";
 import LeftMenu from "../Header/menus/LeftMenu";
@@ -29,7 +29,6 @@ const SideBar = () => {
             </Button>
 
             <Drawer
-
                 placement="right"
                 closable={false}
                 onClose={onClose}
@@ -37,7 +36,6 @@ const SideBar = () => {
                 headerStyle={{ background: '#2C3E50'}}
                 bodyStyle={{background: '#2C3E50'}}
             >
-                {/*<FooterNavbar/>*/}
                 <RightMenu/>
                 <Divider style={{background:'hsl(0, 0%, 90%)'}}/>
                 <LeftMenu/>

@@ -1,12 +1,15 @@
 import React from 'react';
 import {Result} from 'antd';
+import {useTranslation} from "react-i18next";
 
 const Error404 = () => {
+    const {t} = useTranslation()
+
     return (
         <Result
             status="404"
             title="404"
-            subTitle="Sorry, the page you visited does not exist."
+            subTitle={t('not_found')}
         />
     );
 };

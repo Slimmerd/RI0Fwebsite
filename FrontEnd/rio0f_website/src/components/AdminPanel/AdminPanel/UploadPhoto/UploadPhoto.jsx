@@ -63,10 +63,10 @@ const UploadPhoto = (props) => {
                             }}
                         >
                             <Button onClick={onClose} style={{marginRight: 8}}>
-                                Cancel
+                                Отмена
                             </Button>
                             <Button onClick={handleSubmit} htmlType="submit" type="primary" disabled={pristine}>
-                                Submit
+                                Опубликовать
                             </Button>
                         </div>
                     }
@@ -75,7 +75,7 @@ const UploadPhoto = (props) => {
                         <Form layout="vertical" hideRequiredMark style={{padding: '10px 16px'}}>
                             <Row gutter={16}>
                                 <Col span={24}>
-                                    <Field label="Фото" name="img" component={ADragger} type="file" value={'fileList'}
+                                    <Field label="Фото" name="img" component={ADragger} type="file"
                                            beforeUpload={() => false}>
                                         <p className="ant-upload-drag-icon">
                                             <InboxOutlined/>

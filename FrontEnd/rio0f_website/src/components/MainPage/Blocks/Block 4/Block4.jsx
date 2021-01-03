@@ -4,24 +4,23 @@ import {TeamCard} from "./Card/TeamCard";
 import {FadeInContainer} from "../../../common/FadeInAnimation";
 import React from 'react'
 import {useTranslation} from "react-i18next";
-import {NavLink} from "react-router-dom";
 
 const Block = styled.div`
   min-height: 1283px;
-   @media (max-width: 1200px) {
-   min-height: 1809px;
+  @media (max-width: 1200px) {
+    min-height: 1809px;
   }
   @media (max-width: 768px) {
-   min-height: 2559px;
+    min-height: 2559px;
   }
-  
+
 `
 
 const BlockHeader = styled.div`
   width: 266px;
   height: 107px;
 
-  font-family: Oswald,sans-serif;
+  font-family: Oswald, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 72px;
@@ -32,11 +31,11 @@ const BlockHeader = styled.div`
 `
 
 const CardBlock = styled.div`
- 
+
 `
 
 export const MainPageBlock4 = () => {
-    const { t, i18n } = useTranslation()
+    const {t} = useTranslation()
     return (
         <Block>
             <div className={'container'}>
@@ -47,31 +46,31 @@ export const MainPageBlock4 = () => {
                         </FadeInContainer>
                     </Row>
                     <FadeInContainer>
-                        <Row align={'center'} gutter={[{ xs: 0, sm: 0, md: 24},{ xs: 42, sm: 42, md: 54}]} >
-                            <Col   xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
+                        <Row align={'center'} gutter={[{xs: 0, sm: 0, md: 24}, {xs: 42, sm: 42, md: 54}]}>
+                            <Col xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
                                 <TeamCard callName={'RZ3EC'}/>
                             </Col>
-                            <Col   xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
+                            <Col xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
                                 <TeamCard callName={'R6MG'}/>
                             </Col>
-                            <Col  xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
+                            <Col xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
                                 <TeamCard callName={'RX3F'}/>
                             </Col>
-                            <Col   xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
+                            <Col xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
                                 <TeamCard callName={'M0MSV'}/>
                             </Col>
-                            <Col  xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
+                            <Col xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
                                 <TeamCard callName={'R6LGT'}/>
                             </Col>
                         </Row>
-        </FadeInContainer>
+                    </FadeInContainer>
                     <div style={{paddingBottom: '80px'}}></div>
-</CardBlock>
-</div>
-</Block>
+                </CardBlock>
+            </div>
+        </Block>
 
 
-)
+    )
 
 
 }

@@ -13,6 +13,11 @@
       "type": "Антенна",
       "heading": "SteppIR BigIR",
       "description": "Небольшое описание"
+    },
+    "Card3": {
+      "type": "Усилитель",
+      "heading": "SPE Expert 1.5K-FA V2.0",
+      "description": "Небольшое описание"
     }
   }
 }

@@ -186,6 +186,3 @@ export const Login = () => {
 }
 
 
-// TODO:  Multi language form
-
-

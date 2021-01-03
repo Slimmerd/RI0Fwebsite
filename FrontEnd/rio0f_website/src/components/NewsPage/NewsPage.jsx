@@ -93,17 +93,6 @@ const NamingBlock = styled.div`
     }
   }
 
-  // @media (max-width:375px){
-  //    .header{
-  //      font-size: 42px;
-  //      line-height: 48px;
-  //      }
-  //      .sub{
-  //      font-size: 16px;
-  //    line-height: 18px;
-  //      }
-  //}
-
 `
 const ExtraNews = styled.div`
   height: 181px;
@@ -145,11 +134,9 @@ const ExtraNews = styled.div`
   }
 `
 
-//TODO: Put latest news on main card and others to secondary cards
-
 export const NewsPage = (props) => {
 
-    const {t, i18n} = useTranslation()
+    const {t} = useTranslation()
     const news = useSelector((state) => state.newsPage.news)
     const dispatch = useDispatch()
 

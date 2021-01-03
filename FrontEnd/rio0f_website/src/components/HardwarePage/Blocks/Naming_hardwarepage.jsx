@@ -1,5 +1,4 @@
 import React from 'react'
-import {Col, Row, Button} from "antd";
 import styled from "styled-components";
 import {FadeInContainer} from "../../common/FadeInAnimation";
 import {useTranslation} from "react-i18next";
@@ -10,7 +9,7 @@ const HeaderBlock = styled.div`
 
   display: flex;
   align-items: center;
-  box-shadow: 0px 2.32131px 11.6066px 4.64262px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2.32131px 11.6066px 4.64262px rgba(0, 0, 0, 0.1);
   color: #2C3E50;
 
   .header {
@@ -62,7 +61,7 @@ const HeaderBlock = styled.div`
 `
 
 export const HardwarePageNaming = () => {
-    const { t, i18n } = useTranslation()
+    const {t} = useTranslation()
 
     return (
         <HeaderBlock>

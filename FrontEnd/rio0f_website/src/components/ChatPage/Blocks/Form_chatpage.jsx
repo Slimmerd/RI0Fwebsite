@@ -241,7 +241,7 @@ const AInput = makeField(Input);
 const ATextarea = makeField(Input.TextArea);
 
 const ChatPageForm = (props) => {
-    const {t, i18n} = useTranslation()
+    const {t} = useTranslation()
     const {handleSubmit, submitSucceeded, pristine, submitting, reset, invalid} = props
     const [loading, setLoading] = useState(false)
     const fetching = useSelector((state) => state.chat.fetching)
@@ -281,7 +281,7 @@ const ChatPageForm = (props) => {
                             <Form layout={'vertical'} size={'large'}>
                                 <Field name={'name'} label={`${t('chat:form_block.name_heading')}:`}
                                        placeholder={`${t('chat:form_block.name_input')}`} component={AInput}
-                                       validate={[requiredField, OnlyLetters, minLength(2), maxLength(32)]}
+                                       validate={[requiredField, OnlyLetters, minLength(2), maxLength(28)]}
                                        rules={[{required: true}]}/>
 
                                 <Field name={'call'} label={`${t('chat:form_block.call')}:`}

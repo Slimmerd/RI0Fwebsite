@@ -1,13 +1,15 @@
+import i18next from "i18next";
+
 // Required field validation
 export const requiredField = value => {
     if (value) return undefined;
-    return "Field is required"
+    return i18next.t('validation:required_field')
 }
 
 // Validate email field
 export const emailField = value => {
     if (value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-        return 'Invalid email address'
+        return i18next.t('validation:email_field')
     } else {
         return undefined
     }
@@ -16,7 +18,7 @@ export const emailField = value => {
 // Validate maxLength
 export const maxLength = max => value => {
     if (value && value.length > max) {
-        return `Must be ${max} characters or less`
+        return i18next.t('validation:max_length', {max: max})
     } else {
         return undefined
     }
@@ -26,7 +28,7 @@ export const maxLength = max => value => {
 // Validate minLength
 export const minLength = min => value => {
     if (value && value.length < min) {
-        return `Must be ${min} characters or more`
+        return i18next.t('validation:min_length', {min: min})
     } else {
         return undefined
     }
@@ -35,10 +37,8 @@ export const minLength = min => value => {
 // Validate letter field
 export const OnlyLetters = value => {
     if (value && !/^[a-zA-Z-А-Яа-я]+$/u.test(value)) {
-        return 'Accepts only latin and cyrillic letters'
+        return i18next.t('validation:only_letters')
     } else {
         return undefined
     }
 }
-
-//TODO: Translation

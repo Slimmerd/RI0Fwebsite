@@ -33,7 +33,7 @@ const HeaderBlock = styled.div`
   }
 
 `
-//FIX: Picture photo
+
 export const ActualNewsPagePicture = ({Photo}) => {
     return (
         <FadeInContainer>

@@ -19,6 +19,7 @@ import {Login as LoginPage} from "./components/AdminPanel/LoginPage/LoginPage";
 import {compose} from "redux";
 import AdminPanel from "./components/AdminPanel/AdminPanel/AdminPanel";
 import Error404 from "./components/common/404";
+import Loading from "./components/common/Loading";
 
 
 function App() {
@@ -35,7 +36,7 @@ function App() {
     }
 
     return (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loading/>}>
             <div className="app-wrapper">
                 <ScrollToTop/>
                 {path ? null : <HeaderContainer/>}
@@ -54,6 +55,7 @@ function App() {
                         <Route exact path="/news/:url?" render={() => <ActualNewsPage/>}/>
                         <Route exact path="/onlinelog" render={() => <OnlineLogPage/>}/>
                         <Route exact path="/chat" render={() => <ChatPage/>}/>
+
                         <Route exact path={'/admin/:path?'}>
                             <AdminPanel/>
                         </Route>

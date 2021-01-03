@@ -17,7 +17,7 @@ i18n
         whitelist: availableLanguages,
         debug: false,
         /* can have multiple namespace, in case you want to divide a huge translation into smaller pieces and load them on demand */
-        ns: ['basic', 'main', 'news', 'team', 'plan', 'hardware', 'photos', 'qsl', 'onlinelog', 'donate', 'chat', 'contacts'],
+        ns: ['basic', 'main', 'news', 'team', 'plan', 'hardware', 'photos', 'qsl', 'onlinelog', 'donate', 'chat', 'contacts', 'validation'],
         defaultNS: 'basic',
         // keySeparator: false,
         interpolation: {

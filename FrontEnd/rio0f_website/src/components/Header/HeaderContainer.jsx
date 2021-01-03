@@ -7,11 +7,4 @@ function HeaderContainer(props) {
     );
 }
 
-const mapStateToProps = (state) => ({
-
-    // isAuth: state.auth.isAuth,
-    // login: state.auth.login
-})
-
-
 export default HeaderContainer;

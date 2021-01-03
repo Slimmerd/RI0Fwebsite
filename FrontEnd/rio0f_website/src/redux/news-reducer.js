@@ -1,6 +1,5 @@
 import {NewsAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
-import {UserLogOut} from "./auth-reducer";
 import {notificationWindow} from "../utils/notificationWindow";
 
 const SET_NEWS = 'SET_NEWS';
@@ -76,7 +75,8 @@ export const CreateNews = (name_ru, name_en, text_ru, text_en, img) => async (di
     let response = await NewsAPI.postNews(name_ru, name_en, text_ru, text_en, img)
 
     if (response.status === 201) {
-        dispatch(createNewsData({name_ru, name_en, text_ru, text_en, img}))
+        // dispatch(createNewsData({name_ru, name_en, text_ru, text_en, img}))
+        dispatch(getNews())
         notificationWindow('success',
             'Новость успешно опубликована',
             `Новость ${name_ru}, успешно опубликована на сайте`,
