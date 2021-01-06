@@ -3,20 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.less';
 import reportWebVitals from './reportWebVitals';
 import './i18n';
-import {Provider} from "react-redux";
-import store from "./redux/redux-store";
-import AppContainer from "./App";
-import {BrowserRouter} from "react-router-dom";
+import Application from "./App";
 
-const Application = (
-    <BrowserRouter>
-        <Provider store={store}>
-            <AppContainer/>
-        </Provider>
-    </BrowserRouter>
-)
-
-ReactDOM.render(
+ReactDOM.hydrate(
     Application
     ,
     document.getElementById('root')

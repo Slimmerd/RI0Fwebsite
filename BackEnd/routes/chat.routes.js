@@ -4,7 +4,6 @@ const router = Router()
 const Chat = require('../models/Chat')
 const {check, validationResult} = require('express-validator')
 const auth = require('../middleware/auth.middleware')
-const multer = require("multer");
 
 
 //Post new comment
@@ -38,7 +37,6 @@ router.post('/post', [check(['name', 'call', 'text'], 'Нельзя оставл
 
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так'})
-        console.warn(e)
     }
 })
 
@@ -53,7 +51,7 @@ router.get('/', async (req, res) => {
         if (!chat) {
             return res.status(404).json({message: 'Комментарии не найдены'})
         }
-        res.json(chat)
+        res.status(201).json(chat)
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
     }
@@ -100,7 +98,6 @@ router.delete('/delete/:id', auth, async (req, res) => {
 
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
-        console.error('Error', e)
     }
 })
 

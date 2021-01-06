@@ -56,12 +56,17 @@ position: relative;
 `
 
 export const MainPageBlock3 = () => {
-    const [isSize, setSize] = useState(window.innerWidth);
+    const hasWindow = (typeof window !== 'undefined');
+
+    const [isSize, setSize] = useState(hasWindow ? window.innerWidth : null);
     const breakpoint = 768
-    const {t, i18n} = useTranslation()
+    const {t} = useTranslation()
 
     useEffect(() => {
-        window.addEventListener("resize", () => setSize(window.innerWidth));
+
+        if (hasWindow) {
+            return window.addEventListener("resize", () => setSize(window.innerWidth));
+        }
     }, []);
 
     return (

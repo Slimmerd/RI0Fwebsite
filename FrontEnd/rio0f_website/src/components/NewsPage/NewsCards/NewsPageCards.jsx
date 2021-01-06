@@ -15,7 +15,6 @@ const NewsPageCards = ({news}) => {
         const resizeListener = () => {
             if (isMounted) {
                 clearTimeout(timeoutID)
-                console.warn('callresizes')
                 timeoutID = setTimeout(() => setSize(window.innerWidth), 150)
             }
         }

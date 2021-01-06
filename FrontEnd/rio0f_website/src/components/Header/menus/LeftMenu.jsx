@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { Menu, Grid } from 'antd';
 import styled from "styled-components";
 import i18n from "../../../i18n";
+import Cookies from "js-cookie";
 
 const Super = styled.div`
     .ant-menu-item-selected{
@@ -56,12 +57,12 @@ const Super = styled.div`
 const { useBreakpoint } = Grid;
 
 const LeftMenu = () => {
-    const [language, setLanguage] = useState(localStorage.getItem('locales'))
-    const { lg } = useBreakpoint();
+    const [language, setLanguage] = useState(Cookies.get('locales'))
+    const {lg} = useBreakpoint();
 
     const changeLanguage = lng => {
         i18n.changeLanguage(lng);
-        localStorage.setItem('locales', `${lng}`);
+        Cookies.set('locales', `${lng}`);
         setLanguage(lng)
     };
     return (

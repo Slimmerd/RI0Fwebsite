@@ -1,7 +1,7 @@
 import {animated} from "react-spring";
 import VisibilitySensor from "react-visibility-sensor";
 import React, {useState} from "react";
-import {Trail} from "react-spring/renderprops";
+import {Trail} from "react-spring/renderprops.cjs";
 
 export const NewsAnimContainer = ({items}) => {
     const [isVisible, setVisibility] = useState(false);

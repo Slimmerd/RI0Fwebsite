@@ -1,8 +1,14 @@
 import * as axios from "axios";
+import Cookies from "js-cookie";
 
 const getToken = () => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    return user ? user.token : null
+    const cookie = Cookies.get('user')
+
+    if (cookie) {
+        const user = JSON.parse(cookie)
+        return user ? user.token : null
+    }
+
 }
 
 const instance = axios.create({
@@ -10,7 +16,7 @@ const instance = axios.create({
     withCredentials: true,
     headers: {
         'Content-Type': 'application/json',
-        'api-key': 'boynextdoor3000',
+        'api-key': process.env.REACT_APP_APIKEY,
         'Authorization': 'Bearer ' + getToken() || null
 
     }
@@ -23,7 +29,7 @@ export const AuthAPI = {
             .then((response) => {
                 return response
             }).catch((error) => {
-                localStorage.removeItem("user")
+                Cookies.remove("user")
                 return error.response
 
             })
@@ -44,7 +50,7 @@ export const AuthAPI = {
         return instance.post(`auth/login`, {email, password})
             .then((response) => {
                 if (response.data.token) {
-                    localStorage.setItem("user", JSON.stringify(response.data));
+                    Cookies.set("user", JSON.stringify(response.data));
                     instance.defaults.headers.Authorization = `Bearer ${response.data.token}`; //Updates token
                 }
                 return response;
@@ -55,7 +61,7 @@ export const AuthAPI = {
 
     // Logout
     logout() {
-        return localStorage.removeItem("user")
+        return Cookies.remove("user")
     }
 }
 

@@ -43,7 +43,6 @@ const EditPost = (props) => {
         reset()
     };
 
-
     useMemo(() => {
         initialize(news)
     }, [news])
@@ -141,7 +140,7 @@ const EditPost = (props) => {
 
                                 <Col span={12}>
                                     <Field label="Ссылка" name="url" component={AInput} disabled={true}
-                                           addonBefore="https://ri0f.com/"/>
+                                           addonBefore={process.env.REACT_APP_BASEURL}/>
                                 </Col>
                             </Row>
 
@@ -179,5 +178,3 @@ const NewsEdit = ({selectedID, hasSelected}) => {
 }
 
 export default NewsEdit
-
-// TODO: Custom values ENV

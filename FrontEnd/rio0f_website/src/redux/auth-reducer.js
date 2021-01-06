@@ -1,11 +1,19 @@
 import {AuthAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 import {notificationWindow} from "../utils/notificationWindow";
+import Cookies from "js-cookie";
 
 const SET_USER_DATA = '/auth/SET_USER_DATA';
 const SET_AUTH_DATA = '/auth/SET_AUTH_DATA';
 const AUTH_IS_FETCHING = '/auth/AUTH_IS_FETCHING';
-const User = JSON.parse(localStorage.getItem("user"));
+
+const cookie = Cookies.get('user')
+const User = () => {
+    if (cookie) {
+        return JSON.parse(cookie)
+    }
+}
+
 
 let initialState =
     {
@@ -65,10 +73,17 @@ export const setFetching = (fetching) =>
 export const AuthStatus = () => async (dispatch) => {
     let response = await AuthAPI.me()
 
-    if (response.status === 201) {
+    if (response && response.status === 201) {
         dispatch(setUserAuth(true))
-    } else if (response.status === 401) {
+    } else if (response && response.status === 401) {
         dispatch(setUserAuth(false))
+    } else {
+        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : "Service unavailable"
+        notificationWindow('error',
+            'Произошла ошибка',
+            ErrorMessage,
+            'bottomLeft',
+            10)
     }
 }
 
@@ -77,11 +92,11 @@ export const UserLogin = (email, password) => async (dispatch) => {
 
     let response = await AuthAPI.login(email, password)
 
-    if (response.status === 200) {
+    if (response && response.status === 200) {
         let {token, userId, name_ru, name_en} = response.data;
         dispatch(setUserData(userId, name_ru, name_en, !!token))
     } else {
-        let ErrorMessage = response.data.message.length > 0 ? response.data.message : "Undefined error"
+        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : "Service unavailable"
         dispatch(stopSubmit("LoginForm", {_error: ErrorMessage}))
         notificationWindow('error',
             'Произошла ошибка',

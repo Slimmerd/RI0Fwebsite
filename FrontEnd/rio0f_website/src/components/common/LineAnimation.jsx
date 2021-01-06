@@ -1,6 +1,6 @@
 import VisibilitySensor from "react-visibility-sensor";
 import React, {useState} from "react";
-import {Spring} from "react-spring/renderprops";
+import {Spring} from "react-spring/renderprops.cjs";
 
 export const LineSContainer = ({svg,path}) => {
     const [isVisible, setVisibility] = useState(false);

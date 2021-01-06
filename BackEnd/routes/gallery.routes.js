@@ -37,7 +37,6 @@ router.post('/post', auth, [check(['name_ru', 'name_en', 'images'], 'Нельз�
 
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так'})
-        console.warn(e)
     }
 })
 
@@ -97,7 +96,6 @@ router.post('/edit/:id', auth, async (req, res) => {
         res.status(201).json({message: "Новость была обновлена", gallery: gallery})
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
-        console.error('Error', e)
     }
 })
 
@@ -120,7 +118,6 @@ router.delete('/delete/:id', auth, async (req, res) => {
 
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
-        console.error('Error', e)
     }
 })
 

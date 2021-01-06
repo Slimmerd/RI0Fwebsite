@@ -1,5 +1,12 @@
 import './App.less';
-import {Route, Switch, useLocation, withRouter, useRouteMatch} from "react-router-dom";
+import {
+    Route,
+    Switch,
+    useLocation,
+    withRouter,
+    useRouteMatch,
+    BrowserRouter,
+} from "react-router-dom";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {MainPage} from "./components/MainPage/mainpage";
 import {Footer} from "./components/Footer/Footer";
@@ -20,7 +27,8 @@ import {compose} from "redux";
 import AdminPanel from "./components/AdminPanel/AdminPanel/AdminPanel";
 import Error404 from "./components/common/404";
 import Loading from "./components/common/Loading";
-
+import {Provider} from "react-redux";
+import store from "./redux/redux-store";
 
 function App() {
     let path = useRouteMatch("/admin/:path?");
@@ -73,4 +81,12 @@ function App() {
 
 const AppContainer = compose(withRouter)(App)
 
-export default AppContainer;
+const Application = (
+    <BrowserRouter>
+        <Provider store={store}>
+            <AppContainer/>
+        </Provider>
+    </BrowserRouter>
+)
+
+export default Application;

@@ -1,12 +1,14 @@
 import {GalleryAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 import {notificationWindow} from "../utils/notificationWindow";
+import i18next from "i18next";
 
 const SET_POSTS = 'SET_POSTS';
 const ADD_POST = 'ADD_POST';
 // const EDIT_POST = 'EDIT_POST';
 const DELETE_POST = 'DELETE_POST';
 const POST_IS_FETCHING = 'POST_IS_FETCHING';
+require('@babel/register')
 
 let initialState =
     {
@@ -64,12 +66,12 @@ export const setFetching = (fetching) =>
 export const getPosts = () => async (dispatch) => {
     let response = await GalleryAPI.getPosts()
 
-    if (response.status === 201) {
+    if (response && response.status === 201) {
         dispatch(setPosts(response.data))
     } else {
-        let ErrorMessage = response.data.message.length > 0 ? response.data.message : "Undefined error"
+        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : i18next.t('errors:gallery.service_unavailable')
         notificationWindow('error',
-            'Произошла ошибка',
+            i18next.t('errors:gallery.error'),
             ErrorMessage,
             'bottomLeft',
             10)
@@ -81,7 +83,7 @@ export const postPost = (name_ru, name_en, images) => async (dispatch) => {
 
     let response = await GalleryAPI.postPost(name_ru, name_en, images)
 
-    if (response.status === 201) {
+    if (response && response.status === 201) {
         // dispatch(addPost({name_ru, name_en, images}))
         dispatch(getPosts())
 
@@ -91,7 +93,7 @@ export const postPost = (name_ru, name_en, images) => async (dispatch) => {
             'bottomLeft',
             10)
     } else {
-        let ErrorMessage = response.data.message.length > 0 ? response.data.message : "Undefined error"
+        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : "Service unavailable"
         dispatch(stopSubmit("GalleryForm", {_error: ErrorMessage}))
         notificationWindow('error',
             'Произошла ошибка',
@@ -110,18 +112,18 @@ export const deletePost = (id) => async (dispatch) => {
 
     let response = await GalleryAPI.deleteGalleryPost(id)
 
-    if (response.status === 201) {
+    if (response && response.status === 201) {
 
         dispatch(setDeletedPost(response.data.id))
         notificationWindow('success',
-            'Комментарий успешно удален',
-            `Комментарий был успешно удален`,
+            'Публикация успешно удалена',
+            `Публикация была успешно удален`,
             'bottomLeft',
             10)
     } else {
-        let ErrorMessage = response.data.message.length > 0 ? response.data.message : "Undefined error"
+        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : "Service unavailable"
         notificationWindow('error',
-            'Произошла ошибка во время удаления комментария',
+            'Произошла ошибка во время удаления публикации',
             ErrorMessage,
             'bottomLeft',
             10)

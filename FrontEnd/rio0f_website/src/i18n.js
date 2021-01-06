@@ -1,6 +1,7 @@
 import i18n from 'i18next'
 import Backend from 'i18next-xhr-backend'
 import {initReactI18next} from 'react-i18next'
+import Cookies from "js-cookie";
 
 const availableLanguages = ['ru', 'en'];
 
@@ -8,7 +9,7 @@ i18n
     .use(Backend)
     .use(initReactI18next)
     .init({
-        lng: localStorage.getItem('locales'),
+        lng: Cookies.get('locales'),
         backend: {
             // /* translation file path */
             loadPath: '/locales/{{lng}}/{{ns}}.json'
@@ -17,7 +18,7 @@ i18n
         whitelist: availableLanguages,
         debug: false,
         /* can have multiple namespace, in case you want to divide a huge translation into smaller pieces and load them on demand */
-        ns: ['basic', 'main', 'news', 'team', 'plan', 'hardware', 'photos', 'qsl', 'onlinelog', 'donate', 'chat', 'contacts', 'validation'],
+        ns: ['basic', 'main', 'news', 'team', 'plan', 'hardware', 'photos', 'qsl', 'onlinelog', 'donate', 'chat', 'contacts', 'validation', 'errors'],
         defaultNS: 'basic',
         // keySeparator: false,
         interpolation: {
@@ -26,7 +27,7 @@ i18n
         },
         react: {
             wait: true
-        }
+        },
     })
 
 export default i18n

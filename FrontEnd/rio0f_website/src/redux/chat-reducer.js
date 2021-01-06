@@ -1,6 +1,7 @@
 import {ChatAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 import {notificationWindow} from "../utils/notificationWindow";
+import i18next from "i18next";
 
 const SET_COMMENTS = 'SET_COMMENTS';
 const ADD_COMMENT = 'ADD_COMMENT';
@@ -62,7 +63,17 @@ export const setFetching = (fetching) =>
 //Thunks
 export const getComments = () => async (dispatch) => {
     let response = await ChatAPI.getComments()
-    dispatch(setComments(response.data))
+
+    if (response && response.status === 201) {
+        dispatch(setComments(response.data))
+    } else {
+        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : i18next.t('errors:chat.service_unavailable')
+        notificationWindow('error',
+            i18next.t('errors:chat.error'),
+            ErrorMessage,
+            'bottomLeft',
+            10)
+    }
 }
 
 export const postComment = (name, call, email, text) => async (dispatch) => {
@@ -70,19 +81,19 @@ export const postComment = (name, call, email, text) => async (dispatch) => {
 
     let response = await ChatAPI.postComment(name, call, email, text)
 
-    if (response.status === 201) {
+    if (response && response.status === 201) {
         dispatch(addComment({name, call, email, text}))
 
         notificationWindow('success',
-            'Комментарий опубликован',
-            `Комментарий был успешно опубликован на сайте`,
+            i18next.t('errors:chat.post.success_title'),
+            i18next.t('errors:chat.post.success_description'),
             'bottomLeft',
             10)
     } else {
-        let ErrorMessage = response.data.message.length > 0 ? response.data.message : "Undefined error"
+        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : i18next.t('errors:chat.service_unavailable')
         dispatch(stopSubmit("ChatForm", {_error: ErrorMessage}))
         notificationWindow('error',
-            'Произошла ошибка',
+            i18next.t('errors:chat.post.error_title'),
             ErrorMessage,
             'bottomLeft',
             10)
@@ -98,7 +109,7 @@ export const deleteComment = (id) => async (dispatch) => {
 
     let response = await ChatAPI.deleteComment(id)
 
-    if (response.status === 201) {
+    if (response && response.status === 201) {
 
         dispatch(setDeletedComment(response.data.id))
         notificationWindow('success',
@@ -107,7 +118,7 @@ export const deleteComment = (id) => async (dispatch) => {
             'bottomLeft',
             10)
     } else {
-        let ErrorMessage = response.data.message.length > 0 ? response.data.message : "Undefined error"
+        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : "Service unavailable"
         notificationWindow('error',
             'Произошла ошибка во время удаления комментария',
             ErrorMessage,

@@ -40,9 +40,7 @@ const PhotosList = () => {
     const pictures = useSelector(state => state.photos.photos)
     const dispatch = useDispatch()
 
-
     useEffect(() => dispatch(getPhotos()), [])
-
 
     useEffect(() => {
 
@@ -74,7 +72,6 @@ const PhotosList = () => {
         type: 'radio',
     };
 
-
     return (
         <Styled>
             <div className={'buttons'}>
@@ -90,7 +87,8 @@ const PhotosList = () => {
                 <Column title="Сссылка" dataIndex="_id" key="_id" ellipsis/>
 
                 <Column title="Предпросмотр" dataIndex="_id" key="img" ellipsis
-                        render={(_id) => <img src={"http://localhost:5000/api/photos/" + _id} width={250} alt=""/>}/>
+                        render={(_id) => <img src={process.env.REACT_APP_BACKEND_ADDRESS + "api/photos/" + _id}
+                                              width={250} alt=""/>}/>
 
                 <Column title="Дата" dataIndex='date' key="date" ellipsis
                         render={(date) => (moment(date).format('DD.MM.YYYY'))}/>
@@ -101,5 +99,3 @@ const PhotosList = () => {
 };
 
 export default compose(withAuthRedirect)(PhotosList);
-
-//TODO: CUSTOM ENV VARIABLES

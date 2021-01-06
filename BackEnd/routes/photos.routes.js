@@ -25,7 +25,6 @@ router.post('/upload', auth, apiCheck, upload.array('img', 6), async (req, res) 
 
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
-        console.error('Error', e)
     }
 })
 
@@ -49,7 +48,6 @@ router.get('/:id', async (req, res) => {
 
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
-        console.error('Error', e)
     }
 
 })
@@ -66,11 +64,10 @@ router.get('/', auth, apiCheck, async (req, res) => {
             return res.status(404).json({message: 'Фотографии не найдены'})
         }
 
-        res.json(photos)
+        res.status(201).json(photos)
 
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
-        console.error('Error', e)
     }
 })
 
@@ -93,7 +90,6 @@ router.delete('/delete/:id', auth, apiCheck, async (req, res) => {
 
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
-        console.error('Error', e)
     }
 
 })

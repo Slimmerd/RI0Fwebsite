@@ -33,7 +33,6 @@ router.post('/create', [
 
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
-        console.error('Error ', e)
     }
 })
 
@@ -54,7 +53,6 @@ router.delete('/delete/:url', auth, async (req, res) => {
 
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
-        console.error('Error', e)
     }
 })
 
@@ -75,7 +73,6 @@ router.post('/edit/:url', auth, async (req, res) => {
         res.status(201).json({message: "Новость была обновлена", news: news})
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
-        console.error('Error', e)
     }
 })
 
@@ -91,7 +88,7 @@ router.get('/', async (req, res) => {
             return res.status(404).json({message: 'Новости не найдены'})
         }
 
-        res.json(news)
+        res.status(201).json(news)
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
     }
@@ -110,11 +107,10 @@ router.get('/:url', async (req, res) => {
             return res.status(404).json({message: 'Новость не найдена'})
         }
 
-        res.json(certain_news)
+        res.status(201).json(certain_news)
 
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
-        console.warn(e)
     }
 })
 
