@@ -108,9 +108,9 @@ const StyleDiv = styled.div`
 `
 
 const RightMenu = () => {
-    const pathname = useRouter();
+    const {pathname} = useRouter();
     const {lg} = useBreakpoint()
-    const {t, i18n} = useTranslation()
+    const {t} = useTranslation()
 
     return (
         <StyleDiv>

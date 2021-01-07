@@ -101,20 +101,29 @@ export const FooterNavbar = () => {
                         </Menu.Item>
 
                         <SubMenu key="sub1" title={<span>{t('navbar.expedition')}</span>}>
-                            <Menu.Item key="/plan"><Link href="/plan"><a>{t('navbar.plan')}</a></Link></Menu.Item>
-                            <Menu.Item key="/team"><Link href="/team"><a>{t('navbar.team')}</a></Link></Menu.Item>
+                            <Menu.Item key="/plan">
+                                <Link href="/plan"><a>{t('navbar.plan')}</a></Link>
+                            </Menu.Item>
+                            <Menu.Item key="/team">
+                                <Link href="/team"><a>{t('navbar.team')}</a></Link>
+                            </Menu.Item>
                             <Menu.Item key="/hardware">
-                                <Link to="/hardware">{t('navbar.hardware')}</Link></Menu.Item>
-                            <Menu.Item key="/photos"><Link
-                                href="/gallery"><a>{t('navbar.photos')}</a></Link></Menu.Item>
-                            <Menu.Item key="/qsl"><Link href="/qsl"><a>{t('navbar.qsl')}</a></Link></Menu.Item>
-                            <Menu.Item key="/onlinelog">
-                                <Link href="/onlinelog"><a>{t('navbar.onlinelog')}</a></Link></Menu.Item>
+                                <Link href="/hardware">{t('navbar.hardware')}</Link>
+                            </Menu.Item>
+                            <Menu.Item key="/photos">
+                                <Link href="/gallery"><a>{t('navbar.photos')}</a></Link>
+                            </Menu.Item>
+                            <Menu.Item key="/qsl">
+                                <Link href="/qsl"><a>{t('navbar.qsl')}</a></Link>
+                            </Menu.Item>
+                            <Menu.Item key="/onlinelog"><Link
+                                href="/onlinelog"><a>{t('navbar.onlinelog')}</a></Link>
+                            </Menu.Item>
                         </SubMenu>
                     </Menu>
                 </Col>
                 <Col>
-                    <Menu mode="vertical" selectedKeys={[location.pathname]}>
+                    <Menu mode="vertical" selectedKeys={[pathname]}>
                         <Menu.Item key="/donate">
                             <Link href="/donate"><a>{t('navbar.donate')}</a></Link>
                         </Menu.Item>
