@@ -1,11 +1,11 @@
 # RI0F expedition website project
 
-- - - -
+
 > This project still unfinished. Author faced difficulties with implementation of SSR (Server-Side-Rendering). Moreover, author did some mistakes in code due to lack of experience.
 
 ## Frontend
 
-- - - -
+
 > Used CRA (Create-react-app)
 
 ### Dependencies:
@@ -24,7 +24,6 @@
 
 ## Backend
 
-- - - -
 
 ### Dependencies:
 
