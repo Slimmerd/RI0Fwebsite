@@ -1,14 +1,11 @@
 import React from 'react'
 import styled from "styled-components";
-// import R6MG from '/static/assets/r6mg.jpg'
-// import RZ3EC from '/static/assets/RZ3EC.jpg'
-// import M0MSV from '/static/assets/M0MSV.jpg'
 import {useTranslation} from "react-i18next";
 import Link from 'next/link';
 
-const R6MG = '/static/assets/r6mg.jpg'
-const RZ3EC = '/static/assets/RZ3EC.jpg'
-const M0MSV = '/static/assets/M0MSV.jpg'
+const R6MG = '/static/assets/r6mg.webp'
+const RZ3EC = '/static/assets/RZ3EC.webp'
+const M0MSV = '/static/assets/M0MSV.webp'
 
 const CardShape = styled.div`
   font-family: Roboto, sans-serif;

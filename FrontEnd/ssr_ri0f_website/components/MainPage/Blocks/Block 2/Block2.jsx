@@ -17,7 +17,8 @@ export const MainPageBlock2 = () => {
                         </Col>
 
                         <Col className={'islandmap'} md={24} lg={12} xl={12} xxl={12}>
-                            <img src={"/static/assets/island_map.png"} alt="Iturup Island map"/>
+
+                            <img src={"/static/assets/island_map.webp"} alt="Iturup Island map"/>
                         </Col>
                     </Row>
 

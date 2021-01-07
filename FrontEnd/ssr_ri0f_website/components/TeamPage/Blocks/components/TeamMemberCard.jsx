@@ -3,9 +3,9 @@ import {Col, Row} from "antd";
 import styled from "styled-components";
 import {useTranslation} from "react-i18next";
 
-const R6MG = '/static/assets/r6mg.jpg'
-const RZ3EC = '/static/assets/RZ3EC.jpg'
-const M0MSV = '/static/assets/M0MSV.jpg'
+const R6MG = '/static/assets/r6mg.webp'
+const RZ3EC = '/static/assets/RZ3EC.webp'
+const M0MSV = '/static/assets/M0MSV.webp'
 
 
 const CardShape = styled.div`
