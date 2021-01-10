@@ -7,7 +7,7 @@ import styled from "styled-components";
 import {LineSContainer} from "../../../common/LineAnimation";
 import {useEffect, useState} from "react";
 import {SponsorsBlock} from "./Components/Sponsors";
-import {useTranslation} from "react-i18next";
+import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
 
 //TODO: Inserting sponsor logo system, inserting card system
@@ -172,7 +172,7 @@ export const MainPageBlock3 = () => {
                             <Link href="/plan"><a>{t('main:Block3.more_button')}</a></Link>
                         </FadeInContainer>
                     </Row>
-                    <div style={{paddingBottom: '80px'}}></div>
+                    <div style={{paddingBottom: '80px'}}/>
                 </div>
             </div>
         </div>

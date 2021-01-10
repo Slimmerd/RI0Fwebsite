@@ -1,8 +1,6 @@
 import {ChatAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 import {notificationWindow} from "../utils/notificationWindow";
-import i18next from "i18next";
-
 const SET_COMMENTS = 'SET_COMMENTS';
 const ADD_COMMENT = 'ADD_COMMENT';
 const DELETE_COMMENT = 'DELETE_COMMENT';
@@ -64,12 +62,13 @@ export const setFetching = (fetching) =>
 export const getComments = () => async (dispatch) => {
     let response = await ChatAPI.getComments()
 
+
     if (response && response.status === 201) {
         dispatch(setComments(response.data))
     } else {
-        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : i18next.t('errors:chat.service_unavailable')
+        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : 'Chat service unavailable'
         notificationWindow('error',
-            i18next.t('errors:chat.error'),
+            'Error/Ошибка',
             ErrorMessage,
             'bottomLeft',
             10)
@@ -84,16 +83,11 @@ export const postComment = (name, call, email, text) => async (dispatch) => {
     if (response && response.status === 201) {
         dispatch(addComment({name, call, email, text}))
 
-        notificationWindow('success',
-            i18next.t('errors:chat.post.success_title'),
-            i18next.t('errors:chat.post.success_description'),
-            'bottomLeft',
-            10)
     } else {
-        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : i18next.t('errors:chat.service_unavailable')
+        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : 'Chat service unavailable'
         dispatch(stopSubmit("ChatForm", {_error: ErrorMessage}))
         notificationWindow('error',
-            i18next.t('errors:chat.post.error_title'),
+            "Error/Ошибка",
             ErrorMessage,
             'bottomLeft',
             10)

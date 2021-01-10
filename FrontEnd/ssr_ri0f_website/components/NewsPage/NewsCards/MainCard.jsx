@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {Icon} from '@iconify/react';
 import cameraIcon from '@iconify/icons-si-glyph/camera';
 import React, {useEffect, useState} from "react";
-import i18n from "i18next";
+import useTranslation from 'next-translate/useTranslation'
 import moment from 'moment';
 import Link from "next/link";
 
@@ -124,6 +124,7 @@ export const MainCard = ({news}) => {
     const [loading, setLoading] = useState(true);
     const [text, setText] = useState(null);
     const [name, setName] = useState(null);
+    const {lang} = useTranslation()
 
     const ParagraphSkeleton = [
         <Skeleton.Input key={1} className={'skeletonStyle'} active={'active'}/>,
@@ -135,7 +136,7 @@ export const MainCard = ({news}) => {
         <Skeleton.Input key={7} className={'skeletonStyle'} active={'active'}/>]
 
     useEffect(() => {
-        if (i18n.language === 'ru') {
+        if (lang === 'ru') {
             setText(news.text_ru)
             setName(news.name_ru)
         } else {
@@ -145,7 +146,7 @@ export const MainCard = ({news}) => {
         if (news === undefined || news.length === 0) {
             setLoading(true)
         } else setLoading(false)
-    }, [i18n.language, news])
+    }, [lang, news])
 
     return (
         <Link href={'/news/' + news.url}>

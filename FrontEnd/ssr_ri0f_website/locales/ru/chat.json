@@ -1,0 +1,18 @@
+{
+  "naming_block": {
+    "heading": "Общение",
+    "sub": "Здесь вы можете оставить комментарии"
+  },
+  "form_block": {
+    "heading": "Комментарий",
+    "textarea": "Комментарий",
+    "name_heading": "Имя",
+    "name_input": "Ваше имя",
+    "call": "Позывной",
+    "call_input": "Ваш позывной",
+    "email": "Email",
+    "email_input": "Ваш Email",
+    "button": "Отправить"
+  },
+  "more_button": "Еще"
+}

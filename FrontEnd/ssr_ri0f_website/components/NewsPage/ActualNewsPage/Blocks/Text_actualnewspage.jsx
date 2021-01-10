@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import styled from "styled-components";
 import {FadeInContainer} from "../../../common/FadeInAnimation";
-import {useTranslation} from "react-i18next";
+import useTranslation from 'next-translate/useTranslation'
 
 const HeaderBlock = styled.div`
     min-height: 460px;
@@ -51,15 +51,15 @@ const HeaderBlock = styled.div`
 
 export const ActualNewsPageText = ({news}) => {
     const [text, setText] = useState(null);
-    const {t, i18n} = useTranslation();
+    const {lang} = useTranslation();
 
     useEffect(() => {
-        if (i18n.language === 'ru') {
+        if (lang === 'ru') {
             setText(news.text_ru)
         } else {
             setText(news.text_en)
         }
-    }, [i18n.language, news.text_ru, news.text_en])
+    }, [lang, news.text_ru, news.text_en])
 
 
     return (

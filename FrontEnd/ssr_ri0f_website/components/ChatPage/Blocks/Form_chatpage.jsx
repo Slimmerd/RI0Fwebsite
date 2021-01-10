@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import styled from "styled-components";
 import {Button, Col, Form, Input, Row} from "antd";
 import {FadeInContainer} from "../../common/FadeInAnimation";
-import {useTranslation} from "react-i18next";
+import useTranslation from 'next-translate/useTranslation'
 import {Field, reduxForm} from "redux-form";
 import {useDispatch, useSelector} from "react-redux";
 import {makeField} from "../../../utils/formHandler";
@@ -49,6 +49,7 @@ const CardShape = styled.div`
 
         background: #FFFFFF;
         border-radius: 10px;
+        border-width: 2px !important;
 
         &:hover {
           border-color: #2C3E50 !important;

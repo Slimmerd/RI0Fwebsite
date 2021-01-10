@@ -2,7 +2,7 @@ import React from 'react'
 import styled from "styled-components";
 import {TeamMemberCard} from "./components/TeamMemberCard";
 import {FadeInContainer} from "../../common/FadeInAnimation";
-import {useTranslation} from "react-i18next";
+import useTranslation from 'next-translate/useTranslation'
 
 const Header = styled.div`
   font-family: Oswald, sans-serif;

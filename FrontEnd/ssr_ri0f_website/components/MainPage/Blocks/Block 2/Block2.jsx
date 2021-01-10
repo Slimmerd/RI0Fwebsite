@@ -1,7 +1,7 @@
 import React from 'react'
 import {Col, Row} from "antd";
 import {FadeInContainer} from "../../../common/FadeInAnimation";
-import {useTranslation} from "react-i18next";
+import useTranslation from 'next-translate/useTranslation'
 
 export const MainPageBlock2 = () => {
     const {t} = useTranslation()

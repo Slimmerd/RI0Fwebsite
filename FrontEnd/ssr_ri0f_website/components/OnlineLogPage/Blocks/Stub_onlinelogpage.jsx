@@ -2,7 +2,7 @@ import React from 'react'
 import styled from "styled-components";
 import {FadeInContainer} from "../../common/FadeInAnimation";
 import {useSpring, animated} from 'react-spring'
-import {useTranslation} from "react-i18next";
+import useTranslation from 'next-translate/useTranslation'
 
 const MainDiv = styled.div`
     height: 650px;
@@ -58,7 +58,7 @@ const calc = (x, y) => [-(y - window.innerHeight / 2) / 20, (x - window.innerWid
 const trans = (x, y, s) => `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`
 
 export const OnlineLogPageStub = () => {
-    const {t, i18n} = useTranslation()
+    const {t} = useTranslation()
     const [props, set] = useSpring(() => ({xys: [0, 0, 1], config: {mass: 10, tension: 350, friction: 40}}))
     return (
         <MainDiv>

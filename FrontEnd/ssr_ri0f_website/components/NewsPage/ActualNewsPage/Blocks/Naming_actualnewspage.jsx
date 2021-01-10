@@ -3,7 +3,7 @@ import {Col, Row} from "antd";
 import styled from "styled-components";
 import {FadeInContainer} from "../../../common/FadeInAnimation";
 import moment from "moment";
-import {useTranslation} from "react-i18next";
+import useTranslation from 'next-translate/useTranslation'
 
 const HeaderBlock = styled.div`
   height: 350px;
@@ -97,17 +97,17 @@ const HeaderBlock = styled.div`
 export const ActualNewsPageNaming = ({news}) => {
     const [name, setName] = useState(null);
     const [author, setAuthor] = useState(null)
-    const {i18n} = useTranslation();
+    const {lang} = useTranslation();
 
     useEffect(() => {
-        if (i18n.language === 'ru') {
+        if (lang === 'ru') {
             setName(news.name_ru)
             setAuthor(news.author_ru)
         } else {
             setName(news.name_en)
             setAuthor(news.author_en)
         }
-    }, [i18n.language, news.name_ru, news.name_en, news.author_ru, news.author_en])
+    }, [lang, news.name_ru, news.name_en, news.author_ru, news.author_en])
 
     return (
         <HeaderBlock>

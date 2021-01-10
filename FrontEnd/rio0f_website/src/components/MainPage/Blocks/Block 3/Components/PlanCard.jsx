@@ -71,8 +71,6 @@ const BackNumber = styled.div`
     opacity: 0.07;
 `
 
-//TODO: Custom Date, Header, Text
-
 export const PlanCard = ({cardNumber}) => {
     const {t, i18n} = useTranslation()
 

@@ -1,0 +1,7 @@
+{
+  "required_field": "Required field",
+  "email_field": "Invalid email address",
+  "max_length": "Must be {{max}} characters or less",
+  "min_length": "Must be {{min}} characters or more",
+  "only_letters": "Accepts only latin and cyrillic letters"
+}

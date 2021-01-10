@@ -4,7 +4,7 @@ import React from 'react'
 import {Icon} from '@iconify/react';
 import book from '@iconify/icons-si-glyph/book-';
 import {FadeInContainer} from "../../common/FadeInAnimation";
-import {useTranslation} from "react-i18next";
+import useTranslation from 'next-translate/useTranslation'
 
 // language=SCSS prefix=*{ suffix=}
 const BlockHeader = styled.div`

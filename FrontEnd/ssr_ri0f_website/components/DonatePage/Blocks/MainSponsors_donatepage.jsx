@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {FadeInContainer} from "../../common/FadeInAnimation";
 import React from 'react'
-import {useTranslation} from "react-i18next";
+import useTranslation from 'next-translate/useTranslation'
 
 const MainSponsorBlockContainer = styled.div`
   min-height: 710px;

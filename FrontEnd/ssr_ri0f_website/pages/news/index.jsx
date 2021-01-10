@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
-import {useTranslation} from "react-i18next";
+import useTranslation from 'next-translate/useTranslation'
 import {getNews} from "../../redux/news-reducer";
 import {FadeInContainer} from "../../components/common/FadeInAnimation";
 import NewsPageStab from "../../components/NewsPage/NewsCards/NewsPageStab";

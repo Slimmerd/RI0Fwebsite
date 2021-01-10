@@ -5,7 +5,7 @@ import {Icon} from '@iconify/react';
 import cameraIcon from '@iconify/icons-si-glyph/camera';
 import moment from 'moment';
 import Link from "next/link";
-import {useTranslation} from "react-i18next";
+import useTranslation from 'next-translate/useTranslation'
 
 const CardShape = styled.div`
   height: 450px;
@@ -32,7 +32,7 @@ const CardShape = styled.div`
 
     svg {
       margin: 0 auto;
-      padding-right: 0px;
+      padding-right: 0;
     }
   }
 
@@ -131,7 +131,7 @@ export const SecondaryCard = ({news}) => {
     const [loading, setLoading] = useState(true);
     const [text, setText] = useState(null);
     const [name, setName] = useState(null);
-    const {i18n} = useTranslation();
+    const {lang} = useTranslation();
 
     const ParagraphSkeleton = [
         <Skeleton.Input key={1} className={'skeletonStyle'} active={'active'}/>,
@@ -143,7 +143,7 @@ export const SecondaryCard = ({news}) => {
         <Skeleton.Input key={7} className={'skeletonStyle'} active={'active'}/>]
 
     useEffect(() => {
-        if (i18n.language === 'ru') {
+        if (lang === 'ru') {
             setText(news.text_ru)
             setName(news.name_ru)
         } else {
@@ -153,7 +153,7 @@ export const SecondaryCard = ({news}) => {
         if (news === undefined || news.length === 0) {
             setLoading(true)
         } else setLoading(false)
-    }, [i18n.language, news])
+    }, [lang, news])
 
     return (
         <Link href={'/news/' + news.url}>

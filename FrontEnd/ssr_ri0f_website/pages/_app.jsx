@@ -10,7 +10,6 @@ import NextNprogress from 'nextjs-progressbar';
 function MyApp({Component, pageProps}) {
     const Layout = Component.layout || MainLayout
 
-
     return (
         <Provider store={store}>
             <NextNprogress
@@ -20,7 +19,7 @@ function MyApp({Component, pageProps}) {
                 height="3"
             />
             <Head>
-                <link rel="icon" href="/favicon.ico"/>
+                <link rel="icon" href="/favicon.png"/>
             </Head>
             <DefaultSeo {...SEO} />
             <Layout>
@@ -29,5 +28,6 @@ function MyApp({Component, pageProps}) {
         </Provider>
     )
 }
+
 
 export default MyApp

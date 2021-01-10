@@ -1,7 +1,7 @@
 import React from 'react';
 import {Menu, Grid} from 'antd';
 import styled from "styled-components";
-import {useTranslation} from "react-i18next";
+import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
 import {useRouter} from "next/router";
 
@@ -110,7 +110,15 @@ const StyleDiv = styled.div`
 const RightMenu = () => {
     const {pathname} = useRouter();
     const {lg} = useBreakpoint()
-    const {t} = useTranslation()
+    const {t} = useTranslation('basic')
+
+    const currentMenuKey = (key) => {
+        if (pathname.search(key) >= 0) {
+            return pathname;
+        } else {
+            return key
+        }
+    }
 
     return (
         <StyleDiv>
@@ -119,7 +127,7 @@ const RightMenu = () => {
                     <Link href="/"><a>{t('navbar.main')}</a></Link>
                 </Menu.Item>
 
-                <Menu.Item key="/news">
+                <Menu.Item key={currentMenuKey('/news')}>
                     <Link href="/news"><a>{t('navbar.news')}</a></Link>
                 </Menu.Item>
 

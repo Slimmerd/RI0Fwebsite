@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {TeamCard} from "./Card/TeamCard";
 import {FadeInContainer} from "../../../common/FadeInAnimation";
 import React from 'react'
-import {useTranslation} from "react-i18next";
+import useTranslation from 'next-translate/useTranslation'
 
 const Block = styled.div`
   min-height: 1283px;
@@ -64,7 +64,7 @@ export const MainPageBlock4 = () => {
                             </Col>
                         </Row>
                     </FadeInContainer>
-                    <div style={{paddingBottom: '80px'}}></div>
+                    <div style={{paddingBottom: '80px'}}/>
                 </CardBlock>
             </div>
         </Block>

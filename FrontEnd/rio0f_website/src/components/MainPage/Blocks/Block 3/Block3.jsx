@@ -10,7 +10,6 @@ import {SponsorsBlock} from "./Components/Sponsors";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
 
-//TODO: Inserting sponsor logo system, inserting card system
 
 const FirstPath = styled.div`
 position: relative;
@@ -157,7 +156,7 @@ export const MainPageBlock3 = () => {
                             <Link to="/plan">{t('main:Block3.more_button')}</Link>
                         </FadeInContainer>
                     </Row>
-                    <div style={{paddingBottom: '80px'}}></div>
+                    <div style={{paddingBottom: '80px'}}/>
                 </div>
             </div>
         </div>

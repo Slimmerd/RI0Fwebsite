@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from 'react'
 import {FadeInContainer} from "../../common/FadeInAnimation";
-import {useTranslation} from "react-i18next";
+import useTranslation from 'next-translate/useTranslation'
 
 const HeaderBlock = styled.div`
   height: 350px;
@@ -72,7 +72,7 @@ export const DonatePageNaming = () => {
             <div className={'container'}>
                 <FadeInContainer>
                     <div className={'header'}>{t('donate:naming_block.heading')}</div>
-                    <div className={'sub'}>{t('photos:naming_block.sub')}</div>
+                    <div className={'sub'}>{t('donate:naming_block.sub')}</div>
                 </FadeInContainer>
             </div>
         </HeaderBlock>

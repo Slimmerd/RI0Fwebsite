@@ -13,9 +13,6 @@ const CardsBlockContainer = styled.div`
     }
 `
 
-//Todo: Complete cards with information about hardware with translation
-//Todo: Complete card number system
-
 export const HardwarePageCardsBlock = () => {
     return (
         <CardsBlockContainer>

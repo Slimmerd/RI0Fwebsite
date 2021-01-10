@@ -1,7 +1,6 @@
 import {GalleryAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 import {notificationWindow} from "../utils/notificationWindow";
-import i18next from "i18next";
 
 const SET_POSTS = 'SET_POSTS';
 const ADD_POST = 'ADD_POST';
@@ -68,9 +67,9 @@ export const getPosts = () => async (dispatch) => {
     if (response && response.status === 201) {
         dispatch(setPosts(response.data))
     } else {
-        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : i18next.t('errors:gallery.service_unavailable')
+        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : 'Gallery service unavailable'
         notificationWindow('error',
-            i18next.t('errors:gallery.error'),
+            'Error/Ошибка',
             ErrorMessage,
             'bottomLeft',
             10)

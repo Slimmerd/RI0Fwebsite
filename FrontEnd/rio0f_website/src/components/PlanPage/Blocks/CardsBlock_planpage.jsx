@@ -13,8 +13,6 @@ const CardsBlockContainer = styled.div`
     }
 `
 
-//TODO: Complete cards with information and translation
-//Todo: Complete card number system
 export const PlanPageCardsBlock = () => {
     return (
         <CardsBlockContainer>

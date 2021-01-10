@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react'
 import {FadeInContainer} from "../../common/FadeInAnimation";
 import {PhotosPageCarousel} from "./Carousel_photospage";
 import {PhotosPageCarouselStub} from "./CarouselStab_photospage";
-import {useTranslation} from "react-i18next";
+import useTranslation from 'next-translate/useTranslation'
 
 const PhotosPageBlock = styled.div`
   //height: 800px;
@@ -43,20 +43,19 @@ const BlockHeader = styled.div`
 export const PhotosPageAction = ({post}) => {
     const [stub, showStub] = useState(true)
     const [name, setName] = useState('')
-    const {t, i18n} = useTranslation()
+    const {lang} = useTranslation()
 
     useEffect(() => {
-        if (i18n.language === 'ru') {
+        if (lang === 'ru') {
             setName(post.name_ru)
         } else {
             setName(post.name_en)
         }
-
         if (post === undefined || post.length === 0) {
             showStub(true)
         } else showStub(false)
 
-    }, [i18n.language, post])
+    }, [lang, post])
 
     return (
         <PhotosPageBlock>

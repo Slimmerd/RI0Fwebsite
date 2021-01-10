@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
-import {Menu, Grid} from 'antd';
+import React from 'react';
+import {Grid, Menu} from 'antd';
 import styled from "styled-components";
-// import i18n from "../../../i18n";
 import Cookies from "js-cookie";
-import {useTranslation} from "react-i18next";
+import useTranslation from 'next-translate/useTranslation'
+import Link from 'next/link'
+import {useRouter} from 'next/router'
 
 const Super = styled.div`
   .ant-menu-item-selected {
@@ -61,23 +62,27 @@ const Super = styled.div`
 const {useBreakpoint} = Grid;
 
 const LeftMenu = () => {
-    const [language, setLanguage] = useState(Cookies.get('locales'))
+    const router = useRouter()
     const {lg} = useBreakpoint();
-    const {i18n} = useTranslation();
+    const {lang} = useTranslation();
 
-    const changeLanguage = lng => {
-        i18n.changeLanguage(lng);
-        Cookies.set('locales', `${lng}`);
-        setLanguage(lng)
+    const changeLanguage = (lng) => {
+        Cookies.set('NEXT_LOCALE', `${lng}`);
     };
+
     return (
         <Super>
-            <Menu mode={lg ? "horizontal" : "inline"} selectedKeys={language}>
+            <Menu mode={lg ? "horizontal" : "inline"} selectedKeys={lang}>
                 <Menu.Item key="ru">
-                    <a onClick={() => changeLanguage('ru')}>RU</a>
+                    <Link href={router.asPath} locale={'ru'} key={'ru'}>
+                        <a onClick={() => changeLanguage('ru')}>RU</a>
+                    </Link>
+
                 </Menu.Item>
                 <Menu.Item key="en">
-                    <a onClick={() => changeLanguage('en')}>EN</a>
+                    <Link href={router.asPath} locale={'en'} key={'en'}>
+                        <a onClick={() => changeLanguage('en')}>EN</a>
+                    </Link>
                 </Menu.Item>
             </Menu>
         </Super>

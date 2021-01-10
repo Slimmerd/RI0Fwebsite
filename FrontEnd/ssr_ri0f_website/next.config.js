@@ -2,22 +2,25 @@ const withLess = require('@zeit/next-less')
 const lessToJS = require('less-vars-to-js')
 const fs = require('fs')
 const path = require('path')
+const nextTranslate = require('next-translate')
 
 // Where your antd-custom.less file lives
 const themeVariables = lessToJS(
     fs.readFileSync(path.resolve(__dirname, './styles/antd-custom.less'), 'utf8')
 )
 
-module.exports = withLess({
+module.exports = nextTranslate(withLess({
     lessLoaderOptions: {
         javascriptEnabled: true,
         modifyVars: themeVariables, // make your antd custom effective
     },
+
     env: {
         REACT_APP_APIKEY: "supersecretapikey3000",
         REACT_APP_BASEURL: "http://ri0f.com/",
         REACT_APP_BACKEND_ADDRESS: "http://localhost:5000/"
     },
+
     webpack: (config, {isServer}) => {
         if (isServer) {
             const antStyles = /antd\/.*?\/style.*?/
@@ -41,4 +44,4 @@ module.exports = withLess({
         }
         return config
     },
-})
+}))

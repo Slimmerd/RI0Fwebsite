@@ -1,0 +1,19 @@
+{
+  "news": {
+    "service_unavailable": "Сервер недоступен",
+    "error": "Произошла ошибка"
+  },
+  "gallery": {
+    "service_unavailable": "Сервер недоступен",
+    "error": "Произошла ошибка"
+  },
+  "chat": {
+    "service_unavailable": "Сервер недоступен",
+    "error": "Произошла ошибка",
+    "post": {
+      "success_title": "Комментарий опубликован",
+      "success_description": "Комментарий был успешно опубликован на сайте",
+      "error_title": "Произошла ошибка"
+    }
+  }
+}

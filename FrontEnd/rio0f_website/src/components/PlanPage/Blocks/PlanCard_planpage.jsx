@@ -82,9 +82,6 @@ const BackNumber = styled.div`
   opacity: 0.07;
 `
 
-
-//TODO: Complete Many different cards with translation
-
 export const PlanPageCard = () => {
     const {t} = useTranslation()
 

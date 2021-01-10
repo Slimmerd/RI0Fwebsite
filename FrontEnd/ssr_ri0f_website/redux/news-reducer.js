@@ -1,7 +1,6 @@
 import {NewsAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 import {notificationWindow} from "../utils/notificationWindow";
-import i18next from "i18next";
 
 const SET_NEWS = 'SET_NEWS';
 const CREATE_NEWS = 'CREATE_NEWS';
@@ -72,9 +71,9 @@ export const getNews = () => async (dispatch) => {
         dispatch(setNews(response.data));
 
     } else {
-        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : i18next.t('errors:news.service_unavailable')
+        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : 'News service unavailable'
         notificationWindow('error',
-            i18next.t('errors:news.error'),
+            'Error/Ошибка',
             ErrorMessage,
             'bottomLeft',
             10)

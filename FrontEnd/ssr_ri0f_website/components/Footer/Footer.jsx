@@ -3,7 +3,7 @@ import {Col, Row} from "antd";
 import styled from "styled-components";
 import {FooterNavbar} from "./menu/FooterNavbar";
 import SideBar from "../common/SideBar";
-import {useTranslation} from "react-i18next";
+import useTranslation from 'next-translate/useTranslation'
 
 const FooterContainer = styled.div`
   //height: 100%;
@@ -91,7 +91,7 @@ const LastRowText = styled.div`
 `
 
 export const Footer = () => {
-    const {t} = useTranslation()
+    const {t} = useTranslation('basic')
 
     return (
         <FooterContainer>

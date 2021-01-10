@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components";
 import {Col, Menu, Row} from "antd";
-import {useTranslation} from "react-i18next";
+import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
 import {useRouter} from "next/router";
 
@@ -84,7 +84,7 @@ const MenuDiv = styled.div`
 
 export const FooterNavbar = () => {
     const {pathname} = useRouter();
-    const {t, i18n} = useTranslation()
+    const {t} = useTranslation('basic')
 
     return (
         <MenuDiv style={{marginTop: '25px'}}>
@@ -111,7 +111,7 @@ export const FooterNavbar = () => {
                                 <Link href="/hardware">{t('navbar.hardware')}</Link>
                             </Menu.Item>
                             <Menu.Item key="/photos">
-                                <Link href="/gallery"><a>{t('navbar.photos')}</a></Link>
+                                <Link href="/photos"><a>{t('navbar.photos')}</a></Link>
                             </Menu.Item>
                             <Menu.Item key="/qsl">
                                 <Link href="/qsl"><a>{t('navbar.qsl')}</a></Link>

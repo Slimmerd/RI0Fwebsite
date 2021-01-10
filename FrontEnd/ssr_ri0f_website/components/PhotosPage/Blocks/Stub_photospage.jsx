@@ -2,7 +2,7 @@ import React from 'react'
 import styled from "styled-components";
 import {FadeInContainer} from "../../common/FadeInAnimation";
 import {useSpring, animated} from 'react-spring'
-import {useTranslation} from "react-i18next";
+import useTranslation from 'next-translate/useTranslation'
 
 // language=SCSS prefix=*{ suffix=}
 const MainDiv = styled.div`
@@ -73,7 +73,7 @@ export const PhotosPageStub = () => {
                         style={{transform: props.xys.interpolate(trans)}}
                     >
                         <div className={'block'}>
-                            <div className={'text'}>{t('onlinelog:stub_block.heading')}</div>
+                            <div className={'text'}>{t('photos:stub_block.heading')}</div>
                         </div>
                     </animated.div>
                 </FadeInContainer>

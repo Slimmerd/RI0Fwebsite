@@ -1,0 +1,48 @@
+{
+  "locales": [
+    "ru",
+    "en"
+  ],
+  "defaultLocale": "ru",
+  "localeDetection": true,
+  "logBuild": false,
+  "pages": {
+    "*": [
+      "basic"
+    ],
+    "/": [
+      "main"
+    ],
+    "/contacts": [
+      "contacts"
+    ],
+    "/donate": [
+      "donate"
+    ],
+    "/onlinelog": [
+      "onlinelog"
+    ],
+    "/qsl": [
+      "qsl"
+    ],
+    "/hardware": [
+      "hardware"
+    ],
+    "/team": [
+      "team"
+    ],
+    "/plan": [
+      "plan",
+      "main"
+    ],
+    "/photos": [
+      "photos"
+    ],
+    "/chat": [
+      "chat"
+    ],
+    "/news": [
+      "news"
+    ]
+  }
+}

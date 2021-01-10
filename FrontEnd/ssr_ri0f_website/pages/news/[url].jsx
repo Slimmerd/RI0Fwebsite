@@ -47,8 +47,8 @@ export const getServerSideProps = async ({query}) => {
         return ActNews = null
     })
 
-    return {props: {news, ActNews}};
+    // JSON.parse -> Fixes bug with - Img Undefined
+    return {props: {news, ActNews: JSON.parse(JSON.stringify(ActNews))}};
 };
-
 
 export default ActualNewsPage

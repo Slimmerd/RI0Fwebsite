@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from 'react'
 import {FadeInContainer} from "../../common/FadeInAnimation";
-import {useTranslation} from "react-i18next";
+import useTranslation from 'next-translate/useTranslation'
 
 const HeaderBlock = styled.div`
   height: 350px;

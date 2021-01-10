@@ -1,7 +1,7 @@
 import React from 'react'
 import {Col, Row} from "antd";
 import styled from "styled-components";
-import {useTranslation} from "react-i18next";
+import useTranslation from 'next-translate/useTranslation'
 
 const R6MG = '/static/assets/r6mg.webp'
 const RZ3EC = '/static/assets/RZ3EC.webp'

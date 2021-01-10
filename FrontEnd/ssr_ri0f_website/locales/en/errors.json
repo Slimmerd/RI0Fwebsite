@@ -1,0 +1,19 @@
+{
+  "news": {
+    "service_unavailable": "Server unavailable",
+    "error": "Error occurred"
+  },
+  "gallery": {
+    "service_unavailable": "Server unavailable",
+    "error": "Error occurred"
+  },
+  "chat": {
+    "service_unavailable": "Server unavailable",
+    "error": "Error occurred",
+    "post": {
+      "success_title": "Comment posted",
+      "success_description": "Your comment was successfully published on the website",
+      "error_title": "Error occurred"
+    }
+  }
+}
