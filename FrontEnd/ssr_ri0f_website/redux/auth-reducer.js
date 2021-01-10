@@ -9,18 +9,15 @@ const AUTH_IS_FETCHING = '/auth/AUTH_IS_FETCHING';
 
 const cookie = Cookies.get('user')
 const User = () => {
-    if (cookie) {
-        return JSON.parse(cookie)
-    }
+    return !!cookie;
 }
-
 
 let initialState =
     {
         id: User ? User.userId : null,
         name_ru: User ? User.name_ru : null,
         name_en: User ? User.name_en : null,
-        isAuth: !!User || false,
+        isAuth: !!User ? User : false,
         fetching: false
     };
 

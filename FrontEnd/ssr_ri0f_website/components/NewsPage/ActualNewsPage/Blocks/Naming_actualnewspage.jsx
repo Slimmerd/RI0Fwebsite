@@ -16,7 +16,7 @@ const HeaderBlock = styled.div`
   .rowSize {
     width: 920px;
     margin: 0 auto;
-    }
+  }
 
   .header {
     font-family: Oswald, sans-serif;
@@ -91,7 +91,7 @@ const HeaderBlock = styled.div`
     .rowSize {
       width: 270px
     }
-} 
+  }
 `
 
 export const ActualNewsPageNaming = ({news}) => {

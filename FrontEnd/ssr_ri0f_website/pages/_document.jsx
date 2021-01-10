@@ -2,15 +2,16 @@ import Document, {Html, Head, Main, NextScript} from 'next/document'
 import {ServerStyleSheet} from 'styled-components'
 
 export default class MyDocument extends Document {
-    // static async getInitialProps(ctx) {
-    //     const initialProps = await Document.getInitialProps(ctx)
-    //
-    //     return {...initialProps}
-    // }
 
     static async getInitialProps(ctx) {
         const sheet = new ServerStyleSheet()
         const originalRenderPage = ctx.renderPage
+
+        if (typeof window !== "undefined") {
+            window.onload = () => {
+                document.getElementById("flashStyle").remove();
+            };
+        }
 
         try {
             ctx.renderPage = () =>
@@ -38,6 +39,10 @@ export default class MyDocument extends Document {
         return (
             <Html>
                 <Head>
+                    <style
+                        id='flashStyle'
+                        dangerouslySetInnerHTML={{__html: ` *, *::before, *::after {transition: none!important;  }`}}/>
+
                     <link rel="preconnect" href="https://fonts.gstatic.com"/>
 
                     <link

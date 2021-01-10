@@ -31,9 +31,11 @@ const limiter = rateLimit({
 
 app.use(express.json({extended: true}))
 
+
+// TODO: LIMITER
 // Security and logs
-app.use(speedLimiter)
-app.use(limiter)
+// app.use(speedLimiter)
+// app.use(limiter)
 app.use(helmet())
 app.use(morgan('dev'))
 app.use(hpp());

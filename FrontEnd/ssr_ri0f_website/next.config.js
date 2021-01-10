@@ -13,6 +13,11 @@ module.exports = withLess({
         javascriptEnabled: true,
         modifyVars: themeVariables, // make your antd custom effective
     },
+    env: {
+        REACT_APP_APIKEY: "supersecretapikey3000",
+        REACT_APP_BASEURL: "http://ri0f.com/",
+        REACT_APP_BACKEND_ADDRESS: "http://localhost:5000/"
+    },
     webpack: (config, {isServer}) => {
         if (isServer) {
             const antStyles = /antd\/.*?\/style.*?/

@@ -5,6 +5,7 @@ import {DefaultSeo} from "next-seo";
 import {SEO} from "../next-seo.config";
 import Head from "next/head";
 import {MainLayout} from "../Layouts/MainLayout";
+import NextNprogress from 'nextjs-progressbar';
 
 function MyApp({Component, pageProps}) {
     const Layout = Component.layout || MainLayout
@@ -12,6 +13,12 @@ function MyApp({Component, pageProps}) {
 
     return (
         <Provider store={store}>
+            <NextNprogress
+                color="#ECF0F1"
+                startPosition={0.3}
+                stopDelayMs={200}
+                height="3"
+            />
             <Head>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>

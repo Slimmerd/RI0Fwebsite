@@ -25,8 +25,12 @@
   "scripts": {
     "start": "node App.js",
     "server": "nodemon App.js",
-    "frontend": "npm run start --prefix ../FrontEnd/rio0f_website",
-    "dev": "concurrently \"npm run server\" \"npm run frontend\""
+    "frontend-cra": "npm run start-cra --prefix ../FrontEnd/rio0f_website",
+    "frontend-next": "npm run dev-next --prefix ../FrontEnd/ssr_ri0f_website",
+    "frontend-next-run": "npm run start-next --prefix ../FrontEnd/ssr_ri0f_website",
+    "dev-cra": "concurrently \"npm run server\" \"npm run frontend-cra\"",
+    "dev-next-express": "concurrently \"npm run server\" \"npm run frontend-next\"",
+    "deploy-next-express": "concurrently \"npm run server\" \"npm run frontend-next-run\""
   },
   "keywords": [
     "mern",
