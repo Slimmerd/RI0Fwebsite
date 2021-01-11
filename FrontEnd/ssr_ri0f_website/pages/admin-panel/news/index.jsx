@@ -9,6 +9,8 @@ import NewsEdit from "../../../components/AdminPanel/AdminPanel/News/EditPost";
 import {DeleteOutlined} from "@ant-design/icons";
 import moment from "moment";
 import AdminLayout from "../../../Layouts/AdminLayout";
+import {NextSeo} from "next-seo";
+import {ADMIN_SEO} from "../../../utils/SEO_headers";
 
 const {Column, ColumnGroup} = Table;
 const Styled = styled.div`
@@ -74,41 +76,44 @@ const NewsPosts = () => {
     };
 
     return (
-        <Styled>
-            <div className={'buttons'}>
-                <NewsPublish/>
-                <NewsEdit hasSelected={hasSelected} selectedID={selectedRowKeys}/>
-                <Button type="primary" onClick={deleteButton} disabled={!hasSelected} loading={loading}>
-                    <DeleteOutlined/> Удалить
-                </Button>
-            </div>
+        <>
+            <NextSeo {...ADMIN_SEO}/>
+            <Styled>
+                <div className={'buttons'}>
+                    <NewsPublish/>
+                    <NewsEdit hasSelected={hasSelected} selectedID={selectedRowKeys}/>
+                    <Button type="primary" onClick={deleteButton} disabled={!hasSelected} loading={loading}>
+                        <DeleteOutlined/> Удалить
+                    </Button>
+                </div>
 
-            <Table rowKey="url" dataSource={news} bordered rowSelection={rowSelection} loading={tableLoading}
-                   pagination={false}>
-                <ColumnGroup title="Назавание">
-                    <Column title="Русский" dataIndex="name_ru" key="name_ru" ellipsis/>
-                    <Column title="Английский" dataIndex="name_en" key="name_en" ellipsis/>
-                </ColumnGroup>
+                <Table rowKey="url" dataSource={news} bordered rowSelection={rowSelection} loading={tableLoading}
+                       pagination={false}>
+                    <ColumnGroup title="Назавание">
+                        <Column title="Русский" dataIndex="name_ru" key="name_ru" ellipsis/>
+                        <Column title="Английский" dataIndex="name_en" key="name_en" ellipsis/>
+                    </ColumnGroup>
 
-                <ColumnGroup title="Текст">
-                    <Column title="Русский" dataIndex="text_ru" key="text_ru" ellipsis/>
-                    <Column title="Английский" dataIndex="text_en" key="text_en" ellipsis/>
-                </ColumnGroup>
+                    <ColumnGroup title="Текст">
+                        <Column title="Русский" dataIndex="text_ru" key="text_ru" ellipsis/>
+                        <Column title="Английский" dataIndex="text_en" key="text_en" ellipsis/>
+                    </ColumnGroup>
 
-                <Column title="Фото" dataIndex="img" key="img" ellipsis
-                        render={picture => (picture ? <Tag color={'green'}>Присутствует</Tag> :
-                            <Tag color={'red'}>Отсутствует</Tag>)}/>
+                    <Column title="Фото" dataIndex="img" key="img" ellipsis
+                            render={picture => (picture ? <Tag color={'green'}>Присутствует</Tag> :
+                                <Tag color={'red'}>Отсутствует</Tag>)}/>
 
-                {/*            Could take lots of resources....*/}
-                <Column title="Автор" dataIndex="author" key="author" ellipsis
-                        render={author => (GetNames(author), actNews)}/>
+                    {/*            Could take lots of resources....*/}
+                    <Column title="Автор" dataIndex="author" key="author" ellipsis
+                            render={author => (GetNames(author), actNews)}/>
 
-                <Column title="Дата" dataIndex='date' key="date" ellipsis
-                        render={(date) => (moment(date).format('DD.MM.YYYY'))}/>
+                    <Column title="Дата" dataIndex='date' key="date" ellipsis
+                            render={(date) => (moment(date).format('DD.MM.YYYY'))}/>
 
 
-            </Table>
-        </Styled>
+                </Table>
+            </Styled>
+        </>
     );
 };
 

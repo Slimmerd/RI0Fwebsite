@@ -7,6 +7,9 @@ import NewsPageStab from "../../components/NewsPage/NewsCards/NewsPageStab";
 import NewsPageCards from "../../components/NewsPage/NewsCards/NewsPageCards";
 import store from "../../redux/redux-store";
 import Loading from "../../components/common/Loading";
+import {NextSeo} from "next-seo";
+import {MAIN_SEO} from "../../utils/SEO_headers";
+import {news as headerNews} from "../../utils/seo_headers.json"
 
 const NewsPageBlock = styled.div`
   background: #ECF0F1;
@@ -137,7 +140,7 @@ const ExtraNews = styled.div`
 
 const NewsPage = ({news}) => {
 
-    const {t} = useTranslation()
+    const {t, lang} = useTranslation()
 
     if (!news) {
         return (
@@ -146,22 +149,25 @@ const NewsPage = ({news}) => {
     }
 
     return (
-        <NewsPageBlock>
-            <PageContainer>
-                {/*Naming block*/}
-                <FadeInContainer>
-                    <NamingBlock>
-                        <div className={'textblock'}>
-                            <div className={'header'}>{t('news:title')}</div>
-                            <div className={'paragraph'}>{t('news:sub')}</div>
-                        </div>
-                    </NamingBlock>
-                </FadeInContainer>
-                {/*Cards*/}
-                {news.length === 0 ? <NewsPageStab/> : <NewsPageCards news={news}/>}
-                <ExtraNews/>
-            </PageContainer>
-        </NewsPageBlock>
+        <>
+            <NextSeo {...MAIN_SEO(lang, headerNews.ru, headerNews.en)}/>
+            <NewsPageBlock>
+                <PageContainer>
+                    {/*Naming block*/}
+                    <FadeInContainer>
+                        <NamingBlock>
+                            <div className={'textblock'}>
+                                <div className={'header'}>{t('news:title')}</div>
+                                <div className={'paragraph'}>{t('news:sub')}</div>
+                            </div>
+                        </NamingBlock>
+                    </FadeInContainer>
+                    {/*Cards*/}
+                    {news.length === 0 ? <NewsPageStab/> : <NewsPageCards news={news}/>}
+                    <ExtraNews/>
+                </PageContainer>
+            </NewsPageBlock>
+        </>
     )
 }
 

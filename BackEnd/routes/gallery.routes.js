@@ -13,7 +13,7 @@ router.post('/post', auth, [check(['name_ru', 'name_en', 'images'], 'Нельз�
     check(['name_ru', 'name_en'], 'Некорректное количество символов').isLength({
         min: 5,
         max: 64
-    }),], async (req, res) => {
+    }).trim(),], async (req, res) => {
     try {
         //Error handler
         const errors = validationResult(req)
@@ -82,7 +82,11 @@ router.get('/:id', auth, async (req, res) => {
 // Edit particular gallery post
 // api/chat/:id
 // Only admins
-router.post('/edit/:id', auth, async (req, res) => {
+router.post('/edit/:id', [check(['name_ru', 'name_en', 'images'], 'Нельзя оставлять пустые поля').exists(),
+    check(['name_ru', 'name_en'], 'Некорректное количество символов').isLength({
+        min: 5,
+        max: 64
+    }).trim(),], auth, async (req, res) => {
     try {
         const id = req.params.id
         if (id === undefined || id === 'undefined') return res.status(404).json({message: 'Публикация не найдена'})
@@ -90,10 +94,10 @@ router.post('/edit/:id', auth, async (req, res) => {
         const gallery = await Gallery.findByIdAndUpdate(id, edited, {returnOriginal: false, useFindAndModify: false})
 
         if (!gallery) {
-            return res.status(404).json({message: 'Новость не найдена'})
+            return res.status(404).json({message: 'Публикация не найдена'})
         }
 
-        res.status(201).json({message: "Новость была обновлена", gallery: gallery})
+        res.status(201).json({message: "Публикация была обновлена", gallery: gallery})
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
     }

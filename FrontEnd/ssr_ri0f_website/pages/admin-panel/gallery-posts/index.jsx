@@ -8,6 +8,8 @@ import {deletePost, getPosts} from "../../../redux/gallery-reducer";
 
 import AdminLayout from "../../../Layouts/AdminLayout";
 import GalleryPublish from "../../../components/AdminPanel/AdminPanel/Gallery/methods/Create/CreateGalleryPost";
+import {NextSeo} from "next-seo";
+import {ADMIN_SEO} from "../../../utils/SEO_headers";
 
 const {Column, ColumnGroup} = Table;
 const Styled = styled.div`
@@ -71,31 +73,34 @@ const GalleryList = () => {
     };
 
     return (
-        <Styled>
-            <div className={'buttons'}>
-                <GalleryPublish/>
-                <Button type="primary" onClick={deleteButton} disabled={!hasSelected} loading={loading}>
-                    <DeleteOutlined/> Удалить
-                </Button>
-            </div>
+        <>
+            <NextSeo {...ADMIN_SEO}/>
+            <Styled>
+                <div className={'buttons'}>
+                    <GalleryPublish/>
+                    <Button type="primary" onClick={deleteButton} disabled={!hasSelected} loading={loading}>
+                        <DeleteOutlined/> Удалить
+                    </Button>
+                </div>
 
-            <Table rowKey="_id" dataSource={posts} bordered rowSelection={rowSelection} loading={tableLoading}
-                   pagination={false}>
+                <Table rowKey="_id" dataSource={posts} bordered rowSelection={rowSelection} loading={tableLoading}
+                       pagination={false}>
 
-                <ColumnGroup title="Назавание">
-                    <Column title="Русский" dataIndex="name_ru" key="name_ru" ellipsis/>
-                    <Column title="Английский" dataIndex="name_en" key="name_en" ellipsis/>
-                </ColumnGroup>
+                    <ColumnGroup title="Назавание">
+                        <Column title="Русский" dataIndex="name_ru" key="name_ru" ellipsis/>
+                        <Column title="Английский" dataIndex="name_en" key="name_en" ellipsis/>
+                    </ColumnGroup>
 
-                <Column title="Кол-во картинок" dataIndex="images" key="images" ellipsis
-                        render={picture => (picture ? <Tag color={'green'}>{picture.length}</Tag> :
-                            <Tag color={'red'}>Отсутствует</Tag>)}/>
+                    <Column title="Кол-во картинок" dataIndex="images" key="images" ellipsis
+                            render={picture => (picture ? <Tag color={'green'}>{picture.length}</Tag> :
+                                <Tag color={'red'}>Отсутствует</Tag>)}/>
 
-                <Column title="Дата" dataIndex='date' key="date" ellipsis
-                        render={(date) => (moment(date).format('DD.MM.YYYY'))}/>
+                    <Column title="Дата" dataIndex='date' key="date" ellipsis
+                            render={(date) => (moment(date).format('DD.MM.YYYY'))}/>
 
-            </Table>
-        </Styled>
+                </Table>
+            </Styled>
+        </>
     );
 };
 

@@ -6,6 +6,8 @@ import {deleteComment, getComments} from "../../../redux/chat-reducer";
 import {DeleteOutlined} from "@ant-design/icons";
 import moment from "moment";
 import AdminLayout from "../../../Layouts/AdminLayout";
+import {NextSeo} from "next-seo";
+import {ADMIN_SEO} from "../../../utils/SEO_headers";
 
 const {Column} = Table;
 const Styled = styled.div`
@@ -73,29 +75,32 @@ const CommentsList = () => {
 
 
     return (
-        <Styled>
-            <div className={'buttons'}>
-                <Button type="primary" onClick={deleteButton} disabled={!hasSelected} loading={loading}>
-                    <DeleteOutlined/> Удалить
-                </Button>
-            </div>
+        <>
+            <NextSeo {...ADMIN_SEO}/>
+            <Styled>
+                <div className={'buttons'}>
+                    <Button type="primary" onClick={deleteButton} disabled={!hasSelected} loading={loading}>
+                        <DeleteOutlined/> Удалить
+                    </Button>
+                </div>
 
-            <Table rowKey="_id" dataSource={comments} bordered rowSelection={rowSelection} loading={tableLoading}
-                   pagination={false}>
+                <Table rowKey="_id" dataSource={comments} bordered rowSelection={rowSelection} loading={tableLoading}
+                       pagination={false}>
 
-                <Column title="Имя" dataIndex="name" key="name" ellipsis/>
+                    <Column title="Имя" dataIndex="name" key="name" ellipsis/>
 
-                <Column title="Позывной" dataIndex="call" key="call" ellipsis/>
+                    <Column title="Позывной" dataIndex="call" key="call" ellipsis/>
 
-                <Column title="Email" dataIndex="email" key="email" ellipsis/>
+                    <Column title="Email" dataIndex="email" key="email" ellipsis/>
 
-                <Column title="Текст" dataIndex="text" key="text" ellipsis/>
+                    <Column title="Текст" dataIndex="text" key="text" ellipsis/>
 
-                <Column title="Дата" dataIndex='date' key="date" ellipsis
-                        render={(date) => (moment(date).format('DD.MM.YYYY'))}/>
+                    <Column title="Дата" dataIndex='date' key="date" ellipsis
+                            render={(date) => (moment(date).format('DD.MM.YYYY'))}/>
 
-            </Table>
-        </Styled>
+                </Table>
+            </Styled>
+        </>
     );
 };
 

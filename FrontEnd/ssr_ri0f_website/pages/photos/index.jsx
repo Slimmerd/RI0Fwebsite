@@ -5,8 +5,13 @@ import {PhotosPageStub} from "../../components/PhotosPage/Blocks/Stub_photospage
 import {PhotosPageAction} from "../../components/PhotosPage/Blocks/Action_photospage";
 import store from "../../redux/redux-store";
 import Loading from "../../components/common/Loading";
+import useTranslation from "next-translate/useTranslation";
+import {NextSeo} from "next-seo";
+import {photos} from "../../utils/seo_headers.json"
+import {MAIN_SEO} from "../../utils/SEO_headers";
 
 const PhotosPage = ({galleryPosts}) => {
+    const {lang} = useTranslation()
 
     if (!galleryPosts) {
         return (
@@ -15,10 +20,12 @@ const PhotosPage = ({galleryPosts}) => {
     }
 
     return (
-        <div>
+        <>
+            <NextSeo {...MAIN_SEO(lang, photos.ru, photos.en)}/>
             <PhotosPageNaming/>
-            {!galleryPosts ? <PhotosPageStub/> : galleryPosts.map((p, i) => <PhotosPageAction post={p} key={i}/>)}
-        </div>
+            {galleryPosts.length === 0 ? <PhotosPageStub/> : galleryPosts.map((p, i) => <PhotosPageAction post={p}
+                                                                                                          key={i}/>)}
+        </>
     )
 }
 

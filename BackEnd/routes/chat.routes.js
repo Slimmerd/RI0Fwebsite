@@ -10,10 +10,10 @@ const auth = require('../middleware/auth.middleware')
 // api/chat/post
 // Only with API key
 router.post('/post', [check(['name', 'call', 'text'], 'Нельзя оставлять пустые поля').exists(),
-    check('call', 'Некорректное количество символов').isLength({min: 3, max: 8}),
-    check('name', 'Некорректное количество символов').isLength({min: 2, max: 32}),
-    check('text', 'Некорректное количество символов').isLength({min: 10, max: 600}),
-    check('email', 'Некорректный email').isEmail(),], async (req, res) => {
+    check('call', 'Некорректное количество символов').isLength({min: 3, max: 8}).trim(),
+    check('name', 'Некорректное количество символов').isLength({min: 2, max: 32}).trim(),
+    check('text', 'Некорректное количество символов').isLength({min: 10, max: 600}).trim(),
+    check('email', 'Некорректный email').normalizeEmail().isEmail(),], async (req, res) => {
     try {
         //Error handler
         const errors = validationResult(req)

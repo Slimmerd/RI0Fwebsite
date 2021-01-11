@@ -8,10 +8,14 @@ import {ActualNewsPagePreviousNews} from "../../components/NewsPage/ActualNewsPa
 import {useRouter} from "next/router";
 import Loading from "../../components/common/Loading";
 import store from "../../redux/redux-store";
+import {NextSeo} from "next-seo";
+import useTranslation from "next-translate/useTranslation";
+import {CHOSEN_NEWS_SEO} from "../../utils/SEO_headers";
 
 const ActualNewsPage = ({news, ActNews}) => {
 
     const router = useRouter()
+    const {lang} = useTranslation()
 
     useEffect(() => {
         if (ActNews === null) return router.push('/404')
@@ -25,12 +29,13 @@ const ActualNewsPage = ({news, ActNews}) => {
     }
 
     return (
-        <div>
+        <>
+            <NextSeo {...CHOSEN_NEWS_SEO(lang, ActNews)}/>
             <ActualNewsPageNaming news={ActNews}/>
             {ActNews.img ? <ActualNewsPagePicture Photo={ActNews.img}/> : null}
             <ActualNewsPageText news={ActNews}/>
             {news.length < 3 ? null : <ActualNewsPagePreviousNews news={news}/>}
-        </div>
+        </>
 
     )
 }

@@ -1,0 +1,112 @@
+{
+  "main": {
+    "ru": {
+      "head": "Главная",
+      "description": "Экспедиция RI0F на остров Итуруп"
+    },
+    "en": {
+      "head": "Main",
+      "description": "RI0F expedition on island Iturup"
+    }
+  },
+  "news": {
+    "ru": {
+      "head": "Новости",
+      "description": "Новости о экспедиции RI0F"
+    },
+    "en": {
+      "head": "News",
+      "description": "News about RI0F expedition"
+    }
+  },
+  "team": {
+    "ru": {
+      "head": "Команда",
+      "description": "Информация о участниках экспедиции"
+    },
+    "en": {
+      "head": "Team",
+      "description": "Information about the expedition participants"
+    }
+  },
+  "plan": {
+    "ru": {
+      "head": "План",
+      "description": "План действий команды во время экспедиции"
+    },
+    "en": {
+      "head": "Plan",
+      "description": "Team expedition plan"
+    }
+  },
+  "hardware": {
+    "ru": {
+      "head": "Оборудование",
+      "description": "Список оборудования, которое использует команда"
+    },
+    "en": {
+      "head": "Hardware",
+      "description": "List of hardware which team uses"
+    }
+  },
+  "photos": {
+    "ru": {
+      "head": "Фотогалерея",
+      "description": "Раздел с фотографиями из нашей экспедиции"
+    },
+    "en": {
+      "head": "Photo gallery",
+      "description": "Section with photos from our expedition"
+    }
+  },
+  "qsl": {
+    "ru": {
+      "head": "QSL",
+      "description": "Вся информация связанная с QSL карточками"
+    },
+    "en": {
+      "head": "QSL",
+      "description": "All information related to QSL cards"
+    }
+  },
+  "onlinelog": {
+    "ru": {
+      "head": "Online Log",
+      "description": "Информация о проведенных связях"
+    },
+    "en": {
+      "head": "Online Log",
+      "description": "Information about the connections"
+    }
+  },
+  "donate": {
+    "ru": {
+      "head": "Пожертвования",
+      "description": "Вы можете помочь команде материально"
+    },
+    "en": {
+      "head": "Donations",
+      "description": "You can help our team financially"
+    }
+  },
+  "chat": {
+    "ru": {
+      "head": "Общение",
+      "description": "Здесь вы можете оставить комментарии"
+    },
+    "en": {
+      "head": "Chat",
+      "description": "You can leave comments here"
+    }
+  },
+  "contacts": {
+    "ru": {
+      "head": "Контакты",
+      "description": "Вы можете связаться с нами по вопросам экспедиции и работы сайта"
+    },
+    "en": {
+      "head": "Contacts",
+      "description": "You can contact us regarding expedition information or website work"
+    }
+  }
+}

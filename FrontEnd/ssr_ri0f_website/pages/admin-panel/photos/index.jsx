@@ -7,6 +7,8 @@ import PhotoPublish from "../../../components/AdminPanel/AdminPanel/UploadPhoto/
 import {DeleteOutlined} from "@ant-design/icons";
 import moment from "moment";
 import AdminLayout from "../../../Layouts/AdminLayout";
+import {NextSeo} from "next-seo";
+import {ADMIN_SEO} from "../../../utils/SEO_headers";
 
 const {Column} = Table;
 const Styled = styled.div`
@@ -72,28 +74,31 @@ const PhotosList = () => {
     };
 
     return (
-        <Styled>
-            <div className={'buttons'}>
-                <PhotoPublish/>
-                <Button type="primary" onClick={deleteButton} disabled={!hasSelected} loading={loading}>
-                    <DeleteOutlined/> Удалить
-                </Button>
-            </div>
+        <>
+            <NextSeo {...ADMIN_SEO}/>
+            <Styled>
+                <div className={'buttons'}>
+                    <PhotoPublish/>
+                    <Button type="primary" onClick={deleteButton} disabled={!hasSelected} loading={loading}>
+                        <DeleteOutlined/> Удалить
+                    </Button>
+                </div>
 
-            <Table rowKey="_id" dataSource={pictures} bordered rowSelection={rowSelection} loading={tableLoading}
-                   pagination={false}>
+                <Table rowKey="_id" dataSource={pictures} bordered rowSelection={rowSelection} loading={tableLoading}
+                       pagination={false}>
 
-                <Column title="Сссылка" dataIndex="_id" key="_id" ellipsis/>
+                    <Column title="Сссылка" dataIndex="_id" key="_id" ellipsis/>
 
-                <Column title="Предпросмотр" dataIndex="_id" key="img" ellipsis
-                        render={(_id) => <img src={process.env.REACT_APP_BACKEND_ADDRESS + "api/photos/" + _id}
-                                              width={250} alt=""/>}/>
+                    <Column title="Предпросмотр" dataIndex="_id" key="img" ellipsis
+                            render={(_id) => <img src={process.env.REACT_APP_BACKEND_ADDRESS + "api/photos/" + _id}
+                                                  width={250} alt=""/>}/>
 
-                <Column title="Дата" dataIndex='date' key="date" ellipsis
-                        render={(date) => (moment(date).format('DD.MM.YYYY'))}/>
+                    <Column title="Дата" dataIndex='date' key="date" ellipsis
+                            render={(date) => (moment(date).format('DD.MM.YYYY'))}/>
 
-            </Table>
-        </Styled>
+                </Table>
+            </Styled>
+        </>
     );
 };
 

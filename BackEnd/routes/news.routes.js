@@ -9,7 +9,7 @@ const auth = require('../middleware/auth.middleware')
 // api/news/create
 // Only admins
 router.post('/create', [
-    check(['name_ru', 'name_en', 'text_ru', 'text_en'], 'Нельзя оставлять пустые поля').exists(),
+    check(['name_ru', 'name_en', 'text_ru', 'text_en'], 'Нельзя оставлять пустые поля').exists().trim(),
 ], auth, async (req, res) => {
     try {
         const errors = validationResult(req)
@@ -59,7 +59,9 @@ router.delete('/delete/:url', auth, async (req, res) => {
 // Edit post
 // api/news/edit/:url
 // Only admins
-router.post('/edit/:url', auth, async (req, res) => {
+router.post('/edit/:url', [
+    check(['name_ru', 'name_en', 'text_ru', 'text_en'], 'Нельзя оставлять пустые поля').exists().trim(),
+], auth, async (req, res) => {
     try {
         const url = req.params.url
 

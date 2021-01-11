@@ -49,7 +49,6 @@ const CardShape = styled.div`
 
         background: #FFFFFF;
         border-radius: 10px;
-        border-width: 2px !important;
 
         &:hover {
           border-color: #2C3E50 !important;
@@ -281,17 +280,18 @@ const ChatPageForm = (props) => {
                         <Col className={'form'} span={8} xs={24} sm={24} md={34} lg={8}>
                             <Form layout={'vertical'} size={'large'}>
                                 <Field name={'name'} label={`${t('chat:form_block.name_heading')}:`}
-                                       placeholder={`${t('chat:form_block.name_input')}`} component={AInput}
+                                       placeholder={`${t('chat:form_block.name_input')}`} component={AInput} hasFeedback
                                        validate={[requiredField, OnlyLetters, minLength(2), maxLength(28)]}
                                        rules={[{required: true}]}/>
 
                                 <Field name={'call'} label={`${t('chat:form_block.call')}:`}
-                                       placeholder={`${t('chat:form_block.call_input')}`} component={AInput}
+                                       placeholder={`${t('chat:form_block.call_input')}`} component={AInput} hasFeedback
                                        validate={[requiredField, minLength(3), maxLength(8)]}
                                        rules={[{required: true}]}/>
 
                                 <Field name={'email'} type="email" label={`${t('chat:form_block.email')}:`}
                                        placeholder={`${t('chat:form_block.email_input')}`} component={AInput}
+                                       hasFeedback
                                        validate={[requiredField, emailField]}
                                        rules={[{required: true}]}/>
 

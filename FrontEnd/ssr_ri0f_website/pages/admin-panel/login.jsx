@@ -7,6 +7,8 @@ import {Button} from "antd";
 import {emailField, requiredField} from "../../utils/formValidations";
 import Router from "next/router";
 import Loading from "../../components/common/Loading";
+import {NextSeo} from "next-seo";
+import {ADMIN_SEO} from "../../utils/SEO_headers";
 
 const Background = styled.div`
   width: 100vw;
@@ -124,45 +126,48 @@ const LoginPage = (props) => {
     }, [fetching, submitSucceeded, reset])
 
     return (
-        <Background>
-            <div className={'container'}>
-                <Form>
-                    <Heading>Авторизация</Heading>
-                    <Sub>Насладись всеми прелестями админки</Sub>
-                    <form>
-                        <div className={'input'}>
-                            <div className={'label'}>Email:</div>
-                            <div>
-                                <Field
-                                    name="email"
-                                    component="input"
-                                    type="email"
-                                    placeholder="Email"
-                                    validate={[requiredField, emailField]}/>
+        <>
+            <NextSeo {...ADMIN_SEO}/>
+            <Background>
+                <div className={'container'}>
+                    <Form>
+                        <Heading>Авторизация</Heading>
+                        <Sub>Насладись всеми прелестями админки</Sub>
+                        <form>
+                            <div className={'input'}>
+                                <div className={'label'}>Email:</div>
+                                <div>
+                                    <Field
+                                        name="email"
+                                        component="input"
+                                        type="email"
+                                        placeholder="Email"
+                                        validate={[requiredField, emailField]}/>
+                                </div>
                             </div>
-                        </div>
-                        <div className={'input'}>
-                            <div className={'label'}>Пароль:</div>
-                            <div>
-                                <Field
-                                    name="password"
-                                    component="input"
-                                    type="password"
-                                    placeholder="Password"
-                                    validate={[requiredField]}/>
+                            <div className={'input'}>
+                                <div className={'label'}>Пароль:</div>
+                                <div>
+                                    <Field
+                                        name="password"
+                                        component="input"
+                                        type="password"
+                                        placeholder="Password"
+                                        validate={[requiredField]}/>
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            <Button type="submit" loading={loading}
-                                    onClick={!invalid ? handleSubmit : null}
-                                    disabled={pristine || submitting || fetching || invalid}>
-                                Войти
-                            </Button>
-                        </div>
-                    </form>
-                </Form>
-            </div>
-        </Background>
+                            <div>
+                                <Button type="submit" loading={loading}
+                                        onClick={!invalid ? handleSubmit : null}
+                                        disabled={pristine || submitting || fetching || invalid}>
+                                    Войти
+                                </Button>
+                            </div>
+                        </form>
+                    </Form>
+                </div>
+            </Background>
+        </>
     );
 };
 const LoginForm = reduxForm({

@@ -72,11 +72,13 @@ export const getNews = () => async (dispatch) => {
 
     } else {
         let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : 'News service unavailable'
-        notificationWindow('error',
-            'Error/Ошибка',
-            ErrorMessage,
-            'bottomLeft',
-            10)
+        if (typeof window !== "undefined") {
+            return (notificationWindow('error',
+                'Error/Ошибка',
+                ErrorMessage,
+                'bottomLeft',
+                10))
+        }
     }
 };
 
