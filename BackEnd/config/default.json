@@ -1,7 +1,0 @@
-{
-  "port": 5000,
-  "jwtSecret": "super secret door",
-  "mongoURL": "mongodb://localhost:27017/ri0f-backend",
-  "baseURL": "http://localhost:5000",
-  "API-KEY": "supersecretapikey3000"
-}

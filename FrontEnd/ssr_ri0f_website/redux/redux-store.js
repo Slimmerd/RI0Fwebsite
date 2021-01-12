@@ -18,11 +18,10 @@ const reducers = combineReducers({
     form: formReducer
 });
 
-// TODO: TURN OFF ON PRODUCTION
 const composeEnhancers =
-    typeof window === 'object' &&
+    process.env.ENV === 'dev' ? (typeof window === 'object' &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ :
-        compose;
+        compose) : compose
 
 
 const store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware)))

@@ -45,19 +45,4 @@ const ChatPage = () => {
 }
 
 
-export const getServerSideProps = async () => {
-    // Old version
-    // const { dispatch, getState } = store
-    // await dispatch(getComments())
-    // const comments = getState().chat.comments
-
-    // Actual version
-    // Only way to implement auto updating state
-    return {
-        props: {},
-    }
-
-}
-
-
 export default ChatPage

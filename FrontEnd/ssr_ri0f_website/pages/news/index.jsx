@@ -1,15 +1,15 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import styled from "styled-components";
 import useTranslation from 'next-translate/useTranslation'
 import {getNews} from "../../redux/news-reducer";
 import {FadeInContainer} from "../../components/common/FadeInAnimation";
 import NewsPageStab from "../../components/NewsPage/NewsCards/NewsPageStab";
 import NewsPageCards from "../../components/NewsPage/NewsCards/NewsPageCards";
-import store from "../../redux/redux-store";
 import Loading from "../../components/common/Loading";
 import {NextSeo} from "next-seo";
 import {MAIN_SEO} from "../../utils/SEO_headers";
 import {news as headerNews} from "../../utils/seo_headers.json"
+import {useDispatch, useSelector} from "react-redux";
 
 const NewsPageBlock = styled.div`
   background: #ECF0F1;
@@ -138,9 +138,14 @@ const ExtraNews = styled.div`
   }
 `
 
-const NewsPage = ({news}) => {
-
+const NewsPage = () => {
+    const news = useSelector((state) => state.newsPage.news)
+    const dispatch = useDispatch()
     const {t, lang} = useTranslation()
+
+    useEffect(() => {
+        dispatch(getNews())
+    }, [dispatch])
 
     if (!news) {
         return (
@@ -169,17 +174,6 @@ const NewsPage = ({news}) => {
             </NewsPageBlock>
         </>
     )
-}
-
-export const getServerSideProps = async () => {
-    const {dispatch, getState} = store
-    await dispatch(getNews())
-    const news = getState().newsPage.news
-
-    return {
-        props: {news},
-    }
-
 }
 
 

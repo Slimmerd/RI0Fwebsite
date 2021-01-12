@@ -7,20 +7,28 @@ import {ActualNewsPageText} from "../../components/NewsPage/ActualNewsPage/Block
 import {ActualNewsPagePreviousNews} from "../../components/NewsPage/ActualNewsPage/Blocks/PreviousNews_actualnewspage";
 import {useRouter} from "next/router";
 import Loading from "../../components/common/Loading";
-import store from "../../redux/redux-store";
 import {NextSeo} from "next-seo";
 import useTranslation from "next-translate/useTranslation";
 import {CHOSEN_NEWS_SEO} from "../../utils/SEO_headers";
+import {useDispatch, useSelector} from "react-redux";
 
-const ActualNewsPage = ({news, ActNews}) => {
+const ActualNewsPage = () => {
+    const news = useSelector(state => state.newsPage.news)
+    const ActNews = useSelector(state => state.actNewsPage)
 
     const router = useRouter()
     const {lang} = useTranslation()
+    const dispatch = useDispatch()
 
     useEffect(() => {
         if (ActNews === null) return router.push('/404')
-
     }, [])
+
+
+    useEffect(() => {
+        dispatch(getNews())
+        dispatch(getParticularNews(router.query.url))
+    }, [dispatch])
 
     if (!ActNews) {
         return (
@@ -39,21 +47,5 @@ const ActualNewsPage = ({news, ActNews}) => {
 
     )
 }
-
-export const getServerSideProps = async ({query}) => {
-    const {dispatch, getState} = store
-    const news = getState().newsPage.news
-    let ActNews = getState().actNewsPage
-
-    await dispatch(getNews())
-    await dispatch(getParticularNews(query.url)).then(() => {
-        ActNews = getState().actNewsPage
-    }).catch(() => {
-        return ActNews = null
-    })
-
-    // JSON.parse -> Fixes bug with - Img Undefined
-    return {props: {news, ActNews: JSON.parse(JSON.stringify(ActNews))}};
-};
 
 export default ActualNewsPage

@@ -5,7 +5,6 @@ const User = require('../models/User')
 const bcrypt = require('bcryptjs')
 const {check, validationResult} = require('express-validator')
 const jwt = require('jsonwebtoken')
-const config = require('config')
 const auth = require('../middleware/auth.middleware')
 
 // Register
@@ -88,7 +87,7 @@ router.post('/login',
 
             const token = jwt.sign(
                 {userId: user.id, name_ru: user.name_ru, name_en: user.name_en},
-                config.get('jwtSecret'),
+                process.env.JWTSecret,
                 {expiresIn: '1h'}
             )
 

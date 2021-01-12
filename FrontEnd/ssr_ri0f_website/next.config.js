@@ -16,9 +16,10 @@ module.exports = nextTranslate(withLess({
     },
 
     env: {
-        REACT_APP_APIKEY: "supersecretapikey3000",
-        REACT_APP_BASEURL: "http://ri0f.com/",
-        REACT_APP_BACKEND_ADDRESS: "http://localhost:5000/"
+        REACT_APP_APIKEY: process.env.SERVER_API,
+        REACT_APP_BASEURL: process.env.SITE_URL,
+        REACT_APP_BACKEND_ADDRESS: process.env.BACKEND_URL,
+        ENV: process.env.ENV
     },
 
     webpack: (config, {isServer}) => {
