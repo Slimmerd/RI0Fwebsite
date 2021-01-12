@@ -1,6 +1,5 @@
 const title = 'RI0F expedition';
-const description =
-    'RI0F Kurils expedition website';
+const description = 'RI0F Kurils expedition website';
 
 export const SEO = {
     title,
