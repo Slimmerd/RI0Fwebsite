@@ -5,24 +5,34 @@
   },
   "card_block": {
     "Card1": {
-      "date": "12 December 2020",
-      "heading": "Arrival to Sakhalin",
-      "description": "The coordinates and any other necessary info"
+      "date": "25 July 2021",
+      "heading": "Departure from Moscow",
+      "description": "Team gathering at the airport, departure"
     },
     "Card2": {
-      "date": "12 December 2020",
-      "heading": "Arrival to Sakhalin",
-      "description": "The coordinates and any other necessary info"
+      "date": "27 July 2021",
+      "heading": "Departure to Iturup",
+      "description": "The departure of the team from the Port of Korsakov"
     },
     "Card3": {
-      "date": "12 December 2020",
-      "heading": "Arrival to Sakhalin",
-      "description": "The coordinates and any other necessary info"
+      "date": "28 July 2021",
+      "heading": "Arrival to Iturup",
+      "description": "Work on the air from 28 July to 3 August"
     },
     "Card4": {
-      "date": "12 December 2020",
+      "date": "03 August 2021",
+      "heading": "Departure to Sakhalin",
+      "description": "The team relocation to Sakhalin"
+    },
+    "Card5": {
+      "date": "4 August 2021",
       "heading": "Arrival to Sakhalin",
-      "description": "The coordinates and any other necessary info"
+      "description": "Arrival, planned to work on the air from 4 August to 6 August"
+    },
+    "Card6": {
+      "date": "6 August 2021",
+      "heading": "Departure to Moscow",
+      "description": "The end of the expedition"
     }
   }
 }

@@ -10,7 +10,7 @@ import {SponsorsBlock} from "./Components/Sponsors";
 import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
 
-//TODO: Inserting sponsor logo system, inserting card system
+//TODO: Inserting sponsor logo system
 
 const FirstPath = styled.div`
   position: relative;
@@ -67,7 +67,6 @@ export const MainPageBlock3 = () => {
     const [isSize, setSize] = useState(null);
     const breakpoint = 768
     const {t} = useTranslation()
-
 
     useEffect(
         function mount() {

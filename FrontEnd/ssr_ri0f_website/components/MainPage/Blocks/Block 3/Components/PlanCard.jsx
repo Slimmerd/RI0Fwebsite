@@ -15,6 +15,7 @@ const CardShape = styled.div`
   border-radius: 12px;
   background: #FFFFFF;
   color: #1A1E22;
+
   @media (max-width: 576px) {
     min-height: 260px;
     max-width: 375px;
@@ -71,8 +72,6 @@ const BackNumber = styled.div`
   opacity: 0.07;
 `
 
-//TODO: Custom Date, Header, Text
-
 export const PlanCard = ({cardNumber}) => {
     const {t} = useTranslation()
 
@@ -85,8 +84,5 @@ export const PlanCard = ({cardNumber}) => {
             </div>
             <BackNumber>{cardNumber}</BackNumber>
         </CardShape>
-
-
     )
-
 }

@@ -6,8 +6,8 @@ import useTranslation from 'next-translate/useTranslation'
 const Card = styled.div`
   font-family: Roboto, sans-serif;
   font-style: normal;
-  font-size: 24px;
-  line-height: 28px;
+  font-size: 18px;
+  line-height: 21px;
   text-align: left;
   color: #ECF0F1;
 

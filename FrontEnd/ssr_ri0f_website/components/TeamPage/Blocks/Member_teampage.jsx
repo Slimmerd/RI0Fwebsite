@@ -53,17 +53,24 @@ export const TeamPageMembers = () => {
                 </FadeInContainer>
             </Cards>
 
+            <Cards id={'M0MSV'}>
+                <FadeInContainer>
+                    <TeamMemberCard teamMember={'M0MSV'}/>
+                </FadeInContainer>
+            </Cards>
+
             <Cards id={'RX3F'}>
                 <FadeInContainer>
                     <TeamMemberCard teamMember={'RX3F'}/>
                 </FadeInContainer>
             </Cards>
 
-            <Cards id={'M0MSV'}>
+            <Cards id={'RN3BL'}>
                 <FadeInContainer>
-                    <TeamMemberCard teamMember={'M0MSV'}/>
+                    <TeamMemberCard teamMember={'RN3BL'}/>
                 </FadeInContainer>
             </Cards>
+
 
             <Cards id={'R6LGT'}>
                 <FadeInContainer>

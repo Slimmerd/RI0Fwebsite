@@ -10,11 +10,16 @@
       "description": "Небольшое описание"
     },
     "Card2": {
+      "type": "Трансивер",
+      "heading": "ICOM-7000",
+      "description": "Небольшое описание"
+    },
+    "Card3": {
       "type": "Антенна",
       "heading": "SteppIR BigIR",
       "description": "Небольшое описание"
     },
-    "Card3": {
+    "Card4": {
       "type": "Усилитель",
       "heading": "SPE Expert 1.5K-FA V2.0",
       "description": "Небольшое описание"

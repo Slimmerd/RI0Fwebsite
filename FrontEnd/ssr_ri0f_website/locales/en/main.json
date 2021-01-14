@@ -7,24 +7,24 @@
     "plan_title": "Expedition plan",
     "more_button": "Detailed plan →",
     "Card1": {
-      "date": "12 December 2020",
-      "heading": "Arrival to Sakhalin",
-      "description": "The coordinates and any other necessary info"
+      "date": "25 July 2021",
+      "heading": "Departure from Moscow",
+      "description": "Team gathering at the airport, departure"
     },
     "Card2": {
-      "date": "12 December 2020",
-      "heading": "Arrival to Sakhalin",
-      "description": "The coordinates and any other necessary info"
+      "date": "28 July 2021",
+      "heading": "Arrival to Iturup",
+      "description": "Work on the air from 28 July to 3 August"
     },
     "Card3": {
-      "date": "12 December 2020",
+      "date": "3 August 2021",
       "heading": "Arrival to Sakhalin",
-      "description": "The coordinates and any other necessary info"
+      "description": "The team relocation to Sakhalin, working on the air from 4 August to 6 August"
     },
     "Card4": {
-      "date": "12 December 2020",
-      "heading": "Arrival to Sakhalin",
-      "description": "The coordinates and any other necessary info"
+      "date": "6 August 2021",
+      "heading": "Arrival to Moscow",
+      "description": "The end of the expedition"
     }
   },
   "Block4": {
@@ -49,9 +49,9 @@
       "name": "Daniil Silin",
       "call": "R6LGT"
     },
-    "Card6": {
-      "name": "Ivan Ivanov",
-      "call": "VANYA"
+    "RN3BL": {
+      "name": "Vladimir Blinkov",
+      "call": "RN3BL"
     }
   }
 }

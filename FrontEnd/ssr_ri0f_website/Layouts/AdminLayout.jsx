@@ -82,7 +82,7 @@ const AdminLayout = ({children}) => {
         <LayoutStyle>
             <Layout className={'newLayout'}>
                 <Sider trigger={null} collapsible collapsed={collapsed}>
-                    <div className="AdminLogo">RIØF</div>
+                    <div className="AdminLogo">RIØFF</div>
                     <Menu theme="dark" mode="inline" selectedKeys={[pathname]}>
 
                         <Menu.Item key="/admin-panel/news" icon={<FormOutlined/>}>

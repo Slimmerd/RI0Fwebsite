@@ -11,7 +11,7 @@ const Header = () => {
             <Row className={'menuCon'}>
                 <Col xs={3} sm={3} md={3} lg={3} xl={4}>
                     <div className={'logo'}>
-                        <Link href="/"><a>RIØF</a></Link>
+                        <Link href="/"><a>RIØFF</a></Link>
                     </div>
                 </Col>
 
