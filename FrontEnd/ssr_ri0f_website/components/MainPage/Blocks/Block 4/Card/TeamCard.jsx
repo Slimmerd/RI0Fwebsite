@@ -80,13 +80,14 @@ const TextDiv = styled.div`
 
   color: #2C3E50;
 `
-
+// TODO PICTURE
 const theme = {
     R6MG: R6MG,
     RZ3EC: RZ3EC,
     M0MSV: M0MSV,
     R6LGT: R6MG,
-    RX3F: R6MG
+    RX3F: R6MG,
+    RN3BL: R6MG
 };
 
 export const TeamCard = ({callName}) => {

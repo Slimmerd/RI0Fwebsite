@@ -5,24 +5,34 @@
   },
   "card_block": {
     "Card1": {
-      "date": "12 December 2020",
-      "heading": "Arrival to Sakhalin",
-      "description": "The coordinates and any other necessary info"
+      "date": "25 Июля 2021",
+      "heading": "Вылет из Москвы",
+      "description": "Сбор команды в аэропорту, вылет"
     },
     "Card2": {
-      "date": "12 December 2020",
-      "heading": "Arrival to Sakhalin",
-      "description": "The coordinates and any other necessary info"
+      "date": "27 Июля 2021",
+      "heading": "Отправление на Итуруп",
+      "description": "Отправление команды из порта Корсаков"
     },
     "Card3": {
-      "date": "12 December 2020",
-      "heading": "Arrival to Sakhalin",
-      "description": "The coordinates and any other necessary info"
+      "date": "28 Июля 2021",
+      "heading": "Прибытие на Итуруп",
+      "description": "Работа в эфире с 28 июля по 3 августа"
     },
     "Card4": {
-      "date": "12 December 2020",
-      "heading": "Arrival to Sakhalin",
-      "description": "The coordinates and any other necessary info"
+      "date": "03 Августа 2021",
+      "heading": "Отправление на Сахалин",
+      "description": "Отправление команды с острова обратно на Сахалин"
+    },
+    "Card5": {
+      "date": "4 Августа 2021",
+      "heading": "Прибытие на Сахалин",
+      "description": "Отправка команды на Сахалин, планируется работа в эфире с 4 августа по 6 августа"
+    },
+    "Card6": {
+      "date": "6 Августа 2021",
+      "heading": "Отправление в Москву",
+      "description": "Завершение экспедиции"
     }
   }
 }

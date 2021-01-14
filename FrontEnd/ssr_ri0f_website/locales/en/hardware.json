@@ -10,11 +10,16 @@
       "description": "Small description"
     },
     "Card2": {
+      "type": "Transceiver",
+      "heading": "ICOM-7000",
+      "description": "Небольшое описание"
+    },
+    "Card3": {
       "type": "Antenna",
       "heading": "SteppIR BigIR",
       "description": "Small description"
     },
-    "Card3": {
+    "Card4": {
       "type": "Amplifier",
       "heading": "SPE Expert 1.5K-FA V2.0",
       "description": "Small description"

@@ -6,8 +6,8 @@ import useTranslation from 'next-translate/useTranslation'
 const Card = styled.div`
   font-family: Roboto, sans-serif;
   font-style: normal;
-  font-size: 24px;
-  line-height: 28px;
+  font-size: 18px;
+  line-height: 21px;
   text-align: left;
   color: #ECF0F1;
 
@@ -83,19 +83,17 @@ const BackNumber = styled.div`
 `
 
 
-//TODO: Complete Many different cards with translation
-
-export const PlanPageCard = () => {
+export const PlanPageCard = ({cardNumber}) => {
     const {t} = useTranslation()
 
     return (
         <Card>
             <div style={{padding: '46px 0 0 30px'}}>
-                <DateDiv>{t('main:Block3.Card' + 1 + '.date')}</DateDiv>
-                <HeaderDiv>{t('main:Block3.Card' + 1 + '.heading')}</HeaderDiv>
-                <ContentDiv>{t('main:Block3.Card' + 1 + '.description')}</ContentDiv>
+                <DateDiv>{t('plan:card_block.Card' + cardNumber + '.date')}</DateDiv>
+                <HeaderDiv>{t('plan:card_block.Card' + cardNumber + '.heading')}</HeaderDiv>
+                <ContentDiv>{t('plan:card_block.Card' + cardNumber + '.description')}</ContentDiv>
             </div>
-            <BackNumber>1</BackNumber>
+            <BackNumber>{cardNumber}</BackNumber>
         </Card>
     );
 };

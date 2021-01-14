@@ -13,8 +13,6 @@ const CardsBlockContainer = styled.div`
     }
 `
 
-//TODO: Complete cards with information and translation
-//Todo: Complete card number system
 export const PlanPageCardsBlock = () => {
     return (
         <CardsBlockContainer>
@@ -23,30 +21,30 @@ export const PlanPageCardsBlock = () => {
                     <FadeInContainer>
                         <Row gutter={[{xs: 0, sm: 30, md: 30, lg: 30}, 50]} justify={'center'}>
                             <Col>
-                                <PlanPageCard/>
+                                <PlanPageCard cardNumber={1}/>
                             </Col>
                             <Col>
-                                <PlanPageCard/>
-                            </Col>
-                        </Row>
-                    </FadeInContainer>
-                    <FadeInContainer>
-                        <Row gutter={[{xs: 0, sm: 30, md: 30, lg: 30}, 50]} justify={'center'}>
-                            <Col>
-                                <PlanPageCard/>
-                            </Col>
-                            <Col>
-                                <PlanPageCard/>
+                                <PlanPageCard cardNumber={2}/>
                             </Col>
                         </Row>
                     </FadeInContainer>
                     <FadeInContainer>
                         <Row gutter={[{xs: 0, sm: 30, md: 30, lg: 30}, 50]} justify={'center'}>
                             <Col>
-                                <PlanPageCard/>
+                                <PlanPageCard cardNumber={3}/>
                             </Col>
                             <Col>
-                                <PlanPageCard/>
+                                <PlanPageCard cardNumber={4}/>
+                            </Col>
+                        </Row>
+                    </FadeInContainer>
+                    <FadeInContainer>
+                        <Row gutter={[{xs: 0, sm: 30, md: 30, lg: 30}, 50]} justify={'center'}>
+                            <Col>
+                                <PlanPageCard cardNumber={5}/>
+                            </Col>
+                            <Col>
+                                <PlanPageCard cardNumber={6}/>
                             </Col>
                         </Row>
                     </FadeInContainer>

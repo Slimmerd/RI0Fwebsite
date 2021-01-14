@@ -54,10 +54,13 @@ export const MainPageBlock4 = () => {
                                 <TeamCard callName={'R6MG'}/>
                             </Col>
                             <Col xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
+                                <TeamCard callName={'M0MSV'}/>
+                            </Col>
+                            <Col xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
                                 <TeamCard callName={'RX3F'}/>
                             </Col>
                             <Col xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
-                                <TeamCard callName={'M0MSV'}/>
+                                <TeamCard callName={'RN3BL'}/>
                             </Col>
                             <Col xs={24} sm={24} md={24} lg={10} xl={8} xxl={8}>
                                 <TeamCard callName={'R6LGT'}/>
