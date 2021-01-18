@@ -21,13 +21,8 @@ const ActualNewsPage = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        if (ActNews === null) return router.push('/404')
-    }, [])
-
-
-    useEffect(() => {
         dispatch(getNews())
-        dispatch(getParticularNews(router.query.url))
+        dispatch(getParticularNews(router.query.url)).catch(() => router.push('/404'))
     }, [dispatch])
 
     if (!ActNews) {

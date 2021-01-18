@@ -6,7 +6,7 @@ COPY ./package.json ./
 
 ENV SERVER_API=1
 ENV BACKEND_URL=http://localhost:5000/api/
-ENV SITE_URL = http://ri0f.com/
+ENV SITE_URL = http://ri0ff.com/
 ENV ENV = production
 
 RUN npm install
