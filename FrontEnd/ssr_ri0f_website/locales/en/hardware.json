@@ -7,22 +7,27 @@
     "Card1": {
       "type": "Transceiver",
       "heading": "Elecraft К3",
-      "description": "Small description"
+      "description": "100 Watt. FT8, SSB, CW"
     },
     "Card2": {
       "type": "Transceiver",
       "heading": "ICOM-7000",
-      "description": "Небольшое описание"
+      "description": "100 Watt. FT8, SSB, CW"
     },
     "Card3": {
       "type": "Antenna",
       "heading": "SteppIR BigIR",
-      "description": "Small description"
+      "description": "3.6 MHz - 21 MHz"
     },
     "Card4": {
       "type": "Amplifier",
       "heading": "SPE Expert 1.5K-FA V2.0",
-      "description": "Small description"
+      "description": "1 kW"
+    },
+    "Card5": {
+      "type": "Amplifier",
+      "heading": "UT2FW Edition",
+      "description": "1 kW"
     }
   }
 }

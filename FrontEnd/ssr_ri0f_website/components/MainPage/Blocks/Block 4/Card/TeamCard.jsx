@@ -6,6 +6,8 @@ import Link from 'next/link';
 const R6MG = '/static/assets/r6mg.webp'
 const RZ3EC = '/static/assets/RZ3EC.webp'
 const M0MSV = '/static/assets/M0MSV.webp'
+const RX3F = '/static/assets/RX3F.webp'
+const RN3BL = '/static/assets/RN3BL.webp'
 
 const CardShape = styled.div`
   font-family: Roboto, sans-serif;
@@ -31,7 +33,7 @@ const PcitureDiv = styled.div`
   margin: 21.34px auto;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
+  background-position: ${props => (props.picture === M0MSV || props.picture === RN3BL) ? 'left center' : "center center "};
   max-width: 322.82px;
   height: 322.82px;
   background-image: ${props => `url(${props.picture})`};
@@ -86,8 +88,8 @@ const theme = {
     RZ3EC: RZ3EC,
     M0MSV: M0MSV,
     R6LGT: R6MG,
-    RX3F: R6MG,
-    RN3BL: R6MG
+    RX3F: RX3F,
+    RN3BL: RN3BL
 };
 
 export const TeamCard = ({callName}) => {
