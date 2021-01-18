@@ -6,6 +6,8 @@ import useTranslation from 'next-translate/useTranslation'
 const R6MG = '/static/assets/r6mg.webp'
 const RZ3EC = '/static/assets/RZ3EC.webp'
 const M0MSV = '/static/assets/M0MSV.webp'
+const RX3F = '/static/assets/RX3F.webp'
+const RN3BL = '/static/assets/RN3BL.webp'
 
 
 const CardShape = styled.div`
@@ -29,7 +31,7 @@ const CardShape = styled.div`
     background-image: ${props => `url(${props.picture})`};
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: ${props => props.picture === M0MSV ? 'left center' : "center center "};
+    background-position: ${props => (props.picture === M0MSV || props.picture === RN3BL) ? 'left center' : "center center "};
     border-radius: 0 15px 15px 0;
 
     display: flex;
@@ -186,8 +188,8 @@ const theme = {
     RZ3EC: RZ3EC,
     M0MSV: M0MSV,
     R6LGT: R6MG,
-    RX3F: R6MG,
-    RN3BL: R6MG
+    RX3F: RX3F,
+    RN3BL: RN3BL
 };
 
 

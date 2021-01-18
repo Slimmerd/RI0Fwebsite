@@ -5,7 +5,7 @@ import {FadeInContainer} from "../../common/FadeInAnimation";
 import useTranslation from 'next-translate/useTranslation'
 
 const MethodsPageContainer = styled.div`
-      min-height: 1009px;
+      min-height: 704px;
 `
 
 const BlockHeader = styled.div`
@@ -115,21 +115,6 @@ export const DonatePageMethods = () => {
                             <Card>
                                 <div className={'Headers'}>{t('donate:methods_block.card_transfer.heading')}:</div>
                                 <div className={'sub'}>4276 1340 0857 1263</div>
-                            </Card>
-                        </Col>
-                    </Row>
-                </FadeInContainer>
-
-                <FadeInContainer>
-                    <Row justify={'center'} gutter={[{xs: 0, sm: 30, md: 30, lg: 30}, 90]}>
-                        <Col>
-                            <Card>
-                                <div className={'Headers'}>{t('donate:methods_block.bank_transfer.heading')}:</div>
-                            </Card>
-                        </Col>
-                        <Col>
-                            <Card>
-                                <div className={'Headers'}>{t('donate:methods_block.something_else.heading')}</div>
                             </Card>
                         </Col>
                     </Row>
