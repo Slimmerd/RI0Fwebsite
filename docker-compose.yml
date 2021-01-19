@@ -3,8 +3,7 @@ services:
     image: frontend-server
     restart: unless-stopped
     ports:
-      - "443:443"
-      - "80:80"
+      - "3000:3000"
     networks:
       - production-app
   backend-server:
@@ -40,6 +39,7 @@ services:
     volumes:
       - caddy-data:/data
       - caddy-config:/config
+      - ./Caddyfile:/Caddyfile
     networks:
       - production-app
 networks:
