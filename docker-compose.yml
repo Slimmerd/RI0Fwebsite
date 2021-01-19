@@ -39,7 +39,7 @@ services:
     volumes:
       - caddy-data:/data
       - caddy-config:/config
-      - ./Caddyfile:/Caddyfile
+      - ./Caddyfile:/etc/caddy/Caddyfile
     networks:
       - production-app
 networks:

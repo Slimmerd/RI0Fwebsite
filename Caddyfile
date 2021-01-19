@@ -1,7 +1,7 @@
 ri0ff.com:443 {
   tls daniil.silin@gmail.com
-  root * /srv
   route {
+    reverse_proxy * frontend-server:3000
     reverse_proxy /api* backend-server:5000
     try_files {path} {path}/ /index.html
     file_server
