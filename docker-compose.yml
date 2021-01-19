@@ -5,9 +5,9 @@ services:
     ports:
       - "443:443"
       - "80:80"
-        volumes:
-          - caddy-data:/data
-          - caddy-config:/config
+    volumes:
+      - caddy-data:/data
+      - caddy-config:/config
     networks:
       - production-app
   backend-server:
