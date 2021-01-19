@@ -90,7 +90,7 @@ const Card = styled.div`
     background-image: url(${RZ3EC});
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center center;
+    background-position: center 25%;
   }
 
 

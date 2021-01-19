@@ -1,4 +1,5 @@
-FROM node:14.15.4-slim
+### First stage
+FROM node:14.15.4-slim AS builder
 
 WORKDIR /usr/src/app
 
@@ -15,8 +16,13 @@ COPY . .
 
 RUN npm run build
 
+### Second stage
+FROM caddy:2.2.1-alpine
+
+ARG CADDYFILE
+COPY ${CADDYFILE} /etc/caddy/Caddyfile
+
+COPY --from=builder /usr/src/app/build/ /srv
+
 EXPOSE 80
-
 EXPOSE 443
-
-CMD [ "npm", "start" ]

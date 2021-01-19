@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {getParticularNews} from "../../redux/actNews-reducer";
 import {getNews} from "../../redux/news-reducer";
 import {ActualNewsPageNaming} from "../../components/NewsPage/ActualNewsPage/Blocks/Naming_actualnewspage";
@@ -13,6 +13,7 @@ import {CHOSEN_NEWS_SEO} from "../../utils/SEO_headers";
 import {useDispatch, useSelector} from "react-redux";
 
 const ActualNewsPage = () => {
+    const [fetching, setFetching] = useState(true)
     const news = useSelector(state => state.newsPage.news)
     const ActNews = useSelector(state => state.actNewsPage)
 
@@ -22,10 +23,18 @@ const ActualNewsPage = () => {
 
     useEffect(() => {
         dispatch(getNews())
-        dispatch(getParticularNews(router.query.url)).catch(() => router.push('/404'))
+
+        const getPNews = async () => {
+            setFetching(true)
+            await dispatch(getParticularNews(router.query.url)).catch(() => router.push('/404'))
+            setFetching(false)
+        }
+
+        getPNews()
+
     }, [dispatch])
 
-    if (!ActNews) {
+    if (fetching) {
         return (
             <Loading/>
         )
