@@ -5,9 +5,6 @@ services:
     ports:
       - "443:443"
       - "80:80"
-    volumes:
-      - caddy-data:/data
-      - caddy-config:/config
     networks:
       - production-app
   backend-server:
@@ -20,6 +17,7 @@ services:
       - production-app
     depends_on:
       - mongo
+  # Mongo DB
   mongo:
     image: mongo:4.4-bionic
     ports:
@@ -33,6 +31,17 @@ services:
       - MONGO_INITDB_DATABASE=ri0f-backend
       - MONGO_INITDB_ROOT_USERNAME=2q9y1FU6mrj3R3ak27L7wKjOr
       - MONGO_INITDB_ROOT_PASSWORD=SPdlvgCDtGa4xTbepvLh5EVq
+  #  Caddy Server
+  caddy:
+    image: caddy:2.2.1-alpine
+    ports:
+      - "443:443"
+      - "80:80"
+    volumes:
+      - caddy-data:/data
+      - caddy-config:/config
+    networks:
+      - production-app
 networks:
   production-app:
     driver: bridge
