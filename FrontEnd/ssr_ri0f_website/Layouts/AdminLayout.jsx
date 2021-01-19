@@ -55,13 +55,19 @@ const LayoutStyle = styled.div`
 
 
 const AdminLayout = ({children}) => {
+    const [fetching, setFetching] = useState(true)
     const [collapsed, setCollapsed] = useState(false)
     const isAuth = useSelector(state => state.auth.isAuth)
     const dispatch = useDispatch()
     const {pathname} = useRouter()
 
     useEffect(() => {
-        dispatch(AuthStatus())
+        const CheckAuth = async () => {
+            setFetching(true)
+            await dispatch(AuthStatus())
+            setFetching(!isAuth)
+        }
+        CheckAuth()
     }, [dispatch])
 
     const logout = () => {
@@ -72,66 +78,65 @@ const AdminLayout = ({children}) => {
         setCollapsed(!collapsed)
     };
 
-    if (!isAuth) {
+    if (fetching) {
         return (
             <Loading/>
         )
-    }
+    } else {
+        return (
+            <LayoutStyle>
+                <Layout className={'newLayout'}>
+                    <Sider trigger={null} collapsible collapsed={collapsed}>
+                        <div className="AdminLogo">RIØFF</div>
+                        <Menu theme="dark" mode="inline" selectedKeys={[pathname]}>
 
-    return (
-        <LayoutStyle>
-            <Layout className={'newLayout'}>
-                <Sider trigger={null} collapsible collapsed={collapsed}>
-                    <div className="AdminLogo">RIØFF</div>
-                    <Menu theme="dark" mode="inline" selectedKeys={[pathname]}>
+                            <Menu.Item key="/admin-panel/news" icon={<FormOutlined/>}>
+                                <Link href="/admin-panel/news"><a>Новости</a></Link>
+                            </Menu.Item>
+                            <Menu.Item key="/admin-panel/gallery-posts" icon={<CameraOutlined/>}>
+                                <Link href="/admin-panel/gallery-posts"><a>Галлерея</a></Link>
+                            </Menu.Item>
+                            <Menu.Item key="/admin-panel/photos" icon={<UploadOutlined/>}>
+                                <Link href="/admin-panel/photos"><a>Фотографии</a></Link>
+                            </Menu.Item>
+                            <Menu.Item key="/admin-panel/comments" icon={<CommentOutlined/>}>
+                                <Link href="/admin-panel/comments"><a>Комментарии</a></Link>
+                            </Menu.Item>
+                            <Menu.Item key="/admin-panel/users" icon={<UserOutlined/>}>
+                                <Link href="/admin-panel/users"><a>Пользователи</a></Link>
+                            </Menu.Item>
+                        </Menu>
 
-                        <Menu.Item key="/admin-panel/news" icon={<FormOutlined/>}>
-                            <Link href="/admin-panel/news"><a>Новости</a></Link>
-                        </Menu.Item>
-                        <Menu.Item key="/admin-panel/gallery-posts" icon={<CameraOutlined/>}>
-                            <Link href="/admin-panel/gallery-posts"><a>Галлерея</a></Link>
-                        </Menu.Item>
-                        <Menu.Item key="/admin-panel/photos" icon={<UploadOutlined/>}>
-                            <Link href="/admin-panel/photos"><a>Фотографии</a></Link>
-                        </Menu.Item>
-                        <Menu.Item key="/admin-panel/comments" icon={<CommentOutlined/>}>
-                            <Link href="/admin-panel/comments"><a>Комментарии</a></Link>
-                        </Menu.Item>
-                        <Menu.Item key="/admin-panel/users" icon={<UserOutlined/>}>
-                            <Link href="/admin-panel/users"><a>Пользователи</a></Link>
-                        </Menu.Item>
-                    </Menu>
+                    </Sider>
 
-                </Sider>
+                    <Layout className="site-layout">
+                        <Header className="site-layout-background" style={{padding: 0}}>
+                            <Row>
+                                <Col xs={14} sm={16} md={18} lg={20} xl={22}>
+                                    {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+                                        className: 'trigger',
+                                        onClick: toggle,
+                                    })}
+                                </Col>
+                                <Col xs={10} sm={8} md={6} lg={4} xl={2}>
+                                    <Button onClick={logout}>Выйти</Button>
+                                </Col>
+                            </Row>
+                        </Header>
 
-                <Layout className="site-layout">
-                    <Header className="site-layout-background" style={{padding: 0}}>
-                        <Row>
-                            <Col xs={14} sm={16} md={18} lg={20} xl={22}>
-                                {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-                                    className: 'trigger',
-                                    onClick: toggle,
-                                })}
-                            </Col>
-                            <Col xs={10} sm={8} md={6} lg={4} xl={2}>
-                                <Button onClick={logout}>Выйти</Button>
-                            </Col>
-                        </Row>
-                    </Header>
-
-                    <Content
-                        className="site-layout-background"
-                        style={{
-                            margin: '24px 16px',
-                            padding: 24
-                        }}
-                    >
-                        {children}
-                    </Content>
+                        <Content
+                            className="site-layout-background"
+                            style={{
+                                margin: '24px 16px',
+                                padding: 24
+                            }}
+                        >
+                            {children}
+                        </Content>
+                    </Layout>
                 </Layout>
-            </Layout>
-        </LayoutStyle>
-    );
+            </LayoutStyle>
+        );
+    }
 }
-
 export default compose(withAuthRedirect)(AdminLayout)

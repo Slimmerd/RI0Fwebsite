@@ -9,7 +9,8 @@
       "heading": "Paypal"
     },
     "card_transfer": {
-      "heading": "Банковская карта"
+      "heading": "Сбербанк",
+      "sub": "4276 1340 0857 1263"
     },
     "bank_transfer": {
       "heading": "Банковский счет"

@@ -5,33 +5,33 @@ import {FadeInContainer} from "../../common/FadeInAnimation";
 import useTranslation from 'next-translate/useTranslation'
 
 const MethodsPageContainer = styled.div`
-      min-height: 704px;
+  min-height: 704px;
 `
 
 const BlockHeader = styled.div`
-    font-family: Oswald, sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 96px;
-    line-height: 142px;
-    color: #2C3E50;
-    
-    padding: 42px 0 94px 0;
-    
-  @media (max-width: 786px){
-  font-size: 76px;
-  line-height: 86px;
-  }
-    
-  @media (max-width:576px){
-      font-size: 54px;
-      line-height: 56px;  
-}
+  font-family: Oswald, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 96px;
+  line-height: 142px;
+  color: #2C3E50;
 
- @media (max-width:375px){
-      font-size: 42px;
-      line-height: 48px;
-} 
+  padding: 42px 0 94px 0;
+
+  @media (max-width: 786px) {
+    font-size: 76px;
+    line-height: 86px;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 54px;
+    line-height: 56px;
+  }
+
+  @media (max-width: 375px) {
+    font-size: 42px;
+    line-height: 48px;
+  }
 `
 
 const Card = styled.div`
@@ -65,6 +65,24 @@ const Card = styled.div`
   .sub {
     padding-top: 50px;
     font-weight: 400;
+
+    a {
+      color: #ECF0F1;
+      text-decoration: none;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-image: linear-gradient(to right,
+      #ff0043,
+      #ff0043 50%,
+      #ECF0F1 50%);
+      background-size: 200% 100%;
+      background-position: 100%;
+    }
+
+    a:hover {
+      transition: all 0.3s cubic-bezier(0.000, 0.000, 0.230, 1);
+      background-position: 0
+    }
   }
 
   @media (max-width: 786px) {
@@ -108,13 +126,14 @@ export const DonatePageMethods = () => {
                         <Col>
                             <Card>
                                 <div className={'Headers'}>{t('donate:methods_block.paypal.heading')}:</div>
-                                <div className={'sub'}>rz3ec@yandex.ru</div>
+                                <div className={'sub'}><a
+                                    href={'https://www.paypal.com/paypalme/RZ3EC'}>rz3ec@yandex.ru -></a></div>
                             </Card>
                         </Col>
                         <Col>
                             <Card>
                                 <div className={'Headers'}>{t('donate:methods_block.card_transfer.heading')}:</div>
-                                <div className={'sub'}>4276 1340 0857 1263</div>
+                                <div className={'sub'}>{t('donate:methods_block.card_transfer.sub')}</div>
                             </Card>
                         </Col>
                     </Row>

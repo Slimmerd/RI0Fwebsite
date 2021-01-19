@@ -17,7 +17,7 @@ let initialState =
         id: User ? User.userId : null,
         name_ru: User ? User.name_ru : null,
         name_en: User ? User.name_en : null,
-        isAuth: !!User ? User : false,
+        isAuth: false,
         fetching: false
     };
 

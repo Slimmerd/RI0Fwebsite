@@ -15,19 +15,29 @@
       "description": "100 ватт. FT8, SSB, CW"
     },
     "Card3": {
-      "type": "Антенна",
-      "heading": "SteppIR BigIR",
-      "description": "3.6 МГц - 21 МГц"
-    },
-    "Card4": {
       "type": "Усилитель",
       "heading": "SPE Expert 1.5K-FA V2.0",
       "description": "1 кВт"
     },
-    "Card5": {
+    "Card4": {
       "type": "Усилитель",
       "heading": "UT2FW Edition",
       "description": "1 кВт"
+    },
+    "Card5": {
+      "type": "Антенна",
+      "heading": "SteppIR BigIR",
+      "description": "3.6 МГц - 21 МГц"
+    },
+    "Card6": {
+      "type": "Антенна",
+      "heading": "VDA 20-17-15",
+      "description": "14, 18, 20 МГц"
+    },
+    "Card7": {
+      "type": "Антенна",
+      "heading": "GP 160-80m",
+      "description": "1.8 МГц - 3.6 МГц"
     }
   }
 }

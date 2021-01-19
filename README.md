@@ -1,4 +1,4 @@
-# 🌏 RI0F expedition website project
+# 🌏 RI0FF expedition website project
 
 The website dedicated to the expedition on island Iturup in 2021. This project is dockerized MERN stack with NEXT.JS for
 server side rendering.
