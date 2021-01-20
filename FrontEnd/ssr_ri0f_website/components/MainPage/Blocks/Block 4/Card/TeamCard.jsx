@@ -8,6 +8,7 @@ const RZ3EC = '/static/assets/RZ3EC.webp'
 const M0MSV = '/static/assets/M0MSV.webp'
 const RX3F = '/static/assets/RX3F.webp'
 const RN3BL = '/static/assets/RN3BL.webp'
+const R6LGT = '/static/assets/R6LGT.webp'
 
 const CardShape = styled.div`
   font-family: Roboto, sans-serif;
@@ -32,8 +33,8 @@ const PcitureDiv = styled.div`
 
   margin: 21.34px auto;
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: ${props => (props.picture === M0MSV || props.picture === RN3BL) ? 'left center' : "center center "};
+  background-size: ${props => props.picture === R6LGT ? "200% auto" : "cover"};;
+  background-position: ${props => (props.picture === M0MSV || props.picture === RN3BL) ? 'left center' : props.picture === R6LGT ? "center 20%" : "center center"};
   max-width: 322.82px;
   height: 322.82px;
   background-image: ${props => `url(${props.picture})`};
@@ -42,6 +43,8 @@ const PcitureDiv = styled.div`
   transition: transform .4s ease-out 0s;
   display: flex;
   align-items: flex-end;
+  cursor: pointer;
+
   //  @media (max-width:375px) {
   //width: 260px;
   //height: 260px;
@@ -82,12 +85,12 @@ const TextDiv = styled.div`
 
   color: #2C3E50;
 `
-// TODO PICTURE
+
 const theme = {
     R6MG: R6MG,
     RZ3EC: RZ3EC,
     M0MSV: M0MSV,
-    R6LGT: R6MG,
+    R6LGT: R6LGT,
     RX3F: RX3F,
     RN3BL: RN3BL
 };

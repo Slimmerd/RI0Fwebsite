@@ -1,5 +1,4 @@
-### First stage ###
-FROM node:14.15.4-slim AS builder
+FROM node:14.15.4-slim
 
 WORKDIR /usr/src/app
 
