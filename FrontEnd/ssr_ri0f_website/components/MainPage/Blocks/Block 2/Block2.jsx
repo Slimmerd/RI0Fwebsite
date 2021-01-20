@@ -2,6 +2,7 @@ import React from 'react'
 import {Col, Row} from "antd";
 import {FadeInContainer} from "../../../common/FadeInAnimation";
 import useTranslation from 'next-translate/useTranslation'
+import Image from "next/image";
 
 export const MainPageBlock2 = () => {
     const {t} = useTranslation()
@@ -17,8 +18,8 @@ export const MainPageBlock2 = () => {
                         </Col>
 
                         <Col className={'islandmap'} md={24} lg={12} xl={12} xxl={12}>
-
-                            <img src={"/static/assets/island_map.webp"} alt="Iturup Island map"/>
+                            <Image src={"/static/assets/RI0FF_1.webp"} alt="Iturup Island map"
+                                   layout={'fill'}/>
                         </Col>
                     </Row>
 
