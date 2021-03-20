@@ -48,7 +48,7 @@ const Card = styled.div`
   transition: transform .4s ease-out 0s;
 
   &:hover {
-    transform: scale(1.02);
+    transform: translateZ(0) scale(1.02);
   }
 
   .Headers, .sub {
@@ -77,10 +77,10 @@ const Card = styled.div`
       #ECF0F1 50%);
       background-size: 200% 100%;
       background-position: 100%;
+      transition: background-position 0.5s ease;
     }
 
     a:hover {
-      transition: all 0.3s cubic-bezier(0.000, 0.000, 0.230, 1);
       background-position: 0
     }
   }

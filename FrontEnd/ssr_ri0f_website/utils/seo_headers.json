@@ -2,21 +2,21 @@
   "main": {
     "ru": {
       "head": "Главная",
-      "description": "Экспедиция RI0F на остров Итуруп"
+      "description": "Экспедиция RI0FF на остров Итуруп"
     },
     "en": {
       "head": "Main",
-      "description": "RI0F expedition on island Iturup"
+      "description": "RI0FF expedition on island Iturup"
     }
   },
   "news": {
     "ru": {
       "head": "Новости",
-      "description": "Новости о экспедиции RI0F"
+      "description": "Новости о экспедиции RI0FF"
     },
     "en": {
       "head": "News",
-      "description": "News about RI0F expedition"
+      "description": "News about RI0FF expedition"
     }
   },
   "team": {
