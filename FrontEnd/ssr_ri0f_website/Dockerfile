@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 COPY ./package.json ./
 
 ENV SERVER_API=1
-ENV BACKEND_URL=https://ri0ff.com:5000
+ENV BACKEND_URL=https://api.ri0ff.com
 ENV SITE_URL = https://ri0ff.com/
 ENV ENV = production
 
