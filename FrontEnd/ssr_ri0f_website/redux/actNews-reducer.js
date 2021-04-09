@@ -57,7 +57,7 @@ export const getNames = id => async (dispatch) => {
     if (response.status === 202) {
         dispatch(setNames(response.data.author_ru, response.data.author_en))
     } else {
-        let ErrorMessage = response.data.message.length > 0 ? response.data.message : "Undefined error"
+        let ErrorMessage = response.data.message?.length > 0 ? response.data.message : "Undefined error"
         notificationWindow('error',
             'Произошла ошибка во время загрузки',
             ErrorMessage,

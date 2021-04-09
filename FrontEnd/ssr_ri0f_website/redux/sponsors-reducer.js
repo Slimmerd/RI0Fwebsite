@@ -89,7 +89,7 @@ export const postSponsor = (name, category, img) => async (dispatch) => {
             'bottomLeft',
             10)
     } else {
-        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : "Service unavailable"
+        let ErrorMessage = response && response.data.message?.length > 0 ? response.data.message : "Service unavailable"
         dispatch(stopSubmit("GalleryForm", {_error: ErrorMessage}))
         notificationWindow('error',
             'Произошла ошибка',
@@ -116,7 +116,7 @@ export const deleteSponsor = (name) => async (dispatch) => {
             'bottomLeft',
             10)
     } else {
-        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : "Service unavailable"
+        let ErrorMessage = response && response.data.message?.length > 0 ? response.data.message : "Service unavailable"
         notificationWindow('error',
             'Произошла ошибка во время удаления спонсора',
             ErrorMessage,

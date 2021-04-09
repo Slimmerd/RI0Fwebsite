@@ -67,7 +67,7 @@ export const getPosts = () => async (dispatch) => {
     if (response && response.status === 201) {
         dispatch(setPosts(response.data))
     } else {
-        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : 'Gallery service unavailable'
+        let ErrorMessage = response && response.data.message?.length > 0 ? response.data.message : 'Gallery service unavailable'
         notificationWindow('error',
             'Error/Ошибка',
             ErrorMessage,

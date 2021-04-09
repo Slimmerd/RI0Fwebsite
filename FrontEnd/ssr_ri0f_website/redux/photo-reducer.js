@@ -55,7 +55,7 @@ export const getPhotos = () => async (dispatch) => {
     if (response && response.status === 201) {
         dispatch(setPhotos(response.data))
     } else {
-        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : "Service unavailable"
+        let ErrorMessage = response && response.data.message?.length > 0 ? response.data.message : "Service unavailable"
         notificationWindow('error',
             'Произошла ошибка',
             ErrorMessage,
@@ -77,7 +77,7 @@ export const uploadPhoto = (files) => async (dispatch) => {
             'bottomLeft',
             10)
     } else {
-        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : "Service unavailable"
+        let ErrorMessage = response && response.data.message?.length > 0 ? response.data.message : "Service unavailable"
         dispatch(stopSubmit("UploadForm", {_error: ErrorMessage}))
         notificationWindow('error',
             'Произошла ошибка во время загрузки',
@@ -103,7 +103,7 @@ export const deletePhoto = (id) => async (dispatch) => {
             'bottomLeft',
             10)
     } else {
-        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : "Service unavailable"
+        let ErrorMessage = response && response.data.message?.length > 0 ? response.data.message : "Service unavailable"
         notificationWindow('error',
             'Произошла ошибка во время удаления фото',
             ErrorMessage,

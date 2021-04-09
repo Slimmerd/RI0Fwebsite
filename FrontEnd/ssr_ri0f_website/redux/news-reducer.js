@@ -71,7 +71,7 @@ export const getNews = () => async (dispatch) => {
         dispatch(setNews(response.data));
 
     } else {
-        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : 'News service unavailable'
+        let ErrorMessage = response && response.data.message?.length > 0 ? response.data.message : 'News service unavailable'
         if (typeof window !== "undefined") {
             return (notificationWindow('error',
                 'Error/Ошибка',
@@ -96,7 +96,7 @@ export const CreateNews = (name_ru, name_en, text_ru, text_en, img) => async (di
             'bottomLeft',
             10)
     } else {
-        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : "Service unavailable"
+        let ErrorMessage = response && response.data.message?.length > 0 ? response.data.message : "Service unavailable"
         dispatch(stopSubmit("NewsForm", {_error: ErrorMessage}))
         notificationWindow('error',
             'Произошла ошибка во время публикации новости',
@@ -124,7 +124,7 @@ export const EditNews = (name_ru, name_en, text_ru, text_en, img, url) => async 
             10)
 
     } else {
-        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : "Service unavailable"
+        let ErrorMessage = response && response.data.message?.length > 0 ? response.data.message : "Service unavailable"
         dispatch(stopSubmit("NewsForm", {_error: ErrorMessage}))
         notificationWindow('error',
             'Произошла ошибка во время сохранения новости',
@@ -150,7 +150,7 @@ export const DeleteNews = (url) => async (dispatch) => {
             'bottomLeft',
             10)
     } else {
-        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : "Service unavailable"
+        let ErrorMessage = response && response.data.message?.length > 0 ? response.data.message : "Service unavailable"
         notificationWindow('error',
             'Произошла ошибка во время удаления новости',
             ErrorMessage,

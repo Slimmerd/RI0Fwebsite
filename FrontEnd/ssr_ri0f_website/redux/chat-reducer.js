@@ -66,7 +66,7 @@ export const getComments = () => async (dispatch) => {
     if (response && response.status === 201) {
         dispatch(setComments(response.data))
     } else {
-        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : 'Chat service unavailable'
+        let ErrorMessage = response && response.data.message?.length > 0 ? response.data.message : 'Chat service unavailable'
         notificationWindow('error',
             'Error/Ошибка',
             ErrorMessage,
@@ -84,7 +84,7 @@ export const postComment = (name, call, email, text) => async (dispatch) => {
         dispatch(addComment({name, call, email, text}))
 
     } else {
-        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : 'Chat service unavailable'
+        let ErrorMessage = response && response.data.message?.length > 0 ? response.data.message : 'Chat service unavailable'
         dispatch(stopSubmit("ChatForm", {_error: ErrorMessage}))
         notificationWindow('error',
             "Error/Ошибка",
@@ -112,7 +112,7 @@ export const deleteComment = (id) => async (dispatch) => {
             'bottomLeft',
             10)
     } else {
-        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : "Service unavailable"
+        let ErrorMessage = response && response.data.message?.length > 0 ? response.data.message : "Service unavailable"
         notificationWindow('error',
             'Произошла ошибка во время удаления комментария',
             ErrorMessage,

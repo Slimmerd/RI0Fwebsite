@@ -75,7 +75,7 @@ export const AuthStatus = () => async (dispatch) => {
     } else if (response && response.status === 401) {
         dispatch(setUserAuth(false))
     } else {
-        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : "Service unavailable"
+        let ErrorMessage = response && response.data.message?.length > 0 ? response.data.message : "Service unavailable"
         notificationWindow('error',
             'Произошла ошибка',
             ErrorMessage,
@@ -93,7 +93,7 @@ export const UserLogin = (email, password) => async (dispatch) => {
         let {token, userId, name_ru, name_en} = response.data;
         dispatch(setUserData(userId, name_ru, name_en, !!token))
     } else {
-        let ErrorMessage = response && response.data.message.length > 0 ? response.data.message : "Service unavailable"
+        let ErrorMessage = response && response.data.message?.length > 0 ? response.data.message : "Service unavailable"
         dispatch(stopSubmit("LoginForm", {_error: ErrorMessage}))
         notificationWindow('error',
             'Произошла ошибка',
