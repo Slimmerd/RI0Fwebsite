@@ -18,7 +18,7 @@ const corsOptions = {
 }
 const speedLimiter = slowDown({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    delayAfter: 25, // allow 100 requests per 15 minutes, then...
+    delayAfter: 1000, // allow 100 requests per 15 minutes, then...
     delayMs: 500 // begin adding 500ms of delay per request above 100:
 });
 
