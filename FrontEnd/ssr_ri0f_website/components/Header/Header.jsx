@@ -14,7 +14,7 @@ const Header = () => {
                     <div className={'logo'}>
                         <Link href="/">
                             <Image src={"/static/assets/newLogo.png"} width={69}
-                                   height={69} layout={'fixed'} priority quality={90}/>
+                                   height={69} layout={'fixed'} priority quality={90} alt={'RIØFF'}/>
                         </Link>
                     </div>
                 </Col>

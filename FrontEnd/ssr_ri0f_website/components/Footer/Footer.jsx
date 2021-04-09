@@ -105,7 +105,7 @@ export const Footer = () => {
                     <Col>
                         <Logo>
                             <Image src={"/static/assets/newLogo.png"} width={128}
-                                   height={128} priority quality={90}/>
+                                   height={128} priority quality={90} alt={'RIØFF'}/>
 
                         </Logo>
                     </Col>
