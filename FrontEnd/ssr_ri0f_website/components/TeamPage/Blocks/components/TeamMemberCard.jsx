@@ -24,7 +24,7 @@ const CardShape = styled.div`
   }
 
   .left, .right {
-    height: 550px;
+    min-height: 550px;
   }
 
   .left {
@@ -60,6 +60,7 @@ const CardShape = styled.div`
 
     .right {
       border-radius: 15px 15px 0 0;
+      margin-bottom: 30px;
     }
   }
 
@@ -68,9 +69,10 @@ const CardShape = styled.div`
   }
 
   @media (max-width: 576px) {
+    min-height: 400px;
     width: 400px;
-    .left {
-      height: 350px;
+    .left, .right {
+      min-height: 250px;
     }
   }
 
@@ -79,7 +81,6 @@ const CardShape = styled.div`
   }
 `
 const SmallerCard = styled.div`
-
   .header, .information {
     text-align: left;
   }
@@ -111,7 +112,7 @@ const SmallerCard = styled.div`
     font-size: 60px;
     line-height: 84px;
     width: 465px;
-    height: 365px;
+
     color: #ECF0F1;
     word-break: break-word;
     white-space: normal;
@@ -133,6 +134,7 @@ const SmallerCard = styled.div`
     }
 
     .information {
+      min-height: 150px;
       width: 400px;
     }
 
@@ -216,7 +218,6 @@ export const TeamMemberCard = ({teamMember}) => {
                     </Col>
                     <Col className={'left'} span={9} xs={24} sm={24} md={24} lg={9} xl={9}>
                         {/*<Icon icon={cameraIcon} style={{color: '#ecf0f1', fontSize: '165px'}}/>*/}
-
                     </Col>
                 </Row>
             </CardShape>

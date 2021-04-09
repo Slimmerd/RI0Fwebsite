@@ -10,6 +10,7 @@ const CardsBlockContainer = styled.div`
 
   .start {
     padding-top: 140px;
+    padding-bottom: 90px;
   }
 `
 
@@ -28,6 +29,7 @@ export const HardwarePageCardsBlock = () => {
                             </Col>
                         </Row>
                     </FadeInContainer>
+
                     <FadeInContainer>
                         <Row gutter={[{xs: 0, sm: 30, md: 30, lg: 30}, 50]} justify={'center'}>
                             <Col>
@@ -38,6 +40,7 @@ export const HardwarePageCardsBlock = () => {
                             </Col>
                         </Row>
                     </FadeInContainer>
+
                     <FadeInContainer>
                         <Row gutter={[{xs: 0, sm: 30, md: 30, lg: 30}, 50]} justify={'center'}>
                             <Col>
@@ -48,14 +51,12 @@ export const HardwarePageCardsBlock = () => {
                             </Col>
                         </Row>
                     </FadeInContainer>
+
                     <FadeInContainer>
                         <Row gutter={[{xs: 0, sm: 30, md: 30, lg: 30}, 50]} justify={'center'}>
                             <Col>
                                 <HardwarePageCard cardNumber={7}/>
                             </Col>
-                            {/*<Col>*/}
-                            {/*    <HardwarePageCard cardNumber={1}/>*/}
-                            {/*</Col>*/}
                         </Row>
                     </FadeInContainer>
                 </div>

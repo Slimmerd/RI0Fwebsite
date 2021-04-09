@@ -13,8 +13,10 @@ const Header = () => {
                 <Col xs={3} sm={3} md={3} lg={3} xl={4}>
                     <div className={'logo'}>
                         <Link href="/">
-                            <Image src={"/static/assets/newLogo.png"} width={69}
-                                   height={69} layout={'fixed'} priority quality={90} alt={'RIØFF'}/>
+                            <div>
+                                <Image src={"/static/assets/newLogo.png"} width={69}
+                                       height={69} layout={'fixed'} priority quality={90} alt={'RIØFF'}/>
+                            </div>
                         </Link>
                     </div>
                 </Col>

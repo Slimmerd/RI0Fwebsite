@@ -6,11 +6,12 @@ import {PlanPageCard} from "./PlanCard_planpage";
 
 // language=SCSS prefix=*{ suffix=}
 const CardsBlockContainer = styled.div`
-    min-height: 1386px;
+  min-height: 1386px;
 
-    .start {
-      padding-top: 140px;
-    }
+  .start {
+    padding-top: 140px;
+    padding-bottom: 90px;
+  }
 `
 
 export const PlanPageCardsBlock = () => {

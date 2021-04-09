@@ -19,7 +19,7 @@ export const MainPageBlock2 = () => {
 
                         <Col className={'islandmap'} md={24} lg={12} xl={12} xxl={12}>
                             <Image src={"/static/assets/RI0FF_1.webp"} alt="Iturup Island map"
-                                   layout={'fill'}/>
+                                   layout={'fill'} quality={90} priority/>
                         </Col>
                     </Row>
 
@@ -28,6 +28,4 @@ export const MainPageBlock2 = () => {
         </div>
 
     )
-
-
 }
