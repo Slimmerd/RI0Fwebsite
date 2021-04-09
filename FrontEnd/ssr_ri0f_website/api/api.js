@@ -218,7 +218,7 @@ export const GalleryAPI = {
 
 
 export const SponsorsAPI = {
-    // Get sponsors list
+    // Get donaters list
     getSponsors() {
         return instance.get(`sponsors/`)
             .then(response => {
@@ -240,8 +240,8 @@ export const SponsorsAPI = {
     },
 
     // Delete sponsor by name
-    deleteSponsor(name) {
-        return instance.delete(`sponsors/delete/${name}`).then(response => {
+    deleteSponsor(id) {
+        return instance.delete(`sponsors/delete/${id}`).then(response => {
             return response
         }).catch((error) => {
             return error.response

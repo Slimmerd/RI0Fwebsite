@@ -40,9 +40,10 @@ router.post('/create', [
 // Only admins
 router.delete('/delete/:url', auth, async (req, res) => {
     try {
-        const name = req.params.name
+        const id = req.params.id
+        if (id === undefined || id === 'undefined') return res.status(404).json({message: 'Публикация не найдена'})
 
-        const sponsor = await Sponsors.findOneAndDelete({name})
+        const sponsor = await Sponsors.findByIdAndDelete(id)
 
         if (!sponsor) {
             return res.status(404).json({message: 'Спонсор не найден'})

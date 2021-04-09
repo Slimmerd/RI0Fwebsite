@@ -49,8 +49,8 @@ export const addSponsor = (post) =>
         type: ADD_SPONSOR, post
     });
 
-export const setDeletedSponsor = (post) => ({
-    type: DELETE_SPONSOR, post
+export const setDeletedSponsor = (id) => ({
+    type: DELETE_SPONSOR, id
 });
 
 export const setFetching = (fetching) =>
@@ -102,10 +102,10 @@ export const postSponsor = (name, category, img) => async (dispatch) => {
     dispatch(setFetching(false)) // Disable comment fetching
 }
 
-export const deleteSponsor = (name) => async (dispatch) => {
+export const deleteSponsor = (id) => async (dispatch) => {
     dispatch(setFetching(true))
 
-    let response = await SponsorsAPI.deleteSponsor(name)
+    let response = await SponsorsAPI.deleteSponsor(id)
 
     if (response && response.status === 201) {
 

@@ -10,7 +10,8 @@ import {
     CameraOutlined,
     UploadOutlined,
     CommentOutlined,
-    UserOutlined
+    UserOutlined,
+    MoneyCollectOutlined
 } from '@ant-design/icons';
 import {AuthStatus, UserLogOut} from "../redux/auth-reducer";
 import {useDispatch, useSelector} from "react-redux";
@@ -92,6 +93,9 @@ const AdminLayout = ({children}) => {
 
                             <Menu.Item key="/admin-panel/news" icon={<FormOutlined/>}>
                                 <Link href="/admin-panel/news"><a>Новости</a></Link>
+                            </Menu.Item>
+                            <Menu.Item key="/admin-panel/donaters" icon={<MoneyCollectOutlined/>}>
+                                <Link href="/admin-panel/donaters"><a>Спонсоры</a></Link>
                             </Menu.Item>
                             <Menu.Item key="/admin-panel/gallery-posts" icon={<CameraOutlined/>}>
                                 <Link href="/admin-panel/gallery-posts"><a>Галлерея</a></Link>
