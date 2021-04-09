@@ -3,6 +3,7 @@ import {Col, Row} from 'antd';
 import RightMenu from "./menus/RightMenu";
 import LeftMenu from "./menus/LeftMenu";
 import SideBar from "../common/SideBar";
+import Image from "next/image";
 
 const Header = () => {
     return (
@@ -11,7 +12,10 @@ const Header = () => {
             <Row className={'menuCon'}>
                 <Col xs={3} sm={3} md={3} lg={3} xl={4}>
                     <div className={'logo'}>
-                        <Link href="/"><a>RIØFF</a></Link>
+                        <Link href="/">
+                            <Image src={"/static/assets/newLogo.png"} width={69}
+                                   height={69} layout={'fixed'} priority quality={90}/>
+                        </Link>
                     </div>
                 </Col>
 
