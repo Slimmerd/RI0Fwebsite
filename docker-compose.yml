@@ -1,0 +1,54 @@
+services:
+  frontend-server:
+    image: frontend-server
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    networks:
+      - production-app
+  backend-server:
+    image: backend-server
+    restart: unless-stopped
+    env_file: ./BackEnd/config/${ENV}.env
+    ports:
+      - "5000:5000"
+    networks:
+      - production-app
+    depends_on:
+      - mongo
+  # Mongo DB
+  mongo:
+    image: mongo:4.4-bionic
+    ports:
+      - "27017:27017"
+    networks:
+      - production-app
+    volumes:
+      - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - mongo-data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=ri0f-backend
+      - MONGO_INITDB_ROOT_USERNAME=USER
+      - MONGO_INITDB_ROOT_PASSWORD=PASSWORD
+  #  Caddy Server
+  caddy:
+    image: caddy:2.2.1-alpine
+    ports:
+      - "443:443"
+      - "80:80"
+    volumes:
+      - caddy-data:/data
+      - caddy-config:/config
+      - ./Caddyfile:/etc/caddy/Caddyfile
+    networks:
+      - production-app
+networks:
+  production-app:
+    driver: bridge
+volumes:
+  mongo-data:
+    driver: local
+  caddy-data:
+    driver: local
+  caddy-config:
+    driver: local
