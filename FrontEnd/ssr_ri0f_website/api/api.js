@@ -215,3 +215,37 @@ export const GalleryAPI = {
         })
     },
 }
+
+
+export const SponsorsAPI = {
+    // Get sponsors list
+    getSponsors() {
+        return instance.get(`sponsors/`)
+            .then(response => {
+                return response
+            }).catch((error) => {
+                return error.response
+            });
+    },
+
+    // Post sponsor
+    postSponsor(name, category, img) {
+        return instance.post(`sponsors/create`, {name, category, img})
+            .then(response => {
+                return response
+            }).catch((error) => {
+                return error.response
+            })
+
+    },
+
+    // Delete sponsor by name
+    deleteSponsor(name) {
+        return instance.delete(`sponsors/delete/${name}`).then(response => {
+            return response
+        }).catch((error) => {
+            return error.response
+        })
+    },
+
+}

@@ -8,70 +8,62 @@ export const SponsorsBlock = () => {
     return (
         <Row align={'center'}>
             <Col className={'sponsorsblock'} md={4} lg={3}>
-
                 <Image
                     src={rrc_logo} alt=""
                     width={90}
                     height={90}
                 />
             </Col>
-            <Col className={'sponsorsblock'} md={4} lg={3}>
-                {/*<img src={rrc_logo} alt=""/>*/}
 
+            <Col className={'sponsorsblock'} md={4} lg={3}>
                 <Image
                     src={rrc_logo} alt=""
                     width={90}
                     height={90}
                 />
             </Col>
-            <Col className={'sponsorsblock'} md={4} lg={3}>
-                {/*<img src={rrc_logo} alt=""/>*/}
 
+            <Col className={'sponsorsblock'} md={4} lg={3}>
                 <Image
                     src={rrc_logo} alt=""
                     width={90}
                     height={90}
                 />
             </Col>
-            <Col className={'sponsorsblock'} md={4} lg={3}>
-                {/*<img src={rrc_logo} alt=""/>*/}
 
+            <Col className={'sponsorsblock'} md={4} lg={3}>
                 <Image
                     src={rrc_logo} alt=""
                     width={90}
                     height={90}
                 />
             </Col>
-            <Col className={'sponsorsblock'} md={4} lg={3}>
-                {/*<img src={rrc_logo} alt=""/>*/}
 
+            <Col className={'sponsorsblock'} md={4} lg={3}>
                 <Image
                     src={rrc_logo} alt=""
                     width={90}
                     height={90}
                 />
             </Col>
-            <Col className={'sponsorsblock'} md={4} lg={3}>
-                {/*<img src={rrc_logo} alt=""/>*/}
 
+            <Col className={'sponsorsblock'} md={4} lg={3}>
                 <Image
                     src={rrc_logo} alt=""
                     width={90}
                     height={90}
                 />
             </Col>
-            <Col className={'sponsorsblock'} md={4} lg={3}>
-                {/*<img src={rrc_logo} alt=""/>*/}
 
+            <Col className={'sponsorsblock'} md={4} lg={3}>
                 <Image
                     src={rrc_logo} alt=""
                     width={90}
                     height={90}
                 />
             </Col>
-            <Col className={'sponsorsblock'} md={4} lg={3}>
-                {/*<img src={rrc_logo} alt=""/>*/}
 
+            <Col className={'sponsorsblock'} md={4} lg={3}>
                 <Image
                     src={rrc_logo} alt=""
                     width={90}

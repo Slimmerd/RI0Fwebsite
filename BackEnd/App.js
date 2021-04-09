@@ -16,6 +16,9 @@ const corsOptions = {
     origin: process.env.BaseURL,
     credentials: true
 }
+//TODO Access to db only from certain IP addresses
+//TODO Try ElasticSearch for logging docker?
+
 const speedLimiter = slowDown({
     windowMs: 15 * 60 * 1000, // 15 minutes
     delayAfter: 1000, // allow 100 requests per 15 minutes, then...
@@ -44,6 +47,7 @@ app.use('/api/photos', require('./routes/photos.routes'))
 app.use('/api/chat', apiCheck, require('./routes/chat.routes'))
 app.use('/api/photos', apiCheck, require('./routes/photos.routes'))
 app.use('/api/gallery', apiCheck, require('./routes/gallery.routes'))
+app.use('/api/sponsors', apiCheck, require('./routes/sponsors.routes'))
 
 const PORT = process.env.PORT
 

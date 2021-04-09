@@ -16,7 +16,7 @@ const BlockHeader = styled.div`
   line-height: 142px;
   color: #2C3E50;
 
-  padding: 42px 0 94px 0;
+  padding: 42px 0 74px 0;
 
   @media (max-width: 786px) {
     font-size: 76px;

@@ -7,6 +7,7 @@ import AuthReducer from "./auth-reducer";
 import ChatReducer from "./chat-reducer";
 import PhotoReducer from "./photo-reducer";
 import GalleryReducer from "./gallery-reducer";
+import SponsorsReducer from "./sponsors-reducer";
 
 const reducers = combineReducers({
     newsPage: NewsReducer,
@@ -15,6 +16,7 @@ const reducers = combineReducers({
     gallery: GalleryReducer,
     auth: AuthReducer,
     chat: ChatReducer,
+    sponsors: SponsorsReducer,
     form: formReducer
 });
 
