@@ -13,7 +13,6 @@ import {getSponsors} from "../../redux/sponsors-reducer";
 const DonatePage = () => {
 
     //TODO Set picture for R6MG
-    //TODO in Admin panel ability to add new people
     //TODO MAIN PAGE BLOCK 3 SPONSORS LOADING
     const {lang} = useTranslation()
     const sponsors = useSelector(state => state.sponsors.posts)
