@@ -85,10 +85,6 @@ const Card = styled.div`
     }
   }
 
-  @media (max-width: 786px) {
-
-  }
-
   @media (max-width: 576px) {
     width: 360px;
 
@@ -99,7 +95,9 @@ const Card = styled.div`
   }
 
   @media (max-width: 375px) {
+    min-height: 180px;
     width: 270px;
+    display: grid;
 
     .Headers, .sub {
       font-size: 28px;
@@ -126,8 +124,8 @@ export const DonatePageMethods = () => {
                         <Col>
                             <Card>
                                 <div className={'Headers'}>{t('donate:methods_block.paypal.heading')}:</div>
-                                <div className={'sub'}><a
-                                    href={'https://www.paypal.com/paypalme/RZ3EC'}>rz3ec@yandex.ru -></a></div>
+                                <div className={'sub'}>
+                                    <a href={'https://www.paypal.com/paypalme/RZ3EC'}>rz3ec@yandex.ru -></a></div>
                             </Card>
                         </Col>
                         <Col>
