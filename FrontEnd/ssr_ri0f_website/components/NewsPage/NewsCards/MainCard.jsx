@@ -4,7 +4,6 @@ import {Icon} from '@iconify/react';
 import cameraIcon from '@iconify/icons-si-glyph/camera';
 import React, {useEffect, useState} from "react";
 import useTranslation from 'next-translate/useTranslation'
-import moment from 'moment';
 import Link from "next/link";
 
 const CardShape = styled.div`
@@ -165,7 +164,8 @@ export const MainCard = ({news}) => {
                             <Col span={10} xs={12} sm={12} md={14} lg={12} xl={10} className={'text'}>
                                 <div style={{margin: '0 auto'}}>
 
-                                    <div className={'date'}>{!loading ? moment(news.date).format('DD.MM.YYYY') :
+                                    <div
+                                        className={'date'}>{!loading ? new Date(news.date).toLocaleDateString('ru-ru') :
                                         <Skeleton.Input style={{width: 100, height: '25px', borderRadius: '5px'}}
                                                         active={'active'}/>}</div>
 

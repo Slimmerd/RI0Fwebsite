@@ -3,7 +3,6 @@ import {Row, Skeleton} from "antd";
 import styled from "styled-components";
 import {Icon} from '@iconify/react';
 import cameraIcon from '@iconify/icons-si-glyph/camera';
-import moment from 'moment';
 import Link from "next/link";
 import useTranslation from 'next-translate/useTranslation'
 
@@ -167,7 +166,7 @@ export const SecondaryCard = ({news}) => {
 
                     <Row className={'text'}>
                         <div style={{margin: '0 auto'}}>
-                            <div className={'date'}>{!loading ? moment(news.date).format('DD.MM.YYYY') :
+                            <div className={'date'}>{!loading ? new Date(news.date).toLocaleDateString('ru-ru') :
                                 <Skeleton.Input style={{width: 100, height: '20px', borderRadius: '5px'}}
                                                 active={'active'}/>}</div>
 

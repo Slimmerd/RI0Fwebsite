@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 import {Col, Row} from "antd";
 import styled from "styled-components";
 import {FadeInContainer} from "../../../common/FadeInAnimation";
-import moment from "moment";
 import useTranslation from 'next-translate/useTranslation'
 
 const HeaderBlock = styled.div`
@@ -121,7 +120,7 @@ export const ActualNewsPageNaming = ({news}) => {
                                     <div className={'sub'}>{author}</div>
                                 </Col>
                                 <Col xs={24} sm={12} md={12}>
-                                    <div className={'sub'}>{moment(news.date).format('DD.MM.YYYY')}</div>
+                                    <div className={'sub'}>{new Date(news.date).toLocaleDateString('ru-ru')}</div>
                                 </Col>
                             </Row>
                         </Col>

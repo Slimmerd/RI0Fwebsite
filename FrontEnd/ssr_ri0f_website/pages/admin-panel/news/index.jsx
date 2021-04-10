@@ -7,7 +7,6 @@ import {getNames} from "../../../redux/actNews-reducer";
 import NewsPublish from "../../../components/AdminPanel/AdminPanel/News/CreatePost/CreatePost";
 import NewsEdit from "../../../components/AdminPanel/AdminPanel/News/EditPost";
 import {DeleteOutlined} from "@ant-design/icons";
-import moment from "moment";
 import AdminLayout from "../../../Layouts/AdminLayout";
 import {NextSeo} from "next-seo";
 import {ADMIN_SEO} from "../../../utils/SEO_headers";
@@ -108,8 +107,7 @@ const NewsPosts = () => {
                             render={author => (GetNames(author), actNews)}/>
 
                     <Column title="Дата" dataIndex='date' key="date" ellipsis
-                            render={(date) => (moment(date).format('DD.MM.YYYY'))}/>
-
+                            render={(date) => new Date(date).toLocaleDateString('ru-ru')}/>
 
                 </Table>
             </Styled>

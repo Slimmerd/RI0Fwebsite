@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Table, Tag} from 'antd';
 import {useDispatch, useSelector} from "react-redux";
-import moment from "moment";
 import {DeleteOutlined} from "@ant-design/icons";
 import styled from "styled-components";
 import {deletePost, getPosts} from "../../../redux/gallery-reducer";
@@ -96,7 +95,7 @@ const GalleryList = () => {
                                 <Tag color={'red'}>Отсутствует</Tag>)}/>
 
                     <Column title="Дата" dataIndex='date' key="date" ellipsis
-                            render={(date) => (moment(date).format('DD.MM.YYYY'))}/>
+                            render={(date) => new Date(date).toLocaleDateString('ru-ru')}/>
 
                 </Table>
             </Styled>

@@ -10,6 +10,7 @@ const themeVariables = lessToJS(
 )
 
 module.exports = nextTranslate(withLess({
+    optimization: {minimize: true},
     lessLoaderOptions: {
         javascriptEnabled: true,
         modifyVars: themeVariables, // make your antd custom effective

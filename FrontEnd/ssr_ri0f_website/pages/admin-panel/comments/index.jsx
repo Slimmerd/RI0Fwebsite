@@ -4,7 +4,6 @@ import styled from "styled-components";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteComment, getComments} from "../../../redux/chat-reducer";
 import {DeleteOutlined} from "@ant-design/icons";
-import moment from "moment";
 import AdminLayout from "../../../Layouts/AdminLayout";
 import {NextSeo} from "next-seo";
 import {ADMIN_SEO} from "../../../utils/SEO_headers";
@@ -96,7 +95,7 @@ const CommentsList = () => {
                     <Column title="Текст" dataIndex="text" key="text" ellipsis/>
 
                     <Column title="Дата" dataIndex='date' key="date" ellipsis
-                            render={(date) => (moment(date).format('DD.MM.YYYY'))}/>
+                            render={(date) => new Date(date).toLocaleDateString('ru-ru')}/>
 
                 </Table>
             </Styled>

@@ -5,7 +5,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {deletePhoto, getPhotos} from "../../../redux/photo-reducer";
 import PhotoPublish from "../../../components/AdminPanel/AdminPanel/UploadPhoto/UploadPhoto";
 import {DeleteOutlined} from "@ant-design/icons";
-import moment from "moment";
 import AdminLayout from "../../../Layouts/AdminLayout";
 import {NextSeo} from "next-seo";
 import {ADMIN_SEO} from "../../../utils/SEO_headers";
@@ -94,7 +93,7 @@ const PhotosList = () => {
                                                   width={250} alt=""/>}/>
 
                     <Column title="Дата" dataIndex='date' key="date" ellipsis
-                            render={(date) => (moment(date).format('DD.MM.YYYY'))}/>
+                            render={(date) => new Date(date).toLocaleDateString('ru-ru')}/>
 
                 </Table>
             </Styled>

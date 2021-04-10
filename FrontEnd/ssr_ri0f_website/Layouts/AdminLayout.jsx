@@ -98,7 +98,7 @@ const AdminLayout = ({children}) => {
                                 <Link href="/admin-panel/donaters"><a>Спонсоры</a></Link>
                             </Menu.Item>
                             <Menu.Item key="/admin-panel/gallery-posts" icon={<CameraOutlined/>}>
-                                <Link href="/admin-panel/gallery-posts"><a>Галлерея</a></Link>
+                                <Link href="/admin-panel/gallery-posts"><a>Галерея</a></Link>
                             </Menu.Item>
                             <Menu.Item key="/admin-panel/photos" icon={<UploadOutlined/>}>
                                 <Link href="/admin-panel/photos"><a>Фотографии</a></Link>
