@@ -14,7 +14,6 @@ services:
       - "5000:5000"
     networks:
       - production-app
-      - db-app
     depends_on:
       - mongo
   # Mongo DB
@@ -23,8 +22,7 @@ services:
     ports:
       - "27017:27017"
     networks:
-      #      - production-app
-      - db-app
+      - production-app
     volumes:
       - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
       - mongo-data:/data/db
@@ -46,8 +44,6 @@ services:
       - production-app
 networks:
   production-app:
-    driver: bridge
-  db-app:
     driver: bridge
 volumes:
   mongo-data:
