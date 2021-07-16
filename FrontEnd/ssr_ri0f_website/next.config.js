@@ -3,12 +3,8 @@ const nextTranslate = require('next-translate')
 
 module.exports = nextTranslate(
     withAntdLess({
-        optimization: {minimize: true},
         lessVarsFilePath: './styles/antd-custom.less',
-        lessVarsFilePathAppendToEndOfContent: true,
-        // lessLoaderOptions: {
-        //     javascriptEnabled: true,
-        // },
+        // lessVarsFilePathAppendToEndOfContent: true,
 
         env: {
             REACT_APP_APIKEY: process.env.SERVER_API,
