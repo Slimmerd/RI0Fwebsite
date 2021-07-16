@@ -6,9 +6,9 @@ module.exports = nextTranslate(
         optimization: {minimize: true},
         lessVarsFilePath: './styles/antd-custom.less',
         lessVarsFilePathAppendToEndOfContent: true,
-        lessLoaderOptions: {
-            javascriptEnabled: true,
-        },
+        // lessLoaderOptions: {
+        //     javascriptEnabled: true,
+        // },
 
         env: {
             REACT_APP_APIKEY: process.env.SERVER_API,
