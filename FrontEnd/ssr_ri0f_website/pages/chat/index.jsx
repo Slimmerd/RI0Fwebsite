@@ -9,7 +9,7 @@ import Loading from "../../components/common/Loading";
 import useTranslation from "next-translate/useTranslation";
 import {NextSeo} from "next-seo";
 import {MAIN_SEO} from "../../utils/SEO_headers";
-import {chat} from "../../utils/seo_headers.json"
+import SEOHeaders from "../../utils/seo_headers.json"
 
 const GlobalDiv = styled.div`
   background: #ECF0F1;
@@ -32,7 +32,7 @@ const ChatPage = () => {
 
     return (
         <>
-            <NextSeo {...MAIN_SEO(lang, chat.ru, chat.en)}/>
+            <NextSeo {...MAIN_SEO(lang, SEOHeaders.chat.ru, SEOHeaders.chat.en)}/>
             <GlobalDiv>
                 <ChatPageNaming/>
                 <div className={'container'}>

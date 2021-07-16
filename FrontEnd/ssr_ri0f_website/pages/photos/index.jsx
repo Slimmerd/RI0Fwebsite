@@ -6,7 +6,7 @@ import {PhotosPageAction} from "../../components/PhotosPage/Blocks/Action_photos
 import Loading from "../../components/common/Loading";
 import useTranslation from "next-translate/useTranslation";
 import {NextSeo} from "next-seo";
-import {photos} from "../../utils/seo_headers.json"
+import SEOHeaders from "../../utils/seo_headers.json"
 import {MAIN_SEO} from "../../utils/SEO_headers";
 import {useDispatch, useSelector} from "react-redux";
 
@@ -27,7 +27,7 @@ const PhotosPage = () => {
 
     return (
         <>
-            <NextSeo {...MAIN_SEO(lang, photos.ru, photos.en)}/>
+            <NextSeo {...MAIN_SEO(lang, SEOHeaders.photos.ru, SEOHeaders.photos.en)}/>
             <PhotosPageNaming/>
             {galleryPosts.length === 0 ? <PhotosPageStub/> : galleryPosts.map((p, i) => <PhotosPageAction post={p}
                                                                                                           key={i}/>)}

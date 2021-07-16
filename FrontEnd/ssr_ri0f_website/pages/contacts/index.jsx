@@ -5,14 +5,14 @@ import {ContactPageSiteQ} from "../../components/ContactsPage/Blocks/siteQ_conta
 import useTranslation from "next-translate/useTranslation";
 import {NextSeo} from "next-seo";
 import {MAIN_SEO} from "../../utils/SEO_headers";
-import {contacts} from "../../utils/seo_headers.json"
+import SEOHeaders from "../../utils/seo_headers.json"
 
 const Contacts = () => {
     const {lang} = useTranslation()
 
     return (
         <>
-            <NextSeo {...MAIN_SEO(lang, contacts.ru, contacts.en)}/>
+            <NextSeo {...MAIN_SEO(lang, SEOHeaders.contacts.ru, SEOHeaders.contacts.en)}/>
             <ContactPageNaming/>
             <ContactPageExpQ/>
             <ContactPageSiteQ/>

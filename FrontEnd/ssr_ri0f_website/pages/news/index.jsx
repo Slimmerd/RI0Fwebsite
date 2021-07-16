@@ -8,7 +8,7 @@ import NewsPageCards from "../../components/NewsPage/NewsCards/NewsPageCards";
 import Loading from "../../components/common/Loading";
 import {NextSeo} from "next-seo";
 import {MAIN_SEO} from "../../utils/SEO_headers";
-import {news as headerNews} from "../../utils/seo_headers.json"
+import SEOHeaders from "../../utils/seo_headers.json"
 import {useDispatch, useSelector} from "react-redux";
 
 const NewsPageBlock = styled.div`
@@ -155,7 +155,7 @@ const NewsPage = () => {
 
     return (
         <>
-            <NextSeo {...MAIN_SEO(lang, headerNews.ru, headerNews.en)}/>
+            <NextSeo {...MAIN_SEO(lang, SEOHeaders.news.ru, SEOHeaders.news.en)}/>
             <NewsPageBlock>
                 <PageContainer>
                     {/*Naming block*/}

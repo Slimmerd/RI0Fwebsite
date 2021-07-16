@@ -5,7 +5,7 @@ import {OnlineLogTable} from "../../components/OnlineLogPage/Blocks/Table_online
 import {NextSeo} from "next-seo";
 import {MAIN_SEO} from "../../utils/SEO_headers";
 import useTranslation from "next-translate/useTranslation";
-import {onlinelog} from "../../utils/seo_headers.json"
+import SEOHeaders from "../../utils/seo_headers.json"
 
 //TODO: Change when table will be uploaded (change state from admin panel)
 const OnlineLogPage = () => {
@@ -14,7 +14,7 @@ const OnlineLogPage = () => {
 
     return (
         <>
-            <NextSeo {...MAIN_SEO(lang, onlinelog.ru, onlinelog.en)}/>
+            <NextSeo {...MAIN_SEO(lang, SEOHeaders.onlinelog.ru, SEOHeaders.onlinelog.en)}/>
             <OnlineLogPageNaming/>
             {stub ? <OnlineLogPageStub/> : <OnlineLogTable/>}
         </>

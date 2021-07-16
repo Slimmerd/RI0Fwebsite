@@ -4,7 +4,7 @@ import {MainPageBlock3} from "../components/MainPage/Blocks/Block 3/Block3";
 import {MainPageBlock4} from "../components/MainPage/Blocks/Block 4/Block4";
 import React from "react";
 import {NextSeo} from "next-seo";
-import {main} from "../utils/seo_headers.json"
+import SEOHeaders from "../utils/seo_headers.json"
 import {MAIN_SEO} from "../utils/SEO_headers";
 import useTranslation from "next-translate/useTranslation";
 
@@ -13,7 +13,7 @@ export default function Home() {
 
     return (
         <>
-            <NextSeo {...MAIN_SEO(lang, main.ru, main.en)}/>
+            <NextSeo {...MAIN_SEO(lang, SEOHeaders.main.ru, SEOHeaders.main.en)}/>
             <MainPageBlock1/>
             <MainPageBlock2/>
             <MainPageBlock3/>
