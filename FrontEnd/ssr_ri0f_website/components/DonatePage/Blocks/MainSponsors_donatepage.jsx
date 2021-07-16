@@ -6,7 +6,7 @@ import DonateBadge from "./components/DonateBadge";
 import {Col, Row} from "antd";
 
 const MainSponsorBlockContainer = styled.div`
-  min-height: 710px;
+  min-height: 1px;
   background: #ECF0F1;
   box-shadow: 0 2.32131px 11.6066px 4.64262px rgba(0, 0, 0, 0.1);
 
@@ -23,7 +23,7 @@ const BlockHeader = styled.div`
 
   color: #2C3E50;
 
-  padding: 36px 0 48px 0;
+  padding: 42px 0 48px 0;
 
   @media (max-width: 786px) {
     font-size: 76px;
@@ -35,7 +35,7 @@ const BlockHeader = styled.div`
     line-height: 56px;
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 376px) {
     font-size: 42px;
     line-height: 48px;
   }
@@ -50,16 +50,18 @@ export const DonatePageMainSponsors = ({sponsors}) => {
         <MainSponsorBlockContainer>
             <div className={'container'}>
                 <FadeInContainer>
-                    <BlockHeader>{t('donate:main_sponsor_block.heading')}</BlockHeader>
+                    <BlockHeader>{t('donate:sponsor_block.heading')}</BlockHeader>
                 </FadeInContainer>
 
-                <div className={'donations'}>
-                    <Row justify={'center'} gutter={[{xs: 0, sm: 30, md: 30, lg: 30}, 20]}>
-                        {filteredSponsors.map((sponsor, i) => (<Col>
-                            <DonateBadge key={i} sponsor={sponsor.name} image={sponsor.img}/>
-                        </Col>))}
-                    </Row>
-                </div>
+                <FadeInContainer>
+                    <div className={'donations'}>
+                        <Row justify={'center'} gutter={[{xs: 0, sm: 30, md: 30, lg: 30}, 20]}>
+                            {filteredSponsors.map((sponsor, i) => (<Col>
+                                <DonateBadge key={i} sponsor={sponsor.name} image={sponsor.img}/>
+                            </Col>))}
+                        </Row>
+                    </div>
+                </FadeInContainer>
             </div>
         </MainSponsorBlockContainer>
     )
