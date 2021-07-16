@@ -10,7 +10,95 @@ import {SponsorsBlock} from "./Components/Sponsors";
 import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
 
-//TODO: Inserting sponsor logo system
+const Block = styled.div`
+  min-height: 1854px;
+  background: #E5E5E5;
+  position: relative;
+  box-shadow: 0 2.32131px 11.6066px 4.64262px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+
+  a {
+    color: #2C3E50;
+    transition: transform .2s ease-out 0s;
+
+    &:hover {
+      color: hsl(210, 29%, 40%);
+
+      transform: scale(1.05) perspective(1px);
+    }
+  }
+
+  &::before {
+    content: "";
+    opacity: 0.05;
+    background-repeat: no-repeat;
+    background-image: ~'url(/static/assets/compas.webp)' !important;
+    background-size: 865.33px, 567.22px;
+
+    background-position: bottom 53px left -81px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    pointer-events: none
+  }
+
+  .sponsorsblock {
+    padding-top: 108px;
+  }
+
+  .sponsorsblock img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .expplan {
+    padding-top: 168px;
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+
+  .expplanh1 {
+    font-family: Oswald, sans-serif;
+    font-size: 72px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 107px;
+    letter-spacing: 0.03em;
+    text-align: center;
+
+    color: #2C3E50;
+    padding-bottom: 50px;
+  }
+
+  .cardblock {
+    padding-top: 39px;
+  }
+
+  @media (max-width: 768px) {
+    min-height: 2054px;
+  }
+
+  @media (max-width: 375px) {
+    min-height: 2254px;
+
+    .expplanh1 {
+      font-size: 54px;
+      line-height: 64px;
+    }
+  }
+
+  @media (max-width: 280px) {
+    .expplanh1 {
+      font-size: 45px;
+      line-height: 45px;
+    }
+
+    min-height: 2454px;
+  }
+`
 
 const FirstPath = styled.div`
   position: relative;
@@ -84,7 +172,7 @@ export const MainPageBlock3 = () => {
         }, []);
 
     return (
-        <div className={'block3'}>
+        <Block>
             <div className={'container'}>
                 <FadeInContainer>
                     <SponsorsBlock/>
@@ -174,7 +262,7 @@ export const MainPageBlock3 = () => {
                     <div style={{paddingBottom: '80px'}}/>
                 </div>
             </div>
-        </div>
+        </Block>
 
     )
 }
