@@ -3,7 +3,7 @@ import {Col, Row} from "antd";
 import styled from "styled-components";
 import useTranslation from 'next-translate/useTranslation'
 
-const R6MG = '/static/assets/r6mg.webp'
+const R6MG = '/static/assets/R6MG.webp'
 const RZ3EC = '/static/assets/RZ3EC.webp'
 const M0MSV = '/static/assets/M0MSV.webp'
 const RX3F = '/static/assets/RX3F.webp'
@@ -65,12 +65,12 @@ const CardShape = styled.div`
   }
 
   @media (max-width: 768px) {
-    width: 550px;
+    width: 520px;
   }
 
   @media (max-width: 576px) {
     min-height: 400px;
-    width: 400px;
+    width: 346px;
     .left, .right {
       min-height: 250px;
     }
@@ -116,7 +116,7 @@ const SmallerCard = styled.div`
     color: #ECF0F1;
     word-break: break-word;
     white-space: normal;
-    margin: 0 auto;
+    margin: 0 15px 0 15px;
 
 
   }
@@ -135,7 +135,8 @@ const SmallerCard = styled.div`
 
     .information {
       min-height: 150px;
-      width: 400px;
+      width: 336px;
+      margin: 0 5px 0 5px;
     }
 
     .text {
@@ -148,7 +149,8 @@ const SmallerCard = styled.div`
   @media (max-width: 376px) {
 
     .information {
-      width: 270px;;
+      width: 270px;
+      margin: 0;
     }
 
     .text {

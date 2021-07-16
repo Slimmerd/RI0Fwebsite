@@ -3,7 +3,7 @@ import styled from "styled-components";
 import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link';
 
-const R6MG = '/static/assets/r6mg.webp'
+const R6MG = '/static/assets/R6MG.webp'
 const RZ3EC = '/static/assets/RZ3EC.webp'
 const M0MSV = '/static/assets/M0MSV.webp'
 const RX3F = '/static/assets/RX3F.webp'
