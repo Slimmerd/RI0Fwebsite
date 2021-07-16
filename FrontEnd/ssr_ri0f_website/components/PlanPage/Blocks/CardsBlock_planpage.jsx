@@ -4,7 +4,6 @@ import React from 'react'
 import {FadeInContainer} from "../../common/FadeInAnimation";
 import {PlanPageCard} from "./PlanCard_planpage";
 
-// language=SCSS prefix=*{ suffix=}
 const CardsBlockContainer = styled.div`
   min-height: 1386px;
 
@@ -27,20 +26,14 @@ export const PlanPageCardsBlock = () => {
                             <Col>
                                 <PlanPageCard cardNumber={2}/>
                             </Col>
-                        </Row>
-                    </FadeInContainer>
-                    <FadeInContainer>
-                        <Row gutter={[{xs: 0, sm: 30, md: 30, lg: 30}, 50]} justify={'center'}>
+
                             <Col>
                                 <PlanPageCard cardNumber={3}/>
                             </Col>
                             <Col>
                                 <PlanPageCard cardNumber={4}/>
                             </Col>
-                        </Row>
-                    </FadeInContainer>
-                    <FadeInContainer>
-                        <Row gutter={[{xs: 0, sm: 30, md: 30, lg: 30}, 50]} justify={'center'}>
+
                             <Col>
                                 <PlanPageCard cardNumber={5}/>
                             </Col>
