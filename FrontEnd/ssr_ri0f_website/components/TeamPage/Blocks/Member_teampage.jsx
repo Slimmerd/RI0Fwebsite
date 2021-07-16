@@ -13,7 +13,7 @@ const Header = styled.div`
 
   color: #2C3E50;
 
-  padding: 25px 0 72px 0;
+  padding: 42px 0 74px 0;
 
 
   @media (max-width: 786px) {
@@ -29,6 +29,7 @@ const Header = styled.div`
 `
 
 const Cards = styled.div`
+  margin: 0 15px 0 15px;
   padding-bottom: 52px;
 `
 
