@@ -1,4 +1,4 @@
-import "../styles/antd-custom.less";
+require("../styles/antd-custom.less");
 import {Provider} from 'react-redux'
 import store from "../redux/redux-store";
 import {DefaultSeo} from "next-seo";
