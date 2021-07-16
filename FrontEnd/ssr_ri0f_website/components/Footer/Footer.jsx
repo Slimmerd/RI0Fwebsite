@@ -14,7 +14,7 @@ const FooterContainer = styled.div`
   display: flex;
   align-items: center;
   @media (max-width: 870px) {
-    height: 200px;
+    height: 250px;
   }
 
   //Mobile menu
@@ -73,15 +73,14 @@ const Logo = styled.div`
   font-size: 32px;
   line-height: 37px;
   color: #2C3E50;
+  margin-left: 20px;
 
   border-radius: 5px;
 
-  @media (max-width: 320px) {
+  @media (max-width: 576px) {
     height: 96px;
     width: 96px;
   }
-
-
 `
 
 const LastRowText = styled.div`
@@ -92,7 +91,7 @@ const LastRowText = styled.div`
   line-height: 15px;
   color: #FFFFFF;
 
-
+  margin: 20px 0 0 20px;
 `
 
 export const Footer = () => {
@@ -118,7 +117,9 @@ export const Footer = () => {
                     </Col>
                 </Row>
                 <Row justify={'start'} align={'bottom'}>
-                    <LastRowText>{t('dev')}</LastRowText>
+                    <a href="https://github.com/Slimmerd">
+                        <LastRowText>{t('dev')}</LastRowText>
+                    </a>
                 </Row>
 
             </div>
