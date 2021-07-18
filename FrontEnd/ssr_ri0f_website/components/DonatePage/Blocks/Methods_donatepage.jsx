@@ -6,6 +6,7 @@ import useTranslation from 'next-translate/useTranslation'
 
 const MethodsPageContainer = styled.div`
   min-height: 704px;
+  padding-bottom: 74px;
 `
 
 const BlockHeader = styled.div`
@@ -28,7 +29,7 @@ const BlockHeader = styled.div`
     line-height: 56px;
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 376px) {
     font-size: 42px;
     line-height: 48px;
   }
@@ -94,7 +95,7 @@ const Card = styled.div`
     }
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 376px) {
     min-height: 180px;
     width: 270px;
     display: grid;

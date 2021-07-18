@@ -5,6 +5,7 @@ import Image from "next/image";
 const BadgeStyle = styled.div`
   display: inline-flex;
   min-width: 180px;
+  margin: 0 5px 0 5px;
 
   .badge {
     padding: 15px;
@@ -42,7 +43,7 @@ const BadgeStyle = styled.div`
     line-height: 20px;
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 376px) {
     font-size: 16px;
     line-height: 18px;
   }

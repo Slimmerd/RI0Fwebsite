@@ -51,7 +51,7 @@ const HeaderBlock = styled.div`
     }
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 376px) {
     .header {
       font-size: 42px;
       line-height: 48px;

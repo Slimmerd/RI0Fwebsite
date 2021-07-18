@@ -22,7 +22,7 @@ export const DonatePageSecondarySponsors = ({sponsors}) => {
             <div className={'container'}>
                 <FadeInContainer>
                     <div className={'donations'}>
-                        <Row justify={'center'} gutter={[{xs: 0, sm: 30, md: 30, lg: 30}, 20]}>
+                        <Row justify={'center'} gutter={[{xs: 0, sm: 20, md: 20, lg: 20}, 20]}>
                             {filteredSponsors.map((sponsor, i) => (<Col>
                                 <DonateBadge key={i} sponsor={sponsor.name} image={sponsor.img}/>
                             </Col>))}
