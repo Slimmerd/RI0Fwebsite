@@ -116,9 +116,7 @@ const SmallerCard = styled.div`
     color: #ECF0F1;
     word-break: break-word;
     white-space: normal;
-    margin: 0 15px 0 15px;
-
-
+    padding: 0 15px 0 15px;
   }
 
   @media (max-width: 1200px) {
@@ -167,7 +165,7 @@ const HeaderDiv = styled.div`
   line-height: 35px;
 
   @media (max-width: 576px) {
-    padding: 20px 40px 18px 0;
+    padding: 20px 0 18px 0;
     font-size: 24px;
     line-height: 28px;
   }
