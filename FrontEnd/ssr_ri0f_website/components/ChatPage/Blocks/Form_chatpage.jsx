@@ -185,14 +185,12 @@ const CardShape = styled.div`
   }
 
   @media (max-width: 576px) {
-    max-width: 400px;
+    max-width: 356px;
     .text {
+      height: 330px;
       textarea {
-        width: 350px;
-      }
-
-      .header {
-
+        height: 200px !important;
+        width: 330px;
       }
     }
 
