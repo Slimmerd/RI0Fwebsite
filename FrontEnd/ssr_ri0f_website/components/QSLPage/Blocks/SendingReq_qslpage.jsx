@@ -6,6 +6,7 @@ import useTranslation from 'next-translate/useTranslation'
 const SendingReqBlock = styled.div`
   min-height: 656px;
   color: #2C3E50;
+  padding-bottom: 73px;
 
   .header {
     font-family: Oswald, sans-serif;
@@ -85,7 +86,7 @@ const Card = styled.div`
   }
 
   @media (max-width: 576px) {
-    width: 425px;
+    width: 376px;
 
   }
 

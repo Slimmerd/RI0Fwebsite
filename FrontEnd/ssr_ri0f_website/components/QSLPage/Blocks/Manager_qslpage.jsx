@@ -120,7 +120,7 @@ const Card = styled.div`
   }
 
   @media (max-width: 576px) {
-    width: 425px;
+    width: 376px;
     .text {
       font-size: 76px;
       line-height: 86px;
