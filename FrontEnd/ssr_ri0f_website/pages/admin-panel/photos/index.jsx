@@ -103,4 +103,4 @@ const PhotosList = () => {
 
 PhotosList.layout = AdminLayout
 
-export default (PhotosList);
+export default PhotosList;

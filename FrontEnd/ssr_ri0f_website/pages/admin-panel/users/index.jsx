@@ -86,4 +86,4 @@ const UsersList = () => {
 
 UsersList.layout = AdminLayout
 
-export default (UsersList);
+export default UsersList;

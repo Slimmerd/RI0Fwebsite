@@ -117,4 +117,4 @@ const NewsPosts = () => {
 
 NewsPosts.layout = AdminLayout
 
-export default (NewsPosts);
+export default NewsPosts;

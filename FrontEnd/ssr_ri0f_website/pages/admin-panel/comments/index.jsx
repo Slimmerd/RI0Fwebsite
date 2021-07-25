@@ -105,4 +105,4 @@ const CommentsList = () => {
 
 CommentsList.layout = AdminLayout
 
-export default (CommentsList);
+export default CommentsList;

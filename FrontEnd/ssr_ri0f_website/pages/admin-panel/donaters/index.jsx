@@ -100,4 +100,4 @@ const SponsorsList = () => {
 
 SponsorsList.layout = AdminLayout
 
-export default (SponsorsList);
+export default SponsorsList;

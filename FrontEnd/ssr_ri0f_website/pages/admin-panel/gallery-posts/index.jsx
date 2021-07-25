@@ -105,4 +105,4 @@ const GalleryList = () => {
 
 GalleryList.layout = AdminLayout
 
-export default (GalleryList);
+export default GalleryList;
