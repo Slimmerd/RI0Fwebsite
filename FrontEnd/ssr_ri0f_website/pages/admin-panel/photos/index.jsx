@@ -89,7 +89,7 @@ const PhotosList = () => {
                     <Column title="Сссылка" dataIndex="_id" key="_id" ellipsis/>
 
                     <Column title="Предпросмотр" dataIndex="_id" key="img" ellipsis
-                            render={(_id) => <img src={process.env.REACT_APP_BACKEND_ADDRESS + "api/photos/" + _id}
+                            render={(_id) => <img src={process.env.REACT_APP_BACKEND_ADDRESS + "photos/" + _id}
                                                   width={250} alt=""/>}/>
 
                     <Column title="Дата" dataIndex='date' key="date" ellipsis
