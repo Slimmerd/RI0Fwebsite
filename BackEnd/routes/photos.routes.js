@@ -64,7 +64,9 @@ router.get('/', auth, apiCheck, async (req, res) => {
             return res.status(404).json({message: 'Фотографии не найдены'})
         }
 
-        res.status(201).json(photos)
+        const newResult = await photos.map(item => ({_id: item._id, date: item.date}))
+
+        res.status(201).json(newResult)
 
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
