@@ -83,7 +83,7 @@ export const ActualNewsPagePreviousNews = ({news}) => {
         <HeaderBlock>
             <div className={'container'}>
                 <Row gutter={[{xs: 0, sm: 30, md: 30, lg: 30}, {xs: 50, sm: 90, md: 90, lg: 90}]} justify={'center'}
-                     align={'middle'} style={{paddingTop: '50px', marginTop: 0}}>
+                     align={'middle'} style={{paddingTop: '50px', marginTop: 0, paddingBttom: '50px'}}>
                     {isSize <= breakpoint && isSize >= sbreakpoint ? <Test/> : <NewsAnimContainer items={items}/>}
                 </Row>
             </div>
