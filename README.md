@@ -4,7 +4,7 @@ The website dedicated to the expedition on island Iturup in 2021. This project i
 server side rendering.
 
 
-> This project partly unfinished. Author faced difficulties with implementation of SSR (Server-Side-Rendering).
+> This project finished.
 
 ## 🖥 Frontend
 
